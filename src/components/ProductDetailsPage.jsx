@@ -339,30 +339,30 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                 Quantity & Purchasing Options
               </label>
               
-              <div className="flex flex-col sm:flex-row items-stretch gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
                 {/* Plus / Minus Counter */}
-                <div className="flex items-center justify-between border border-slate-300 rounded-2xl bg-white px-3 py-2 w-full sm:w-36 shadow-xs flex-shrink-0">
+                <div className="flex items-center justify-between border border-slate-300 rounded-2xl bg-white px-3 py-2.5 w-full sm:w-32 shadow-xs flex-shrink-0">
                   <button
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-600 transition-colors cursor-pointer"
+                    className="w-7 h-7 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-600 transition-colors cursor-pointer"
                   >
-                    <Minus className="w-4 h-4" />
+                    <Minus className="w-3.5 h-3.5" />
                   </button>
-                  <span className="font-bold text-base text-slate-900 px-2">{quantity}</span>
+                  <span className="font-bold text-sm text-slate-900 px-1">{quantity}</span>
                   <button
                     onClick={() => setQuantity((q) => q + 1)}
-                    className="w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-600 transition-colors cursor-pointer"
+                    className="w-7 h-7 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-600 transition-colors cursor-pointer"
                   >
-                    <Plus className="w-4 h-4" />
+                    <Plus className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
-                {/* Action Buttons: Add to Cart, Buy Now, Bulk Order */}
-                <div className="flex-1 flex flex-col sm:flex-row gap-2.5">
+                {/* Action Buttons: Add to Cart, Buy Now, Bulk Order in 1 Single Line */}
+                <div className="flex-1 grid grid-cols-3 gap-2">
                   {/* Add to Cart CTA */}
                   <button
                     onClick={handleAdd}
-                    className={`flex-1 py-3 px-4 rounded-2xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5 border border-slate-300 shadow-xs hover:shadow-md cursor-pointer ${
+                    className={`py-3 px-2 sm:px-3 rounded-2xl font-bold text-xs transition-all flex items-center justify-center gap-1 border border-slate-300 shadow-xs hover:shadow-md cursor-pointer whitespace-nowrap ${
                       isAdded
                         ? 'bg-emerald-600 text-white border-emerald-600'
                         : 'bg-slate-900 hover:bg-slate-800 text-white border-slate-900'
@@ -370,13 +370,13 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                   >
                     {isAdded ? (
                       <>
-                        <Check className="w-4 h-4" />
-                        <span>Added!</span>
+                        <Check className="w-3.5 h-3.5 shrink-0" />
+                        <span className="whitespace-nowrap">Added!</span>
                       </>
                     ) : (
                       <>
-                        <ShoppingBag className="w-4 h-4" />
-                        <span>Add to Cart</span>
+                        <ShoppingBag className="w-3.5 h-3.5 shrink-0" />
+                        <span className="whitespace-nowrap">Add to Cart</span>
                       </>
                     )}
                   </button>
@@ -384,23 +384,23 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                   {/* Buy Now CTA */}
                   <button
                     onClick={handleBuyNow}
-                    className="flex-1 py-3 px-4 rounded-2xl font-black text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5 bg-[#d9232e] hover:bg-[#b91c1c] text-white shadow-md hover:shadow-lg cursor-pointer"
+                    className="py-3 px-2 sm:px-3 rounded-2xl font-extrabold text-xs transition-all flex items-center justify-center gap-1 bg-[#d9232e] hover:bg-[#b91c1c] text-white shadow-md hover:shadow-lg cursor-pointer whitespace-nowrap"
                   >
-                    <CheckCircle2 className="w-4 h-4" />
-                    <span>Buy Now</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                    <span className="whitespace-nowrap">Buy Now</span>
                   </button>
 
                   {/* Bulk Order Button */}
                   <button
                     onClick={() => setShowBulkSection(!showBulkSection)}
-                    className={`flex-1 py-3 px-4 rounded-2xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5 border cursor-pointer ${
+                    className={`py-3 px-2 sm:px-3 rounded-2xl font-bold text-xs transition-all flex items-center justify-center gap-1 border cursor-pointer whitespace-nowrap ${
                       showBulkSection
                         ? 'bg-slate-800 text-white border-slate-800 shadow-md'
                         : 'bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-200/80 shadow-xs'
                     }`}
                   >
-                    <Package className="w-4 h-4 text-emerald-600" />
-                    <span>Bulk Order</span>
+                    <Package className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span className="whitespace-nowrap">Bulk Order</span>
                   </button>
                 </div>
               </div>
