@@ -1,0 +1,35 @@
+import React from 'react';
+
+export default function WhatsAppWidget() {
+  const whatsappNumber = "18323663572";
+  const defaultText = encodeURIComponent(
+    "Hello RUBY RED! I am inquiring about your exotic snacks and Ramune sodas."
+  );
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex items-center group">
+      {/* Tooltip Label on Hover */}
+      <span className="hidden sm:block opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md mr-3 whitespace-nowrap">
+        Need Help? Chat on WhatsApp!
+      </span>
+
+      {/* Sticky Floating WhatsApp Button with Official SVG Icon */}
+      <a
+        href={`https://wa.me/${whatsappNumber}?text=${defaultText}`}
+        target="_blank"
+        rel="noreferrer"
+        className="p-3.5 sm:p-4 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center cursor-pointer border-2 border-white"
+        aria-label="Chat on WhatsApp"
+      >
+        {/* Real Official WhatsApp SVG Logo */}
+        <svg 
+          className="w-6.5 h-6.5 fill-white" 
+          viewBox="0 0 24 24" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.461c-1.85 0-3.666-.497-5.253-1.442l-.376-.224-3.903 1.023 1.042-3.805-.246-.39c-1.038-1.654-1.587-3.57-1.587-5.529 0-5.632 4.582-10.214 10.214-10.214 2.73 0 5.295 1.063 7.224 2.994 1.93 1.93 2.993 4.494 2.993 7.224 0 5.633-4.583 10.216-10.214 10.216M12 0C5.373 0 0 5.373 0 12c0 2.12.553 4.11 1.519 5.836L0 24l6.326-1.658C7.994 23.364 9.944 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0" />
+        </svg>
+      </a>
+    </div>
+  );
+}
