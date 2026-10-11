@@ -39,13 +39,12 @@ export const CATEGORIES_DATA = [
   }
 ];
 
-// Triplicate categories array to enable seamless 360° infinite horizontal looping
+// Triplicate categories array for seamless infinite looping
 const TRIPLE_CATEGORIES = [...CATEGORIES_DATA, ...CATEGORIES_DATA, ...CATEGORIES_DATA];
 
 export default function CategoriesSection({ onSelectCategory }) {
   const scrollRef = useRef(null);
 
-  // Set initial scroll position to middle set on mount
   useEffect(() => {
     if (scrollRef.current) {
       const singleSetWidth = scrollRef.current.scrollWidth / 3;
@@ -53,99 +52,101 @@ export default function CategoriesSection({ onSelectCategory }) {
     }
   }, []);
 
-  // Seamless infinite loop scroll position handler
   const handleScroll = () => {
     if (!scrollRef.current) return;
     const { scrollLeft, scrollWidth } = scrollRef.current;
     const singleSetWidth = scrollWidth / 3;
+    if (singleSetWidth <= 0) return;
 
-    // Instantly teleport position if approaching left or right boundaries
-    if (scrollLeft < 20) {
+    if (scrollLeft < 15) {
       scrollRef.current.scrollLeft = singleSetWidth + scrollLeft;
-    } else if (scrollLeft >= singleSetWidth * 2 - 20) {
+    } else if (scrollLeft >= singleSetWidth * 2 - 15) {
       scrollRef.current.scrollLeft = scrollLeft - singleSetWidth;
     }
   };
 
   const scroll = (direction) => {
     if (!scrollRef.current) return;
-    const cardWidth = 270; // Width of one category card + gap
-    const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
-
+    const scrollAmount = direction === 'left' ? -260 : 260;
     scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
   return (
-    <section id="categories" className="pt-10 pb-6 sm:pt-12 sm:pb-8 lg:pt-14 lg:pb-8 bg-white border-b border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <section id="categories" className="py-6 sm:py-10 lg:py-12 bg-white border-b border-slate-100">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-3.5 sm:space-y-6">
         
-        {/* Header Row */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 -mx-4 sm:-mx-8 lg:-mx-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-[#d9232e] tracking-normal">
-            Shop by Category
-          </h2>
+        {/* Header Row - Mobile responsive without negative margin clipping */}
+        <div className="flex items-center justify-between gap-3 px-1">
+          <div>
+            <h2 className="text-xl sm:text-3xl lg:text-4xl font-semibold text-[#d9232e] tracking-tight">
+              Shop by Category
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-0.5 hidden xs:block">
+              Explore authentic imported treats by craving
+            </p>
+          </div>
 
           <button
             onClick={() => {
-              const el = document.getElementById('shop');
+              const el = document.getElementById('featured-products') || document.getElementById('shop');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="text-xs sm:text-sm font-bold text-red-600 hover:text-red-700 transition-colors flex items-center gap-1.5 group cursor-pointer"
+            className="text-xs sm:text-sm font-bold text-red-600 hover:text-red-700 transition-colors flex items-center gap-1 group shrink-0 cursor-pointer py-1 px-2 rounded-lg hover:bg-red-50"
           >
-            <span>View All Categories</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <span>View All</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
-        {/* Carousel Container with Both Side Arrows & Seamless Infinite Loop */}
+        {/* Carousel Container */}
         <div className="relative group/carousel">
           
-          {/* Left Arrow Button */}
+          {/* Left Arrow Button - Visible only on md+ screens so it doesn't block mobile touch swipe */}
           <button
             onClick={() => scroll('left')}
-            className="absolute -left-3 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white text-slate-800 hover:bg-[#d9232e] hover:text-white border border-slate-200 shadow-xl flex items-center justify-center transition-all cursor-pointer hover:scale-110 active:scale-95"
+            className="hidden md:flex absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white text-slate-800 hover:bg-[#d9232e] hover:text-white border border-slate-200 shadow-lg items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95"
             aria-label="Scroll Left"
-            title="Scroll Left"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
 
-          {/* Right Arrow Button */}
+          {/* Right Arrow Button - Visible only on md+ screens */}
           <button
             onClick={() => scroll('right')}
-            className="absolute -right-3 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white text-slate-800 hover:bg-[#d9232e] hover:text-white border border-slate-200 shadow-xl flex items-center justify-center transition-all cursor-pointer hover:scale-110 active:scale-95"
+            className="hidden md:flex absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white text-slate-800 hover:bg-[#d9232e] hover:text-white border border-slate-200 shadow-lg items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95"
             aria-label="Scroll Right"
-            title="Scroll Right"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5" />
           </button>
 
           {/* Horizontally Scrollable Categories Slider */}
           <div
             ref={scrollRef}
             onScroll={handleScroll}
-            className="flex items-center gap-5 sm:gap-6 lg:gap-8 overflow-x-auto no-scrollbar scroll-smooth py-3 px-1"
+            className="flex items-center gap-3 sm:gap-5 lg:gap-6 overflow-x-auto no-scrollbar scroll-smooth py-2 px-1 snap-x snap-mandatory"
             style={{ 
               scrollbarWidth: 'none', 
-              msOverflowStyle: 'none' 
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch'
             }}
           >
             {TRIPLE_CATEGORIES.map((cat, index) => (
               <div
                 key={`${cat.id}-${index}`}
                 onClick={() => onSelectCategory && onSelectCategory(cat.id)}
-                className="group/card cursor-pointer relative flex-shrink-0 w-[210px] sm:w-[230px] md:w-[245px] aspect-[4/5] rounded-3xl overflow-hidden bg-slate-100 shadow-md hover:shadow-2xl transition-all duration-500 border border-slate-200/70 hover:border-red-500/40 hover:-translate-y-2"
+                className="group/card cursor-pointer relative shrink-0 w-[125px] xs:w-[140px] sm:w-[190px] md:w-[220px] aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-100 shadow-xs sm:shadow-md hover:shadow-xl transition-all duration-300 border border-slate-200/80 hover:border-red-500/40 active:scale-95 snap-start"
               >
                 {/* Photo Background */}
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-108 transition-transform duration-700 ease-out"
+                  className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500 ease-out"
+                  loading="lazy"
                 />
 
-                {/* Thin Horizontal Rectangle Bar at the Bottom */}
-                <div className="absolute bottom-0 inset-x-0 w-full bg-[#d9232e] py-2.5 px-3 text-center transition-colors duration-300">
-                  <h3 className="font-medium text-white text-sm sm:text-base lg:text-lg leading-snug line-clamp-1">
+                {/* Bottom Red Label Bar */}
+                <div className="absolute bottom-0 inset-x-0 w-full bg-[#d9232e] py-1.5 sm:py-2 px-2 text-center transition-colors">
+                  <h3 className="font-semibold text-white text-xs sm:text-sm lg:text-base leading-tight line-clamp-1">
                     {cat.name}
                   </h3>
                 </div>

@@ -128,15 +128,18 @@ export default function FeaturedProductsSection({ onAddToCart, onSelectProduct }
   };
 
   return (
-    <section id="featured-products" className="pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-8 lg:pb-16 bg-white border-b border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <section id="featured-products" className="py-6 sm:py-10 lg:py-14 bg-white border-b border-slate-100">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-4 sm:space-y-6">
         
-        {/* Section Header Row - Pushed significantly further outside of card grid alignment */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 -mx-4 sm:-mx-8 lg:-mx-12">
+        {/* Section Header Row - Clean mobile layout without negative margins */}
+        <div className="flex items-center justify-between gap-3 px-1">
           <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-[#d9232e] tracking-normal">
+            <h2 className="text-xl sm:text-3xl lg:text-4xl font-semibold text-[#d9232e] tracking-tight">
               Featured Products
             </h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-0.5 hidden xs:block">
+              Handpicked bestsellers & rare Japanese imports
+            </p>
           </div>
 
           <button
@@ -144,71 +147,73 @@ export default function FeaturedProductsSection({ onAddToCart, onSelectProduct }
               const el = document.getElementById('shop');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="text-xs sm:text-sm font-bold text-red-600 hover:text-red-700 transition-colors flex items-center gap-1.5 group cursor-pointer"
+            className="text-xs sm:text-sm font-bold text-red-600 hover:text-red-700 transition-colors flex items-center gap-1 group shrink-0 cursor-pointer py-1 px-2 rounded-lg hover:bg-red-50"
           >
-            <span>View All Products</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <span>View All</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
-        {/* 8 Featured Product Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
+        {/* Responsive Product Cards Grid: 2 columns on mobile, 3-4 columns on tablet & desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 xs:gap-3.5 sm:gap-5 lg:gap-6">
           {FEATURED_PRODUCTS_DATA.map((product) => {
             const isAdded = addedIds[product.id];
             return (
               <div
                 key={product.id}
                 onClick={(e) => handleViewProduct(product, e)}
-                className="group bg-white rounded-3xl p-4 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer"
+                className="group bg-white rounded-2xl sm:rounded-3xl p-2.5 xs:p-3 sm:p-4 border border-slate-200/80 shadow-xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between cursor-pointer active:scale-[0.98]"
               >
                 <div>
                   {/* Product Image Frame with Top Right Rating Star */}
-                  <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-50 mb-3.5 border border-slate-100">
+                  <div className="relative w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-50 mb-2 sm:mb-3 border border-slate-100">
                     <img
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                      loading="lazy"
                     />
 
                     {/* Top Right Rating Star Badge */}
-                    <div className="absolute top-2.5 right-2.5 z-10">
-                      <div className="flex items-center gap-1 text-xs text-amber-600 font-bold bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full shadow-xs border border-amber-200/60">
-                        <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                    <div className="absolute top-1.5 right-1.5 sm:top-2.5 sm:right-2.5 z-10">
+                      <div className="flex items-center gap-0.5 sm:gap-1 text-[10px] sm:text-xs text-amber-600 font-bold bg-white/95 backdrop-blur-md px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full shadow-2xs border border-amber-200/60">
+                        <Star className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 fill-amber-400 text-amber-400" />
                         <span>{product.rating}</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Product Name */}
-                  <h3 className="font-medium text-slate-900 text-base sm:text-lg group-hover:text-[#d9232e] transition-colors leading-snug line-clamp-1">
+                  <h3 className="font-semibold text-slate-900 text-xs xs:text-sm sm:text-base group-hover:text-[#d9232e] transition-colors leading-snug line-clamp-2">
                     {product.name}
                   </h3>
 
-                  {/* Short One-Line Description */}
-                  <p className="text-xs text-slate-500 mt-1 line-clamp-1 leading-relaxed">
+                  {/* Short One-Line Description (hidden on extra small to keep cards compact) */}
+                  <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5 line-clamp-1 leading-relaxed hidden xs:block">
                     {product.shortDesc}
                   </p>
                 </div>
 
-                {/* Bottom Section: Left = Discounted & Actual Price, Right = View Details Button */}
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-                  {/* Left Bottom: Discounted Price + Strikethrough Original Price */}
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="text-lg sm:text-xl font-extrabold text-slate-900">
+                {/* Bottom Section: Price + View Details Button */}
+                <div className="mt-2.5 sm:mt-4 pt-2 sm:pt-3 border-t border-slate-100 flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 sm:gap-2">
+                  {/* Left: Discounted Price + Strikethrough Original Price */}
+                  <div className="flex items-baseline gap-1 sm:gap-1.5">
+                    <span className="text-sm xs:text-base sm:text-lg font-extrabold text-slate-900">
                       ${product.price.toFixed(2)}
                     </span>
-                    <span className="text-xs sm:text-sm font-semibold text-slate-400 line-through">
+                    <span className="text-[10px] xs:text-xs sm:text-sm font-semibold text-slate-400 line-through">
                       ${product.originalPrice.toFixed(2)}
                     </span>
                   </div>
 
-                  {/* Right Bottom: View Details Button */}
+                  {/* Right: View Details CTA */}
                   <button
                     onClick={(e) => handleViewProduct(product, e)}
-                    className="py-2 px-3 sm:px-3.5 rounded-xl text-xs font-bold text-white bg-[#d9232e] hover:bg-[#b91c1c] transition-all flex items-center justify-center gap-1 shadow-xs group-hover:shadow-md whitespace-nowrap"
+                    className="w-full xs:w-auto py-1.5 px-2 xs:px-2.5 sm:py-2 sm:px-3 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold text-white bg-[#d9232e] hover:bg-[#b91c1c] active:scale-95 transition-all flex items-center justify-center gap-1 shadow-xs whitespace-nowrap cursor-pointer"
                   >
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>View Details</span>
+                    <Eye className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                    <span className="hidden xs:inline">View Details</span>
+                    <span className="xs:hidden">Details</span>
                   </button>
                 </div>
               </div>
