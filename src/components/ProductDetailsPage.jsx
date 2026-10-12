@@ -21,7 +21,7 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
 
   const [selectedImage, setSelectedImage] = useState(product?.image || '');
   const [quantity, setQuantity] = useState(1);
-  const [selectedFlavor, setSelectedFlavor] = useState('Original');
+  const [selectedFlavor, setSelectedFlavor] = useState(product?.flavors?.[0] || 'Original');
   const [activeTab, setActiveTab] = useState('overview');
   const [isAdded, setIsAdded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -34,6 +34,11 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
     if (product) {
       setSelectedImage(product.image);
       setQuantity(1);
+      if (product.flavors && product.flavors.length > 0) {
+        setSelectedFlavor(product.flavors[0]);
+      } else {
+        setSelectedFlavor('Original');
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [product, id]);
@@ -57,9 +62,25 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
   // Image variations array
   const imageVariations = [
     product.image,
-    "/images/ramune_banner.jpg",
-    "/images/ruby_red_hero.jpg",
-    "/images/ramune_poster.jpeg"
+    ...(product.id?.includes('koikeya')
+      ? [
+          "/images/koikeya_karamucho_hot_chili_chips.png",
+          "/images/koikeya_karamucho_hot_chili_snack.png",
+          "/images/koikeya_pure_potato_black_pepper.png"
+        ].filter((img) => img !== product.image)
+      : product.id?.includes('milka')
+      ? [
+          "/images/Milka Oreo Lavender Kitchen Still Life.png",
+          "/images/Milka Cookies and Hazelnuts Still Life.png",
+          "/images/Milka Strawberry Chocolate Still Life.png",
+          "/images/Milka White Chocolate Dream Still Life.png"
+        ].filter((img) => img !== product.image)
+      : [
+          "/images/ramune_banner.jpg",
+          "/images/ruby_red_hero.jpg",
+          "/images/ramune_poster.jpeg"
+        ]
+    )
   ];
 
   const savingsAmount = product.originalPrice ? (product.originalPrice - product.price).toFixed(2) : '1.00';
@@ -308,7 +329,11 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                 Select Flavor / Variety
               </label>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                {["Original", "Ripe Peach", "Melon", "Strawberry"].map((flavor) => (
+                {(product.flavors || (
+                  product.id?.includes('koikeya')
+                    ? ['Original Hot Chili', 'Mild Spicy', 'Extra Spicy']
+                    : ["Original", "Ripe Peach", "Melon", "Strawberry"]
+                )).map((flavor) => (
                   <button
                     key={flavor}
                     onClick={() => setSelectedFlavor(flavor)}
@@ -472,19 +497,44 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
         <div className="space-y-6 sm:space-y-8">
           
           {/* Section 1: Overview & Details */}
-          <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200/80 shadow-xs sm:shadow-sm space-y-3 sm:space-y-4">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200/80 shadow-xs sm:shadow-sm space-y-4">
             <h3 className="text-base sm:text-xl font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
               <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#d9232e]" />
               <span>Overview & Details</span>
             </h3>
             <p className="text-slate-700 text-xs sm:text-sm leading-relaxed">
-              {product.fullDesc || "Imported directly from Japan, this product embodies authentic craftsmanship and traditional recipe techniques. Made with high-quality ingredients and packaged with care for peak freshness."}
+              {product.fullDesc || product.description || "Imported directly from Japan, this product embodies authentic craftsmanship and traditional recipe techniques. Made with high-quality ingredients and packaged with care for peak freshness."}
             </p>
-            <ul className="list-disc pl-5 space-y-1 text-xs sm:text-sm text-slate-600">
-              <li>Authentic regional import sourced directly from authorized suppliers</li>
-              <li>Sealed packaging ensuring crisp flavor and optimal shelf life</li>
-              <li>Perfect for gifting, snack lovers, or party celebrations</li>
-            </ul>
+
+            {/* Structured Specifications / Overview Attributes */}
+            {product.overview && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 py-1">
+                {Object.entries(product.overview).map(([key, val]) => (
+                  <div key={key} className="bg-slate-50 p-2.5 sm:p-3 rounded-xl border border-slate-100">
+                    <span className="text-[10px] sm:text-[11px] font-semibold text-slate-400 capitalize block">
+                      {key.replace(/([A-Z])/g, ' $1')}
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-slate-900 mt-0.5 block">
+                      {val}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {product.bullets && product.bullets.length > 0 ? (
+              <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm text-slate-600 pt-1">
+                {product.bullets.map((bullet, idx) => (
+                  <li key={idx}>{bullet}</li>
+                ))}
+              </ul>
+            ) : (
+              <ul className="list-disc pl-5 space-y-1 text-xs sm:text-sm text-slate-600">
+                <li>Authentic regional import sourced directly from authorized suppliers</li>
+                <li>Sealed packaging ensuring crisp flavor and optimal shelf life</li>
+                <li>Perfect for gifting, snack lovers, or party celebrations</li>
+              </ul>
+            )}
           </div>
 
           {/* Section 2: Customer Reviews */}

@@ -4,16 +4,14 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const SLIDE_IMAGES = [
   {
-    src: '/images/hero_banner.png',
-    alt: 'Japanese Snack Festival by Mount Fuji - Ruby Red Sales & Services'
+    src: '/images/Delivered Karamucho Delight.png',
+    alt: 'Ruby Red - Delivered Karamucho Delight Anywhere in USA',
+    objectPosition: 'center 38%'
   },
   {
-    src: '/images/ramune_banner.jpg',
-    alt: 'Japanese Ramune Sparkling Soda - Ruby Red'
-  },
-  {
-    src: '/images/ruby_red_hero.jpg',
-    alt: 'Global Exotic Snacks & Beverages - Ruby Red'
+    src: '/images/Milka Delivered Across the USA.png',
+    alt: 'Ruby Red - Milka Delivered Across the USA',
+    objectPosition: 'center 38%'
   }
 ];
 
@@ -173,23 +171,18 @@ export default function HeroSection() {
                 <img
                   src={slide.src}
                   alt={slide.alt}
-                  className="absolute inset-0 w-full h-full object-cover object-center filter brightness-105 contrast-105 pointer-events-none select-none"
+                  style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
+                  className={`absolute inset-0 w-full h-full object-cover ${slide.position || ''} filter brightness-105 contrast-105 pointer-events-none select-none`}
                   loading={idx === 1 ? "eager" : "lazy"}
                   draggable={false}
                 />
 
-                {/* Scoped Gradient Overlay for Button & Text contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-tr from-black/80 via-black/30 via-35% to-transparent pointer-events-none" />
+                {/* Subtle bottom gradient for button contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
-                {/* Slide Overlay: Buttons slide together with this slide (Text hidden on mobile) */}
-                <div className="relative z-10 p-4 sm:p-10 lg:p-16 max-w-3xl space-y-3 sm:space-y-4 text-left pb-4 sm:pb-12 lg:pb-20">
-                  {/* Heading - HIDDEN ON MOBILE (shows only from sm screens up) */}
-                  <h1 className="hidden sm:block text-3xl sm:text-5xl lg:text-6xl font-medium text-white tracking-normal leading-[1.15] drop-shadow-md">
-                    <span className="block whitespace-nowrap">Quality Products.</span>
-                    <span className="block whitespace-nowrap">Simple Ordering.</span>
-                  </h1>
-
-                  {/* Action Buttons - Slide with the image, same on every slide */}
+                {/* Slide Overlay: Action Buttons */}
+                <div className="relative z-10 p-4 sm:p-10 lg:p-16 max-w-3xl text-left pb-4 sm:pb-10 lg:pb-14">
+                  {/* Action Buttons */}
                   <div className="flex items-center gap-2.5 sm:gap-3 font-sans">
                     {/* Primary Shop Button */}
                     <button

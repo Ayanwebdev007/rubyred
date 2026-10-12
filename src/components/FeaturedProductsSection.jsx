@@ -1,90 +1,188 @@
 import React, { useState } from 'react';
-import { ArrowRight, ShoppingBag, Eye, Check, X, Star, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Eye, Star } from 'lucide-react';
 
 export const FEATURED_PRODUCTS_DATA = [
   {
-    id: "fp-ramune-orig",
-    name: "Sangaria Ramune Original Soda",
-    shortDesc: "Authentic Japanese marble glass soda with classic fizz",
-    fullDesc: "Experience the iconic Japanese refreshment! Sangaria Ramune features the traditional Codd-neck glass bottle sealed with a glass marble. Sparkling, crisp, and delightfully sweet.",
-    price: 2.99,
-    originalPrice: 3.99,
-    stockStatus: "In Stock",
-    stockCount: 450,
-    rating: 4.9,
-    image: "/images/cat_ramune.jpg"
-  },
-  {
-    id: "fp-snacks-crack",
-    name: "Kyoto Umami Seaweed Crackers",
-    shortDesc: "Premium handcrafted savory roasted rice crackers",
-    fullDesc: "Handcrafted in Kyoto, these crispy rice crackers are roasted to perfection and seasoned with authentic Kyushu nori seaweed and rich umami soy glaze.",
-    price: 3.99,
-    originalPrice: 4.99,
-    stockStatus: "In Stock",
-    stockCount: 280,
-    rating: 4.9,
-    image: "/images/cat_snacks.jpg"
-  },
-  {
-    id: "fp-choco-ruby",
-    name: "Hoshi Artisan Ruby Chocolate Bar",
-    shortDesc: "Luxury German cocoa bar with smooth berry notes",
-    fullDesc: "Crafted with rare ruby cocoa beans, this artisan chocolate offers a natural pink color and a velvety balance of rich milk chocolate and fresh berry notes.",
+    id: "koikeya-karamucho-hot-chili-chips",
+    name: "Koikeya Karamucho Hot Chili Potato Chips (Large)",
+    shortDesc: "Japan's #1 iconic hot chili potato chips with savory garlic & umami kick",
+    fullDesc: "The undisputed legend of Japanese spicy snacks since 1984! Koikeya Karamucho Hot Chili Potato Chips feature a proprietary blend of roasted red chilies, garlic, onion, and rich savory umami seasoning on crispy, golden-fried potato chips. Large size bag for maximum satisfaction.",
     price: 4.49,
     originalPrice: 5.99,
     stockStatus: "In Stock",
-    stockCount: 190,
-    rating: 5.0,
-    image: "/images/cat_chocolates.jpg"
-  },
-  {
-    id: "fp-gummy-fruit",
-    name: "Nature's Joy Juicy Fruit Mix Gummies",
-    shortDesc: "Real Japanese fruit juice chewy gummy candies",
-    fullDesc: "Made with 100% real fruit juice concentrate including Kyoho grape, Yamanashi white peach, and Satsuma mandarin orange. Soft, chewy, and intensely flavorful.",
-    price: 3.49,
-    originalPrice: 4.49,
-    stockStatus: "In Stock",
     stockCount: 320,
-    rating: 4.8,
-    image: "/images/cat_candies.jpg"
+    rating: 5.0,
+    image: "/images/koikeya_karamucho_hot_chili_chips.png",
+    overview: {
+      origin: "🇯🇵 Japan",
+      netWeight: "115g (Large Size)",
+      brand: "Koikeya (湖池屋)",
+      flavor: "Hot Chili with Roasted Garlic & Umami",
+      shelfLife: "8 Months",
+      storage: "Store in a cool, dry place away from direct sunlight"
+    },
+    bullets: [
+      "Japan's #1 best-selling spicy potato chip brand since 1984",
+      "Generous large bag size with thick, crispy golden potato chips",
+      "Proprietary umami chili blend with roasted garlic and onion"
+    ],
+    flavors: ["Hot Chili Large", "Mild Chili", "Extra Spicy"]
   },
   {
-    id: "fp-bev-citrus",
-    name: "Citrus Burst Sparkling Beverage",
-    shortDesc: "Refreshing ice-cold citrus soda with natural lime",
-    fullDesc: "A crisp, electrifying sparkling citrus drink packed with natural lemon and lime extracts. Served ice cold for maximum fruity refreshment.",
-    price: 2.49,
-    originalPrice: 3.29,
+    id: "koikeya-karamucho-corn-snacks",
+    name: "Koikeya Karamucho Hot Chili Corn Snacks",
+    shortDesc: "Crunchy puffed corn snack sticks coated in bold spicy chili seasoning",
+    fullDesc: "A fan-favorite Japanese texture sensation! These crunchy puffed corn sticks are loaded with Koikeya's signature Karamucho spicy chili seasoning. Delivering a delightful crunch followed by a mouthwatering kick of chili, savory spices, and sweet corn base.",
+    price: 3.79,
+    originalPrice: 4.99,
     stockStatus: "In Stock",
-    stockCount: 510,
-    rating: 4.7,
-    image: "/images/cat_beverages.jpg"
+    stockCount: 275,
+    rating: 4.9,
+    image: "/images/koikeya_karamucho_hot_chili_snack.png",
+    overview: {
+      origin: "🇯🇵 Japan",
+      netWeight: "2.2 oz (65g)",
+      brand: "Koikeya (湖池屋)",
+      flavor: "Hot Chili Puffed Corn Sticks",
+      shelfLife: "8 Months",
+      storage: "Store in a cool, dry place away from direct sunlight"
+    },
+    bullets: [
+      "Crispy and airy puffed corn snack stick texture",
+      "Coated generously in savory Karamucho red chili spices",
+      "Direct import with certified Japanese freshness packaging"
+    ],
+    flavors: ["Hot Chili Sticks", "Spicy Corn", "Crunchy Fiery"]
   },
   {
-    id: "fp-cookie-matcha",
-    name: "Sencha Matcha Cookies & Cream",
-    shortDesc: "Crispy biscuit wafers filled with sweet matcha cream",
-    fullDesc: "Delicate sandwich cookie wafers filled with smooth green tea matcha cream harvested from Uji tea fields. A classic Japanese tea-time treat.",
+    id: "koikeya-pure-potato-black-pepper",
+    name: "Koikeya Pure Potato Gokochi Black Pepper Chips",
+    shortDesc: "Extra thick sliced freshly cooked potato chips with cracked black pepper",
+    fullDesc: "Crafted from 100% Japanese domestic potatoes cut into luxurious extra-thick slices (じゃがいも心地 Gokochi). Freshly cooked to achieve an elegant crispy crunch, generously dusted with aromatic freshly cracked black pepper and rock salt.",
+    price: 3.99,
+    originalPrice: 5.29,
+    stockStatus: "In Stock",
+    stockCount: 210,
+    rating: 4.9,
+    image: "/images/koikeya_pure_potato_black_pepper.png",
+    overview: {
+      origin: "🇯🇵 Japan",
+      netWeight: "50g",
+      brand: "Koikeya (湖池屋)",
+      flavor: "Aromatic Cracked Black Pepper & Rock Salt",
+      shelfLife: "6 Months",
+      storage: "Store in a cool, dry place away from direct sunlight"
+    },
+    bullets: [
+      "Made with 100% domestic Japanese selected potatoes",
+      "Extra-thick slice cut for an exceptionally satisfying crunch",
+      "Gourmet seasoning with coarsely ground black pepper and sea salt"
+    ],
+    flavors: ["Black Pepper & Salt", "Mild Pepper", "Extra Crisp"]
+  },
+  {
+    id: "milka-oreo-chocolate",
+    name: "Milka Oreo Alpine Milk Chocolate Bar",
+    shortDesc: "Rich 100% Alpine milk chocolate loaded with crunchy Oreo cookie chunks",
+    fullDesc: "Iconic European Milka chocolate made with 100% Alpine milk, encasing a creamy vanilla milk filling and crunchy Oreo cookie bits. The ultimate chocolate indulgence.",
     price: 3.99,
     originalPrice: 4.99,
     stockStatus: "In Stock",
-    stockCount: 230,
-    rating: 4.9,
-    image: "/images/cat_cookies.jpg"
+    stockCount: 260,
+    rating: 5.0,
+    image: "/images/Milka Oreo Lavender Kitchen Still Life.png",
+    overview: {
+      origin: "🇨🇭 Europe / Germany",
+      netWeight: "100g",
+      brand: "Milka",
+      flavor: "Alpine Milk Chocolate & Oreo Bits",
+      shelfLife: "12 Months",
+      storage: "Store in a cool, dry place"
+    },
+    bullets: [
+      "Crafted with 100% Alpine milk from European farms",
+      "Creamy vanilla creme filling with crunchy Oreo cookie pieces",
+      "Imported authentic European confectionery"
+    ],
+    flavors: ["Classic Oreo", "White Oreo", "Mini Oreo"]
   },
   {
-    id: "fp-mochi-sakura",
-    name: "Sakura & Matcha Daifuku Mochi",
-    shortDesc: "Soft Japanese rice cake with fresh strawberry filling",
-    fullDesc: "Pillowy soft mochi rice cakes handcrafted with sweet adzuki bean paste, fresh strawberry compote, and ceremonial grade matcha powder.",
-    price: 4.99,
-    originalPrice: 6.49,
+    id: "milka-cookies-hazelnuts",
+    name: "Milka Cookies & Roasted Hazelnuts Bar",
+    shortDesc: "Smooth Alpine chocolate packed with crunchy cookies & whole hazelnuts",
+    fullDesc: "A delightful combination of delicate Alpine milk chocolate with crisp chocolate cookie pieces and crunchy roasted hazelnuts. Packed with flavor and texture.",
+    price: 4.29,
+    originalPrice: 5.49,
     stockStatus: "In Stock",
-    stockCount: 140,
-    rating: 5.0,
-    image: "/images/cat_mochi.jpg"
+    stockCount: 195,
+    rating: 4.9,
+    image: "/images/Milka Cookies and Hazelnuts Still Life.png",
+    overview: {
+      origin: "🇨🇭 Europe / Germany",
+      netWeight: "100g",
+      brand: "Milka",
+      flavor: "Roasted Hazelnuts & Crispy Cookies",
+      shelfLife: "12 Months",
+      storage: "Store in a cool, dry place"
+    },
+    bullets: [
+      "Roasted European hazelnuts and crumbly cookie chunks",
+      "Melt-in-your-mouth Alpine milk chocolate blend",
+      "Perfect treat for chocolate and nut connoisseurs"
+    ],
+    flavors: ["Cookies & Hazelnut", "Whole Hazelnut", "Crushed Praline"]
+  },
+  {
+    id: "milka-strawberry-chocolate",
+    name: "Milka Strawberry Yogurt Chocolate Bar",
+    shortDesc: "Silky Alpine chocolate with sweet strawberry fruit cream filling",
+    fullDesc: "Mouthwatering Milka Alpine milk chocolate filled with refreshing strawberry yogurt cream and crisp fruit crunch bits. Sweet, creamy, and irresistibly fruity.",
+    price: 3.99,
+    originalPrice: 4.99,
+    stockStatus: "In Stock",
+    stockCount: 220,
+    rating: 4.9,
+    image: "/images/Milka Strawberry Chocolate Still Life.png",
+    overview: {
+      origin: "🇨🇭 Europe / Germany",
+      netWeight: "100g",
+      brand: "Milka",
+      flavor: "Strawberry Fruit Cream & Alpine Milk",
+      shelfLife: "10 Months",
+      storage: "Store in a cool, dry place"
+    },
+    bullets: [
+      "Luscious strawberry and yogurt cream layer",
+      "Real strawberry fruit pieces inside smooth chocolate",
+      "Imported premium European favorite"
+    ],
+    flavors: ["Strawberry Cream", "Raspberry Cream", "Wild Berries"]
+  },
+  {
+    id: "milka-white-chocolate-dream",
+    name: "Milka White Chocolate Dream Bar",
+    shortDesc: "Velvety smooth pure white chocolate crafted with Alpine milk",
+    fullDesc: "Pure indulgence for white chocolate lovers! Delicately sweet and creamy, crafted using only Alpine milk and fine cocoa butter for an ultra-velvety texture that melts on the tongue.",
+    price: 3.99,
+    originalPrice: 4.99,
+    stockStatus: "In Stock",
+    stockCount: 180,
+    rating: 4.8,
+    image: "/images/Milka White Chocolate Dream Still Life.png",
+    overview: {
+      origin: "🇨🇭 Europe / Germany",
+      netWeight: "100g",
+      brand: "Milka",
+      flavor: "Pure Alpine White Chocolate",
+      shelfLife: "12 Months",
+      storage: "Store in a cool, dry place"
+    },
+    bullets: [
+      "Silky rich white chocolate with delicate vanilla notes",
+      "Made with authentic Alpine milk ingredients",
+      "Rare imported European confection"
+    ],
+    flavors: ["Pure White", "White Coconut", "White Crispy Rice"]
   },
   {
     id: "fp-ramune-melon",

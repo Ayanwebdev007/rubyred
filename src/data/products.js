@@ -19,12 +19,10 @@ export const STORE_INFO = {
 
 export const CATEGORIES = [
   { id: "all", name: "All Products", icon: "Package" },
-  { id: "ramune", name: "Ramune Soda (12 Flavors)", icon: "Sparkles", featured: true },
-  { id: "chips", name: "Exotic Chips & Snacks", icon: "Flame" },
-  { id: "chocolates", name: "Imported Chocolates", icon: "Gift" },
-  { id: "beverages", name: "Exotic Drinks & Energy", icon: "Coffee" },
-  { id: "candy", name: "Candy, Gums & Tajin", icon: "Heart" },
-  { id: "specialties", name: "Asian & European Specialties", icon: "Globe" }
+  { id: "koikeya-snacks", name: "Koikeya Snacks", icon: "Flame", featured: true },
+  { id: "milka-chocolates", name: "Milka Chocolates", icon: "Gift", featured: true },
+  { id: "haribo-candies", name: "Haribo Gummies", icon: "Heart", featured: true },
+  { id: "maoam-chews", name: "MAOAM Kracher", icon: "Sparkles", featured: true }
 ];
 
 export const RAMUNE_FLAVORS = [

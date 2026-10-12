@@ -3,51 +3,37 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const CATEGORIES_DATA = [
   {
-    id: "snacks",
-    name: "Snacks",
-    image: "/images/cat_snacks.jpg"
+    id: "koikeya-snacks",
+    name: "Koikeya Snacks",
+    image: "/images/koikeya_karamucho_hot_chili_chips.png"
   },
   {
-    id: "chocolates",
-    name: "Chocolates",
-    image: "/images/cat_chocolates.jpg"
+    id: "milka-chocolates",
+    name: "Milka Chocolates",
+    image: "/images/Milka Oreo Lavender Kitchen Still Life.png"
   },
   {
-    id: "candies",
-    name: "Candies",
-    image: "/images/cat_candies.jpg"
+    id: "haribo-candies",
+    name: "Haribo Gummies",
+    image: "/images/Haribo Vampire Gummy Candy Bag.png"
   },
   {
-    id: "ramune",
-    name: "Ramune Soda",
-    image: "/images/cat_ramune.jpg"
-  },
-  {
-    id: "mochi",
-    name: "Mochi & Soft Cake",
-    image: "/images/cat_mochi.jpg"
-  },
-  {
-    id: "cookies",
-    name: "Cookies & Biscuits",
-    image: "/images/cat_cookies.jpg"
-  },
-  {
-    id: "beverages",
-    name: "Exotic Beverages",
-    image: "/images/cat_beverages.jpg"
+    id: "maoam-chews",
+    name: "MAOAM Kracher",
+    image: "/images/MAOAM Kracher Candy Showcase.png"
   }
 ];
 
-// Triplicate categories array for seamless infinite looping
-const TRIPLE_CATEGORIES = [...CATEGORIES_DATA, ...CATEGORIES_DATA, ...CATEGORIES_DATA];
+// Replicate categories array for seamless infinite looping
+const REPEAT_COUNT = 4;
+const REPEATED_CATEGORIES = Array.from({ length: REPEAT_COUNT }, () => CATEGORIES_DATA).flat();
 
 export default function CategoriesSection({ onSelectCategory }) {
   const scrollRef = useRef(null);
 
   useEffect(() => {
     if (scrollRef.current) {
-      const singleSetWidth = scrollRef.current.scrollWidth / 3;
+      const singleSetWidth = scrollRef.current.scrollWidth / REPEAT_COUNT;
       scrollRef.current.scrollLeft = singleSetWidth;
     }
   }, []);
@@ -55,12 +41,12 @@ export default function CategoriesSection({ onSelectCategory }) {
   const handleScroll = () => {
     if (!scrollRef.current) return;
     const { scrollLeft, scrollWidth } = scrollRef.current;
-    const singleSetWidth = scrollWidth / 3;
+    const singleSetWidth = scrollWidth / REPEAT_COUNT;
     if (singleSetWidth <= 0) return;
 
     if (scrollLeft < 15) {
       scrollRef.current.scrollLeft = singleSetWidth + scrollLeft;
-    } else if (scrollLeft >= singleSetWidth * 2 - 15) {
+    } else if (scrollLeft >= singleSetWidth * (REPEAT_COUNT - 1) - 15) {
       scrollRef.current.scrollLeft = scrollLeft - singleSetWidth;
     }
   };
@@ -130,7 +116,7 @@ export default function CategoriesSection({ onSelectCategory }) {
               WebkitOverflowScrolling: 'touch'
             }}
           >
-            {TRIPLE_CATEGORIES.map((cat, index) => (
+            {REPEATED_CATEGORIES.map((cat, index) => (
               <div
                 key={`${cat.id}-${index}`}
                 onClick={() => onSelectCategory && onSelectCategory(cat.id)}
