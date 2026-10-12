@@ -32,8 +32,8 @@ export default function WhyRubyRedSection() {
         
         {/* Section Header Row - Clean alignment with 100% Authentic Trust Badge */}
         <div className="flex items-center justify-between gap-3 px-1">
-          <h2 className="text-xl sm:text-3xl lg:text-4xl font-semibold text-[#d9232e] tracking-tight">
-            Why Ruby Red?
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-semibold text-[#d9232e] tracking-tight uppercase">
+            WHY RUBY RED?
           </h2>
           {/* Relocated 100% Authentic Badge */}
           <div className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200/90 px-2.5 py-1 rounded-full text-[10px] xs:text-[11px] sm:text-xs font-bold text-emerald-800 shadow-2xs">
