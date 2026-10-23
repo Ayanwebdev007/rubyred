@@ -3,21 +3,71 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { 
   ArrowLeft, Star, ShoppingBag, Phone, ShieldCheck, Truck, RotateCcw, 
   Check, Plus, Minus, Heart, Share2, Sparkles, MessageSquare, ThumbsUp, 
-  ChevronRight, Award, Flame, RefreshCw, Package, CheckCircle2
+  ChevronRight, Award, Flame, RefreshCw, Package, CheckCircle2, Lock, AlertCircle, ArrowRight
 } from 'lucide-react';
 import { FEATURED_PRODUCTS_DATA } from './FeaturedProductsSection';
 import { INITIAL_PRODUCTS } from '../data/products';
+import { useAuth } from '../context/AuthContext';
 import WhatsAppIcon from './WhatsAppIcon';
 
 export default function ProductDetailsPage({ product: propProduct, onBack, onAddToCart, onSelectProduct }) {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
 
-  // Resolve active product from prop or URL route param
-  const product = propProduct || 
+  // Resolve active product from prop, local DB cache, or fallback datasets
+  const [dbProduct, setDbProduct] = useState(() => {
+    try {
+      const cached = localStorage.getItem('rubyred_db_products');
+      if (cached) {
+        const list = JSON.parse(cached);
+        return list.find((p) => p.id === id) || null;
+      }
+    } catch (e) {}
+    return null;
+  });
+
+  useEffect(() => {
+    try {
+      const cached = localStorage.getItem('rubyred_db_products');
+      if (cached) {
+        const list = JSON.parse(cached);
+        const match = list.find((p) => p.id === id);
+        if (match) setDbProduct(match);
+      }
+    } catch (e) {}
+  }, [id]);
+
+  const rawProduct = dbProduct || propProduct || 
     FEATURED_PRODUCTS_DATA.find((p) => p.id === id) || 
     INITIAL_PRODUCTS.find((p) => p.id === id) || 
     FEATURED_PRODUCTS_DATA[0];
+
+  const product = {
+    ...rawProduct,
+    id: rawProduct.id,
+    name: rawProduct.title || rawProduct.name,
+    price: parseFloat(rawProduct.retailPrice || rawProduct.price || 4.49),
+    originalPrice: parseFloat(rawProduct.originalPrice || ((rawProduct.retailPrice || rawProduct.price || 4.49) * 1.33)),
+    image: rawProduct.img || rawProduct.image || '/images/ruby_red_hero.jpg',
+    gallery: Array.isArray(rawProduct.gallery) && rawProduct.gallery.length > 0 ? rawProduct.gallery : undefined,
+    shortDesc: rawProduct.description || rawProduct.shortDesc || rawProduct.fullDesc,
+    fullDesc: rawProduct.description || rawProduct.fullDesc || rawProduct.shortDesc,
+    rating: rawProduct.rating || 5.0,
+    reviewsCount: rawProduct.reviewsCount || 128,
+    flavors: Array.isArray(rawProduct.flavors) && rawProduct.flavors.length > 0 ? rawProduct.flavors : ['Original'],
+    overview: rawProduct.overview || {
+      origin: rawProduct.origin || "🇯🇵 Japan",
+      netWeight: rawProduct.netWeight || "115g (Large Size)",
+      brand: rawProduct.brand || "Koikeya (湖池屋)",
+      flavor: rawProduct.flavors?.[0] || "Original"
+    },
+    bullets: Array.isArray(rawProduct.bullets) && rawProduct.bullets.length > 0 ? rawProduct.bullets : [
+      "Japan's #1 best-selling snack brand",
+      "Generous bag size with crispy texture and authentic spices",
+      "Proprietary umami blend with certified freshness packaging"
+    ]
+  };
 
   const [selectedImage, setSelectedImage] = useState(product?.image || '');
   const [quantity, setQuantity] = useState(1);
@@ -41,7 +91,7 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [product, id]);
+  }, [product.id, id]);
 
   if (!product) return null;
 
@@ -62,7 +112,9 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
   // Image variations array
   const imageVariations = [
     product.image,
-    ...(product.id?.includes('koikeya')
+    ...(product.gallery && product.gallery.length > 0
+      ? product.gallery.filter((img) => img !== product.image)
+      : product.id?.includes('koikeya')
       ? [
           "/images/koikeya_karamucho_hot_chili_chips.png",
           "/images/koikeya_karamucho_hot_chili_snack.png",
@@ -87,6 +139,10 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
   const savingsPercent = product.originalPrice ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 25;
 
   const handleAdd = () => {
+    if (!currentUser) {
+      navigate('/login');
+      return;
+    }
     if (onAddToCart) {
       onAddToCart({
         ...product,
@@ -99,6 +155,10 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
   };
 
   const handleBuyNow = () => {
+    if (!currentUser) {
+      navigate('/login');
+      return;
+    }
     if (onAddToCart) {
       onAddToCart({
         ...product,
@@ -298,24 +358,79 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
                 >
-                  128 Verified Reviews
+                  {product.reviewsCount || 128} Verified Reviews
                 </span>
               </div>
             </div>
 
             {/* Price Display */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 py-1">
-              <span className="text-2xl xs:text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                ${product.price.toFixed(2)}
-              </span>
-              {product.originalPrice && (
-                <span className="text-base sm:text-xl font-medium text-slate-400 line-through">
-                  ${product.originalPrice.toFixed(2)}
-                </span>
+            <div className="py-1 space-y-2">
+              <div 
+                onClick={() => {
+                  if (!currentUser) navigate('/login');
+                }}
+                className={`flex flex-wrap items-center gap-2 sm:gap-3 ${
+                  !currentUser ? 'cursor-pointer group' : ''
+                }`}
+                title={!currentUser ? 'Login to see pricing' : ''}
+              >
+                {/* Price Display: Crisp '$' visible, actual price numbers obscured when not logged in */}
+                {currentUser ? (
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                    <span className="text-2xl xs:text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                      ${product.price.toFixed(2)}
+                    </span>
+                    {product.originalPrice && (
+                      <span className="text-base sm:text-xl font-medium text-slate-400 line-through">
+                        ${product.originalPrice.toFixed(2)}
+                      </span>
+                    )}
+                    <span className="text-[11px] xs:text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
+                      Save ${savingsAmount} ({savingsPercent}%)
+                    </span>
+                  </div>
+                ) : (
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                    {/* Clear dollar sign with actual price numbers softly blurred behind it */}
+                    <div className="flex items-baseline text-2xl xs:text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                      <span>$</span>
+                      <span className="filter blur-[7.5px] select-none opacity-80 ml-0.5">
+                        {product.price.toFixed(2)}
+                      </span>
+                    </div>
+
+                    {product.originalPrice && (
+                      <div className="flex items-baseline text-base sm:text-xl font-medium text-slate-400 line-through">
+                        <span>$</span>
+                        <span className="filter blur-[6px] select-none opacity-60 ml-0.5">
+                          {product.originalPrice.toFixed(2)}
+                        </span>
+                      </div>
+                    )}
+
+                    <span className="text-[11px] xs:text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
+                      Save $<span className="filter blur-[5px] select-none">{savingsAmount}</span> ({savingsPercent}%)
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* 'Login to see pricing' Action Badge - Directly redirects to login */}
+              {!currentUser && (
+                <div>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/login');
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#d9232e] hover:bg-[#b91c1c] active:scale-95 text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
+                  >
+                    <Lock className="w-3.5 h-3.5 text-white" />
+                    <span>Login to see pricing</span>
+                  </button>
+                </div>
               )}
-              <span className="text-[11px] xs:text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
-                Save ${savingsAmount} ({savingsPercent}%)
-              </span>
             </div>
 
             {/* Short Description */}
@@ -542,7 +657,7 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <h3 className="text-base sm:text-xl font-bold text-slate-900 flex items-center gap-1.5 sm:gap-2">
                 <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 text-[#d9232e]" />
-                <span>Customer Reviews (128)</span>
+                <span>Customer Reviews ({product.reviewsCount || 128})</span>
               </h3>
               <button
                 onClick={() => alert("Review form submission feature enabled!")}
@@ -653,9 +768,24 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                 </div>
 
                 <div className="mt-2 sm:mt-3 pt-2 border-t border-slate-100 flex items-center justify-between gap-1">
-                  <span className="font-bold text-slate-900 text-xs xs:text-sm sm:text-base">
-                    ${relProduct.price.toFixed(2)}
-                  </span>
+                  {currentUser ? (
+                    <span className="font-bold text-slate-900 text-xs xs:text-sm sm:text-base">
+                      ${relProduct.price.toFixed(2)}
+                    </span>
+                  ) : (
+                    <span 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate('/login');
+                      }}
+                      className="font-bold text-slate-400 text-xs flex items-center gap-1 hover:text-[#d9232e] cursor-pointer"
+                      title="Login to see pricing"
+                    >
+                      <span className="font-extrabold text-slate-900">$</span>
+                      <span className="filter blur-[6px] select-none text-slate-700 font-semibold">{relProduct.price.toFixed(2)}</span>
+                      <Lock className="w-3 h-3 text-amber-500 ml-0.5" />
+                    </span>
+                  )}
                   <span className="text-[11px] xs:text-xs font-bold text-red-600 group-hover:underline whitespace-nowrap">
                     View Details →
                   </span>

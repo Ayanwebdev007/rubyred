@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HashRouter as Router, Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useNavigate, useParams, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import CategoriesSection from './components/CategoriesSection';
@@ -19,23 +19,30 @@ import SocialMediaPage from './components/SocialMediaPage';
 import RollingOfferTicker from './components/RollingOfferTicker';
 import CartPage from './components/CartPage';
 import OrdersPage from './components/OrdersPage';
+import { AuthProvider } from './context/AuthContext';
+import LoginPage from './components/LoginPage';
+import AdminLoginPage from './components/AdminLoginPage';
 
 function MainAppContent({ cart, handleAddToCart, handleUpdateQty, handleRemoveFromCart, searchQuery, setSearchQuery }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
+  const isAuthOrAdminPage = location.pathname === '/login' || location.pathname.startsWith('/admin');
   const cartCount = cart.reduce((acc, item) => acc + (item.qty || 1), 0);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-between selection:bg-red-[#d9232e] selection:text-white relative">
-      {/* Navbar */}
-      <Navbar
-        cartCount={cartCount}
-        onOpenCart={() => navigate('/cart')}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        onHomeClick={() => navigate('/')}
-        onAboutClick={() => navigate('/about')}
-      />
+      {/* Show Storefront Navbar only on regular pages */}
+      {!isAuthOrAdminPage && (
+        <Navbar
+          cartCount={cartCount}
+          onOpenCart={() => navigate('/cart')}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          onHomeClick={() => navigate('/')}
+          onAboutClick={() => navigate('/about')}
+        />
+      )}
 
       {/* Main Body with Client-side Routes */}
       <main className="flex-1">
@@ -108,10 +115,16 @@ function MainAppContent({ cart, handleAddToCart, handleUpdateQty, handleRemoveFr
             element={<B2BWholesalePortal onAddToCart={handleAddToCart} />}
           />
 
-          {/* Admin Panel Route */}
+          {/* Customer Onboarding & Login Page Route */}
+          <Route
+            path="/login"
+            element={<LoginPage />}
+          />
+
+          {/* Admin Operations & Auth Gate Route */}
           <Route
             path="/admin"
-            element={<AdminPanel />}
+            element={<AdminLoginPage />}
           />
 
           {/* Ramune Wheel Interactive Game Route */}
@@ -148,11 +161,11 @@ function MainAppContent({ cart, handleAddToCart, handleUpdateQty, handleRemoveFr
         </Routes>
       </main>
 
-      {/* Sticky Floating WhatsApp Button */}
-      <WhatsAppWidget />
+      {/* Sticky Floating WhatsApp Button only on regular storefront pages */}
+      {!isAuthOrAdminPage && <WhatsAppWidget />}
 
-      {/* Footer */}
-      <Footer />
+      {/* Footer only on regular storefront pages */}
+      {!isAuthOrAdminPage && <Footer />}
     </div>
   );
 }
@@ -192,15 +205,17 @@ export default function App() {
   };
 
   return (
-    <Router>
-      <MainAppContent
-        cart={cart}
-        handleAddToCart={handleAddToCart}
-        handleUpdateQty={handleUpdateQty}
-        handleRemoveFromCart={handleRemoveFromCart}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <MainAppContent
+          cart={cart}
+          handleAddToCart={handleAddToCart}
+          handleUpdateQty={handleUpdateQty}
+          handleRemoveFromCart={handleRemoveFromCart}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
+      </Router>
+    </AuthProvider>
   );
 }

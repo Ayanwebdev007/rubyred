@@ -2,10 +2,12 @@ import React from 'react';
 import { ShoppingBag, Star, ShieldCheck, Tag, Plus, Check } from 'lucide-react';
 import { STORE_INFO } from '../data/products';
 import WhatsAppIcon from './WhatsAppIcon';
+import { useAuth } from '../context/AuthContext';
 
 export default function ProductCard({ product, userMode, onAddToCart, onSelectFor3D }) {
   const [added, setAdded] = React.useState(false);
-  const isB2B = userMode === 'b2b';
+  const { currentUser } = useAuth();
+  const isB2B = userMode === 'b2b' || (currentUser?.role === 'b2b' && currentUser?.status === 'Approved');
 
   const handleAdd = (e) => {
     e.stopPropagation();

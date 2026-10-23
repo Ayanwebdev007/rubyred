@@ -292,26 +292,14 @@ export default function FeaturedProductsSection({ onAddToCart, onSelectProduct }
                   </p>
                 </div>
 
-                {/* Bottom Section: Price + View Details Button */}
-                <div className="mt-2.5 sm:mt-4 pt-2 sm:pt-3 border-t border-slate-100 flex flex-col xs:flex-row xs:items-center justify-between gap-1.5 sm:gap-2">
-                  {/* Left: Discounted Price + Strikethrough Original Price */}
-                  <div className="flex items-baseline gap-1 sm:gap-1.5">
-                    <span className="text-sm xs:text-base sm:text-lg font-extrabold text-slate-900">
-                      ${product.price.toFixed(2)}
-                    </span>
-                    <span className="text-[10px] xs:text-xs sm:text-sm font-semibold text-slate-400 line-through">
-                      ${product.originalPrice.toFixed(2)}
-                    </span>
-                  </div>
-
-                  {/* Right: View Details CTA */}
+                {/* Bottom Section: View Details Button (No price displayed on front page) */}
+                <div className="mt-2.5 sm:mt-4 pt-2 sm:pt-3 border-t border-slate-100">
                   <button
                     onClick={(e) => handleViewProduct(product, e)}
-                    className="w-full xs:w-auto py-1.5 px-2 xs:px-2.5 sm:py-2 sm:px-3 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold text-white bg-[#d9232e] hover:bg-[#b91c1c] active:scale-95 transition-all flex items-center justify-center gap-1 shadow-xs whitespace-nowrap cursor-pointer"
+                    className="w-full py-2 px-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 shadow-2xs whitespace-nowrap cursor-pointer"
                   >
-                    <Eye className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                    <span className="hidden xs:inline">View Details</span>
-                    <span className="xs:hidden">Details</span>
+                    <Eye className="w-3.5 h-3.5" />
+                    <span>View Details</span>
                   </button>
                 </div>
               </div>

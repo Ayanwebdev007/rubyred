@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   ArrowLeft, Package, Clock, CheckCircle2, Truck, RefreshCw, 
@@ -6,6 +6,7 @@ import {
   MapPin, ShieldCheck, Search, Filter, Sparkles
 } from 'lucide-react';
 import WhatsAppIcon from './WhatsAppIcon';
+import { useAuth } from '../context/AuthContext';
 
 export const DUMMY_ORDERS = [
   {
@@ -123,10 +124,22 @@ export const DUMMY_ORDERS = [
 
 export default function OrdersPage({ onAddToCart }) {
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate('/login');
+    }
+  }, [currentUser, navigate]);
+
   const [orders] = useState(DUMMY_ORDERS);
   const [activeFilter, setActiveFilter] = useState('all'); // 'all' | 'in_transit' | 'delivered' | 'b2b'
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+
+  if (!currentUser) {
+    return null;
+  }
 
   const filteredOrders = orders.filter((order) => {
     const matchesFilter = 

@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Trash2, Plus, Minus, ShoppingBag, Phone, MapPin, Truck, ShieldCheck, CheckCircle2, Tag, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import confetti from 'canvas-confetti';
 import { STORE_INFO } from '../data/products';
 import WhatsAppIcon from './WhatsAppIcon';
+import { useAuth } from '../context/AuthContext';
 
 export default function CartPage({ cart, onUpdateQty, onRemove, onClearCart }) {
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate('/login');
+    }
+  }, [currentUser, navigate]);
+
+  if (!currentUser) {
+    return null;
+  }
 
   const [deliveryMethod, setDeliveryMethod] = useState('pickup'); // 'pickup' | 'delivery'
   const [promoCode, setPromoCode] = useState('');

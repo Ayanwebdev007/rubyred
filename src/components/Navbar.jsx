@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, User, ShoppingBag, Package, Menu, X } from 'lucide-react';
+import { Search, User, ShoppingBag, Package, Menu, X, LogOut, Building2 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 export default function Navbar({ 
   cartCount = 0, 
@@ -11,7 +12,24 @@ export default function Navbar({
   onAboutClick
 }) {
   const navigate = useNavigate();
+  const { currentUser, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const userInitial = currentUser?.name 
+    ? currentUser.name.trim().charAt(0).toUpperCase() 
+    : (currentUser?.email ? currentUser.email.charAt(0).toUpperCase() : 'U');
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleNavClick = (sectionId) => {
     setIsMobileMenuOpen(false);
@@ -23,6 +41,8 @@ export default function Navbar({
       navigate('/about');
     } else if (sectionId === 'contact') {
       navigate('/social');
+    } else if (sectionId === 'wholesale') {
+      navigate('/wholesale');
     } else {
       navigate('/');
       setTimeout(() => {
@@ -33,7 +53,7 @@ export default function Navbar({
   };
 
   return (
-    <header className="bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-xs transition-all">
+    <header className="bg-white/95 backdrop-blur-md sticky top-0 z-40 shadow-xs transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Left: Official RUBY RED Logo */}
@@ -92,42 +112,151 @@ export default function Navbar({
               )}
             </div>
 
-            {/* Login Button with Solid Red BG & White Text */}
-            <button 
-              className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#d9232e] hover:bg-[#b91c1c] text-white font-bold text-xs shadow-sm hover:shadow-md transition-all cursor-pointer"
-              title="Login to Account"
-            >
-              <User className="w-4 h-4 text-white" />
-              <span className="text-white">Login</span>
-            </button>
+            {/* Login Button (when logged out) OR Profile Avatar showing first letter of name (when logged in) */}
+            {!currentUser ? (
+              <button 
+                onClick={() => navigate('/login')}
+                className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#d9232e] hover:bg-[#b91c1c] text-white font-bold text-xs shadow-sm hover:shadow-md transition-all cursor-pointer"
+                title="Login to Account"
+                id="login-nav-btn"
+              >
+                <User className="w-4 h-4 text-white" />
+                <span className="text-white">Login</span>
+              </button>
+            ) : (
+              <div className="relative" ref={dropdownRef}>
+                <button 
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="w-9 h-9 rounded-full bg-[#d9232e] hover:bg-[#b91c1c] active:scale-95 text-white shadow-sm hover:shadow-md transition-all flex items-center justify-center font-black text-sm uppercase cursor-pointer border-2 border-white select-none"
+                  title={`Account: ${currentUser.name || currentUser.email}`}
+                  id="profile-nav-btn"
+                >
+                  <span>{userInitial}</span>
+                </button>
 
-            {/* Cart Button with Solid Red BG & White Icon */}
+                {/* Compact Dropdown directly beneath the avatar button */}
+                {isDropdownOpen && (
+                  <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-200/80 py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    <div className="px-4 py-2.5 border-b border-slate-100">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-full bg-[#d9232e] text-white flex items-center justify-center font-black text-xs shrink-0">
+                          {userInitial}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="font-extrabold text-slate-900 text-xs truncate">
+                            {currentUser.name || 'Member'}
+                          </p>
+                          <p className="text-[11px] text-slate-500 truncate">
+                            {currentUser.email || currentUser.phone}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="mt-2">
+                        <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                          currentUser.role === 'b2b' ? 'bg-amber-100 text-amber-800' : 'bg-red-50 text-[#d9232e]'
+                        }`}>
+                          {currentUser.role === 'b2b' ? 'Wholesale Partner' : 'Retail Customer'}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-1 space-y-0.5 text-xs font-semibold">
+                      <button
+                        onClick={() => {
+                          setIsDropdownOpen(false);
+                          navigate('/orders');
+                        }}
+                        className="w-full px-3 py-2 text-left text-slate-700 hover:bg-slate-50 rounded-xl flex items-center gap-2 cursor-pointer transition-colors"
+                      >
+                        <Package className="w-3.5 h-3.5 text-slate-400" />
+                        <span>My Orders & Tracking</span>
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          setIsDropdownOpen(false);
+                          if (onOpenCart) onOpenCart();
+                          navigate('/cart');
+                        }}
+                        className="w-full px-3 py-2 text-left text-slate-700 hover:bg-slate-50 rounded-xl flex items-center gap-2 cursor-pointer transition-colors"
+                      >
+                        <ShoppingBag className="w-3.5 h-3.5 text-slate-400" />
+                        <span>Shopping Cart ({cartCount})</span>
+                      </button>
+
+                      {currentUser.role === 'b2b' && (
+                        <button
+                          onClick={() => {
+                            setIsDropdownOpen(false);
+                            navigate('/wholesale');
+                          }}
+                          className="w-full px-3 py-2 text-left text-amber-800 hover:bg-amber-50 rounded-xl flex items-center gap-2 cursor-pointer transition-colors"
+                        >
+                          <Building2 className="w-3.5 h-3.5 text-amber-600" />
+                          <span>Wholesale Portal</span>
+                        </button>
+                      )}
+
+                      <div className="pt-1 border-t border-slate-100 mt-1">
+                        <button
+                          onClick={async () => {
+                            setIsDropdownOpen(false);
+                            await logout();
+                            navigate('/');
+                          }}
+                          className="w-full px-3 py-2 text-left text-[#d9232e] hover:bg-red-50 rounded-xl font-bold flex items-center gap-2 cursor-pointer transition-colors"
+                        >
+                          <LogOut className="w-3.5 h-3.5" />
+                          <span>Sign Out</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Cart Button with Solid Red BG & White Icon (redirects to /login if not logged in) */}
             <button
               onClick={() => {
+                if (!currentUser) {
+                  navigate('/login');
+                  return;
+                }
                 if (onOpenCart) onOpenCart();
                 navigate('/cart');
               }}
               className="relative p-2.5 rounded-full bg-[#d9232e] hover:bg-[#b91c1c] text-white shadow-sm hover:shadow-md transition-all group cursor-pointer"
               title="Shopping Cart"
+              id="cart-nav-btn"
             >
               <ShoppingBag className="w-4 h-4 text-white group-hover:scale-105 transition-transform" />
-              {cartCount >= 0 && (
+              {currentUser && cartCount >= 0 && (
                 <span className="absolute -top-1 -right-1 bg-amber-400 text-slate-950 text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white shadow-2xs">
                   {cartCount}
                 </span>
               )}
             </button>
 
-            {/* Orders Icon Button (Placed Right After Cart Icon) */}
+            {/* Orders Icon Button (redirects to /login if not logged in) */}
             <button
-              onClick={() => navigate('/orders')}
+              onClick={() => {
+                if (!currentUser) {
+                  navigate('/login');
+                  return;
+                }
+                navigate('/orders');
+              }}
               className="relative p-2.5 rounded-full bg-[#d9232e] hover:bg-[#b91c1c] text-white shadow-sm hover:shadow-md transition-all group cursor-pointer"
               title="My Orders & Tracking"
+              id="orders-nav-btn"
             >
               <Package className="w-4 h-4 text-white group-hover:scale-105 transition-transform" />
-              <span className="absolute -top-1 -right-1 bg-amber-400 text-slate-950 text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white shadow-2xs">
-                3
-              </span>
+              {currentUser && (
+                <span className="absolute -top-1 -right-1 bg-amber-400 text-slate-950 text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white shadow-2xs">
+                  3
+                </span>
+              )}
             </button>
 
             {/* Mobile Menu Button */}
@@ -163,11 +292,73 @@ export default function Navbar({
             <span className="text-left px-2 py-1 text-slate-700 font-semibold cursor-default pointer-events-none">Contact</span>
           </nav>
 
-          <div className="pt-2 border-t border-slate-100">
-            <button className="w-full py-2.5 px-4 rounded-full bg-[#d9232e] text-white font-bold text-xs flex items-center justify-center gap-2">
-              <User className="w-4 h-4 text-white" />
-              <span>Login / Account</span>
-            </button>
+          <div className="pt-2 border-t border-slate-100 space-y-2">
+            {!currentUser ? (
+              <button 
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  navigate('/login');
+                }}
+                className="w-full py-2.5 px-4 rounded-full bg-[#d9232e] text-white font-bold text-xs flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <User className="w-4 h-4 text-white" />
+                <span>Login</span>
+              </button>
+            ) : (
+              <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200/80 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-[#d9232e] text-white flex items-center justify-center font-black text-xs">
+                    {userInitial}
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-900 text-xs">{currentUser.name || 'Member'}</p>
+                    <p className="text-[10px] text-slate-500">{currentUser.email || currentUser.phone}</p>
+                  </div>
+                </div>
+                <button
+                  onClick={async () => {
+                    setIsMobileMenuOpen(false);
+                    await logout();
+                    navigate('/');
+                  }}
+                  className="px-2.5 py-1 text-xs font-bold text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                >
+                  Sign Out
+                </button>
+              </div>
+            )}
+
+            <div className="grid grid-cols-2 gap-2 pt-1">
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  if (!currentUser) {
+                    navigate('/login');
+                  } else {
+                    navigate('/cart');
+                  }
+                }}
+                className="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <ShoppingBag className="w-3.5 h-3.5 text-[#d9232e]" />
+                <span>Cart ({currentUser ? cartCount : 0})</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  if (!currentUser) {
+                    navigate('/login');
+                  } else {
+                    navigate('/orders');
+                  }
+                }}
+                className="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <Package className="w-3.5 h-3.5 text-[#d9232e]" />
+                <span>Orders</span>
+              </button>
+            </div>
           </div>
         </div>
       )}
