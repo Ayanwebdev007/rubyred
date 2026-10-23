@@ -232,10 +232,10 @@ export default function ModernAdminDashboard({
 
   const activePoint = hoveredIdx !== null ? chartData[hoveredIdx] : chartData[chartData.length - 1];
 
-  // Radial Multi-Ring Calculations
-  const rWholesale = 42;
-  const rRetail = 32;
-  const rStock = 22;
+  // Radial Multi-Ring Calculations (Spacious Apple-style rings with wide center diameter)
+  const rWholesale = 44;
+  const rRetail = 38;
+  const rStock = 32;
   const cWholesale = 2 * Math.PI * rWholesale;
   const cRetail = 2 * Math.PI * rRetail;
   const cStock = 2 * Math.PI * rStock;
@@ -445,12 +445,12 @@ export default function ModernAdminDashboard({
             </div>
 
             {/* Custom Triple Concentric SVG Rings on Light Background */}
-            <div className="relative w-44 h-44 mx-auto my-2 flex items-center justify-center">
+            <div className="relative w-48 h-48 mx-auto my-2 flex items-center justify-center">
               <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                 {/* Background tracks */}
-                <circle cx="50" cy="50" r={rWholesale} fill="none" stroke="#e2e8f0" strokeWidth="6" />
-                <circle cx="50" cy="50" r={rRetail} fill="none" stroke="#e2e8f0" strokeWidth="6" />
-                <circle cx="50" cy="50" r={rStock} fill="none" stroke="#e2e8f0" strokeWidth="6" />
+                <circle cx="50" cy="50" r={rWholesale} fill="none" stroke="#e2e8f0" strokeWidth="3.5" />
+                <circle cx="50" cy="50" r={rRetail} fill="none" stroke="#e2e8f0" strokeWidth="3.5" />
+                <circle cx="50" cy="50" r={rStock} fill="none" stroke="#e2e8f0" strokeWidth="3.5" />
 
                 {/* Outer Ring: Wholesale (Amber) */}
                 <circle
@@ -459,7 +459,7 @@ export default function ModernAdminDashboard({
                   r={rWholesale}
                   fill="none"
                   stroke="#f59e0b"
-                  strokeWidth="6"
+                  strokeWidth="3.5"
                   strokeDasharray={`${(metrics.wholesaleShare / 100) * cWholesale} ${cWholesale}`}
                   strokeLinecap="round"
                   className="transition-all duration-700 ease-out"
@@ -472,7 +472,7 @@ export default function ModernAdminDashboard({
                   r={rRetail}
                   fill="none"
                   stroke="#d9232e"
-                  strokeWidth="6"
+                  strokeWidth="3.5"
                   strokeDasharray={`${(metrics.retailShare / 100) * cRetail} ${cRetail}`}
                   strokeLinecap="round"
                   className="transition-all duration-700 ease-out"
@@ -485,18 +485,24 @@ export default function ModernAdminDashboard({
                   r={rStock}
                   fill="none"
                   stroke="#10b981"
-                  strokeWidth="6"
+                  strokeWidth="3.5"
                   strokeDasharray={`${(metrics.stockHealthRate / 100) * cStock} ${cStock}`}
                   strokeLinecap="round"
                   className="transition-all duration-700 ease-out"
                 />
               </svg>
 
-              {/* Centered Total KPI Readout */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                <span className="text-[10px] text-slate-400 font-normal uppercase tracking-wider">Gross Total</span>
-                <span className="text-xl font-semibold text-slate-900 tracking-tight">{fmt(metrics.totalRev)}</span>
-                <span className="text-[10px] text-emerald-600 font-medium">100% In Stock</span>
+              {/* Centered Total KPI Readout - Spacious & Clean */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none select-none px-2">
+                <span className="text-[10px] text-slate-400 font-medium uppercase tracking-wider leading-none mb-1">
+                  Gross Total
+                </span>
+                <span className="text-xl font-semibold text-slate-900 tracking-tight leading-none my-0.5">
+                  {fmt(metrics.totalRev)}
+                </span>
+                <span className="text-[10px] text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 mt-1">
+                  100% In Stock
+                </span>
               </div>
             </div>
 
