@@ -157,7 +157,7 @@ export function AuthProvider({ children }) {
     if (!applicationData.businessName) throw new Error('Business Name is required');
     if (!applicationData.email) throw new Error('Business Email is required');
     if (!applicationData.password) throw new Error('Password is required for wholesale account');
-    if (!applicationData.taxId) throw new Error('Texas Resale Tax ID is required');
+    if (!applicationData.taxId) throw new Error('Resale Tax ID is required');
 
     const savedApp = await submitB2BWholesaleApplication(applicationData, file);
 

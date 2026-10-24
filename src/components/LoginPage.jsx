@@ -65,7 +65,7 @@ export default function LoginPage() {
     password: '',
     taxId: '',
     documents: [
-      { name: 'TX_Resale_Tax_Certificate_2026.pdf', size: '1.4 MB', type: 'application/pdf', uploadedAt: 'Just now' }
+      { name: 'Resale_Tax_Certificate_2026.pdf', size: '1.4 MB', type: 'application/pdf', uploadedAt: 'Just now' }
     ]
   });
 
@@ -157,7 +157,7 @@ export default function LoginPage() {
     try {
       await registerB2B({
         ...b2bForm,
-        address: 'Houston, TX'
+        address: ''
       }, selectedB2bFile);
       setB2bMode('success');
     } catch (err) {
@@ -339,7 +339,7 @@ export default function LoginPage() {
                   <p className="text-xs text-slate-500 mt-0.5">
                     {accountType === 'retail'
                       ? (retailMode === 'signin' ? 'Sign in to your retail account' : 'Register for fast ordering and tracking')
-                      : (b2bMode === 'signin' ? 'Access Texas wholesale distributor pricing' : 'Simple application for store owners')
+                      : (b2bMode === 'signin' ? 'Access wholesale distributor pricing' : 'Simple application for store owners')
                     }
                   </p>
                 </div>
@@ -696,11 +696,11 @@ export default function LoginPage() {
                         />
                       </div>
                       <div>
-                        <label className="block text-slate-700 font-bold mb-1">Texas Resale Tax ID *</label>
+                        <label className="block text-slate-700 font-bold mb-1">Resale Tax ID *</label>
                         <input
                           type="text"
                           required
-                          placeholder="TX-1234567-8"
+                          placeholder="Tax ID / Permit #"
                           value={b2bForm.taxId}
                           onChange={e => setB2bForm({...b2bForm, taxId: e.target.value})}
                           className="w-full bg-slate-50/70 border border-slate-200 hover:border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-medium placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-[#d9232e] focus:ring-2 focus:ring-red-100 transition-all text-xs"
@@ -808,7 +808,7 @@ export default function LoginPage() {
                     </div>
                     <h3 className="text-xl font-extrabold text-slate-900">Application Received</h3>
                     <p className="text-xs text-slate-500 max-w-xs mx-auto">
-                      Our Houston warehouse team is reviewing your tax certificate ({b2bForm.taxId}).
+                      Our warehouse team is reviewing your tax certificate ({b2bForm.taxId}).
                     </p>
                     <div className="pt-2 flex flex-col gap-2">
                       <a
@@ -863,7 +863,7 @@ export default function LoginPage() {
               {accountType === 'b2b' ? 'B2B Wholesale' : 'Retail & Consumer'}
             </span>
             <h3 className="text-xl xl:text-2xl font-black tracking-tight text-white mt-1.5 drop-shadow-sm">
-              {accountType === 'b2b' ? 'Texas Direct Distributor' : 'Houston Snack Warehouse'}
+              {accountType === 'b2b' ? 'Direct Wholesale Distributor' : 'Exotic Snack Warehouse'}
             </h3>
           </div>
         </div>

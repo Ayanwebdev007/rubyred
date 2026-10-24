@@ -50,9 +50,9 @@ export default function AuthModal() {
     dba: '',
     storeType: 'Convenience Store',
     address: '',
-    city: 'Houston',
-    state: 'TX',
-    zip: '77081',
+    city: '',
+    state: '',
+    zip: '',
     contactName: '',
     email: '',
     phone: '',
@@ -60,7 +60,7 @@ export default function AuthModal() {
     permitNumber: '',
     monthlyVolume: '50-100 Cases',
     documents: [
-      { name: 'TX_Resale_Tax_Certificate_2026.pdf', size: '1.4 MB', type: 'application/pdf', uploadedAt: 'Just now' }
+      { name: 'Resale_Tax_Certificate_2026.pdf', size: '1.4 MB', type: 'application/pdf', uploadedAt: 'Just now' }
     ]
   });
 
@@ -481,7 +481,7 @@ export default function AuthModal() {
                   </div>
 
                   <div>
-                    <label className="block text-slate-700 font-bold mb-1">Store Physical Address (Texas/US) *</label>
+                    <label className="block text-slate-700 font-bold mb-1">Store Physical Address *</label>
                     <input
                       type="text"
                       required
@@ -587,11 +587,11 @@ export default function AuthModal() {
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-slate-700 font-bold mb-1">Texas Resale Tax ID # *</label>
+                      <label className="block text-slate-700 font-bold mb-1">Resale Tax ID # *</label>
                       <input
                         type="text"
                         required
-                        placeholder="TX-1234567-8"
+                        placeholder="Tax ID / Permit #"
                         value={b2bForm.taxId}
                         onChange={e => setB2bForm({...b2bForm, taxId: e.target.value})}
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-[#d9232e]"
@@ -601,7 +601,7 @@ export default function AuthModal() {
                       <label className="block text-slate-700 font-bold mb-1">Tobacco/Vape Permit (if applicable)</label>
                       <input
                         type="text"
-                        placeholder="TOB-TX-9921"
+                        placeholder="Permit #"
                         value={b2bForm.permitNumber}
                         onChange={e => setB2bForm({...b2bForm, permitNumber: e.target.value})}
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-[#d9232e]"
@@ -641,7 +641,7 @@ export default function AuthModal() {
                 <div className="space-y-4">
                   <div className="space-y-1">
                     <h3 className="text-base font-extrabold text-slate-900">Upload Resale Certificate</h3>
-                    <p className="text-[11px] text-slate-500">Upload your Texas Sales and Use Tax Resale Certificate or permit.</p>
+                    <p className="text-[11px] text-slate-500">Upload your Sales and Use Tax Resale Certificate or permit.</p>
                   </div>
 
                   {/* Dropzone */}
@@ -677,7 +677,7 @@ export default function AuthModal() {
                       What happens after submission?
                     </p>
                     <p className="text-slate-600">
-                      Your application will be set to <strong className="text-amber-900">Pending Review</strong>. The Ruby Red warehouse team in Houston usually approves accounts within 2 hours, unlocking wholesale case pricing.
+                      Your application will be set to <strong className="text-amber-900">Pending Review</strong>. The Ruby Red warehouse team usually approves accounts within 2 hours, unlocking wholesale case pricing.
                     </p>
                   </div>
 
@@ -747,7 +747,7 @@ export default function AuthModal() {
                 className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 cursor-pointer shadow-sm"
               >
                 <Phone className="w-4 h-4" />
-                <span>Expedite via Houston B2B WhatsApp Desk</span>
+                <span>Expedite via B2B WhatsApp Desk</span>
               </a>
 
               <button

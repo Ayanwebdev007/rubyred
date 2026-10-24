@@ -187,7 +187,7 @@ export default function AdminLoginPage() {
 
         {/* Bottom Sub-Footer in Left Column */}
         <div className="pt-4 text-xs text-slate-400">
-          © 2026 Ruby Red Sales & Services LLC • Houston, Texas
+          © 2026 Ruby Red Sales & Services LLC
         </div>
       </div>
 
