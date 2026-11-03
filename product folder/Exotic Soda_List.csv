@@ -1,0 +1,109 @@
+ProductId,ProductName,Description,SalePrice,SuggestedRetailPrice,CategoryName,Barcode,Unit,UnitPerCase,IsTaxable,PurchaseCost,QuantityInHand,InitialCost,InitialStock,IsActive
+309871,Exotic 7 Up CHANH SODA 320 Ml.,Exotic 7 Up CHANH SODA 320 Ml.,1.99000,3.39,Exotic Soda,8934588752117,,1,False,1.35000,-72.00000,0,0,True
+308571,Exotic 7Up Disney Resort Tangerine Lemon 500 Ml.,Exotic 7Up Disney Resort Tangerine Lemon 500 Ml.,2.19000,3.69,Exotic Soda,6908946290902,,1,False,1.42000,-12.00000,0,0,True
+309869,Exotic 7 Up Lime 320 Ml.,Exotic 7 Up Lime 320 Ml.,1.99000,3.39,Exotic Soda,8934588022111,,1,False,1.35000,-48.00000,0,0,True
+311391,Exotic BR Cotton Candy Wonderland 350 Ml,Exotic BR Cotton Candy Wonderland 350 Ml,2.25000,3.79,Exotic Soda,8809288636466,,1,False,1.60000,-95.00000,0,0,True
+311146,Exotic BR Mango TANGO MIlky Soda 350 Ml,Exotic BR Mango TANGO MIlky Soda 350 Ml,2.25000,3.79,Exotic Soda,8809288636787,,1,False,1.60000,-120.00000,0,0,True
+310784,Exotic BR PEACH Yogurt Milky Soda 350 Ml,Exotic BR PEACH Yogurt Milky Soda 350 Ml,2.25000,3.79,Exotic Soda,8809288636473,,1,False,1.60000,-120.00000,0,0,True
+307769,Exotic Coke Original POLAND 330 Ml 5449000214911,Exotic Coke Original POLAND 330 Ml,1.49000,2.69,Exotic Soda,5449000214911,,1,False,0.94000,-72.00000,0,0,True
+303622,Exotic Collectible BUNNI KONBINY Strawberry Daifuku 330 Ml  614015,Exotic Collectible BUNNI KONBINY Strawberry Daifuku 330 Ml,1.75000,2.99,Exotic Soda,4711085709035,ea.,1,False,1.10000,-296.00000,0,0,True
+312709,Exotic Collectible GODZILLA 330 ML,Exotic Collectible GODZILLA 330 ML,1.75000,2.99,Exotic Soda,4711085704597,ea.,1,False,1.20000,-48.00000,0,0,True
+302986,Exotic Collectible Hello Kitty Strawberry Lemonade 330 ML 614016,Exotic Collectible Hello Kitty Strawberry Lemonade 330 ML,1.75000,2.99,Exotic Soda,4711085700285,ea.,1,False,1.10000,-672.00000,0,0,True
+319363,Exotic Collectible Japanese Daifuku Snoopy 330 Ml,Exotic Collectible Japanese Daifuku Snoopy 330 Ml,1.75000,2.99,Exotic Soda,4711085702111,ea.,1,False,1.10000,-24.00000,0,0,True
+310985,Exotic Collectible Japanese Sanrio 330 Ml,Exotic Collectible Japanese Sanrio 330 Ml,1.75000,2.99,Exotic Soda,4711085700193,ea.,1,False,1.20000,-24.00000,0,0,True
+304123,Exotic Collectible KUROMI 50th Annvi. 330 Ml 702340,Exotic Collectible KUROMI 50th Annvi. 330 Ml,1.75000,2.99,Exotic Soda,4711085702340,,1,False,1.20000,-360.00000,0,0,True
+304151,Exotic Collectible Lemon WARABIMOCHI 330 Ml 614023,Exotic Collectible Lemon WARABIMOCHI 330 Ml,1.75000,2.99,Exotic Soda,4711085706324,ea.,1,False,1.10000,0.00000,0,0,True
+308174,Exotic Collectible MARVEL 330 Ml 704443,Exotic Collectible MARVEL 330 Ml,1.75000,2.99,Exotic Soda,4711085704443,ea.,1,False,1.10000,-72.00000,0,0,True
+319364,Exotic Collectible MARVEL Q Lemon 330 Ml.,Exotic Collectible MARVEL Q Lemon 330 Ml.,1.75000,2.99,Exotic Soda,4711085707352,ea.,1,False,1.10000,0.00000,0,0,True
+304148,Exotic Collectible MARVEL Q VER2 Honey Lemon 330 Ml 614012,Exotic Collectible MARVEL Q VER2 Honey Lemon 330 Ml,1.75000,2.99,Exotic Soda,4711085701992,,1,False,1.07000,-168.00000,0,0,True
+304122,Exotic Collectible Sanrio Characters 330 Ml. 614003,Exotic Collectible Sanrio Characters 330 Ml.,1.75000,2.99,Exotic Soda,4711085700179,,1,False,1.29000,-230.00000,0,0,True
+304150,Exotic Collectible Soda ORG Flv. 330 Ml 614022,Exotic Collectible Soda ORG Flv. 330 Ml,1.75000,2.99,Exotic Soda,4711085704580,,1,False,1.29000,0.00000,0,0,True
+303619,Exotic Collectible SUPER SOLDIER 330 Ml. 614013,Exotic Collectible SUPER SOLDIER 330 Ml.,1.75000,2.99,Exotic Soda,4711085702029,,1,False,1.07000,-336.00000,0,0,True
+320738,Exotic FANTA Cream Fruity Soda SLIM CAN,Exotic FANTA Cream Fruity Soda SLIM CAN,1.99000,3.49,Exotic Soda,8935049501565,ea.,1,False,1.30000,-240.00000,0,0,True
+307768,Exotic FANTA Crimson Cherry SERBIA 330 Ml 5449000227461,Exotic FANTA Crimson Cherry SERBIA 330 Ml,1.99000,3.49,Exotic Soda,5449000227461,,1,False,1.19000,-360.00000,0,0,True
+310585,"Exotic FANTA Green Apple 330 Ml SLIM CAN ","Exotic FANTA Green Apple 330 Ml SLIM CAN ",1.99000,3.39,Exotic Soda,6928804014679,ea.,1,False,1.15000,-72.00000,0,0,True
+310510,"Exotic FANTA Jasmine PEACH 330 Ml SLIM CAN ","Exotic FANTA Jasmine PEACH 330 Ml SLIM CAN ",1.99000,3.39,Exotic Soda,6928804025248,ea.,1,False,1.25000,-276.00000,0,0,True
+310623,Exotic Fanta Lime 500 Ml.,Exotic Fanta Lime 500 Ml.,2.19000,3.69,Exotic Soda,6928804011562,ea.,1,False,1.26500,-156.00000,0,0,True
+310621,"Exotic FANTA Lychee 330 Ml SLIM CAN ","Exotic FANTA Lychee 330 Ml SLIM CAN ",1.99000,3.39,Exotic Soda,6954767442143,ea.,1,False,1.15000,-192.00000,0,0,True
+320032,Exotic FANTA Lychee 500 Ml,Exotic FANTA Lychee 500 Ml,2.19000,3.69,Exotic Soda,6954767442204,ea.,1,False,1.13000,-204.00000,0,0,True
+310991,Exotic FANTA Pineapple 600 Ml,Exotic FANTA Pineapple 600 Ml,2.69000,4.49,Exotic Soda,8801094132705,,1,False,1.75000,-144.00000,0,0,True
+320739,Exotic FANTA SARSI SLIM CAN,Exotic FANTA SARSI SLIM CAN,1.99000,3.49,Exotic Soda,8935049501589,ea.,1,False,1.30000,-240.00000,0,0,True
+310987,Exotic FANTS Peach Zero Sugar 350 Ml.,Exotic FANTS Peach Zero Sugar 350 Ml.,1.99000,3.49,Exotic Soda,8801094000363,,1,False,1.29000,-168.00000,0,0,True
+315771,Exotic Indian Limca 300 Ml,Exotic Indian Limca 300 Ml,1.55000,2.69,Exotic Soda,8901764051258,ea.,1,False,0.92000,-48.00000,0,0,True
+312696,Exotic Japanese FANTA Apple Soda 500 Ml 054807,Exotic Japanese FANTA Apple Soda 500 Ml,2.89000,4.99,Exotic Soda,4902102149655,,1,False,1.95000,-562.00000,0,0,True
+310993,Exotic Minute Maid Orange 350 Ml.,Exotic Minute Maid Orange 350 Ml.,2.39000,3.99,Exotic Soda,8801094265205,,1,False,1.65000,-144.00000,0,0,True
+310624,Exotic Minute Maid Raisins & Sakura 420 Ml,Exotic Minute Maid Raisins & Sakura 420 Ml,2.29000,3.99,Exotic Soda,6975682483066,ea.,1,False,1.25000,-96.00000,0,0,True
+310625,Exotic Minute Maid Rose & Grape 420 Ml,Exotic Minute Maid Rose & Grape 420 Ml,2.29000,3.99,Exotic Soda,6975682483080,ea.,1,False,1.25000,-120.00000,0,0,True
+313171,Exotic Mirinda ORANGE 320 Ml,Exotic Mirinda ORANGE 320 Ml,2.09000,3.49,Exotic Soda,8934588882111,ea.,1,False,1.60000,-48.00000,0,0,True
+313169,Exotic Mirinda SARSI 320 Ml,Exotic Mirinda SARSI 320 Ml,2.09000,3.49,Exotic Soda,8934588132117,ea.,1,False,1.60000,-48.00000,0,0,True
+312605,Exotic Mtn DeW 350 Ml CAN,Exotic Mtn DeW 350 Ml CAN,2.15000,3.59,Exotic Soda,4901777045682,ea.,1,False,1.45000,-60.00000,0,0,True
+310984,Exotic PEPSI Cola 340 Ml. CAN,Exotic PEPSI Cola 340 Ml. CAN,2.15000,3.59,Exotic Soda,4901777333864,ea.,1,False,1.45000,-192.00000,0,0,True
+313173,"Exotic Pepsi SF Raspberry 320 Ml ","Exotic Pepsi SF Raspberry 320 Ml ",2.09000,3.49,Exotic Soda,8934588462115,ea.,1,False,1.60000,-96.00000,0,0,True
+310631,Exotic Pepsi Strawberry Milkshake 330 Ml,Exotic Pepsi Strawberry Milkshake 330 Ml,2.19000,3.69,Exotic Soda,6908946292173,ea.,1,False,1.50000,-250.00000,0,0,True
+312712,Exotic QDOL Lime 330 Ml,Exotic QDOL Lime 330 Ml,1.99000,3.39,Exotic Soda,6973116300002,ea.,1,False,1.25000,-76.00000,0,0,True
+314607,Exotic QDOL Lychee 330 Ml,Exotic QDOL Lychee 330 Ml,1.99000,3.39,Exotic Soda,6973116300040,ea.,1,False,1.25000,-24.00000,0,0,True
+312714,Exotic QDOL Strawberry 330 Ml,Exotic QDOL Strawberry 330 Ml,1.99000,3.39,Exotic Soda,6973116300033,ea.,1,False,1.25000,-147.00000,0,0,True
+310629,Exotic Tropicana Lemon Lime 450 Ml,Exotic Tropicana Lemon Lime 450 Ml,2.29000,3.99,Exotic Soda,6934024503497,ea.,1,False,1.25000,-135.00000,0,0,True
+310630,Exotic Tropicana Sunshine Peach 450 Ml,Exotic Tropicana Sunshine Peach 450 Ml,2.29000,3.99,Exotic Soda,6934024503510,ea.,1,False,1.25000,-150.00000,0,0,True
+310628,Exotic Tropicana Tropical Fruit 450 Ml,Exotic Tropicana Tropical Fruit 450 Ml,2.29000,3.99,Exotic Soda,6934024515100,ea.,1,False,1.25000,-135.00000,0,0,True
+309870,Exotic Tropicana Twist Orange 320 Ml.,Exotic Tropicana Twist Orange 320 Ml.,1.99000,3.39,Exotic Soda,8934588192227,,1,False,1.35000,-72.00000,0,0,True
+309659,FANTA Denmark Exotic 330 Ml,FANTA Denmark Exotic 330 Ml,1.99000,3.39,Exotic Soda,5740700996153,,1,False,1.26000,-143.00000,0,0,True
+314957,French 7Up Mojito 330 Ml Slim CAN,French 7Up Mojito 330 Ml Slim CAN,1.59000,2.99,Exotic Soda,3168930159803,ea.,1,False,0.94000,-192.00000,0,0,True
+314958,French Lipton ICED Tea Raspberry 330 Ml,French Lipton ICED Tea Raspberry 330 Ml,1.69000,2.99,Exotic Soda,3168930159988,ea.,1,False,1.10000,-216.00000,0,0,True
+314959,French Lipton ICED Tea Watermelon 330 Ml,French Lipton ICED Tea Watermelon 330 Ml,1.69000,2.99,Exotic Soda,3168930162711,ea.,1,False,1.10000,-240.00000,0,0,True
+314956,French MiRiNDA Orange 330 Ml Slim CAN,French MiRiNDA Orange 330 Ml Slim CAN,1.59000,2.99,Exotic Soda,3502110002686,ea.,1,False,0.94000,-216.00000,0,0,True
+314955,French MiRiNDA Strawberry 330 Ml Slim CAN,French MiRiNDA Strawberry 330 Ml Slim CAN,1.59000,2.99,Exotic Soda,3502110004192,ea.,1,False,0.94000,-192.00000,0,0,True
+312756,HATA Ramune Blueberry 200 Ml,HATA Ramune Blueberry 200 Ml,2.19000,3.69,Exotic Soda,4902494110042,ea.,1,False,1.39000,-192.00000,0,0,True
+312758,HATA Ramune Melon 200 Ml,HATA Ramune Melon 200 Ml,2.19000,3.69,Exotic Soda,4902494090177,ea.,1,False,1.39000,-152.00000,0,0,True
+312757,HATA Ramune Pineapple 200 Ml,HATA Ramune Pineapple 200 Ml,2.19000,3.69,Exotic Soda,4902494110028,ea.,1,False,1.39000,-125.00000,0,0,True
+321803,HATA Ramune Watermelon 200 Ml,HATA Ramune Watermelon 200 Ml,2.19000,3.69,Exotic Soda,3081021017312,,1,False,1.39000,-15.00000,0,0,True
+310111,Japanese FANTA White Peach 500 Ml 054928,Japanese FANTA White Peach 500 Ml 054928,2.99000,4.99,Exotic Soda,4902102151948,,1,False,2.25000,-72.00000,0,0,True
+309625,Mirinda Cream Soda 320 Ml,Mirinda Cream Soda 320 Ml,2.09000,3.49,Exotic Soda,8934588362118,ea.,1,False,1.60000,-216.00000,0,0,True
+304318,PEPSI Raw Can 335 Ml 638014,PEPSI Raw Can 335 Ml 638014,1.75000,3.19,Exotic Soda,6908946290872,,1,False,1.10000,-84.00000,0,0,True
+306273,POKKA SAPPORO Orange Juice 400 Ml.,POKKA SAPPORO Orange Juice 400 Ml.,2.69000,4.49,Exotic Soda,4582409175191,ea.,1,False,1.89000,-264.00000,0,0,True
+303851,Russian OCHAKOVO Mojito Mango 450 Ml.,Russian OCHAKOVO Mojito Mango 450 Ml.,2.39000,3.99,Exotic Soda,4600068058294,,1,False,1.69000,-72.00000,0,0,True
+303850,Russian OCHAKOVO Mojito Strawberry 450 Ml.,Russian OCHAKOVO Mojito Strawberry 450 Ml.,2.39000,3.99,Exotic Soda,4600068058058,,1,False,1.69000,-72.00000,0,0,True
+310042,SANGARIA Ramune ORIGINAL 200 Ml,SANGARIA Ramune ORIGINAL 200 Ml,2.19000,3.69,Exotic Soda,733815003354,,1,False,1.60000,-576.00000,0,0,True
+312761,SANGARIA Tsubumi Aloe Juice,SANGARIA Tsubumi Aloe Juice,2.39000,3.99,Exotic Soda,4902179024305,,1,False,1.69000,-120.00000,0,0,True
+307125,Skyco Distro Products Purchased,Skyco Distro Products Purchased,23.99000,3.49,Exotic Soda,0771512378250,box,12,False,12.00000,81.00000,0,0,True
+309623,Thums Up CHARGED Kiwi 320 Ml,Thums Up CHARGED Kiwi 320 Ml,1.99000,3.39,Exotic Soda,8935049500254,,1,False,1.35000,-72.00000,0,0,True
+309624,Thums Up CHARGED Strawberry 320 Ml,Thums Up CHARGED Strawberry 320 Ml,1.99000,3.39,Exotic Soda,8935049500261,,1,False,1.35000,-120.00000,0,0,True
+308572,WHP Exotic 7Up Disney Resort Tangerine Lemon 500 Ml.,WHP Exotic 7Up Disney Resort Tangerine Lemon 500 Ml.,1.99000,3.39,Exotic Soda,6908946290902,,1,False,1.42000,0.00000,0,0,True
+307883,WHP Exotic Coke Original POLAND 330 Ml,WHP Exotic Coke Original POLAND 330 Ml,1.25000,2.29,Exotic Soda,5449000214911,,1,False,0.94000,-72.00000,0,0,True
+313834,WHP Exotic Collectible GODZILLA 330 ML,WHP Exotic Collectible GODZILLA 330 ML,1.59000,2.75,Exotic Soda,4711085704597,ea.,1,False,1.20000,-30.00000,0,0,True
+319365,WHP Exotic Collectible Japanese Daifuku Snoopy 330 Ml,WHP Exotic Collectible Japanese Daifuku Snoopy 330 Ml,1.59000,2.75,Exotic Soda,4711085702111,,1,False,1.10000,-48.00000,0,0,True
+310986,WHP Exotic Collectible Japanese Sanrio 330 Ml,WHP Exotic Collectible Japanese Sanrioo 330 Ml,1.59000,2.75,Exotic Soda,4711085700193,ea.,1,False,1.20000,-48.00000,0,0,True
+308177,WHP Exotic Collectible KUROMI 50th Annvi. 330 Ml 702340,WHP Exotic Collectible KUROMI 50th Annvi. 330 Ml,1.59000,2.75,Exotic Soda,4711085702340,,1,False,1.20000,-77.00000,0,0,True
+308175,WHP Exotic Collectible MARVEL 330 Ml 704443,WHP Exotic Collectible MARVEL 330 Ml,1.59000,2.75,Exotic Soda,4711085704443,ea.,1,False,1.10000,-12.00000,0,0,True
+319366,WHP Exotic Collectible MARVEL Q Lemon 330 Ml.,WHP Exotic Collectible MARVEL Q Lemon 330 Ml.,1.59000,2.75,Exotic Soda,4711085707352,,1,False,1.10000,-81.00000,0,0,True
+308176,WHP Exotic Collectible MARVEL Q VER2 Honey Lemon 330 Ml 614012,WHP Exotic Collectible MARVEL Q VER2 Honey Lemon 330 Ml,1.59000,2.75,Exotic Soda,4711085701992,ea.,1,False,1.20000,0.00000,0,0,True
+308178,WHP Exotic Collectible Sanrio Characters 330 Ml. 614003,WHP Exotic Collectible Sanrio Characters 330 Ml.,1.59000,2.75,Exotic Soda,4711085700179,ea.,1,False,1.10000,-50.00000,0,0,True
+321150,WHP Exotic FANTA Cream Fruity Soda SLIM CAN,WHP Exotic FANTA Cream Fruity Soda SLIM CAN,1.75000,2.99,Exotic Soda,8935049501565,,1,False,1.30000,-36.00000,0,0,True
+307884,WHP Exotic FANTA Crimson Cherry SERBIA 330 Ml,WHP Exotic FANTA Crimson Cherry SERBIA 330 Ml,1.75000,2.99,Exotic Soda,5449000227461,,1,False,1.19000,-108.00000,0,0,True
+310790,WHP Exotic FANTA Green Apple 330 Ml SLIM CAN,WHP Exotic FANTA Green Apple 330 Ml SLIM CAN,1.75000,2.99,Exotic Soda,6928804014679,,1,False,1.15000,-60.00000,0,0,True
+310787,WHP Exotic FANTA Jasmine PEACH 330 Ml SLIM CAN,WHP Exotic FANTA Jasmine PEACH 330 Ml SLIM CAN,1.75000,2.99,Exotic Soda,6928804025248,,1,False,1.25000,-24.00000,0,0,True
+310807,WHP Exotic Fanta Lime 500 Ml.,WHP Exotic Fanta Lime 500 Ml.,1.99000,3.39,Exotic Soda,6928804011562,ea.,1,False,1.50000,-84.00000,0,0,True
+310795,WHP Exotic FANTA Lychee 330 Ml SLIM CAN,WHP Exotic FANTA Lychee 330 Ml SLIM CAN,1.75000,2.99,Exotic Soda,6954767442143,,1,False,1.15000,-24.00000,0,0,True
+320922,WHP Exotic FANTA Lychee 500 Ml,WHP Exotic FANTA Lychee 500 Ml,1.99000,3.39,Exotic Soda,6954767442204,,1,False,1.13000,-192.00000,0,0,True
+310992,WHP Exotic FANTA Pineapple 600 Ml,WHP Exotic FANTA Pineapple 600 Ml,2.49000,3.99,Exotic Soda,8801094132705,,1,False,1.75000,0.00000,0,0,True
+321151,WHP Exotic FANTA SARSI SLIM CAN,WHP Exotic FANTA SARSI SLIM CAN,1.75000,2.99,Exotic Soda,8935049501589,,1,False,1.30000,-72.00000,0,0,True
+310988,WHP Exotic FANTS Peach Zero Sugar 350 Ml.,WHP Exotic FANTS Peach Zero Sugar 350 Ml.,1.75000,3.19,Exotic Soda,8801094000363,,1,False,1.29000,-48.00000,0,0,True
+315773,WHP Exotic Indian Limca 300 Ml,WHP Exotic Indian Limca 300 Ml,1.35000,2.39,Exotic Soda,8901764051258,ea.,1,False,0.92000,-96.00000,0,0,True
+310994,WHP Exotic Minute Maid Orange 350 Ml.,WHP Exotic Minute Maid Orange 350 Ml.,2.19000,3.69,Exotic Soda,8801094265205,,1,False,1.65000,0.00000,0,0,True
+310797,WHP Exotic Minute Maid Raisins & Sakura 420 Ml,WHP Exotic Minute Maid Raisins & Sakura 420 Ml,1.99000,3.39,Exotic Soda,6975682483066,,1,False,1.25000,-24.00000,0,0,True
+310796,WHP Exotic Minute Maid Rose & Grape 420 Ml,WHP Exotic Minute Maid Rose & Grape 420 Ml,1.99000,3.49,Exotic Soda,6975682483080,,1,False,1.25000,-12.00000,0,0,True
+312606,WHP Exotic Mtn DeW 350 Ml CAN,WHP Exotic Mtn DeW 350 Ml CAN,1.99000,3.39,Exotic Soda,4901777045682,ea.,1,False,1.45000,-96.00000,0,0,True
+312604,WHP Exotic Pepsi Cola 340 Ml. CAN,WHP Exotic Pepsi Cola 340 Ml. CAN,1.99000,3.39,Exotic Soda,4901777333864,ea.,1,False,1.45000,-38.00000,0,0,True
+310793,WHP Exotic Pepsi Strawberry Milkshake 330 Ml,WHP Exotic Pepsi Strawberry Milkshake 330 Ml,1.99000,3.39,Exotic Soda,6908946292173,,1,False,1.50000,-153.00000,0,0,True
+313835,WHP Exotic QDOL Lime 330 Ml,WHP Exotic QDOL Lime 330 Ml,1.75000,2.99,Exotic Soda,6973116300002,,1,False,1.25000,-12.00000,0,0,True
+314633,WHP Exotic QDOL Lychee 330 Ml,WHP Exotic QDOL Lychee 330 Ml,1.75000,2.99,Exotic Soda,6973116300040,,1,False,1.25000,0.00000,0,0,True
+313833,WHP Exotic QDOL Strawberry 330 Ml,WHP Exotic QDOL Strawberry 330 Ml,1.75000,2.99,Exotic Soda,6973116300033,,1,False,1.25000,-30.00000,0,0,True
+310799,WHP Exotic Tropicana Lemon Lime 450 Ml,WHP Exotic Tropicana Lemon Lime 450 Ml,1.99000,3.49,Exotic Soda,6934024503497,,1,False,1.25000,-15.00000,0,0,True
+310800,WHP Exotic Tropicana Sunshine Peach 450 Ml,WHP Exotic Tropicana Sunshine Peach 450 Ml,1.99000,3.49,Exotic Soda,6934024503510,,1,False,1.25000,-15.00000,0,0,True
+310798,WHP Exotic Tropicana Tropical Fruit 450 Ml,WHP Exotic Tropicana Tropical Fruit 450 Ml,1.99000,3.49,Exotic Soda,6934024515100,,1,False,1.25000,-15.00000,0,0,True
+309660,WHP FANTA Denmark Exotic 330 Ml,WHP FANTA Denmark Exotic 330 Ml,1.75000,2.99,Exotic Soda,5740700996153,,1,False,1.26000,0.00000,0,0,True
+321804,WHP HATA Ramune Watermelon 200 Ml,WHP HATA Ramune Watermelon 200 Ml,1.99000,3.39,Exotic Soda,3081021017312,,1,False,1.39000,0.00000,0,0,True
+307202,WHP POKKA SAPPORO Orange Juice 400 Ml.,WHP POKKA SAPPORO Orange Juice 400 Ml.,2.45000,4.29,Exotic Soda,4582409175191,ea.,1,False,1.89000,-2.00000,0,0,True
+304750,WHP Russian OCHAKOVO Mojito Mango 450 Ml.,WHP Russian OCHAKOVO Mojito Mango 450 Ml.,2.19000,3.99,Exotic Soda,4600068058294,,1,False,1.69000,-48.00000,0,0,True
+304749,WHP Russian OCHAKOVO Mojito Strawberry 450 Ml.,WHP Russian OCHAKOVO Mojito Strawberry 450 Ml.,2.19000,3.99,Exotic Soda,4600068058058,,1,False,1.69000,-48.00000,0,0,True
+311193,WHP SANGARIA Ramune ORIGINAL 200 Ml,WHP SANGARIA Ramune ORIGINAL 200 Ml,1.99000,3.39,Exotic Soda,733815003354,,1,False,1.60000,-180.00000,0,0,True

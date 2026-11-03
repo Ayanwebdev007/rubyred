@@ -1,0 +1,501 @@
+ProductId,ProductName,Description,SalePrice,SuggestedRetailPrice,CategoryName,Barcode,Unit,UnitPerCase,IsTaxable,PurchaseCost,QuantityInHand,InitialCost,InitialStock,IsActive
+162795,4 ACES Import Purchased,4 ACES Import Purchased,543.58000,0.00,Snacks,179832366012,box,1,False,434.87000,3.00000,0,0,True
+315474,A&C Best Food Wholesale Purchased,A&C Best Food Wholesale Purchased,133.33000,225.00,Snacks,5202094465071,box,1,False,100.00000,1.00000,0,0,True
+302810,BABY STAR Ramen Big 68 GM.,BABY STAR Ramen Big 68 GM.,1.99000,3.39,Snacks,4902775070287,,1,False,1.40000,-36.00000,0,0,True
+272079,Balconi COCOA  Cream Roll 250 GM.,Balconi COCOA  Cream Roll 250 GM.,2.99000,5.49,Snacks,8001585002108,ea.,1,False,1.84000,-168.00000,0,0,True
+272080,Balconi Fruit flavor Cream Roll 250 GM.,Balconi Fruit flavor Cream Roll 250 GM.,2.99000,5.49,Snacks,80015850021,ea.,1,False,1.84000,0.00000,0,0,True
+272078,Balconi Hazelnut  Cream Roll 250 GM.,Balconi Hazelnut  Cream Roll 250 GM.,2.99000,5.49,Snacks,8001585002115,ea.,1,False,1.84000,-179.00000,0,0,True
+273238,BALOCCO Sfogliatine Pastry Puffs 200 GM.,BALOCCO Sfogliatine Pastry Puffs 200 GM.,2.99000,4.99,Snacks,8001100012117,,1,False,1.89000,-103.00000,0,0,True
+293054,Bergen Cookies Bubble GUM 128 GM.,Bergen Cookies Bubble GUM 128 GM.,2.99000,4.99,Snacks,5902379315622,,1,False,1.79000,-246.00000,0,0,True
+298501,Bergen Cookies Cream Chocolate & Vanilla 128 GM.,Bergen Cookies Cream Chocolate & Vanilla 128 GM.,2.99000,4.99,Snacks,5902379145687,,1,False,1.81000,-271.00000,0,0,True
+293055,Bergen Cookies Peanut Butter Cocoa 128 GM.,Bergen Cookies Peanut Butter Cocoa 128 GM.,2.99000,4.99,Snacks,5902379105636,,1,False,1.81000,-418.00000,0,0,True
+293056,Bergen Cookies Pistachio Cream 128 GM.,Bergen Cookies Pistachio Cream 128 GM.,2.99000,4.99,Snacks,5902379010831,,1,False,1.81000,-532.00000,0,0,True
+298530,Bergen Cookies Pistachio Cream in Milk Glaze 128 GM.,Bergen Cookies Pistachio Cream in Milk Glaze 128 GM.,2.99000,4.99,Snacks,5902379015638,,1,False,1.81000,-99.00000,0,0,True
+302685,Bergen Cookies Salty Caramel 128 GM.,Bergen Cookies Salty Caramel 128 GM.,2.99000,4.99,Snacks,5902379185836,ea.,1,False,1.79000,-77.00000,0,0,True
+293053,Bergen Cookies White Chocolate Red Velvet 128 GM.,Bergen Cookies White Chocolate Red Velvet 128 GM.,2.99000,4.99,Snacks,5902379305630,,1,False,1.81000,-404.00000,0,0,True
+281729,BISCONNI DAYDREAM 150 GM.,BISCONNI DAYDREAM 150 GM.,2.39000,3.99,Snacks,8961102508356,,1,False,1.15000,-42.00000,0,0,True
+231349,Buldak Ramen 2 X Spicy Noodles,Buldak Ramen 2 X Spicy Noodles,1.85000,2.99,Snacks,8801073113428,,1,False,1.38000,-120.00000,0,0,True
+231348,Buldak Ramen Noodles Carbonara,Buldak Ramen Noodles Carbonara,1.69000,2.99,Snacks,8801073113893,,1,False,1.10000,-2801.00000,0,0,True
+230642,Buldak Ramen Spicy Chicken Noodles 8801073140578,"Buldak Ramen Spicy Chicken Noodles ",1.69000,2.99,Snacks,8801073110502,ea.,1,False,1.10000,-2222.00000,0,0,True
+310973,CADINA Japanese Grilled Pork Flv. 063041,CADINA Japanese Grilled Pork Flv.,2.29000,3.49,Snacks,4710022049500,,1,False,1.60000,-96.00000,0,0,True
+304317,CADINA Taro Chips Original Flv. 64190,CADINA Taro Chips Original Flv.,2.29000,3.49,Snacks,4710022020752,,1,False,1.60000,-339.00000,0,0,True
+290878,Calbee Hot & Spicy Potato Chips 80 GM. - 07935,Calbee Hot & Spicy Potato Chips 80 GM.,2.69000,3.99,Snacks,071146001039,ea.,1,False,2.00000,-108.00000,0,0,True
+293663,Calbee JagaRico Umami Seaweed 62609,Calbee JagaRico Umami Seaweed,2.29000,3.49,Snacks,071146006157,,1,False,1.60000,-269.00000,0,0,True
+264878,Calbee Onion Rings 2.12 Oz. - 82704,Calbee Onion Rings 2.12 Oz.,2.69000,3.99,Snacks,071146008915,ea.,1,False,2.00000,-3076.00000,0,0,True
+282144,Calbee Pizza Potato Chips 72 GM. 61775,Calbee Pizza Potato Chips 72 GM.,2.69000,3.99,Snacks,071146005884,ea.,1,False,2.00000,-852.00000,0,0,True
+321887,Calbee Potato Chips Bibimbap Flv.,Calbee Potato Chips Bibimbap Flv.,2.09000,3.49,Snacks,6974624471123,ea.,1,False,1.35000,0.00000,0,0,True
+321888,Calbee Potato Chips Lobster Flv.,Calbee Potato Chips Lobster Flv.,2.09000,3.49,Snacks,6974624470362,ea.,1,False,1.35000,0.00000,0,0,True
+273252,Calbee Shrimp Chips Chili lime 94 GM. 85841,Calbee Shrimp Chips Chili Lime 94 GM.,2.69000,3.99,Snacks,071146009561,ea.,1,False,2.00000,-2236.00000,0,0,True
+270436,Calbee Shrimp Chips Sriracha 94 GM. 67635,Calbee Shrimp Chips Sriracha 94 GM.,2.69000,3.99,Snacks,071146007444,ea.,1,False,2.00000,-612.00000,0,0,True
+298832,Calbee Shrimp Roasted Seaweed Chips 3.3 Oz.,Calbee Shrimp Roasted Seaweed Chips 3.3 Oz.,2.69000,3.99,Snacks,071146009578,ea.,1,False,2.00000,-120.00000,0,0,True
+275952,Calbee Takoyaki Ball 90 GM.,Calbee Takoyaki Ball 90 GM.,2.69000,3.99,Snacks,071146006638,ea.,1,False,2.00000,-1380.00000,0,0,True
+306276,Calbee Takoyaki Ball Kimchi,Calbee Takoyaki Ball Kimchi,2.69000,3.99,Snacks,071146011519,,1,False,2.00000,-432.00000,0,0,True
+229561,Carolina Kettle Honey SRIRACHA 2 Oz.,Carolina Kettle Honey SRIRACHA 2 Oz.,1.15000,2.29,Snacks,856875006032,,1,False,1.15000,-20.00000,0,0,True
+229562,Carolina Kettle Sea Salt & Cracked Pepper 2 Oz.,Carolina Kettle Sea Salt & Cracked Pepper 2 Oz.,1.15000,2.29,Snacks,856875006124,,1,False,1.15000,0.00000,0,0,True
+151459,Cheetos Bolita Large,Cheetos Bolita Large,2.39000,3.99,Snacks,7501011130920,ea.,1,False,1.69000,-23.00000,0,0,True
+175492,Cheetos COLMILLOS 100 GM.,Cheetos COLMILLOS 100 GM.,2.49000,3.99,Snacks,7501011182417,ea.,1,False,1.94000,0.00000,0,0,True
+151460,Cheetos Flamin Hot Large,Cheetos Flamin Hot Large,2.39000,3.99,Snacks,7501011130937,ea.,1,False,1.69000,-42.00000,0,0,True
+159797,Cheetos Poffs,Cheetos Poffs,2.39000,3.99,Snacks,7501011130944,ea.,1,False,1.99000,5.00000,0,0,True
+162741,CHURRUMAIS Limoncito,CHURRUMAIS Limoncito,2.49000,3.99,Snacks,7500478002559,ea.,1,False,2.15000,15.00000,0,0,True
+304159,CRAYON Shinchan Noodle Snack BBQ Flv. 90 GM. 828001,CRAYON Shinchan Noodle Snack BBQ Flv. 90 GM.,2.29000,3.49,Snacks,8809486990247,,1,False,1.21000,-188.00000,0,0,True
+304164,CRAYON Shinchan Noodle Snack Korean Chicken 90 GM. 828003,CRAYON Shinchan Noodle Snack Korean Chicken 90 GM.,2.29000,3.49,Snacks,8809486990261,,1,False,1.21000,-160.00000,0,0,True
+151498,Crayon Surtido Mix 18 Pcs. Pk.,Crayon Surtido Mix 18 Pcs. Pk.,9.75000,1.29,Snacks,719886120206,box,18,False,5.49000,-1.00000,0,0,True
+159799,Crujitos Queso y Chile,Crujitos Queso y Chile,2.39000,3.99,Snacks,7501011131040,ea.,1,False,1.99000,7.00000,0,0,True
+231377,Curiosity CORNER Purchased,Curiosity CORNER Purchased,2.69000,3.99,Snacks,011378204012,ea.,1,False,1.77000,1.00000,0,0,True
+273240,Delicje European Biscuits - Cherry,Delicje European Biscuits - Cherry,2.39000,4.39,Snacks,044000011840,,1,False,1.30000,0.00000,0,0,True
+273239,"Delicje European Biscuits - Orange ","Delicje European Biscuits - Orange ",2.39000,4.39,Snacks,044000011826,,1,False,1.30000,0.00000,0,0,True
+313903,"Dessert MOCHI Cookies et Crème ","Dessert MOCHI Cookies et Crème ",2.99000,5.29,Snacks,4711516791950,,1,False,2.00000,-19.00000,0,0,True
+313901,Dessert MOCHI Dubai Chocolate,Dessert MOCHI Dubai Chocolate,2.99000,5.29,Snacks,4711516792001,,1,False,2.00000,-19.00000,0,0,True
+313930,Dessert MOCHI Strawberry Cheesecake,Dessert MOCHI Strawberry Cheesecake,2.99000,5.29,Snacks,4711516791981,,1,False,2.00000,-19.00000,0,0,True
+313902,Dessert MOCHI Tiramisu,Dessert MOCHI Tiramisu,2.99000,5.29,Snacks,4711516791967,ea.,1,False,2.00000,-3.00000,0,0,True
+319362,Doritos Chips CILANTRO Flv. 68 GM. D261,Doritos Chips CILANTRO Flv. 68 GM.,2.59000,3.99,Snacks,4710543024888,,1,False,1.85000,-186.00000,0,0,True
+319359,Doritos Chips Garlic Steak Flv. D206,Doritos Chips Garlic Steak Flv.,1.89000,2.89,Snacks,4710543019617,,1,False,1.20000,-306.00000,0,0,True
+312596,Doritos CILANTRO Flv. 518505,Doritos CILANTRO Flv.,1.89000,2.89,Snacks,4710543025960,ea.,1,False,1.25000,-60.00000,0,0,True
+310982,Doritos Garlic Shrimp Chips D202,Doritos Garlic Shrimp Chips,1.89000,2.89,Snacks,4710543013042,ea.,1,False,1.20000,-558.00000,0,0,True
+314532,Doritos Golden Cheese Flv. D198,Doritos Golden Cheese Flv.,1.89000,2.89,Snacks,4710543664022,ea.,1,False,1.25000,-120.00000,0,0,True
+229744,Doritos Hot & Spicy 90 GM. 23378,Doritos Hot & Spicy 90 GM. 23378,2.69000,3.99,Snacks,6924743920576,,1,False,1.70000,-242.00000,0,0,True
+310983,Doritos Jalapeño Chilli Pepper D207,Doritos Jalapeño Chilli Pepper,1.89000,2.89,Snacks,4710543022181,ea.,1,False,1.20000,-738.00000,0,0,True
+230618,Doritos Nacho Cheese 35369,Doritos Nacho Cheese 35369,2.69000,3.99,Snacks,6924743920545,ea.,1,False,1.85000,-154.00000,0,0,True
+151517,Doritos Nachos Large,Doritos Nachos Large,2.39000,3.99,Snacks,7501011131064,ea.,1,False,1.69000,-3.00000,0,0,True
+314602,Doritos Oven Roasted Chicken Flv. 01886,Doritos Oven Roasted Chicken Flv.,2.45000,3.89,Snacks,8801062014002,,1,False,1.65000,-336.00000,0,0,True
+310649,Doritos Smokin BBQ 90 GM.,Doritos Smokin BBQ 90 GM.,2.69000,3.99,Snacks,6924743920606,ea.,1,False,1.70000,-132.00000,0,0,True
+271366,Elvan TODAY ROLL Hazelnut 80 GM.,Elvan TODAY ROLL Hazelnut 80 GM.,1.65000,2.99,Snacks,8693029699182,ea.,1,False,1.09000,0.00000,0,0,True
+271367,EURO FILBI Cookies 125 GM.,EURO FILBI Cookies 125 GM.,2.79000,4.69,Snacks,8601900704023,ea.,1,False,1.44000,-152.00000,0,0,True
+271368,EURO VAFEL Original 180 GM.,EURO VAFEL Original 180 GM.,2.49000,4.69,Snacks,3875002210354,ea.,1,False,1.50000,-100.00000,0,0,True
+223767,Exotic Cheetos Corn Stick Grilled Turkey Flv.,Exotic Cheetos Corn Stick Grilled Turkey Flv.,1.75000,2.79,Snacks,6924743922730,,1,False,1.15000,-418.00000,0,0,True
+320040,Exotic Cheetos Corn Stick Steak Flv.,Exotic Cheetos Corn Stick Steak Flv.,1.75000,2.79,Snacks,6924743922747,ea.,1,False,1.15000,-74.00000,0,0,True
+312759,"Exotic Hi-CHEW Strawberry ","Exotic Hi-CHEW Strawberry ",1.49000,2.69,Snacks,4710035015066,,1,False,1.24000,-40.00000,0,0,True
+321891,Exotic Wrigley's Coffee flv. Chewing Gum,Exotic Wrigley's Coffee flv. Chewing Gum,3.25000,5.69,Snacks,6923450630761,ea.,1,False,2.05000,0.00000,0,0,True
+223263,Flavor Distro Products,Flavor Distro Products,2548.40000,0.00,Snacks,011316789012,ea.,1,False,1911.30000,9.00000,0,0,True
+263467,Fortune Choice Mochi from Two Bors. Food,Fortune Choice Mochi from Two Bors. Food,2.19000,3.99,Snacks,002912689012,ea.,1,False,1.36680,0.00000,0,0,True
+263944,Fortune MOCHI Mango 180 GM. FDF-002,Fortune MOCHI Mango 180 GM.,2.19000,3.99,Snacks,6922321001723,ea.,1,False,1.54300,-98.00000,0,0,True
+263943,Fortune MOCHI Strawberry 180 GM FDF-004,Fortune MOCHI Strawberry 180 GM.,2.19000,3.99,Snacks,6922321001693,ea.,1,False,1.54300,-94.00000,0,0,True
+264423,Fortune MOCHI Taro 180 GM. FDF-006,Fortune MOCHI Taro 180 GM.,2.19000,3.99,Snacks,6922321001730,ea.,1,False,1.54300,-56.00000,0,0,True
+314604,Fritolay Cheetos Smoky BBQ 01879,Fritolay Cheetos Smoky BBQ,2.39000,3.89,Snacks,8801062289936,,1,False,1.53000,-156.00000,0,0,True
+314605,Fritolay Cheetos Spicy & Sweet 01880,Fritolay Cheetos Spicy & Sweet,2.39000,3.89,Snacks,8801062380015,,1,False,1.53000,-144.00000,0,0,True
+151611,Fritos Chile y Limon Large,Fritos Chile y Limon Large,2.39000,3.99,Snacks,7501011131118,ea.,1,False,1.69000,-50.00000,0,0,True
+308169,Gangfu MACARON Cookie with Dried Fruit Mango 132 GM.,Gangfu MACARON Cookie with Dried Fruit Mango 132 GM.,2.59000,4.49,Snacks,5060886821163,,1,False,1.75000,-33.00000,0,0,True
+308168,Gangfu MACARON Cookie with Dried Fruit Strawberry 132 GM.,Gangfu MACARON Cookie with Dried Fruit Strawberry 132 GM.,2.59000,4.49,Snacks,5060886821156,,1,False,1.75000,-33.00000,0,0,True
+315940,Glico Pocky Almond CRUSH,Glico Pocky Almond CRUSH,2.19000,3.79,Snacks,6901845010206,,1,False,1.46000,-43.00000,0,0,True
+318680,Glico Pocky Blueberry,Glico Pocky Blueberry,2.19000,3.69,Snacks,8801019311345,ea.,1,False,1.25000,0.00000,0,0,True
+283597,Glico Pocky Cheese Cake,Glico Pocky Cheese Cake,2.19000,3.79,Snacks,6901845046014,,1,False,1.46000,-80.00000,0,0,True
+312755,Glico POCKY Chocolate Cacao Sticks 54 GM.,Glico POCKY Chocolate Cacao Sticks 54 GM.,2.39000,3.99,Snacks,4901005512696,ea.,1,False,1.75000,-50.00000,0,0,True
+312722,Glico POCKY Crunchy Strawberry  Sticks 55 GM.,Glico POCKY Crunchy Strawberry  Sticks 55 GM.,2.39000,3.99,Snacks,4901005512429,ea.,1,False,1.75000,-100.00000,0,0,True
+315931,Glico Pocky Hazelnut CRUSH,Glico Pocky Hazelnut CRUSH,2.19000,3.79,Snacks,6901845045529,,1,False,1.46000,-43.00000,0,0,True
+315939,Glico Pocky Lavender & Blueberry,Glico Pocky Lavender & Blueberry,2.19000,3.79,Snacks,6901845044942,,1,False,1.46000,-63.00000,0,0,True
+312728,Glico POCKY Matcha Sticks 51 GM.,Glico POCKY Matcha Sticks 51 GM.,2.39000,3.99,Snacks,4901005014183,ea.,1,False,1.75000,-50.00000,0,0,True
+315934,Glico Pocky Strawberry,Glico Pocky Strawberry,2.19000,3.79,Snacks,6901845041538,,1,False,1.46000,-36.00000,0,0,True
+318679,Glico Pocky Strawberry 128002,Glico Pocky Strawberry,2.19000,3.69,Snacks,8801019310928,ea.,1,False,1.25000,-28.00000,0,0,True
+245204,Great Wall Supermarket,Great Wall Supermarket,66.96000,0.00,Snacks,024402533778,box,24,False,39.00000,3676.36760,0,0,True
+314606,HAITAI Calbee Osatsu Chips 50240,HAITAI Calbee Osatsu Chips,2.29000,3.69,Snacks,8801019606328,,1,False,1.45000,-114.00000,0,0,True
+263947,HELLO Kitty Ramune Strawberry 200 Ml. 8039,HELLO Kitty Ramune Strawberry 200 Ml.,2.19000,3.69,Snacks,074601176181,ea.,1,False,1.69680,-88.00000,0,0,True
+304120,Hershey Hazelnut Waffle 55 GM. 428105,Hershey Hazelnut Waffle 55 GM.,1.99000,3.59,Snacks,8801725001219,,1,False,1.37500,-263.00000,0,0,True
+304119,Hershey Mandarin Waffle 55 GM. 428103,Hershey Mandarin Waffle 55 GM.,1.99000,3.59,Snacks,8801725001196,,1,False,1.37500,-273.00000,0,0,True
+308161,Hershey’s Chocolate Drink Original,Hershey’s Chocolate Drink Original,1.79000,2.99,Snacks,8801121190197,,1,False,1.31000,-35.00000,0,0,True
+308162,Hershey’s Cookies & Cream Drink,Hershey’s Cookies & Cream Drink,1.79000,2.99,Snacks,8801121759943,,1,False,1.31000,-32.00000,0,0,True
+154715,Hide & Seek Choco Biscuits,,2.25000,2.99,Snacks,723246222332,ea.,1,False,1.75000,5.00000,0,0,True
+275951,HIMEMARU Japanese Rice Cracker 98 GM. 26487,HIMEMARU Japanese Rice Cracker 98 GM.,2.39000,3.69,Snacks,4901035210326,,1,False,1.65000,-480.00000,0,0,True
+271369,"Jaffa Cakes Orange Dark-Choco Biscuits 150 GM. ","Jaffa Cakes Orange Dark-Choco Biscuits 150 GM. ",2.79000,4.99,Snacks,8600114000013,,1,False,1.79000,-216.00000,0,0,True
+298520,Jammie DODGERS Britain - Strawberry 140 GM.,Jammie DODGERS Britain - Strawberry 140 GM.,2.39000,4.39,Snacks,072417328985,,1,False,1.34000,-251.00000,0,0,True
+306270,Japanese Cheetos Cheese & Jalapeno 70 GM. 54498,Japanese Cheetos Cheese & Jalapeno 70 GM.,2.29000,3.55,Snacks,4902443544980,,1,False,1.45000,-60.00000,0,0,True
+306274,Japanese Doritos American Spicy Chicken Wings D205,Japanese Doritos American Spicy Chicken Wings,2.19000,3.39,Snacks,4710543664701,,1,False,1.51000,-48.00000,0,0,True
+306269,Japanese Fritolay Cheetos BBQ Flv. 70 GM. 54502,Japanese Fritolay Cheetos BBQ Flv. 70 GM.,2.29000,3.55,Snacks,4902443545024,,1,False,1.45000,-60.00000,0,0,True
+303789,Japanese Fritolay Doritos Avocado Cheese 55 GM.,Japanese Fritolay Doritos Avocado Cheese 55 GM.,2.39000,3.69,Snacks,4902443526948,,1,False,1.63500,-36.00000,0,0,True
+309249,Japanese KitKat Cacao 10 Pcs.,Japanese KitKat Cacao 10 Pcs.,4.79000,7.99,Snacks,4902201183130,ea.,1,False,3.50000,-21.00000,0,0,True
+298413,Japanese Kitkat Cherry Blossom 9 Pcs.,Japanese Kitkat Cherry Blossom 9 Pcs.,4.79000,7.99,Snacks,4902201183598,ea.,1,False,4.00000,-150.00000,0,0,True
+310720,Japanese Kitkat GOLD Salted Caramel 10 Pcs.,Japanese Kitkat GOLD Salted Caramel 10 Pcs.,4.79000,7.99,Snacks,4902201184045,ea.,1,False,3.31000,-20.00000,0,0,True
+313009,Japanese Kitkat Ito Matcha Chocolate,Japanese Kitkat Ito Matcha Chocolate,4.79000,7.99,Snacks,4902201184090,ea.,1,False,3.50000,-73.00000,0,0,True
+298412,Japanese Kitkat Matcha 10 Pcs.,Japanese Kitkat Matcha 10 Pcs.,4.79000,7.99,Snacks,4902201183031,ea.,1,False,3.50000,-601.00000,0,0,True
+298414,Japanese Kitkat Strawberry 10 Pcs.,Japanese Kitkat Strawberry 10 Pcs.,4.79000,7.99,Snacks,4902201183055,ea.,1,False,3.60000,-713.00000,0,0,True
+309250,Japanese KitKat with MILO 10 Pcs.,Japanese KitKat with MILO 10 Pcs.,4.79000,7.99,Snacks,4902201182515,ea.,1,True,3.50000,-25.00000,0,0,True
+306272,Japanese SCRON Shrimp Captivated 70 GM. 51025,Japanese SCRON Shrimp Captivated 70 GM.,2.29000,3.59,Snacks,4901335510256,ea.,1,False,1.60000,-288.00000,0,0,True
+313017,Jaywin Trading INC.,Jaywin Trading INC.,121.00000,1.69,Snacks,9296413567123,box,1,False,100.00000,1.00000,0,0,True
+304315,JELLY B Konjac Jelly Drink Lychee 220002,JELLY B Konjac Jelly Drink Lychee,1.89000,3.39,Snacks,8804074000254,ea.,1,False,1.30000,-182.00000,0,0,True
+304316,JELLY B Konjac Jelly Drink Mango 220003,JELLY B Konjac Jelly Drink Mango,1.89000,3.39,Snacks,8804074000063,ea.,1,False,1.30000,-186.00000,0,0,True
+304314,JELLY B Konjac Jelly Drink Peach 220001,JELLY B Konjac Jelly Drink Peach,1.89000,3.39,Snacks,8804074500785,ea.,1,False,1.30000,-176.00000,0,0,True
+264879,JFC International Purchased,JFC International Purchased,137.93000,237.80,Snacks,064155013279,box,1,False,100.00000,130.41600,0,0,True
+233702,JUSGO Bellaire,JUSGO Bellaire,59.18000,3.99,Snacks,092806789012,box,22,False,32.00000,865.56250,0,0,True
+233701,JUSGO Hwy 6,JUSGO Hwy 6,59.18000,3.99,Snacks,034126789012,box,22,False,33.00000,38.09100,0,0,True
+315233,Kasugai IKA Peanut 62 GM. 01207,Kasugai IKA Peanut 62 GM.,2.39000,3.69,Snacks,4901326012073,ea.,1,False,1.60000,-24.00000,0,0,True
+282451,"Koikeya Asian BBQ 54 GM. 30118 ","Koikeya Asian BBQ 54 GM. ",2.29000,3.29,Snacks,4901335006605,,1,False,1.60000,-96.00000,0,0,True
+310974,Koikeya Chips Plum Flv. 06251,Koikeya Chips Plum Flv.,2.39000,3.49,Snacks,4901335006254,,1,False,1.70000,-12.00000,0,0,True
+310975,Koikeya Chips Truffle Scallop Flv.,Koikeya Chips Truffle Scallop Flv.,2.69000,3.99,Snacks,4901335005615,,1,False,2.05000,-48.00000,0,0,True
+301628,Koikeya Corn Snacks Hot Chili 69541,Koikeya Corn Snacks Hot Chili,2.29000,3.39,Snacks,4901335004298,ea.,1,False,1.67000,-960.00000,0,0,True
+273191,Koikeya Corn Snacks Spicy Curry 69538,Koikeya Corn Snacks Spicy Curry,2.29000,3.39,Snacks,4901335004281,,1,False,1.67000,-1692.00000,0,0,True
+310584,Koikeya Corn Snacks Sriracha Chili 65 GM. 20802,Koikeya Corn Snacks Sriracha Chili 65 GM.,2.29000,3.39,Snacks,4901335006445,,1,False,1.60000,-144.00000,0,0,True
+307126,Koikeya Dontacos Corn Chips Cheese Chili 57 GM.,Koikeya Dontacos Corn Chips Cheese Chili 57 GM.,2.29000,3.55,Snacks,4901335206739,,1,False,1.51000,-24.00000,0,0,True
+303791,Koikeya Dontacos Corn Chips Chili Tacos 57 GM.,Koikeya Dontacos Corn Chips Chili Tacos 57 GM.,2.29000,3.55,Snacks,4901335206722,ea.,1,False,1.52000,-24.00000,0,0,True
+264838,Koikeya Hot Chili 54 GM. 81389,Koikeya Hot Chili 54 GM.,2.29000,3.39,Snacks,4901335004984,,1,False,1.67000,-4068.00000,0,0,True
+266697,Koikeya Potato Chips Salt & Seaweed 46278,Koikeya Potato Chips Salt & Seaweed,2.19000,3.29,Snacks,4901335001990,ea.,1,False,1.60000,-227.00000,0,0,True
+304002,"KOIKEYA Potato Sticks Karamucho Hot Chili ","KOIKEYA Potato Sticks Karamucho Hot Chili ",2.29000,3.39,Snacks,4901335002430,,1,False,1.60000,-12.00000,0,0,True
+263746,Koikeya PURE POTATO Black Pepper 54 GM. 81818,Koikeya PURE POTATO Black Pepper 54 GM.,2.29000,3.39,Snacks,4901335004557,,1,False,1.67000,-4002.00000,0,0,True
+263745,"Koikeya PURE POTATO Original Sea Salt 54 GM. 80479 ",Koikeya PURE POTATO Original Sea Salt 54 GM.,2.29000,3.39,Snacks,4901335004533,,1,False,1.60000,-2784.00000,0,0,True
+303793,Koikeya Scorn BBQ Flavor 73 GM.,Koikeya Scorn BBQ Flavor 73 GM.,2.39000,3.79,Snacks,4901335510232,,1,False,1.69000,-96.00000,0,0,True
+302811,Koikeya Scron Grilled Corn 73 GM. 51026,Koikeya Scron Grilled Corn 73 GM.,2.39000,3.69,Snacks,4901335510263,,1,False,1.64000,-144.00000,0,0,True
+268239,Koikeya Spicy Seaweed 24351,Koikeya Spicy Seaweed,2.29000,3.39,Snacks,4901335006582,,1,False,1.67000,-3294.00000,0,0,True
+263747,Koikeya Sriracha Chili Sauce 54 GM. 87650,Koikeya Sriracha Chili Sauce 54 GM.,2.29000,3.55,Snacks,4901335006414,ea.,1,False,1.60000,-4106.00000,0,0,True
+281613,Koikeya STRONG Super Hot CHILI 54 GM. 69532,Koikeya STRONG Super Hot CHILI 54 GM.,2.29000,3.39,Snacks,4901335004243,,1,False,1.67000,-1056.00000,0,0,True
+302815,Koikeya SUPPA-MUCHO PLUM Potato Chips,Koikeya SUPPA-MUCHO PLUM Potato Chips,2.29000,3.69,Snacks,4901335124514,ea.,1,False,1.60000,-48.00000,0,0,True
+263748,Koikeya Yangnyeom Chicken 54 GM. 88062,Koikeya Yangnyeom Chicken 54 GM.,2.29000,3.39,Snacks,4901335006438,,1,False,1.60000,-1458.00000,0,0,True
+275950,Koikeya ZESTY YUZU 54 GM. 30119,Koikeya ZESTY YUZU 54 GM.,2.19000,3.29,Snacks,4901335006629,ea.,1,False,1.60000,-168.00000,0,0,True
+318748,KOLOKO Cracker Garlic Crab Flv.,KOLOKO Cracker Garlic Crab Flv.,2.29000,3.69,Snacks,4710022063520,ea.,1,False,1.40000,-114.00000,0,0,True
+310972,KOLOKO Cracker Garlic Sausage 160 GM. 067264,KOLOKO Cracker Garlic Sausage 160 GM.,2.79000,4.39,Snacks,4710022073772,,1,False,1.90000,-48.00000,0,0,True
+318747,KOLOKO Cracker Grilled Corn Flv.,KOLOKO Cracker Grilled Corn Flv.,2.29000,3.69,Snacks,4710022071259,ea.,1,False,1.40000,-102.00000,0,0,True
+318746,KOLOKO Pea Crackers Lemon Pink Salt Flv.,KOLOKO Pea Crackers Lemon Pink Salt Flv.,1.89000,2.99,Snacks,4710022040866,,1,False,1.20000,-48.00000,0,0,True
+318744,KOLOKO Pea Crackers Wasabi Flv.,KOLOKO Pea Crackers Wasabi Flv.,1.89000,2.99,Snacks,4710022006039,,1,False,1.20000,-90.00000,0,0,True
+303747,Krasnyi Oktyabr Products,Krasnyi Oktyabr Products,3.99000,6.79,Snacks,4602441142062,ea.,1,False,2.99000,2.00000,0,0,True
+249583,Kurkure Masala Munch 75 GM.,Kurkure Masala Munch 75 GM.,1.29000,2.29,Snacks,8901491100519,ea.,1,False,0.55000,-266.00000,0,0,True
+252263,Kurkure Naughty TOMATO 68 GM.,Kurkure Naughty TOMATO 68 GM.,1.29000,2.29,Snacks,8901491103442,ea.,1,False,0.55000,-252.00000,0,0,True
+298525,Lago Roll Cappuccino filled Wafer 80 GM.,Lago Roll Cappuccino filled Wafer 80 GM.,2.39000,3.99,Snacks,694649005313,,1,False,1.61000,-175.00000,0,0,True
+298523,Lago Roll Chocolate filled Wafer 80 GM.,Lago Roll Chocolate filled Wafer 80 GM.,2.39000,3.99,Snacks,694649005207,,1,False,1.61000,-207.00000,0,0,True
+305306,Lago Roll Hazelnut filled Wafer 80 GM.,Lago Roll Hazelnut filled Wafer 80 GM.,2.39000,3.99,Snacks,694649005269,,1,False,1.61000,-51.00000,0,0,True
+298524,Lago Roll Strawberry filled Wafer 80 GM.,Lago Roll Strawberry filled Wafer 80 GM.,2.39000,3.99,Snacks,694649005238,,1,False,1.61000,-229.00000,0,0,True
+272967,L’amore Cocoa Sandwich Biscuit 150 GM.,L’amore Cocoa Sandwich Biscuit 150 GM.,2.29000,3.99,Snacks,8692806015344,,1,False,0.68000,-45.00000,0,0,True
+297648,Lays 320039238,Lays 320039238,2.69000,0.00,Snacks,6924743937123,,1,False,3.99000,-66.00000,0,0,True
+319739,Lay’s American Style Cream & Onion,Lay’s American Style Cream & Onion,1.29000,2.29,Snacks,8901491100250,,1,False,0.55000,-67.00000,0,0,True
+259603,Lay’s American Style Cream & Onion 48 GM.,Lay’s American Style Cream & Onion 48 GM.,1.29000,2.29,Snacks,8901491101813,,1,False,0.55000,-1406.00000,0,0,True
+306558,Lay's ASADO 70 GM. 39941,Lay's ASADO 70 GM.,2.45000,3.89,Snacks,6924743938045,ea.,1,False,1.59000,-660.00000,0,0,True
+245673,Lay’s BAR-B-Q PLAZA 40 GM.,Lay’s BAR-B-Q PLAZA 40 GM.,2.19000,3.69,Snacks,8850718821839,,1,False,1.65000,-110.00000,0,0,True
+223774,Lay’s BBQ PORK,Lay’s BBQ PORK,2.64000,3.99,Snacks,8850718820719,,1,False,1.79000,-24.00000,0,0,True
+318751,Lay's Chips Kyushu Seaweed Flv. L20,Lay's Chips Kyushu Seaweed Flv.,1.89000,2.89,Snacks,4710543125585,,1,False,1.25000,-240.00000,0,0,True
+314601,Lay's Chips Pepper Chicken Flv. R06,Lay's Chips Pepper Chicken Flv.,1.89000,2.89,Snacks,4710543005191,,1,False,1.20000,-354.00000,0,0,True
+310719,Lay's Chips Smoked Pork Rib M20,Lay's Chips Smoked Pork Rib,1.89000,2.89,Snacks,4710543322236,ea.,1,False,1.25000,-1092.00000,0,0,True
+310718,Lay's Chips Yakitori BBQ Chicken M24,Lay's Chips Yakitori BBQ Chicken,1.89000,2.89,Snacks,4710543011338,ea.,1,False,1.25000,-1098.00000,0,0,True
+228612,Lay’s Cucumber 70 GM. 39128 / 32238,Lay’s Cucumber 70 GM.,2.29000,3.69,Snacks,6924743919259,ea.,1,False,1.59000,-10025.00000,0,0,True
+306557,Lay's Fish & Chips 70 GM. 39943,Lay's Fish & Chips 70 GM.,2.45000,3.89,Snacks,6924743938069,ea.,1,False,1.59000,-528.00000,0,0,True
+229743,Lay’s Fried Crab 70 GM. 32245,Lay’s Fried Crab 70 GM.,2.29000,3.69,Snacks,6924743923515,ea.,1,False,1.59000,-13662.00000,0,0,True
+263465,Lays from Two Bros. Food,Lays from Two Bros. Food,2.69000,3.99,Snacks,011691269012,ea.,1,False,1.37000,0.00000,0,0,True
+310645,Lay's Garlic Butter 70 GM. 39942,Lay's Garlic Butter 70 GM.,2.45000,3.89,Snacks,6924743938052,ea.,1,False,1.59000,-198.00000,0,0,True
+263749,Lay's Garlic flavor 70 GM. 38339,Lay's Garlic flavor 70 GM.,2.69000,3.99,Snacks,6924743936164,ea.,1,False,1.55000,-616.00000,0,0,True
+228607,Lay’s GHOST Pure Spicy Chips 70 GM. 32252,Lay’s GHOST Pure Spicy Chips 70 GM.,2.69000,3.99,Snacks,6924743919808,ea.,1,False,1.59000,-1034.00000,0,0,True
+307100,Lay’s Green Cucumber 70 GM. 39730,Lay’s Green Cucumber 70 GM.,2.29000,3.69,Snacks,6924743937925,ea.,1,False,1.59200,-154.00000,0,0,True
+228611,Lay’s Grilled Pork Flavor 70 GM. 32249,Lay’s Grilled Pork Flavor 70 GM.,2.69000,3.99,Snacks,6924743919792,,1,False,1.85000,-616.00000,0,0,True
+229995,Lay’s Grilled Squid 50% Less Oil 32254,Lay’s Grilled Squid 50% Less Oil 32254,2.69000,3.99,Snacks,6924743918610,ea.,1,False,1.59090,-231.00000,0,0,True
+229746,Lay’s Grilled Squid 70 GM. 35056,Lay’s Grilled Squid 70 GM. 35056,2.69000,3.99,Snacks,6924743918610,ea.,1,False,1.59090,-231.00000,0,0,True
+228606,Lay’s Hot & Spicy Braised Duck 70 GM. 31443,"Lay’s Hot & Spicy Braised Duck 70 GM. ",2.69000,3.99,Snacks,6924743931381,ea.,1,False,1.59090,-417.00000,0,0,True
+258829,Lay's Indian Chips,Lay's Indian Chips,1.39000,2.39,Snacks,093484512012,ea.,1,False,0.42500,2400.00000,0,0,True
+245671,Lay’s India’s Magic Masala 48 GM.,Lay’s India’s Magic Masala 48 GM.,1.29000,2.29,Snacks,8901491100274,ea.,1,False,0.55000,-2364.00000,0,0,True
+230640,Lay’s Italian Red Meat 70 GM. 35344,Lay’s Italian Red Meat 70 GM. 35344,2.69000,3.99,Snacks,6924743919235,ea.,1,False,1.59090,-726.00000,0,0,True
+223766,Lay’s Ketchup,Lay’s Ketchup,1.99000,2.99,Snacks,060410042526,,1,False,1.65000,-12.00000,0,0,True
+304121,Lay's KOBE Steak Potato Chips L33,Lay's KOBE Steak Potato Chips,1.89000,2.89,Snacks,4710543012991,ea.,1,False,1.19000,-1830.00000,0,0,True
+228609,Lay’s Korean Fried Chicken 70 GM. 34221,Lay’s Korean Fried Chicken 70 GM.,2.69000,3.99,Snacks,6924743933408,ea.,1,False,1.59090,-3246.00000,0,0,True
+261999,Lay’s Korean Kimchi 70 GM. 37734,Lay’s Korean Kimchi 70 GM.,2.29000,3.69,Snacks,6924743935464,,1,False,1.55500,-1926.00000,0,0,True
+228608,Lay’s Lime 70 GM. 32242,Lay’s Lime 70 GM.,2.64000,3.99,Snacks,6924743919266,,1,False,1.75000,-154.00000,0,0,True
+231354,Lay’s Mexican Chicken Tomato 70 GM. 32240,Lay’s Mexican Chicken Tomato 70 GM.,2.69000,3.99,Snacks,6924743919242,ea.,1,False,1.59090,-3271.00000,0,0,True
+320159,Lay's Mushroom Flv. 70 GM.,Lay's Mushroom Flv. 70 GM.,2.29000,3.69,Snacks,6924743938366,ea.,1,False,1.32000,-44.00000,0,0,True
+231352,Lay’s Mustard Octopus 70 Gm. 34218,Lay’s Mustard Octopus 70 Gm. 34218,2.69000,3.99,Snacks,6924743933439,ea.,1,False,1.59090,-198.00000,0,0,True
+231422,Lay’s Numb & Spicy Hot Pot 70 GM. 32243,Lay’s Numb & Spicy Hot Pot 70 GM.,2.69000,3.99,Snacks,6924743919273,ea.,1,False,1.59090,-3791.00000,0,0,True
+229745,Lay’s Pepper Fried Crispy 70 GM. 34215,Lay’s Pepper Fried Crispy 70 GM. 34215,2.69000,3.99,Snacks,6924743933460,ea.,1,False,1.59090,-506.00000,0,0,True
+223779,Lay's Roasted Chicken Wings 70 GM. 32255,Lay's Roasted Chicken Wings 70 GM.,2.29000,3.69,Snacks,6924743918658,ea.,1,False,1.59000,-13651.00000,0,0,True
+223765,Lay’s Roasted Cumin Lamb Skewer 70 GM. 32234,Lay’s Roasted Cumin Lamb Skewer 70 GM.,2.69000,3.99,Snacks,6924743927148,ea.,1,False,1.59090,-5244.00000,0,0,True
+231350,Lay’s Roasted Fish 70 GM. 32236,Lay’s Roasted Fish 70 GM. 32236,2.69000,3.99,Snacks,6924743927162,ea.,1,False,1.59090,-440.00000,0,0,True
+228610,Lay’s Roasted Garlic Oyster 70 GM. 32235,Lay’s Roasted Garlic Oyster 70 GM.,2.69000,3.99,Snacks,6924743927155,ea.,1,False,1.75000,-836.00000,0,0,True
+263139,Lay’s Roasted Wings - Classic 70 GM. 32251,Lay’s Roasted Wings - Classic 70 GM. 32251,2.69000,3.99,Snacks,6924743921924,,1,False,1.59000,0.00000,0,0,True
+263723,Lay’s Salted Egg Yolk 70 GM. 38335,"Lay’s Salted Egg Yolk 70 GM. ",2.69000,3.99,Snacks,6924743936133,,1,False,1.55000,-616.00000,0,0,True
+249337,Lay’s Scallops 20507,Lay’s Scallops 20507,2.69000,3.99,Snacks,4710543020507,,1,False,1.50000,-24.00000,0,0,True
+248822,Lay’s Seaweed 70 GM. 32262,Lay’s Seaweed 70 GM. 32262,2.69000,3.99,Snacks,6924743919297,ea.,1,False,1.59090,-704.00000,0,0,True
+223763,Lay’s Spicy Crayfish 70 GM. 32261,Lay’s Spicy Crayfish 70 GM.,2.29000,3.69,Snacks,6924743923430,ea.,1,False,1.59000,-16618.00000,0,0,True
+262000,Lay’s Spicy Strip Flavor 70 GM. 37718,Lay’s Spicy Strip Flavor 70 GM.,2.69000,3.99,Snacks,6924743935396,ea.,1,False,1.59000,-2806.00000,0,0,True
+310648,Lay's STAX Beef Pie 90 GM.,Lay's STAX Beef Pie 90 GM.,2.99000,4.99,Snacks,6924743938236,ea.,1,False,1.99000,-10.00000,0,0,True
+310647,Lay's STAX CAN Black Pepper Steak 90 GM.,Lay's STAX CAN Black Pepper Steak 90 GM.,2.99000,4.99,Snacks,6924743927919,ea.,1,False,1.99000,-43.00000,0,0,True
+321884,Lay's STAX CAN Black Truffle Flv. 90 GM.,Lay's STAX CAN Black Truffle Flv. 90 GM.,2.99000,4.99,Snacks,6924743936010,ea.,1,False,1.77500,0.00000,0,0,True
+320162,Lay's STAX CAN Onion Flv. 90 GM.,Lay's STAX CAN Onion Flv. 90 GM.,2.99000,4.99,Snacks,6924743936027,ea.,1,False,1.77500,-20.00000,0,0,True
+320161,"Lay's STAX CAN Original Flv. 90 GM. ","Lay's STAX CAN Original Flv. 90 GM. ",2.99000,4.99,Snacks,6924743927858,ea.,1,False,1.76000,-20.00000,0,0,True
+320160,Lay's STAX CAN Spicy Flv. 90 GM.,Lay's STAX CAN Spicy Flv. 90 GM.,2.99000,4.99,Snacks,6924743935976,ea.,1,False,1.76000,-20.00000,0,0,True
+264418,"Lay’s STAX Mustard Avocado 90 GM. 38236 ","Lay’s STAX Mustard Avocado 90 GM. ",2.99000,4.99,Snacks,6924743935990,ea.,1,False,1.77500,-46.00000,0,0,True
+264417,"Lay’s STAX Sizzle Barbecue 90 GM. 26996 ","Lay’s STAX Sizzle Barbecue 90 GM. ",2.99000,4.99,Snacks,6924743927902,ea.,1,False,1.99000,-68.00000,0,0,True
+261998,Lay’s Sweet & Sour Crispy Pork 70 GM. 37739,Lay’s Sweet & Sour Crispy Pork 70 GM.,2.69000,3.99,Snacks,6924743935518,,1,False,1.55500,-198.00000,0,0,True
+223764,Lay's TEXAS BBQ Grill 70 GM. 39202 / 32241,Lay's TEXAS BBQ Grill 70 GM.,2.29000,3.69,Snacks,6924743919228,ea.,1,False,1.59000,-13393.00000,0,0,True
+223775,Lay’s Tokyo Teriyaki,Lay’s Tokyo Teriyaki,2.64000,3.99,Snacks,4710543011345,,1,False,1.79000,-36.00000,0,0,True
+265423,Lay’s TORO Black Pepper 70 GM. 32153,Lay’s TORO Black Pepper 70 GM.,2.69000,3.99,Snacks,6924743925076,,1,False,1.65000,-22.00000,0,0,True
+258150,Lay’s Toro Lime 60 GM. 32156,Lay’s Toro Lime 60 GM. 32156,2.69000,3.99,Snacks,6924743925069,ea.,1,False,1.85000,-44.00000,0,0,True
+263483,Lay’s TSINGTAO Beer Museum 70 GM. 37737,Lay’s TSINGTAO Beer Museum 70 GM. 37737,2.69000,3.99,Snacks,6924743935495,,1,False,1.59000,-528.00000,0,0,True
+262011,Lay’s Turkey Noodles Flv. 70 GM. 37731,Lay’s Turkey Noodles Flv. 70 GM.,2.29000,3.69,Snacks,6924743935426,ea.,1,False,1.59000,-8000.00000,0,0,True
+245670,Lay’s West Indies Hot N Sweet Chilli 48 GM.,Lay’s West Indies Hot N Sweet Chilli 48 GM.,1.29000,2.29,Snacks,8901491100267,ea.,1,False,0.55000,-1806.00000,0,0,True
+241349,Lay’s Zunyi Rice Noodles Flavor 70 GM. 33591,Lay’s Zunyi Rice Noodles Flavor 70 GM. 33591,2.69000,3.99,Snacks,6924743932937,,1,False,1.85000,-44.00000,0,0,True
+314594,Lima Breakfast Castella Banana Cake,Lima Breakfast Castella Banana Cake,2.29000,3.99,Snacks,4903399101845,ea.,1,False,1.45000,-48.00000,0,0,True
+314595,LIMA Stick Soft Cake Strawberry,LIMA Stick Soft Cake Strawberry,2.29000,3.99,Snacks,4903399102231,ea.,1,False,1.45000,-59.00000,0,0,True
+162717,Manzela Japanese style Peanuts,Manzela Japanese style Peanuts,13.00000,0.69,Snacks,856905003710,box,40,False,9.75000,-1.00000,0,0,True
+233453,Mido Food Trading Purchased,Mido Food Trading Purchased,4579.94000,8500.00,Snacks,084272789012,box,1,False,3572.35000,3.00000,0,0,True
+298526,Milka Choco Cookies Nut 135 GM.,Milka Choco Cookies Nut 135 GM.,2.99000,4.99,Snacks,7622202260810,,1,False,1.89000,-307.00000,0,0,True
+271370,Milka Choco CREME Cookie 260 GM.,Milka Choco CREME Cookie 260 GM.,4.99000,7.99,Snacks,7622210717696,ea.,1,False,3.99000,0.00000,0,0,True
+298531,Milka Choco Mini STARS 150 GM.,Milka Choco Mini STARS 150 GM.,2.99000,4.99,Snacks,891128141078,ea.,1,False,1.82000,-87.00000,0,0,True
+292816,Milka Choco Sticks 112 GM.,Milka Choco Sticks 112 GM.,2.99000,4.99,Snacks,891128141221,,1,False,1.88000,-708.00000,0,0,True
+302687,Milka MONOPOLY Choc & Choc 150 GM.,Milka MONOPOLY Choc & Choc 150 GM.,3.59000,5.99,Snacks," 891128141504",ea.,1,False,2.55000,-102.00000,0,0,True
+298529,MODA Baklava Pistachio 32 GM. - 24 Ct.,MODA Baklava Pistachio 32 GM. - 24 Ct.,23.76000,1.79,Snacks,810185681365,box,24,False,16.56000,-94.00000,0,0,True
+298528,MODA Baklava Walnut 32 GM. - 24 Ct.,MODA Baklava Walnut 32 GM. - 24 Ct.,23.76000,1.79,Snacks,810185681372,box,24,False,13.68000,-87.00000,0,0,True
+272130,Mr. Bite WHOMP Hazelnut 40 GM.,Mr. Bite WHOMP Hazelnut 40 GM.,1.29000,2.29,Snacks,8697439309303,,1,False,0.55000,-1800.00000,0,0,True
+304720,MY MOTTO Hazelnut & Cocoa Wafers 3 Pk.,MY MOTTO Hazelnut & Cocoa Wafers 3 Pk.,1.59000,2.89,Snacks,812820023004,ea.,1,False,1.05000,-488.00000,0,0,True
+304721,MY MOTTO TIRAMISU Wafers 3 Pk.,MY MOTTO TIRAMISU Wafers 3 Pk.,1.59000,2.89,Snacks,812820022991,ea.,1,False,1.05000,-503.00000,0,0,True
+245122,NABISCO Korean Ritz Sandwich Cracker CHOCO,NABISCO Korean Ritz Sandwich Cracker CHOCO,2.49000,4.39,Snacks,8801037094374,ea.,1,False,1.70000,-117.00000,0,0,True
+308163,"NABISCO Korean Ritz White Cookies ",NABISCO Korean Ritz White Cookies,2.59000,4.39,Snacks,8801037094664,,1,False,1.75000,-149.00000,0,0,True
+263946,NARUTO Ramune Wtl. 200 Ml. 7243,NARUTO Ramune Wtl. 200 Ml.,2.19000,3.69,Snacks,074601176518,ea.,1,False,1.69680,-51.00000,0,0,True
+318682,NONGSHIM Shrimp GGANG Black Truffle Flv. 42300,NONGSHIM Shrimp GGANG Black Truffle Flv.,2.35000,3.89,Snacks,8801043062183,,1,False,1.40000,-160.00000,0,0,True
+234118,OCM Houston INC. Purchased,OCM Houston INC. Purchased,59.18000,0.00,Snacks,022011025012,box,22,False,27.50000,2270.24220,0,0,True
+232965,OREO Birthday Cake 194 GM.,OREO Birthday Cake 194 GM.,3.49000,5.99,Snacks,6901668006042,,1,False,1.95000,-123.00000,0,0,True
+228614,OREO Blueberry & Raspberry 194 GM.,OREO Blueberry & Raspberry 194 GM.,3.49000,5.99,Snacks,6901668006011,ea.,1,False,1.99000,-75.00000,0,0,True
+223762,OREO Blueberry Raspberry 97 GM. 44017,OREO Blueberry Raspberry 97 GM.,2.25000,3.99,Snacks,6901668005915,ea.,1,False,1.39000,-4438.00000,0,0,True
+245669,OREO Cheese Flv. 97 GM 13934,OREO Cheese Flv. 97 GM,2.25000,3.99,Snacks,6901668937919,ea.,1,False,1.88000,-136.00000,0,0,True
+242232,OREO Choco 97 GM.,OREO Choco 97 GM.,2.25000,3.99,Snacks,6901668935762,ea.,1,False,1.88000,-367.00000,0,0,True
+234008,"OREO Chocolate Crème ","OREO Chocolate Crème ",2.79000,4.49,Snacks,8801037088205,,1,False,2.00000,-125.00000,0,0,True
+230612,OREO Cinnamon Bun Cookies 80 GM.,OREO Cinnamon Bun Cookies 80 GM.,2.79000,4.49,Snacks,8801037095302,,1,False,1.89000,-238.00000,0,0,True
+231412,OREO Cookies Birthday Cake 44020,OREO Cookies Birthday Cake,2.25000,3.99,Snacks,6901668005946,ea.,1,False,1.39000,-4967.00000,0,0,True
+234006,OREO Cookies Coca Cola LE 15733,OREO Cookies Coca Cola LE,2.79000,4.79,Snacks,6901668938558,,1,False,2.00000,-411.00000,0,0,True
+228613,OREO Cookies Grape & Peach 44019,OREO Cookies Grape & Peach,2.25000,3.99,Snacks,6901668005939,ea.,1,False,1.39000,-2953.00000,0,0,True
+223761,OREO Cookies Matcha Ice Cream 44015,OREO Cookies Matcha Ice Cream,2.25000,3.99,Snacks,6901668005892,ea.,1,False,1.39000,-4133.00000,0,0,True
+311731,OREO Cookies Pistachio & Cheese 29629,OREO Cookies Pistachio & Cheese,2.25000,3.99,Snacks,6901668943194,ea.,1,False,1.39000,-172.00000,0,0,True
+320031,OREO Cookies Popcorn Flv.,OREO Cookies Popcorn Flv.,2.25000,3.99,Snacks,6901668944283,,1,False,1.31300,-45.00000,0,0,True
+242305,OREO Cookies Strawberry 05125,OREO Cookies Strawberry,2.25000,3.99,Snacks,6901668935748,ea.,1,False,1.39000,-5011.00000,0,0,True
+263945,OREO Crispy Roll Strawberry 05826,OREO Crispy Roll Strawberry 05826,1.99000,3.49,Snacks,6901668936332,ea.,1,False,1.51250,-72.00000,0,0,True
+308164,OREO Korean Tiramisu Cookies 9117,OREO Korean Tiramisu Cookies,2.49000,4.39,Snacks,8801037091106,ea.,1,False,1.75000,-196.00000,0,0,True
+260220,OREO Matcha Fig 95 GM. 6901668934888,OREO Matcha Fig 95 GM.,2.79000,4.69,Snacks,6901668934888,ea.,1,False,1.88000,-125.00000,0,0,True
+229747,"OREO Matcha Ice Cream Cookies 194 GM. ","OREO Matcha Ice Cream Cookies 194 GM. ",3.49000,5.99,Snacks,6901668005991,ea.,1,False,1.99000,-135.00000,0,0,True
+305638,OREO Matsutake Mushroom Flv. 4327772,OREO Matsutake Mushroom Flv.,2.25000,3.99,Snacks,6901668942340,ea.,1,False,1.39000,-332.00000,0,0,True
+228615,OREO Peach Cloud Cakester,OREO Peach Cloud Cakester,3.49000,4.99,Snacks,6901668936110,,1,False,2.85000,-39.00000,0,0,True
+230613,OREO Peach GRAPE Large,OREO Peach GRAPE Large,3.49000,5.99,Snacks,6901668006035,,1,False,1.99000,-49.00000,0,0,True
+242233,OREO Peach Oolong 97 GM. 58800,OREO Peach Oolong 97 GM.,2.25000,3.99,Snacks,6901668927910,ea.,1,False,1.39000,-3776.00000,0,0,True
+260242,OREO Rose 95 GM. 76461,OREO Rose 95 GM.,2.79000,4.69,Snacks,6901668933232,,1,False,1.88000,-659.00000,0,0,True
+258344,OREO Sandwich 97 GM.,OREO Sandwich 97 GM.,2.79000,4.69,Snacks,6901668935724,,1,False,1.89000,-88.00000,0,0,True
+258601,OREO Sandwich PEONY,OREO Sandwich PEONY,2.79000,4.69,Snacks,6901668939500,,1,False,1.89000,-54.00000,0,0,True
+258600,OREO Sandwich Sesame & Cream,OREO Sandwich Sesame & Cream,2.79000,4.69,Snacks,6901668939524,,1,False,1.89000,-54.00000,0,0,True
+315028,OREO Soft Cake Jasmine & Pistachio 132 GM.,OREO Soft Cake Jasmine & Pistachio 132 GM.,2.99000,5.49,Snacks,6901668942500,ea.,1,False,1.67000,-107.00000,0,0,True
+305632,OREO Soft Cake Orange & Chocolate 132 GM. 4323905,OREO Soft Cake Orange & Chocolate 132 GM.,2.99000,5.49,Snacks,6901668940773,ea.,1,False,1.67000,-161.00000,0,0,True
+305633,OREO Soft Cake Strawberry 132 GM. 20216814,OREO Soft Cake Strawberry 132 GM.,2.99000,5.49,Snacks,6901668940735,ea.,1,False,1.67000,-116.00000,0,0,True
+305640,OREO Sticky Bean Flv. 4327765,OREO Sticky Bean Flv.,2.25000,3.99,Snacks,6901668942289,ea.,1,False,1.39000,-295.00000,0,0,True
+231413,OREO Strawberry 35731,OREO Strawberry 35731,2.79000,4.49,Snacks,8801037088243,,1,False,2.00000,-283.00000,0,0,True
+307774,OREO Strawberry Cheesecake SPAIN 154 GM.,OREO Strawberry Cheesecake SPAIN 154 GM.,2.79000,4.69,Snacks,7622210633354,,1,False,1.95000,-31.00000,0,0,True
+229748,OREO Strawberry Cookies 194 GM.,OREO Strawberry Cookies 194 GM.,3.49000,5.99,Snacks,6901668935922,,1,False,1.99000,-19.00000,0,0,True
+319378,OREO THINS Chocolate Mousse,OREO THINS Chocolate Mousse,2.59000,4.39,Snacks,8801037094763,,1,False,1.70000,-109.00000,0,0,True
+245345,OREO Thin Strawberry Fig 95 GM 02213,OREO Thin Strawberry Fig 95 GM,2.79000,4.69,Snacks,6901668934925,,1,False,1.88000,-320.00000,0,0,True
+245121,OREO THINS White Crème 9691,OREO THINS White Crème,2.59000,4.49,Snacks,8801037091113,,1,False,1.70000,-88.00000,0,0,True
+245309,OREO Thin Vanilla 95 GM. 2212,OREO Thin Vanilla,2.79000,4.69,Snacks,6901668934901,,1,False,1.88000,-276.00000,0,0,True
+262347,ORION French Fried Grilled Chicken 70 GM 141,ORION French Fried Grilled Chicken 70 GM,2.89000,4.39,Snacks,6920907808612,,1,False,1.95000,-20.00000,0,0,True
+260462,ORION French Fries Beef 70 GM.,ORION French Fries Beef 70 GM.,2.85000,4.29,Snacks,6920907808575,,1,False,1.95000,-80.00000,0,0,True
+260461,ORION French Fries Spicy Crayfish 70 GM.,ORION French Fries Spicy Crayfish 70 GM.,2.85000,4.29,Snacks,6920907814637,ea.,1,False,1.95000,-60.00000,0,0,True
+260464,ORION French Fries Tomato 70 GM.,ORION French Fries Tomato 70 GM.,2.85000,4.29,Snacks,6920907808537,ea.,1,False,1.95000,-38.00000,0,0,True
+314596,ORION Fresh Berry Pie 168 GM. 54028,ORION Fresh Berry Pie 168 GM.,4.39000,7.49,Snacks,8801117540210,,1,False,3.25000,0.00000,0,0,True
+321889,ORION Potato Chips Coriander TACO Flv.,ORION Potato Chips Coriander TACO Flv.,2.15000,3.59,Snacks,6920907832273,ea.,1,False,1.24000,0.00000,0,0,True
+320163,ORION Potato Chips - Kimchi 70 GM.,ORION Potato Chips - Kimchi 70 GM.,2.15000,3.59,Snacks,6920907823622,ea.,1,False,1.24000,-44.00000,0,0,True
+320164,ORION Potato Chips Mushroom Flv. 70 GM.,ORION Potato Chips Mushroom Flv. 70 GM.,2.15000,3.59,Snacks,6920907832051,ea.,1,False,1.24000,-24.00000,0,0,True
+320165,ORION Potato Chips Peppercorn Flv. 65 GM.,ORION Potato Chips Peppercorn Flv. 65 GM.,2.15000,3.59,Snacks,6920907827088,ea.,1,False,1.24000,-24.00000,0,0,True
+162723,Palanqueta Mixed Nuts BAR,Palanqueta Mixed Nuts BAR,8.89000,1.99,Snacks,739944010355,box,9,False,6.60000,-2.00000,0,0,True
+155054,Palanqueta Mixta  9 PCs.,Palanqueta Mixta  9 PCs.,7.75000,1.85,Snacks,739944010119,box,9,False,5.95000,-4.00000,0,0,True
+321882,Panpan Rice Cracker Coca Flv. 105 GM.,Panpan Rice Cracker Coca Flv. 105 GM.,2.15000,3.69,Snacks,6936480217451,ea.,1,False,1.15000,0.00000,0,0,True
+321883,Panpan Rice Cracker Spicy Chicken Flv. 105 GM.,Panpan Rice Cracker Spicy Chicken Flv. 105 GM.,2.15000,3.69,Snacks,6936480217468,ea.,1,False,1.15000,0.00000,0,0,True
+229566,PC Beef Jerky Carne Seca HGC 2.5 Oz.,PC Beef Jerky Carne Seca HGC 2.5 Oz.,3.99000,7.49,Snacks,087694177751,,1,False,3.99000,-6.00000,0,0,True
+229567,PC Beef Jerky Orange HT 2.5 Oz.,PC Beef Jerky Orange HT 2.5 Oz.,3.99000,7.49,Snacks,087694003104,,1,False,3.99000,-6.00000,0,0,True
+271829,Phoenicia products,Phoenicia products,24.53000,4.49,Snacks,086001140010,ea.,1,False,17.17000,6297.00000,0,0,True
+283598,Pocky Wafer Sticks Matcha Ice Cream 48 GM.,Pocky Wafer Sticks Matcha Ice Cream 48 GM.,1.89000,3.49,Snacks,6901845046007,ea.,1,False,1.45000,-28.00000,0,0,True
+303049,Polus CHOCO Shocks Hazelnuts,Polus CHOCO Shocks Hazelnuts,1.09000,1.99,Snacks,4820204210045,,1,False,0.66000,-70.00000,0,0,True
+308158,PRINGLES BBQ LOVERS Pizza,PRINGLES BBQ LOVERS Pizza,2.99000,4.99,Snacks,8886467124785,,1,False,2.39000,-16.00000,0,0,True
+308159,PRINGLES Caribbean Spiced Chicken,PRINGLES Caribbean Spiced Chicken,2.99000,4.99,Snacks,8886467128820,ea.,1,False,2.39000,-127.00000,0,0,True
+223778,Pringles Chili Lemon CRAB,Pringles Chili Lemon CRAB,2.69000,4.99,Snacks,6958652302789,,1,False,2.05000,-36.00000,0,0,True
+321814,PRINGLES Hot & Spicy Flv.,PRINGLES Hot & Spicy Flv.,2.99000,4.99,Snacks,8886467100055,ea.,1,False,2.00000,-8.00000,0,0,True
+308160,PRINGLES Korean Fried Chicken,PRINGLES Korean Fried Chicken,2.99000,4.99,Snacks,8886467128837,ea.,1,False,2.39000,-116.00000,0,0,True
+318685,PRINGLES Rich Cheesy Garlic Flv.,PRINGLES Rich Cheesy Garlic Flv.,2.99000,4.99,Snacks,8886467124778,,1,False,2.39000,-100.00000,0,0,True
+223777,Pringles Spicy Crayfish,Pringles Spicy Crayfish,2.69000,4.99,Snacks,6958652300761,,1,False,2.05000,-36.00000,0,0,True
+321813,PRINGLES Spicy TEXAS style BBQ,PRINGLES Spicy TEXAS style BBQ,2.99000,4.99,Snacks,8886467130960,ea.,1,False,2.39000,-8.00000,0,0,True
+233411,RAMUNE Green Apple POP Soda 209 Ml.,RAMUNE Green Apple POP Soda 209 Ml.,2.19000,3.69,Snacks,4950834100987,ea.,1,False,1.80000,-23.00000,0,0,True
+233413,RAMUNE Hawaiian BLUE POP Soda 209 Ml.,RAMUNE Hawaiian BLUE POP Soda 209 Ml.,2.19000,3.69,Snacks,4950834100802,ea.,1,False,1.80000,-24.00000,0,0,True
+263466,Ramune Soda 200 Ml from Two Bros. Food,Ramune Soda 200 Ml from Two Bros. Food,2.19000,3.99,Snacks,176189126012,ea.,1,False,1.59000,0.00000,0,0,True
+233412,RAMUNE Strawberry POP Soda 209 Ml.,RAMUNE Strawberry POP Soda 209 Ml.,2.19000,3.69,Snacks,4950834100949,ea.,1,False,1.80000,-24.00000,0,0,True
+152023,Rancherito Large,Rancherito Large,2.39000,3.99,Snacks,7501011114517,ea.,1,False,1.69000,-64.00000,0,0,True
+314960,Ritter SPORT Strawberry Yogurt 100 GM.,Ritter SPORT Strawberry Yogurt 100 GM.,3.39000,5.99,Snacks,050255237003,,1,False,2.34000,-131.00000,0,0,True
+223776,Ritz Cheese Sandwich Crackers,Ritz Cheese Sandwich Crackers,3.99000,6.49,Snacks,4547894640234,,1,False,3.00000,-17.00000,0,0,True
+234007,Ritz Cracker LEMON,Ritz Cracker LEMON,2.79000,4.49,Snacks,8801037093452,,1,False,2.00000,-110.00000,0,0,True
+242304,Ritz Lemon Small 2 Rolls 13989,Ritz Lemon Small 2 Rolls,2.29000,3.99,Snacks,6901668938138,,1,False,1.69000,-136.00000,0,0,True
+223772,Ruffles All Dressed,Ruffles All Dressed,1.99000,3.29,Snacks,060410048665,,1,False,1.30000,-59.00000,0,0,True
+162740,Ruffles QUESO 120 GM.,Ruffles QUESO 120 GM.,2.49000,3.99,Snacks,7501011167674,ea.,1,False,2.15000,5.00000,0,0,True
+303871,Russian AZOVSKAYA Halva Plain 350 GM.,Russian AZOVSKAYA Halva Plain 350 GM.,2.99000,4.99,Snacks,4620004250094,,1,False,1.99000,-2.00000,0,0,True
+303872,Russian AZOVSKAYA Halva with Sunflower Kernel 350 GM.,Russian AZOVSKAYA Halva with Sunflower Kernel 350 GM.,2.99000,4.99,Snacks,4620004256515,,1,False,1.99000,-2.00000,0,0,True
+303870,Russian AZOVSKAYA KF Halva with Peanut 350 GM.,Russian AZOVSKAYA KF Halva with Peanut 350 GM.,2.99000,4.99,Snacks,4620004250100,,1,False,1.99000,-2.00000,0,0,True
+303879,Russian CHUDO-YAGODA Cream Roll Apricot 200 GR.,Russian CHUDO-YAGODA Cream Roll Apricot 200 GR.,2.99000,4.99,Snacks,4601513012335,,1,False,1.99000,-43.00000,0,0,True
+303880,Russian CHUDO-YAGODA Cream Roll Strawberry 200 GR.,Russian CHUDO-YAGODA Cream Roll Strawberry 200 GR.,2.99000,4.99,Snacks,4601513012359,,1,False,1.99000,-43.00000,0,0,True
+303869,Russian KOROVKA Wafer Baked Milk 150 GM.,Russian KOROVKA Wafer Baked Milk 150 GM.,1.79000,3.29,Snacks,4600080322106,,1,False,1.37000,-108.00000,0,0,True
+303859,Russian KOROVKA Wafer Chocolate 150 GM.,Russian KOROVKA Wafer Chocolate 150 GM.,1.79000,3.29,Snacks,4600080322137,,1,False,1.37000,-110.00000,0,0,True
+310724,SABLE Soft Cookie Blueberry Yogurt,SABLE Soft Cookie Blueberry Yogurt,2.49000,4.29,Snacks,6972914150338,ea.,1,False,1.70000,-113.00000,0,0,True
+314625,SABLE Soft Cookie Chocolate Flv.,SABLE Soft Cookie Chocolate Flv.,2.49000,4.29,Snacks,6972914150345,ea.,1,False,1.70000,-14.00000,0,0,True
+310723,SABLE Soft Cookie Mango Cranberry,SABLE Soft Cookie Mango Cranberry,2.49000,4.29,Snacks,6972914150314,ea.,1,False,1.70000,-90.00000,0,0,True
+310725,SABLE Soft Cookie Matcha,SABLE Soft Cookie Matcha,2.49000,4.29,Snacks,6972914150352,ea.,1,False,1.70000,-91.00000,0,0,True
+298502,SNICKERS Berry WHIP Chocolate 15 Ct. 8902433005787,SNICKERS Berry WHIP Chocolate 15 Ct.,32.85000,3.69,Snacks,8902433005794,,15,False,23.10000,-17.00000,0,0,True
+292626,Stark Group International INC.,Stark Group International INC.,9238.57000,16797.40,Snacks,043168182001,box,4040,False,6467.00000,10.00000,0,0,True
+313943,ST Mochi Crunch Rice Snacks 3.5 Oz.,ST Mochi Crunch Rice Snacks 3.5 Oz.,2.49000,4.49,Snacks,829354102259,ea.,1,False,1.80000,-36.00000,0,0,True
+303048,STRUDLA Exotic Cherry Jam Cookies 165 GM.,STRUDLA Exotic Cherry Jam Cookies 165 GM.,2.49000,4.49,Snacks,5310115001782,ea.,1,False,1.37000,-6.00000,0,0,True
+303047,STRUDLA Exotic Fig Jam Cookies 165 GM.,STRUDLA Exotic Fig Jam Cookies 165 GM.,2.49000,4.49,Snacks,5310115001751,ea.,1,False,1.37000,-6.00000,0,0,True
+302807,TENGEN Products Purchased,TENGEN Products Purchased,125.00000,200.00,Snacks,202602620112,ea.,1,False,100.00000,8.00000,0,0,True
+298555,Toren CORNERS cornflakes  Choco flavor - 24 Ct. 8697439301529,Toren CORNERS cornflakes Choco flavor - 24 Ct.,30.00000,2.29,Snacks,8697439301512,,24,False,17.28000,-39.00000,0,0,True
+298556,Toren CORNERS cornflakes Strawberry - 24 Ct. 8697439301864,Toren CORNERS cornflakes Strawberry - 24 Ct.,30.00000,2.29,Snacks,8697439301857,box,24,False,17.28000,-39.00000,0,0,True
+298557,Toren Nusso Hazelnuts & CHOCO - 24 Ct. 8697439300836,Toren Nusso Hazelnuts & CHOCO - 24 Ct.,22.00000,1.69,Snacks,8697439300829,,24,False,11.52000,-34.00000,0,0,True
+160051,Twang Lemon Lime Salt 10 Ct. Box,Twang Lemon Lime Salt 10 Ct. Box,10.99000,1.99,Snacks,023604213065,box,10,False,8.50000,-1.00000,0,0,True
+264277,Two Bros. products purchased,Two Bros. products purchased,125.00000,0.00,Snacks,215002589012,box,1,False,100.00000,2.00000,0,0,True
+312760,UHA Kogumi Assorted Drink Candy 80 GM.,UHA Kogumi Assorted Drink Candy 80 GM.,2.59000,4.49,Snacks,4902750693371,ea.,1,False,1.51000,-30.00000,0,0,True
+261426,Vishala Grocery,Vishala Grocery,103.03000,2.29,Snacks,063586809012,box,80,False,34.00000,16.00000,0,0,True
+223773,Walkers MAX Texan BBQ,Walkers MAX Texan BBQ,1.49000,2.29,Snacks,5000328022611,,1,False,1.40000,-12.00000,0,0,True
+302813,WHP BABY STAR Ramen Big 68 GM.,WHP BABY STAR Ramen Big 68 GM.,1.75000,2.79,Snacks,4902775070287,,1,False,1.40000,-24.00000,0,0,True
+297242,WHP Bergen Cookies Bubble GUM 128 GM.,WHP Bergen Cookies Bubble GUM 128 GM.,2.55000,4.49,Snacks,5902379315622,,1,False,1.81000,0.00000,0,0,True
+301563,WHP Bergen Cookies Cream Chocolate & Vanilla 128 GM.,WHP Bergen Cookies Cream Chocolate & Vanilla 128 GM.,2.55000,4.49,Snacks,5902379145687,,1,False,1.81000,-59.00000,0,0,True
+297243,WHP Bergen Cookies Peanut Butter Cocoa 128 GM.,WHP Bergen Cookies Peanut Butter Cocoa 128 GM.,2.55000,4.49,Snacks,5902379105636,,1,False,1.81000,-43.00000,0,0,True
+297244,WHP Bergen Cookies Pistachio Cream 128 GM.,WHP Bergen Cookies Pistachio Cream 128 GM.,2.55000,4.49,Snacks,5902379010831,,1,False,1.81000,-70.00000,0,0,True
+301561,WHP Bergen Cookies Pistachio Cream in Milk Glaze 128 GM.,WHP Bergen Cookies Pistachio Cream in Milk Glaze 128 GM.,2.55000,4.49,Snacks,5902379015638,,1,False,1.81000,-15.00000,0,0,True
+303989,"WHP Bergen Cookies Salty Caramel 128 GM. ","WHP Bergen Cookies Salty Caramel 128 GM. ",2.55000,4.49,Snacks,5902379185836,,1,False,1.81000,-26.00000,0,0,True
+297245,WHP Bergen Cookies White Chocolate Red Velvet 128 GM.,WHP Bergen Cookies White Chocolate Red Velvet 128 GM.,2.55000,4.49,Snacks,5902379305630,,1,False,1.81000,-35.00000,0,0,True
+305695,WHP Buldak Ramen Noodles Carbonara,WHP Buldak Ramen Noodles Carbonara,1.49000,2.69,Snacks,8801073113893,,1,False,1.10000,-25.00000,0,0,True
+305696,WHP Buldak Ramen Spicy Chicken Noodles 8801073140578,WHP Buldak Ramen Spicy Chicken Noodles 8801073140578,1.49000,2.69,Snacks,8801073110502,,1,False,1.10000,-50.00000,0,0,True
+311336,WHP CADINA Japanese Grilled Pork Flv. 063041,WHP CADINA Japanese Grilled Pork Flv. 063041,2.09000,2.99,Snacks,4710022049500,,1,False,1.60000,-12.00000,0,0,True
+314627,WHP CADINA Taro Chips Original Flv. 064190,WHP CADINA Taro Chips Original Flv.,2.09000,3.29,Snacks,4710022020752,,1,False,1.60000,-101.00000,0,0,True
+301086,WHP Calbee JagaRico Umami Seaweed 62609,WHP Calbee JagaRico Umami Seaweed,2.09000,3.29,Snacks,071146006157,,1,False,1.60000,0.00000,0,0,True
+297083,WHP Calbee Onion Rings 2.12 Oz. - 82704,WHP Calbee Onion Rings 2.12 Oz.,2.35000,3.99,Snacks,071146008915,ea.,1,False,2.00000,-72.00000,0,0,True
+297081,WHP Calbee Pizza Potato Chips 72 GM. 61775,WHP Calbee Pizza Potato Chips 72 GM.,2.35000,3.99,Snacks,071146005884,ea.,1,False,2.00000,-24.00000,0,0,True
+297084,WHP Calbee Shrimp Chips Chili lime 94 GM. 85841,WHP Calbee Shrimp Chips Chili lime 94 GM. 85841,2.35000,3.99,Snacks,071146009561,,1,False,2.00000,-141.00000,0,0,True
+301087,WHP Calbee Shrimp Roasted Seaweed Chips 3.3 Oz.,WHP Calbee Shrimp Roasted Seaweed Chips 3.3 Oz.,2.35000,3.99,Snacks,071146009578,ea.,1,False,2.00000,0.00000,0,0,True
+297082,WHP Calbee Takoyaki Ball 90 GM. 63259,WHP Calbee Takoyaki Ball 90 GM.,2.35000,3.69,Snacks,071146006638,ea.,1,False,2.00000,-72.00000,0,0,True
+306277,WHP Calbee Takoyaki Ball Kimchi,WHP Calbee Takoyaki Ball Kimchi,2.39000,3.69,Snacks,071146011519,ea.,1,False,2.00000,-131.00000,0,0,True
+306435,WHP CRAYON Shinchan Noodle Snack BBQ Flv. 90 GM. 828001,WHP CRAYON Shinchan Noodle Snack BBQ Flv. 90 GM. 828001,1.99000,3.19,Snacks,8809486990247,,1,False,1.21000,-16.00000,0,0,True
+306436,WHP CRAYON Shinchan Noodle Snack Korean Chicken 90 GM. 828003,WHP CRAYON Shinchan Noodle Snack Korean Chicken 90 GM. 828003,1.99000,3.19,Snacks,8809486990261,,1,False,1.21000,-22.00000,0,0,True
+313927,WHP Dessert MOCHI Cookies et Crème,WHP Dessert MOCHI Cookies et Crème,2.69000,4.69,Snacks,4711516791950,,1,False,2.00000,-39.00000,0,0,True
+313925,WHP Dessert MOCHI Dubai Chocolate,WHP Dessert MOCHI Dubai Chocolate,2.69000,4.69,Snacks,4711516792001,,1,False,2.00000,-39.00000,0,0,True
+313935,WHP Dessert MOCHI Strawberry Cheesecake,WHP Dessert MOCHI Strawberry Cheesecake,2.69000,4.69,Snacks,4711516791981,,1,False,2.00000,-47.00000,0,0,True
+313934,WHP Dessert MOCHI Tiramisu,WHP Dessert MOCHI Tiramisu,2.69000,4.69,Snacks,4711516791967,,1,False,2.00000,-31.00000,0,0,True
+319368,WHP Doritos Chips CILANTRO Flv. 68 GM. D261,WHP Doritos Chips CILANTRO Flv. 68 GM.,2.39000,3.69,Snacks,4710543024888,,1,False,1.85000,-48.00000,0,0,True
+319367,WHP Doritos Chips Garlic Steak Flv. D206,WHP Doritos Chips Garlic Steak Flv.,1.69000,2.69,Snacks,4710543019617,,1,False,1.20000,-60.00000,0,0,True
+312599,WHP Doritos CILANTRO Flv. 518505,WHP Doritos CILANTRO Flv.,1.79000,2.79,Snacks,4710543025960,ea.,1,False,1.20000,-45.00000,0,0,True
+311338,WHP Doritos Garlic Shrimp Chips D202,WHP Doritos Garlic Shrimp Chips,1.69000,2.69,Snacks,4710543013042,ea.,1,False,1.20000,-98.00000,0,0,True
+315064,WHP Doritos Golden Cheese Flv. D198,WHP Doritos Golden Cheese Flv.,1.69000,2.69,Snacks,4710543664022,ea.,1,False,1.25000,-49.00000,0,0,True
+310804,WHP Doritos Hot & Spicy 90 GM. 23378,WHP Doritos Hot & Spicy 90 GM. 23378,2.29000,3.49,Snacks,6924743920576,,1,False,1.70000,-44.00000,0,0,True
+311337,WHP Doritos Jalapeño Chilli Pepper D207,WHP Doritos Jalapeño Chilli Pepper,1.69000,2.69,Snacks,4710543022181,ea.,1,False,1.20000,-96.00000,0,0,True
+297632,WHP Doritos Nacho Cheese 35369,WHP Doritos Nacho Cheese 35369,2.19000,3.99,Snacks,6924743920545,,1,False,1.64000,0.00000,0,0,True
+314629,WHP Doritos Oven Roasted Chicken Flv. 01886,WHP Doritos Oven Roasted Chicken Flv.,2.25000,3.59,Snacks,8801062014002,,1,False,1.65000,-82.00000,0,0,True
+310803,WHP Doritos Smokin BBQ 90 GM.,WHP Doritos Smokin BBQ 90 GM.,2.29000,3.49,Snacks,6924743920606,,1,False,1.70000,-44.00000,0,0,True
+320932,WHP Exotic Cheetos Corn Stick Grilled Turkey Flv.,WHP Exotic Cheetos Corn Stick Grilled Turkey Flv.,1.59000,2.49,Snacks,6924743922730,,1,False,1.15000,-7.00000,0,0,True
+320931,WHP Exotic Cheetos Corn Stick Steak Flv.,WHP Exotic Cheetos Corn Stick Steak Flv.,1.59000,2.49,Snacks,6924743922747,ea.,1,False,1.15000,-1.00000,0,0,True
+321892,WHP Exotic Wrigley's Coffee flv. Chewing Gum,WHP Exotic Wrigley's Coffee flv. Chewing Gum,2.99000,5.29,Snacks,6923450630761,ea.,1,False,2.05000,0.00000,0,0,True
+314630,WHP Fritolay Cheetos Smoky BBQ 01879,WHP Fritolay Cheetos Smoky BBQ,2.09000,3.39,Snacks,8801062289936,,1,False,1.53000,-36.00000,0,0,True
+314631,WHP Fritolay Cheetos Spicy & Sweet 01880,WHP Fritolay Cheetos Spicy & Sweet,2.09000,3.39,Snacks,8801062380015,,1,False,1.53000,-31.00000,0,0,True
+315942,WHP Glico Pocky Almond CRUSH,WHP Glico Pocky Almond CRUSH,1.99000,3.49,Snacks,6901845010206,,1,False,1.46000,-58.00000,0,0,True
+319370,WHP Glico Pocky Blueberry,WHP Glico Pocky Blueberry,1.99000,3.39,Snacks,8801019311345,,1,False,1.25000,-22.00000,0,0,True
+315944,WHP Glico Pocky Cheese Cake,WHP Glico Pocky Cheese Cake,1.99000,3.49,Snacks,6901845046014,,1,False,1.46000,-18.00000,0,0,True
+315941,WHP Glico POCKY Crunchy Strawberry  Sticks 55 GM.,WHP Glico POCKY Crunchy Strawberry  Sticks 55 GM.,2.25000,3.89,Snacks,4901005512429,,1,False,1.75000,-10.00000,0,0,True
+315946,WHP Glico Pocky Hazelnut CRUSH,WHP Glico Pocky Hazelnut CRUSH,1.99000,3.49,Snacks,6901845045529,,1,False,1.46000,-54.00000,0,0,True
+315943,WHP Glico Pocky Lavender & Blueberry,WHP Glico Pocky Lavender & Blueberry,1.99000,3.49,Snacks,6901845044942,,1,False,1.46000,-8.00000,0,0,True
+315945,WHP Glico Pocky Strawberry,WHP Glico Pocky Strawberry,1.99000,3.49,Snacks,6901845041538,,1,False,1.46000,-36.00000,0,0,True
+319369,WHP Glico Pocky Strawberry 128002,WHP Glico Pocky Strawberry,1.99000,3.39,Snacks,8801019310928,,1,False,1.25000,-23.00000,0,0,True
+314632,WHP HAITAI Calbee Osatsu Chips 050240,WHP HAITAI Calbee Osatsu Chips,2.09000,3.49,Snacks,8801019606328,,1,False,1.45000,-12.00000,0,0,True
+301010,WHP Jammie DODGERS Britain - Strawberry 140 GM.,WHP Jammie DODGERS Britain - Strawberry 140 GM.,2.19000,3.69,Snacks,072417328985,,1,False,1.34000,-21.00000,0,0,True
+307131,WHP Japanese Cheetos Cheddar Cheese Jalapeno 70 GM.,WHP Japanese Cheetos Cheddar Cheese Jalapeno 70 GM.,2.09000,3.29,Snacks,4902443544980,ea.,1,False,1.45000,-12.00000,0,0,True
+307129,WHP Japanese Doritos American Spicy Chicken Wings,WHP Japanese Doritos American Spicy Chicken Wings,2.09000,3.29,Snacks,4710543664701,ea.,1,False,1.51000,-48.00000,0,0,True
+307132,WHP Japanese Fritolay Cheetos BBQ Flv. 70 GM. 54502,WHP Japanese Fritolay Cheetos BBQ Flv. 70 GM.,2.09000,3.29,Snacks,4902443545024,,1,False,1.45000,-24.00000,0,0,True
+309252,WHP Japanese KitKat Cacao 10 Pcs.,WHP Japanese KitKat Cacao 10 Pcs.,4.49000,7.49,Snacks,4902201183130,ea.,1,False,3.50000,-10.00000,0,0,True
+306654,WHP Japanese Kitkat Cherry Blossom 9 Pcs.,WHP Japanese Kitkat Cherry Blossom 9 Pcs.,4.49000,7.49,Snacks,4902201183598,ea.,1,False,3.50000,-20.00000,0,0,True
+313010,WHP Japanese Kitkat Ito Matcha Chocolate,WHP Japanese Kitkat Ito Matcha Chocolate,4.49000,7.49,Snacks,4902201184090,ea.,1,False,3.50000,-19.00000,0,0,True
+305038,WHP Japanese Kitkat Matcha 10 Pcs.,WHP Japanese Kitkat Matcha 10 Pcs.,4.49000,7.49,Snacks,4902201183031,ea.,1,False,3.60000,-87.00000,0,0,True
+305037,WHP Japanese Kitkat Strawberry 10 Pcs.,WHP Japanese Kitkat Strawberry 10 Pcs.,4.49000,7.49,Snacks,4902201183055,ea.,1,False,3.35000,-128.00000,0,0,True
+309251,WHP Japanese KitKat with MILO 10 Pcs.,WHP Japanese KitKat with MILO 10 Pcs.,4.49000,7.49,Snacks,4902201182515,ea.,1,False,3.50000,-16.00000,0,0,True
+307133,WHP Japanese SCRON Shrimp Captivated 70 GM. 51025,WHP Japanese SCRON Shrimp Captivated 70 GM.,2.19000,3.39,Snacks,4901335510256,ea.,1,False,1.60000,-62.00000,0,0,True
+308185,WHP JELLY B Konjac Jelly Drink Lychee 220002,WHP JELLY B Konjac Jelly Drink Lychee,1.69000,2.99,Snacks,8804074000254,ea.,1,False,1.30000,-104.00000,0,0,True
+308184,WHP JELLY B Konjac Jelly Drink Mango 220003,WHP JELLY B Konjac Jelly Drink Mango,1.69000,2.99,Snacks,8804074000063,ea.,1,False,1.30000,-104.00000,0,0,True
+308183,WHP JELLY B Konjac Jelly Drink Peach 220001,WHP JELLY B Konjac Jelly Drink Peach,1.69000,2.99,Snacks,8804074500785,ea.,1,False,1.30000,-74.00000,0,0,True
+315236,WHP Kasugai IKA Peanut 62 GM. 01207,WHP Kasugai IKA Peanut 62 GM.,2.19000,3.69,Snacks,4901326012073,,1,False,1.60000,-12.00000,0,0,True
+297070,WHP Koikeya Asian BBQ 54 GM. 30118,WHP Koikeya Asian BBQ 54 GM.,2.09000,3.29,Snacks,4901335006605,ea.,1,False,1.60000,-36.00000,0,0,True
+311339,WHP Koikeya Chips Plum Flv. 06251,WHP Koikeya Chips Plum Flv. 06251,2.19000,3.39,Snacks,4901335006254,,1,False,1.70000,-10.00000,0,0,True
+311335,WHP Koikeya Chips Truffle Scallop Flv.,WHP Koikeya Chips Truffle Scallop Flv.,2.49000,3.69,Snacks,4901335005615,,1,False,2.05000,-19.00000,0,0,True
+301644,WHP Koikeya Corn Snacks Hot Chili 69541,WHP Koikeya Corn Snacks Hot Chili 69541,2.09000,3.39,Snacks,4901335004298,,1,False,1.67000,-302.00000,0,0,True
+297071,WHP Koikeya Corn Snacks Spicy Curry 69538,WHP Koikeya Corn Snacks Spicy Curry,2.09000,3.39,Snacks,4901335004281,ea.,1,False,1.67000,-99.00000,0,0,True
+307128,WHP Koikeya Dontacos Corn Chips Cheese Chili 57 GM.,WHP Koikeya Dontacos Corn Chips Cheese Chili 57 GM.,2.09000,3.25,Snacks,4901335206739,,1,False,1.51000,-36.00000,0,0,True
+297073,WHP Koikeya Hot Chili 54 GM. 81389,WHP Koikeya Hot Chili 54 GM.,2.09000,3.39,Snacks,4901335004984,ea.,1,False,1.67000,-460.00000,0,0,True
+297074,WHP Koikeya PURE POTATO Black Pepper 54 GM. 81818,WHP Koikeya PURE POTATO Black Pepper 54 GM.,2.09000,3.39,Snacks,4901335004557,ea.,1,False,1.67000,-428.00000,0,0,True
+297080,WHP Koikeya PURE POTATO Original Sea Salt 54 GM. 80479,WHP Koikeya PURE POTATO Original Sea Salt 54 GM.,2.09000,3.39,Snacks,4901335004533,,1,False,1.67000,-214.00000,0,0,True
+302814,WHP Koikeya Scron Grilled Corn 73 GM. 51026,WHP Koikeya Scron Grilled Corn 73 GM.,2.15000,3.39,Snacks,4901335510263,,1,False,1.64000,-48.00000,0,0,True
+302518,WHP Koikeya Spicy Seaweed 24351,WHP Koikeya Spicy Seaweed 24351,2.09000,3.39,Snacks,4901335006582,,1,False,1.67000,-416.00000,0,0,True
+297077,WHP Koikeya Sriracha Chili Sauce 54 GM. 87650,WHP Koikeya Sriracha Chili Sauce 54 GM.,2.09000,3.39,Snacks,4901335006414,ea.,1,False,1.67000,-491.00000,0,0,True
+303034,WHP Koikeya STRONG Super Hit CHILI 54 GM. 69532,WHP Koikeya STRONG Super Hit CHILI 54 GM.,2.09000,3.19,Snacks,4901335004243,,1,False,1.67000,-140.00000,0,0,True
+302816,WHP Koikeya SUPPA-MUCHO PLUM Potato Chips,WHP Koikeya SUPPA-MUCHO PLUM Potato Chips,2.09000,3.39,Snacks,4901335124514,,1,False,1.60000,-24.00000,0,0,True
+297075,WHP Koikeya Yangnyeom Chicken 54 GM. 88062,WHP Koikeya Yangnyeom Chicken 54 GM.,2.09000,3.39,Snacks,4901335006438,ea.,1,False,1.67000,-375.00000,0,0,True
+319399,WHP KOLOKO Cracker Garlic Crab Flv.,WHP KOLOKO Cracker Garlic Crab Flv.,2.09000,3.49,Snacks,4710022063520,,1,False,1.40000,-61.00000,0,0,True
+311328,WHP KOLOKO Cracker Garlic Sausage 160 GM. 067264,WHP KOLOKO Cracker Garlic Sausage 160 GM. 067264,2.59000,3.99,Snacks,4710022073772,,1,False,1.90000,-60.00000,0,0,True
+319387,WHP KOLOKO Cracker Grilled Corn Flv.,WHP KOLOKO Cracker Grilled Corn Flv.,1.99000,3.39,Snacks,4710022071259,,1,False,1.40000,-51.00000,0,0,True
+319385,WHP KOLOKO Pea Crackers Lemon Pink Salt Flv.,WHP KOLOKO Pea Crackers Lemon Pink Salt Flv.,1.69000,2.69,Snacks,4710022040866,,1,False,1.20000,-24.00000,0,0,True
+319381,WHP KOLOKO Pea Crackers Wasabi Flv.,WHP KOLOKO Pea Crackers Wasabi Flv.,1.69000,2.69,Snacks,4710022006039,,1,False,1.20000,-36.00000,0,0,True
+301011,"WHP LAGO ROLL Cappuccino filled Wafer 80 GM. ","WHP LAGO ROLL Cappuccino filled Wafer 80 GM. ",2.15000,3.79,Snacks,694649005313,,1,False,1.61000,-18.00000,0,0,True
+301013,"WHP LAGO ROLL Chocolate Filled Wafer 80 GM. ","WHP LAGO ROLL Chocolate Filled Wafer 80 GM. ",2.15000,3.79,Snacks,694649005207,,1,False,1.61000,-10.00000,0,0,True
+306322,WHP Lago Roll Hazelnut filled Wafer 80 GM.,WHP Lago Roll Hazelnut filled Wafer 80 GM.,2.15000,3.79,Snacks,694649005269,,1,False,1.61000,-7.00000,0,0,True
+301015,"WHP LAGO ROLL Strawberry filled Wafer 80 GM. ","WHP LAGO ROLL Strawberry filled Wafer 80 GM. ",2.15000,3.79,Snacks,694649005238,,1,False,1.61000,-16.00000,0,0,True
+321445,WHP Lay’s American Style Cream & Onion,WHP Lay’s American Style Cream & Onion,1.09000,1.99,Snacks,8901491100250,,1,False,0.55000,-29.00000,0,0,True
+306560,WHP Lay's ASADO 70 GM. 39941,WHP Lay's ASADO 70 GM.,2.09000,3.49,Snacks,6924743938045,ea.,1,False,1.59000,-88.00000,0,0,True
+319372,WHP Lay's Chips Kyushu Seaweed Flv. L20,WHP Lay's Chips Kyushu Seaweed Flv.,1.69000,2.69,Snacks,4710543125585,,1,False,1.25000,-25.00000,0,0,True
+314628,WHP Lay's Chips Pepper Chicken Flv. R06,WHP Lay's Chips Pepper Chicken Flv.,1.69000,2.69,Snacks,4710543005191,ea.,1,False,1.20000,-87.00000,0,0,True
+311332,WHP Lay's Chips Smoked Pork Rib M20,WHP Lay's Chips Smoked Pork Rib,1.69000,2.69,Snacks,4710543322236,ea.,1,False,1.25000,-201.00000,0,0,True
+311331,WHP Lay's Chips Yakitori BBQ Chicken M24,WHP Lay's Chips Yakitori BBQ Chicken,1.69000,2.69,Snacks,4710543011338,ea.,1,False,1.25000,-240.00000,0,0,True
+297250,WHP Lay’s Cucumber 70 GM. 39128 / 32238,WHP Lay’s Cucumber 70 GM.,1.99000,3.35,Snacks,6924743919259,ea.,1,False,1.59090,-316.00000,0,0,True
+306559,WHP Lay's Fish &Chips 70 GM. 39943,WHP Lay's Fish &Chips 70 GM.,2.09000,3.49,Snacks,6924743938069,ea.,1,False,1.59000,-110.00000,0,0,True
+297249,WHP Lay’s Fried Crab 70 GM. 32245,WHP Lay’s Fried Crab 70 GM. 32245,1.99000,3.35,Snacks,6924743923515,ea.,1,False,1.59090,-576.00000,0,0,True
+311062,WHP Lay's Garlic Butter 70 GM. 39942,WHP Lay's Garlic Butter 70 GM.,2.09000,3.49,Snacks,6924743938052,ea.,1,False,1.59000,0.00000,0,0,True
+297631,WHP Lay’s GHOST Pure Spicy Chips 70 GM. 32252,WHP Lay’s GHOST Pure Spicy Chips 70 GM. 32252,2.19000,3.69,Snacks,6924743919808,ea.,1,False,1.59000,0.00000,0,0,True
+307101,WHP Lay’s Green Cucumber 70 GM. 39730,WHP Lay’s Green Cucumber 70 GM. 39730,1.99000,3.39,Snacks,6924743937925,ea.,1,False,1.59000,0.00000,0,0,True
+315776,WHP Lay’s India’s Magic Masala 48 GM.,WHP Lay’s India’s Magic Masala 48 GM.,1.09000,1.99,Snacks,8901491100274,,1,False,0.55000,-195.00000,0,0,True
+311329,WHP Lay's KOBE Steak Potato Chips L33,WHP Lay's KOBE Steak Potato Chips,1.69000,2.69,Snacks,4710543012991,ea.,1,False,1.19000,-375.00000,0,0,True
+297253,WHP Lay’s Korean Kimchi 70 GM. 37734,WHP Lay’s Korean Kimchi 70 GM. 37734,1.99000,3.35,Snacks,6924743935464,,1,False,1.59050,-54.00000,0,0,True
+320933,WHP Lay's Mushroom Flv. 70 GM.,WHP Lay's Mushroom Flv. 70 GM.,1.99000,3.35,Snacks,6924743938366,ea.,1,False,1.32180,-55.00000,0,0,True
+297251,WHP Lay's Roasted Chicken Wings 70 GM. 32255,WHP Lay's Roasted Chicken Wings 70 GM.,1.99000,3.35,Snacks,6924743918658,ea.,1,False,1.59090,-554.00000,0,0,True
+297248,WHP Lay’s Spicy Crayfish 70 GM. 32261,WHP Lay’s Spicy Crayfish 70 GM.,1.99000,3.35,Snacks,6924743923430,ea.,1,False,1.59090,-705.00000,0,0,True
+297255,WHP Lay’s Spicy Strip Flavor 70 GM. 37718,WHP Lay’s Spicy Strip Flavor 70 GM. 37718,2.19000,3.69,Snacks,6924743935396,ea.,1,False,1.59050,0.00000,0,0,True
+310801,WHP Lay's STAX Beef Pie 90 GM.,WHP Lay's STAX Beef Pie 90 GM.,2.59000,4.49,Snacks,6924743938236,,1,False,1.99000,-11.00000,0,0,True
+312989,WHP Lay's STAX CAN Black Pepper Steak 90 GM.,WHP Lay's STAX CAN Black Pepper Steak 90 GM.,2.69000,4.49,Snacks,6924743927919,,1,False,1.99000,-26.00000,0,0,True
+321886,WHP Lay's STAX CAN Black Truffle Flv. 90 GM.,WHP Lay's STAX CAN Black Truffle Flv. 90 GM.,2.69000,4.49,Snacks,6924743936010,,1,False,1.77500,0.00000,0,0,True
+320936,WHP Lay's STAX CAN Onion Flv. 90 GM.,WHP Lay's STAX CAN Onion Flv. 90 GM.,2.69000,4.49,Snacks,6924743936027,,1,False,1.77500,-15.00000,0,0,True
+320935,WHP Lay's STAX CAN Original Flv. 90 GM.,WHP Lay's STAX CAN Original Flv. 90 GM.,2.69000,4.49,Snacks,6924743927858,,1,False,1.76000,-10.00000,0,0,True
+320934,WHP Lay's STAX CAN Spicy Flv. 90 GM.,WHP Lay's STAX CAN Spicy Flv. 90 GM.,2.69000,4.49,Snacks,6924743935976,,1,False,1.76000,-16.00000,0,0,True
+321885,WHP Lay’s STAX Mustard Avocado 90 GM. 38236,WHP Lay’s STAX Mustard Avocado 90 GM.,2.69000,4.49,Snacks,6924743935990,,1,False,1.77500,0.00000,0,0,True
+310802,WHP Lay’s STAX Sizzle Barbecue 90 GM. 26996,WHP Lay’s STAX Sizzle Barbecue 90 GM. 26996,2.59000,4.49,Snacks,6924743927902,,1,False,1.99000,-7.00000,0,0,True
+297254,WHP Lay’s TEXAS Grilled BBQ 70 GM. 39202 / 32241,WHP Lay’s TEXAS Grilled BBQ 70 GM.,1.99000,3.35,Snacks,6924743919228,ea.,1,False,1.59050,-593.00000,0,0,True
+297252,WHP Lay’s Turkey Noodles Flv. 70 GM. 37731,WHP Lay’s Turkey Noodles Flv. 70 GM.,1.99000,3.35,Snacks,6924743935426,ea.,1,False,1.59050,-589.00000,0,0,True
+315775,WHP Lay’s West Indies Hot N Sweet Chilli 48 GM.,WHP Lay’s West Indies Hot N Sweet Chilli 48 GM.,1.09000,1.99,Snacks,8901491100267,,1,False,0.55000,-221.00000,0,0,True
+314618,WHP Lima Breakfast Castella Banana Cake,WHP Lima Breakfast Castella Banana Cake,1.99000,3.49,Snacks,4903399101845,,1,False,1.45000,-3.00000,0,0,True
+314619,WHP LIMA Stick Soft Cake Strawberry,WHP LIMA Stick Soft Cake Strawberry,1.99000,3.49,Snacks,4903399102231,,1,False,1.45000,-4.00000,0,0,True
+301008,"WHP Milka Choco Cookies Nut 135 GM. ","WHP Milka Choco Cookies Nut 135 GM. ",2.55000,4.49,Snacks,7622202260810,,1,False,1.89000,-40.00000,0,0,True
+301009,"WHP Milka Choco Mini STARS 150 GM. ","WHP Milka Choco Mini STARS 150 GM. ",2.55000,4.69,Snacks,891128141078,ea.,1,False,1.82000,-6.00000,0,0,True
+297226,WHP Milka Choco Sticks 112 GM.,WHP Milka Choco Sticks 112 GM.,2.69000,4.89,Snacks,891128141221,,1,False,1.88000,-48.00000,0,0,True
+303555,WHP Milka MONOPOLY Choc & Choc 150 GM.,WHP Milka MONOPOLY Choc & Choc 150 GM.,3.29000,5.49,Snacks," 891128141504",ea.,1,False,2.55000,-15.00000,0,0,True
+301016,WHP MODA Baklava Pistachio 32 GM. - 24 Ct.,WHP MODA Baklava Pistachio 32 GM. - 24 Ct.,20.96000,1.59,Snacks,810185681365,box,24,False,16.56000,-11.00000,0,0,True
+301017,WHP MODA Baklava Walnut 32 GM.,WHP MODA Baklava Walnut 32 GM.,20.96000,1.59,Snacks,810185681372,box,24,False,13.68000,-10.00000,0,0,True
+321142,WHP MY MOTTO Hazelnut & Cocoa Wafers 3 Pk.,WHP MY MOTTO Hazelnut & Cocoa Wafers 3 Pk.,1.45000,2.65,Snacks,812820023004,,1,False,1.05000,-10.00000,0,0,True
+321144,WHP MY MOTTO TIRAMISU Wafers 3 Pk.,WHP MY MOTTO TIRAMISU Wafers 3 Pk.,1.45000,2.65,Snacks,812820022991,,1,False,1.05000,-10.00000,0,0,True
+319380,WHP NABISCO Korean Ritz White Cookies,WHP NABISCO Korean Ritz White Cookies,2.29000,3.99,Snacks,8801037094664,,1,False,1.75000,-9.00000,0,0,True
+319371,WHP NONGSHIM Shrimp GGANG Black Truffle Flv. 42300,WHP NONGSHIM Shrimp GGANG Black Truffle Flv.,2.15000,3.59,Snacks,8801043062183,,1,False,1.40000,-123.00000,0,0,True
+297091,WHP OREO Blueberry Raspberry 97 GM. 44017,WHP OREO Blueberry Raspberry 97 GM.,1.99000,3.49,Snacks,6901668005915,ea.,1,False,1.39000,-76.00000,0,0,True
+297087,WHP OREO Cookies Birthday Cake 44020,WHP OREO Cookies Birthday Cake,1.99000,3.49,Snacks,6901668005946,ea.,1,False,1.39000,-122.00000,0,0,True
+297086,WHP OREO Cookies Grape & Peach 44019,WHP OREO Cookies Grape & Peach,1.99000,3.49,Snacks,6901668005939,ea.,1,False,1.39000,-60.00000,0,0,True
+297090,WHP OREO Cookies Matcha Ice Cream 44015,WHP OREO Cookies Matcha Ice Cream,1.99000,3.49,Snacks,6901668005892,ea.,1,False,1.39000,-110.00000,0,0,True
+311732,WHP OREO Cookies Pistachio & Cheese 29629,WHP OREO Cookies Pistachio & Cheese,1.99000,3.49,Snacks,6901668943194,ea.,1,False,1.39000,-20.00000,0,0,True
+320921,WHP OREO Cookies Popcorn Flv.,WHP OREO Cookies Popcorn Flv.,1.99000,3.49,Snacks,6901668944283,,1,False,1.31300,-10.00000,0,0,True
+297085,WHP OREO Cookies Strawberry 05125,WHP OREO Cookies Strawberry,1.99000,3.49,Snacks,6901668935748,ea.,1,False,1.39000,-131.00000,0,0,True
+314621,WHP OREO Korean Tiramisu Cookies 9117,WHP OREO Korean Tiramisu Cookies,2.29000,3.99,Snacks,8801037091106,ea.,1,False,1.75000,-4.00000,0,0,True
+305639,WHP OREO Matsutake Mushroom Flv. 4327772,WHP OREO Matsutake Mushroom Flv.,1.99000,3.49,Snacks,6901668942340,ea.,1,False,1.39000,-46.00000,0,0,True
+297088,WHP OREO Peach Oolong 97 GM. 58800,WHP OREO Peach Oolong 97 GM.,1.99000,3.49,Snacks,6901668927910,ea.,1,False,1.39000,-35.00000,0,0,True
+315029,WHP OREO Soft Cake Jasmine & Pistachio 132 GM.,WHP OREO Soft Cake Jasmine & Pistachio 132 GM.,2.49000,4.59,Snacks,6901668942500,ea.,1,False,1.67000,-32.00000,0,0,True
+305635,WHP OREO Soft Cake Orange & Chocolate 132 GM. 4323905,WHP OREO Soft Cake Orange & Chocolate 132 GM.,2.49000,4.59,Snacks,6901668940773,ea.,1,False,1.67000,-49.00000,0,0,True
+305634,WHP OREO Soft Cake Strawberry 132 GM. 20216814,WHP OREO Soft Cake Strawberry 132 GM.,2.49000,4.59,Snacks,6901668940735,ea.,1,False,1.67000,-38.00000,0,0,True
+305641,WHP OREO Sticky Bean Flv. 4327765,WHP OREO Sticky Bean Flv.,1.99000,3.49,Snacks,6901668942289,ea.,1,False,1.39000,-38.00000,0,0,True
+307886,WHP OREO Strawberry Cheesecake SPAIN 154 GM.,WHP OREO Strawberry Cheesecake SPAIN 154 GM.,2.69000,4.69,Snacks,7622210633354,,1,False,1.95000,-18.00000,0,0,True
+319379,WHP OREO THINS Chocolate Mousse,WHP OREO THINS Chocolate Mousse,2.29000,3.99,Snacks,8801037094763,,1,False,1.70000,-4.00000,0,0,True
+319375,WHP OREO THINS White Crème 9691,WHP OREO THINS White Crème,2.29000,3.99,Snacks,8801037091113,,1,False,1.70000,-4.00000,0,0,True
+314620,WHP ORION Fresh Berry Pie 168 GM.,WHP ORION Fresh Berry Pie 168 GM.,4.15000,6.99,Snacks,8801117540210,,1,False,3.25000,-41.00000,0,0,True
+321890,WHP ORION Potato Chips Coriander TACO Flv.,WHP ORION Potato Chips Coriander TACO Flv.,1.89000,3.19,Snacks,6920907832273,,1,False,1.24000,0.00000,0,0,True
+320937,WHP ORION Potato Chips - Kimchi 70 GM.,WHP ORION Potato Chips - Kimchi 70 GM.,1.89000,3.19,Snacks,6920907823622,ea.,1,False,1.24000,-66.00000,0,0,True
+320938,WHP ORION Potato Chips Mushroom Flv. 70 GM.,WHP ORION Potato Chips Mushroom Flv. 70 GM.,1.89000,3.19,Snacks,6920907832051,ea.,1,False,1.24000,-61.00000,0,0,True
+320939,WHP ORION Potato Chips Peppercorn Flv. 65 GM.,WHP ORION Potato Chips Peppercorn Flv. 65 GM.,1.89000,3.19,Snacks,6920907827088,ea.,1,False,1.24000,-61.00000,0,0,True
+315036,WHP Ritter SPORT Strawberry Yogurt 100 GM.,WHP Ritter SPORT Strawberry Yogurt 100 GM.,3.19000,5.69,Snacks,050255237003,,1,False,2.34000,0.00000,0,0,True
+304776,WHP Russian AZOVSKAYA Halva Plain 350 GM.,WHP Russian AZOVSKAYA Halva Plain 350 GM.,2.59000,4.69,Snacks,4620004250094,ea.,1,False,1.99000,0.00000,0,0,True
+304775,WHP Russian AZOVSKAYA Halva with Sunflower Kernel 350 GM.,WHP Russian AZOVSKAYA Halva with Sunflower Kernel 350 GM.,2.59000,4.69,Snacks,4620004256515,ea.,1,False,1.99000,0.00000,0,0,True
+304774,WHP Russian AZOVSKAYA KF Halva with Peanut 350 GM.,WHP Russian AZOVSKAYA KF Halva with Peanut 350 GM.,2.59000,4.69,Snacks,4620004250100,,1,False,1.99000,0.00000,0,0,True
+304787,WHP Russian CHUDO-YAGODA Cream Roll Apricot 200 GR.,WHP Russian CHUDO-YAGODA Cream Roll Apricot 200 GR.,2.69000,4.49,Snacks,4601513012335,,1,False,1.99000,-10.00000,0,0,True
+304786,WHP Russian CHUDO-YAGODA Cream Roll Strawberry 200 GR.,WHP Russian CHUDO-YAGODA Cream Roll Strawberry 200 GR.,2.69000,4.49,Snacks,4601513012359,,1,False,1.99000,-10.00000,0,0,True
+304785,WHP Russian KOROVKA Wafer Baked Milk 150 GM.,WHP Russian KOROVKA Wafer Baked Milk 150 GM.,1.79000,3.25,Snacks,4600080322106,,1,False,1.37000,0.00000,0,0,True
+304784,WHP Russian KOROVKA Wafer Chocolate 150 GM.,WHP Russian KOROVKA Wafer Chocolate 150 GM.,1.79000,3.25,Snacks,4600080322137,,1,False,1.37000,0.00000,0,0,True
+314626,WHP SABLE Soft Cookie Chocolate Flv.,WHP SABLE Soft Cookie Chocolate Flv.,2.25000,3.99,Snacks,6972914150345,,1,False,1.70000,-21.00000,0,0,True
+314623,WHP SABLE Soft Cookie Mango Cranberry,WHP SABLE Soft Cookie Mango Cranberry,2.25000,3.99,Snacks,6972914150314,,1,False,1.70000,-18.00000,0,0,True
+314624,WHP SABLE Soft Cookie Matcha,WHP SABLE Soft Cookie Matcha,2.25000,3.99,Snacks,6972914150352,,1,False,1.70000,-21.00000,0,0,True
+301018,"WHP SNICKERS Berry WHIP Chocolate 15 Ct. 9903033005787 ",WHP SNICKERS Berry WHIP Chocolate 15 Ct.,1.99000,3.49,Snacks,8902433005794,,1,False,1.54000,-14.00000,0,0,True
+303445,WHP STRUDLA Exotic Cherry Jam Cookies 165 GM.,WHP STRUDLA Exotic Cherry Jam Cookies 165 GM.,2.19000,3.99,Snacks,5310115001782,,1,False,1.37000,-5.00000,0,0,True
+303446,WHP STRUDLA Exotic Fig Jam Cookies 165 GM.,WHP STRUDLA Exotic Fig Jam Cookies 165 GM.,2.19000,3.99,Snacks,5310115001751,,1,False,1.37000,-5.00000,0,0,True
+301019,WHP Toren CORNERS cornflakes Choco- 24 Ct. 8697439301529,WHP Toren CORNERS cornflakes Choco- 24 Ct.,24.00000,1.99,Snacks,8697439301512,box,24,False,17.28000,-1.00000,0,0,True
+301020,WHP Toren CORNERS cornflakes Strawberry - 24 Ct. 8697439301864,WHP Toren CORNERS cornflakes Strawberry - 24 Ct.,24.00000,1.99,Snacks,8697439301857,,24,False,17.28000,-2.00000,0,0,True

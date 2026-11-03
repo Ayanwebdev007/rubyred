@@ -1,0 +1,351 @@
+ProductId,ProductName,Description,SalePrice,SuggestedRetailPrice,CategoryName,Barcode,Unit,UnitPerCase,IsTaxable,PurchaseCost,QuantityInHand,InitialCost,InitialStock,IsActive
+228378,ARCTIC Freeze Dried - Hot Reds 2.5 Oz.,ARCTIC Freeze Dried - Hot Reds 2.5 Oz.,4.49000,7.99,Candy,810138771822,ea.,1,False,4.35000,-71.00000,0,0,True
+228374,ARCTIC Freeze Dried - Mash Up 2.5 Oz.,ARCTIC Freeze Dried - Mash Up 2.5 Oz.,4.49000,7.99,Candy,850039419751,ea.,1,False,4.40000,-70.00000,0,0,True
+228377,ARCTIC Freeze Dried - Smoothie 2.5 Oz.,ARCTIC Freeze Dried - Smoothie 2.5 Oz.,4.49000,7.99,Candy,850039419775,ea.,1,False,4.40000,-71.00000,0,0,True
+228376,ARCTIC Freeze Dried - Sour 2.5 Oz.,ARCTIC Freeze Dried - Sour 2.5 Oz.,4.49000,7.99,Candy,850039419768,ea.,1,False,4.40000,-66.00000,0,0,True
+228375,ARCTIC Freeze Dried - Tropical 2.5 Oz.,ARCTIC Freeze Dried - Tropical 2.5 Oz.,4.49000,7.99,Candy,850039419782,ea.,1,False,4.40000,-71.00000,0,0,True
+228373,ARCTIC Freeze Dried - Wild Berry 2.5 Oz.,ARCTIC Freeze Dried - Wild Berry 2.5 Oz.,4.49000,7.99,Candy,850039419799,ea.,1,False,4.40000,-69.00000,0,0,True
+261535,Artu ANGEL HAIR Dark Chocolate 80 GM. 8682431680369,"Artu ANGEL HAIR Milky 80 GM. ",59.88000,8.99,Candy,8684771538768,box,12,False,40.50000,-9.00000,0,0,True
+261533,Artu ANGEL HAIR Rasp. 80 GM. 8682431680369,"Artu ANGEL HAIR Rasp. 80 GM. ",59.88000,8.99,Candy,8684771538744,box,12,False,40.50000,-10.00000,0,0,True
+261534,Artu ANGEL HAIR White Chocolate 80 GM. 8682431680369,"Artu ANGEL HAIR White Chocolate 80 GM. ",59.88000,8.99,Candy,8684771538720,box,12,False,40.50000,-7.00000,0,0,True
+303876,BABAEVSKIY Dark Choc with Crispy Orange & Cherry 85 GR.,BABAEVSKIY Dark Choc with Crispy Orange & Cherry 85 GR.,3.99000,6.99,Candy,4600300099612,ea.,1,False,2.75000,0.00000,0,0,True
+151394,Bonart CORNET TASO 24 PCs. Box,Bonart CORNET TASO 24 PCs. Box,18.49000,1.69,Candy,8690997182029,box,24,False,12.95000,-1.00000,0,0,True
+273237,Bon o Bon Be a Champ Choco BAR,Bon o Bon Be a Champ Choco BAR,1.39000,2.59,Candy,7502230948549,,1,False,0.95000,-312.00000,0,0,True
+162705,BUBU LUBU 1.23 Gm.,BUBU LUBU 1.23 Gm.,3.99000,0.99,Candy,074323029062,box,8,False,2.69000,-2.00000,0,0,True
+155275,Carlos Nestle CARLOS Chocolate 96 PCs.,Nestle CARLOS Chocolate 96 PCs.,36.00000,0.79,Candy,028000374310,box,96,False,26.95000,-4.00000,0,0,True
+228244,Carolina Kettle Coastal Crab Boil 2 Oz.,Carolina Kettle Coastal Crab Boil 2 Oz.,1.15000,2.29,Candy,856875006070,,1,False,0.97500,-60.00000,0,0,True
+228247,Carolina Kettle Cozumel Jalapeño Queso 2 Oz.,Carolina Kettle Cozumel Jalapeño Queso 2 Oz.,1.15000,2.29,Candy,856875006063,,1,False,0.97500,-40.00000,0,0,True
+228243,Carolina Kettle Cream Cheese & Chive 2 Oz.,Carolina Kettle Cream Cheese & Chive 2 Oz.,1.15000,2.29,Candy,856875006087,,1,False,0.97500,-60.00000,0,0,True
+228246,Carolina Kettle DEC BBQ 2 Oz.,Carolina Kettle DEC BBQ 2 Oz.,1.15000,2.29,Candy,856875006025,,1,False,0.97500,-60.00000,0,0,True
+228251,Carolina Kettle Dill Pickle 2 Oz.,Carolina Kettle Dill Pickle 2 Oz.,1.15000,2.29,Candy,856875006049,,1,False,0.97500,-40.00000,0,0,True
+228250,Carolina Kettle Rosemary & Garlic 2 Oz.,Carolina Kettle Rosemary & Garlic 2 Oz.,1.15000,2.29,Candy,856875006100,,1,False,0.97500,-60.00000,0,0,True
+228245,Carolina Kettle RUSSET 2 Oz.,Carolina Kettle RUSSET 2 Oz.,1.15000,2.29,Candy,856875006094,,1,False,0.97500,-40.00000,0,0,True
+228248,Carolina Kettle THAI Chilli 2 Oz.,Carolina Kettle THAI Chilli 2 Oz.,1.15000,2.29,Candy,856875006131,,1,False,0.97500,-60.00000,0,0,True
+298659,Casali SCHOKO Banane XL 35 Ct. 9000332044766,Casali SCHOKO Banane XL 35 Ct.,27.65000,1.49,Candy,9000332812105,,35,False,19.95000,-10.00000,0,0,True
+298506,CENTER SHOCK COLA 100 Pcs./Box,CENTER SHOCK COLA 100 Pcs./Box,20.00000,0.39,Candy,8003440915011,box,100,False,11.70000,-5.00000,0,0,True
+298505,CENTER SHOCK Erdbeere 100 Pcs./Box,CENTER SHOCK Erdbeere 100 Pcs./Box,20.00000,0.39,Candy,8003440915004,box,100,False,11.70000,-4.00000,0,0,True
+298507,CENTER SHOCK Monster MIX 100 Pcs./Box,CENTER SHOCK Monster MIX 100 Pcs./Box,20.00000,0.39,Candy,8003440915509,box,100,False,11.70000,-8.00000,0,0,True
+303828,CHAO YOU WEI Mochi Mango Flavor 126 GM.,CHAO YOU WEI Mochi Mango Flavor 126 GM.,2.89000,4.99,Candy,4895235566997,ea.,1,False,1.90000,-36.00000,0,0,True
+303831,CHAO YOU WEI Mochi Matcha Flavor 126 GM.,CHAO YOU WEI Mochi Matcha Flavor 126 GM.,2.89000,4.99,Candy,4895235567000,ea.,1,False,1.90000,-36.00000,0,0,True
+303829,CHAO YOU WEI Mochi Strawberry Flavor 126 GM.,CHAO YOU WEI Mochi Strawberry Flavor 126 GM.,2.89000,4.99,Candy,4895235566980,ea.,1,False,1.90000,-36.00000,0,0,True
+265611,ChoCart Dubai Chocolate Cheese Cake & Strawberry 10810204920014,"ChoCart Dubai Chocolate Cheese Cake & Strawberry ",5.75000,9.99,Candy,810204920017,ea.,1,False,4.25000,-102.00000,0,0,True
+265610,ChoCart Dubai Chocolate Mango & Passion Fruit 10810204920038,"ChoCart Dubai Chocolate Mango & Passion Fruit ",5.75000,9.99,Candy,810204920031,ea.,1,False,4.25000,-84.00000,0,0,True
+265612,ChoCart Dubai Pistachio & Cotton Candy 10810204920045,"ChoCart Dubai Pistachio & Cotton Candy ",5.75000,9.99,Candy,810204920048,ea.,1,False,4.25000,-84.00000,0,0,True
+259944,CHOCOLART Dubai Chocolate 95 GM. 8696150701304,"CHOCOLART Dubai Chocolate 95 GM. ",35.94000,9.99,Candy,8696150701298,,6,False,27.00000,-273.00000,0,0,True
+195085,CHOMIS CUBES,CHOMIS CUBES,4.69000,7.99,Candy,767461610116,ea.,1,False,3.35000,-1717.00000,0,0,True
+180221,Chomis Gomis Candy,Chomis Gomis Candy,4.99000,8.49,Candy,618056630899,bags,1,False,3.35000,22656.00000,0,0,True
+180435,CHOMIS GOMIS Chamoy Kids,CHOMIS GOMIS Chamoy Kids,4.69000,7.99,Candy,762983638051,ea.,1,False,3.35000,-13645.00000,0,0,True
+315186,CHOMIS GOMIS Chamoy Starbies,CHOMIS GOMIS Chamoy Starbies,4.69000,7.99,Candy,767461610147,ea.,1,False,3.35000,-341.00000,0,0,True
+187217,CHOMIS GOMIS Gushers,CHOMIS GOMIS GusHis,5.29000,8.99,Candy,762983638105,ea.,1,False,4.10000,-23938.00000,0,0,True
+180432,CHOMIS GOMIS Mangitos,CHOMIS GOMIS Mangitos,4.69000,7.99,Candy,618056630852,ea.,1,False,3.35000,-16210.00000,0,0,True
+180433,CHOMIS GOMIS Peachy Gomis,CHOMIS GOMIS Peachy Gomis,4.69000,7.99,Candy,618056630845,ea.,1,False,3.35000,-1556.00000,0,0,True
+180431,CHOMIS GOMIS Sandillitas,CHOMIS GOMIS Sandillitas,4.69000,7.99,Candy,618056630890,ea.,1,False,3.35000,-16989.00000,0,0,True
+185641,CHOMIS GOMIS Skitlz,CHOMIS GOMIS Skitlz,4.69000,7.99,Candy,767461610123,,1,False,3.35000,-14996.00000,0,0,True
+200556,CHOMIS Nerdies,CHOMIS Nerdies,5.29000,8.99,Candy,767461610352,,1,False,4.10000,-13197.00000,0,0,True
+243786,CHOMIS PEPINOS LOCOS Cucumber,CHOMIS PEPINOS LOCOS Cucumber,4.69000,7.99,Candy,759382497518,,1,False,3.35000,-5578.00000,0,0,True
+225929,CHOMIS Pinitas LOCAS,CHOMIS Pinitas LOCAS,4.69000,7.99,Candy,618056630883,,1,False,3.35000,-895.00000,0,0,True
+315739,CHOMIS RAINBOWS 6 Oz.,CHOMIS RAINBOWS 6 Oz.,4.69000,7.99,Candy,759382497501,,1,False,3.35000,-267.00000,0,0,True
+196914,CHOMIS RIM DIP Mango 8 Oz.,CHOMIS RIM DIP Mango 8 Oz.,4.69000,7.99,Candy,762983638112,ea.,1,False,3.35000,-5.00000,0,0,True
+196913,CHOMIS RIM DIP Org. Chamoy 8 Oz.,CHOMIS RIM DIP Org. Chamoy 8 Oz.,4.69000,7.99,Candy,762983638143,ea.,1,False,3.35000,-5.00000,0,0,True
+196915,CHOMIS RIM DIP Watermelon 8 Oz.,CHOMIS RIM DIP Watermelon 8 Oz.,4.69000,7.99,Candy,762983638129,ea.,1,False,3.35000,-5.00000,0,0,True
+195238,CHOMIS Twisty Strawberry,CHOMIS Twisty Strawberry,4.69000,7.99,Candy,618056630869,ea.,1,False,3.35000,-816.00000,0,0,True
+303883,Crazy PARTY GUM Candy RACING 150 GR.,Crazy PARTY GUM Candy RACING 150 GR.,2.29000,3.99,Candy,0522122026150,,1,False,1.55000,-8.00000,0,0,True
+303884,Crazy PARTY GUM Candy Tropical Fruit 150 GR.,Crazy PARTY GUM Candy Tropical Fruit 150 GR.,2.29000,3.99,Candy,0522122026151,,1,False,1.55000,-8.00000,0,0,True
+303885,Crazy PARTY GUM Candy Zoo 150 GR.,Crazy PARTY GUM Candy Zoo 150 GR.,2.29000,3.99,Candy,0522122026152,,1,False,1.55000,-8.00000,0,0,True
+304087,Dacoola OML SF Peppermint Candy - CMSLM 233001,Dacoola OML SF Peppermint Candy - CMSLM,1.99000,3.59,Candy,4897088400350,,1,False,1.40000,-6.00000,0,0,True
+304088,Dacoola OML SF Peppermint Candy - PRL 233005,Dacoola OML SF Peppermint Candy - PRL,1.99000,3.59,Candy,4897088400305,,1,False,1.40000,-36.00000,0,0,True
+208392,ELEMER Choclate ROSE 2 Oz.,ELEMER Choclate ROSE 2 Oz.,35.88000,3.99,Candy,0041761112885,,18,False,18.00000,0.00000,0,0,True
+208391,ELEMER Choclate ROSE 3.2 Oz. 24 PCs. Box,ELEMER Choclate ROSE 3.2 Oz. 24 PCs. Box,83.76000,6.99,Candy,0041761144084,box,24,False,44.80000,0.00000,0,0,True
+320744,Exotic Austrian CASALI MINI SCHOKO BANANEN 110 GM.,Exotic Austrian CASALI MINI SCHOKO BANANEN 110 GM.,2.99000,5.39,Candy,9000332812662,ea.,1,False,1.86000,-32.00000,0,0,True
+320746,Exotic Austrian CASALI PINA COLADA Choco Ball 175 GM.,Exotic Austrian CASALI PINA COLADA Choco Ball 175 GM.,3.99000,6.99,Candy,9015810000912,ea.,1,False,2.78000,-32.00000,0,0,True
+320038,Exotic DOUBLEMINT Lemon & Mint Chewing Gum,Exotic DOUBLEMINT Lemon & Mint Chewing Gum,3.25000,5.69,Candy,6923450690703,ea.,1,False,1.95000,-6.00000,0,0,True
+320039,Exotic DOUBLEMINT Strawberry & Mint Chewing Gum,Exotic DOUBLEMINT Strawberry & Mint Chewing Gum,3.25000,5.69,Candy,6923450661581,ea.,1,False,1.95000,-6.00000,0,0,True
+312590,Exotic HI-CHEW Mixed Berry Soft Candy 23028,Exotic HI-CHEW Mixed Berry Soft Candy,2.39000,3.99,Candy,4710035230230,ea.,1,False,1.65000,-88.00000,0,0,True
+304313,Exotic HI-CHEW Mixed Fruit Soft Candy 23038,Exotic HI-CHEW Mixed Fruit Soft Candy,2.39000,3.99,Candy,4710035230384,ea.,1,False,1.65000,-155.00000,0,0,True
+313942,Exotic HI-CHEW Mixed Fruit Soft Candy LGP 23039,Exotic HI-CHEW Mixed Fruit Soft Candy LGP,2.39000,3.99,Candy,4710035230391,ea.,1,False,1.65000,-16.00000,0,0,True
+304084,Exotic HI-CHEW Mix Soda Soft Candy 23042,Exotic HI-CHEW Mix Soda Soft Candy,2.39000,3.99,Candy,4710035230421,ea.,1,False,1.65000,-93.00000,0,0,True
+304082,Exotic HI-CHEW Mix Yogurt Soft Candy 23041,Exotic HI-CHEW Mix Yogurt Soft Candy,2.39000,3.99,Candy,4710035230414,ea.,1,False,1.65000,-154.00000,0,0,True
+318726,Exotic HI-CHEW Mystic Blue Raspberry 211111,Exotic HI-CHEW Mystic Blue Raspberry 211111,1.59000,2.89,Candy,4710035221498,ea.,1,False,1.09000,-60.00000,0,0,True
+318725,Exotic HI-CHEW PEACH Yogurt 211109,Exotic HI-CHEW PEACH Yogurt 211109,1.59000,2.89,Candy,4710035221429,ea.,1,False,1.09000,-60.00000,0,0,True
+304086,Exotic HI-CHEW Sour Green Apple 211110,Exotic HI-CHEW Sour Green Apple,1.59000,2.89,Candy,4710035221245,ea.,1,False,1.09000,-91.00000,0,0,True
+304085,Exotic HI-CHEW Yogurt Strawberry 211108,Exotic HI-CHEW Yogurt Strawberry,1.59000,2.89,Candy,4710035221306,ea.,1,False,1.09000,-90.00000,0,0,True
+319037,Exotic Japanese Bubble GUM 7 flavors,Exotic Japanese Bubble GUM 7 flavors,0.99000,1.69,Candy,046572800075,ea.,1,False,0.65000,-120.00000,0,0,True
+321431,Exotic Jasmine Rose Green Plums,Exotic Jasmine Rose Green Plums,3.19000,5.49,Candy,6952480008011,ea.,1,False,2.15000,-6.00000,0,0,True
+320036,Exotic ORION Pink Guava Soft Candy,Exotic ORION Pink Guava Soft Candy,2.15000,3.89,Candy,6920907834369,ea.,1,False,1.15000,-20.00000,0,0,True
+320034,Exotic PANDA Bobo Grape & Apple Flv.,Exotic PANDA Bobo Grape & Apple Flv.,2.15000,3.89,Candy,6977594181931,,1,False,1.15000,-12.00000,0,0,True
+320033,Exotic PANDA Bobo Soda & Apple Flv.,Exotic PANDA Bobo Soda & Apple Flv.,2.15000,3.89,Candy,6977594181948,,1,False,1.15000,-12.00000,0,0,True
+320035,Exotic Salted Plum & Hawthorn Candy,Exotic Salted Plum & Hawthorn Candy,3.19000,5.49,Candy,6952480007427,ea.,1,False,2.15000,-12.00000,0,0,True
+320743,Exotic Spanish Chupa Chups SOUR 10 Pcs./Bag,Exotic Spanish Chupa Chups SOUR 10 Pcs./Bag,3.49000,5.99,Candy,8410031976373,ea.,1,False,2.34000,-36.00000,0,0,True
+320742,Exotic Spanish Chupa Chups Strawberry LOVERS 10 Pcs./Bag,Exotic Spanish Chupa Chups Strawberry LOVERS 10 Pcs./Bag,3.49000,5.99,Candy,8410031972337,ea.,1,False,2.34000,-72.00000,0,0,True
+320741,Exotic Spanish Chupa Chups Tongue Painter 10 Pcs./Bag,Exotic Spanish Chupa Chups Tongue Painter 10 Pcs./Bag,3.49000,5.99,Candy,8410031990584,ea.,1,False,2.34000,-36.00000,0,0,True
+320037,Exotic Wrigley's Iced Cold Guava Tea Chewing Gum,Exotic Wrigley's Iced Cold Guava Tea Chewing Gum,3.25000,5.69,Candy,6923450632444,ea.,1,False,2.05000,-6.00000,0,0,True
+151614,FRUTI Kuikas 12 Pcs.,FRUTI Kuikas 12 Pcs.,2.49000,4.99,Candy,812999010256,box,1,False,1.39000,0.00000,0,0,True
+228483,FT Carne ASADA Beef Jerky 2.2 Oz.,FT Carne ASADA Beef Jerky 2.2 Oz.,35.82000,7.99,Candy,857527008978,,9,False,35.82000,-2.00000,0,0,True
+228482,FT Cracked Pepper Turky Jerky 2.2 Oz.,FT Cracked Pepper Turky Jerky 2.2 Oz.,35.82000,7.99,Candy,854966005063,,9,False,35.82000,-2.00000,0,0,True
+228484,FT GOCHUJANG Beef Jerky 2.2 Oz.,FT GOCHUJANG Beef Jerky 2.2 Oz.,35.82000,7.99,Candy,854966005018,,9,False,35.82000,-2.00000,0,0,True
+228481,FT Mandarin Orange Beef Jerky 2.2 Oz.,FT Mandarin Orange Beef Jerky 2.2 Oz.,35.82000,7.99,Candy,854966005025,,9,False,35.82000,-2.00000,0,0,True
+228485,FT Spicy Apple BS Chicken Bites 2.2 Oz.,FT Spicy Apple BS Chicken Bites 2.2 Oz.,35.82000,7.99,Candy,854966005971,,9,False,35.82000,-2.00000,0,0,True
+208470,Happy Valentine Day ROSE 2 Oz. 18 PCs. Box,Happy Valentine Day ROSE 2 Oz. 18 PCs. Box,35.82000,3.99,Candy,041761103098,box,18,False,18.00000,0.00000,0,0,True
+208471,Happy Valentine Day ROSE 3.2 Oz. 24 PCs. Box,Happy Valentine Day ROSE 3.2 Oz. 24 PCs. Box,76.78000,6.99,Candy,041761104088,box,24,False,44.40000,0.00000,0,0,True
+320747,HARIBO German BAERCHEN PAERCHEN 160 GM.,HARIBO German BAERCHEN PAERCHEN 160 GM.,2.79000,4.69,Candy,4001686331668,ea.,1,False,1.94000,-12.00000,0,0,True
+320749,HARIBO Germany Beach Party 175 GM.,HARIBO Germany Beach Party 175 GM.,2.79000,4.69,Candy,4001686020845,ea.,1,False,1.90000,-12.00000,0,0,True
+298686,HARIBO Germany - Bunte Schnecken 160 GM.,HARIBO Germany - Bunte Schnecken 160 GM.,2.79000,4.69,Candy,4001686002421,ea.,1,False,1.94000,-137.00000,0,0,True
+303385,HARIBO Germany - COLOR RADO 175 GM.,HARIBO Germany - COLOR RADO 175 GM.,2.79000,4.69,Candy,4001686725504,ea.,1,False,1.94000,-127.00000,0,0,True
+298518,HARIBO Germany - Crazy Schnuller 175 GM.,HARIBO Germany - Crazy Schnuller 175 GM.,2.79000,4.69,Candy,4001686331729,ea.,1,False,1.94000,-92.00000,0,0,True
+303389,HARIBO Germany - Fruchtballe 160 GM.,HARIBO Germany - Fruchtballe 160 GM.,2.79000,4.69,Candy,4001686019566,ea.,1,False,1.94000,-149.00000,0,0,True
+298512,HARIBO Germany - FRUITMANIA Joghurt 160 GM.,HARIBO Germany - FRUITMANIA Joghurt 160 GM.,2.79000,4.69,Candy,4001686322567,,1,False,1.94000,-287.00000,0,0,True
+315066,"HARIBO Germany Jelly Beans 160 GM,","HARIBO Germany Jelly Beans 160 GM,",2.79000,4.69,Candy,9002975002523,ea.,1,False,1.94000,-38.00000,0,0,True
+308510,HARIBO Germany - Kicker Brause 175 GM.,HARIBO Germany - Kicker Brause 175 GM.,2.79000,4.69,Candy,4001686002001,,1,False,1.94000,-49.00000,0,0,True
+320748,HARIBO Germany KIRSCH Cola 175 GM.,HARIBO Germany KIRSCH Cola 175 GM.,2.79000,4.69,Candy,4001686331842,ea.,1,False,1.94000,-12.00000,0,0,True
+298519,HARIBO Germany - KONFEKT LAKRITZ 175 GM.,HARIBO Germany - KONFEKT LAKRITZ 175 GM.,2.79000,4.69,Candy,4001686151105,ea.,1,False,1.94000,-132.00000,0,0,True
+298510,HARIBO  Germany -  MAOAM KRACHER 200 GM.,HARIBO  Germany -  MAOAM KRACHER 200 GM.,2.79000,4.69,Candy,4001686536025,ea.,1,False,1.94000,-321.00000,0,0,True
+303387,HARIBO Germany - MarioKart Edition 160 GM.,HARIBO Germany - MarioKart Edition 160 GM.,2.79000,4.69,Candy,4001686020081,ea.,1,False,1.94000,-173.00000,0,0,True
+298515,HARIBO Germany - Pasta Penne 160 GM.,HARIBO Germany - Pasta Penne 160 GM.,2.79000,4.69,Candy,4001686009703,ea.,1,False,1.94000,-187.00000,0,0,True
+303386,HARIBO Germany - Phantasia 175 GM.,HARIBO Germany - Phantasia 175 GM.,2.79000,4.69,Candy,4001686322901,ea.,1,False,1.94000,-122.00000,0,0,True
+298513,HARIBO Germany - Pico BALLA 160 GM.,HARIBO Germany - Pico BALLA 160 GM.,2.79000,4.69,Candy,4001686120132,ea.,1,False,1.94000,-30.00000,0,0,True
+298514,HARIBO Germany - Pixel SAVER 160 GM.,HARIBO Germany - Pixel SAVER 160 GM.,2.79000,4.69,Candy,4001686376829,,1,False,1.94000,-165.00000,0,0,True
+305318,HARIBO Germany - Rainbow SAVER 160 GM.,HARIBO Germany - Rainbow SAVER 160 GM.,2.79000,4.99,Candy,4001686120163,,1,False,1.94000,-47.00000,0,0,True
+315065,HARIBO Germany Rainbow Worms 5 Oz.,HARIBO Germany Rainbow Worms 5 Oz.,2.39000,3.99,Candy,042238724563,ea.,1,False,1.50000,-23.00000,0,0,True
+298511,HARIBO  Germany -  ROTELLA Frucht 160 GM.,HARIBO  Germany -  ROTELLA Frucht 160 GM.,2.79000,4.69,Candy,4001686328910,ea.,1,False,1.94000,0.00000,0,0,True
+303388,HARIBO Germany - SaureTute 175 GM.,HARIBO Germany - SaureTute 175 GM.,2.79000,4.69,Candy,4001686376850,ea.,1,False,1.94000,-125.00000,0,0,True
+298516,HARIBO Germany - Tropifrutti 175 GM.,HARIBO Germany - Tropifrutti 175 GM.,2.79000,4.69,Candy,4001686322963,ea.,1,False,1.94000,-137.00000,0,0,True
+298517,HARIBO Germany - Vampire 175 GM.,HARIBO Germany - Vampire 175 GM.,2.79000,4.69,Candy,4001686327456,ea.,1,False,1.94000,-97.00000,0,0,True
+303384,HARIBO Germany - Wackelgeister 160 GM.,HARIBO Germany - Wackelgeister 160 GM.,2.79000,4.69,Candy,4001686329351,ea.,1,False,1.94000,-149.00000,0,0,True
+303383,HARIBO Germany - Wasser Melonen 160 GM.,HARIBO Germany - Wasser Melonen 160 GM.,2.79000,4.69,Candy,9002975378956,ea.,1,False,1.94000,-133.00000,0,0,True
+304089,Hershey's CHOCO Popcorn 50 GM. 428011,Hershey's CHOCO Popcorn 50 GM.,1.89000,3.49,Candy,8809827250436,,1,False,1.30000,-240.00000,0,0,True
+304090,Hershey's Seasalt Caramel Choco Popcorn 50 GM. 428012,Hershey's Seasalt Caramel Choco Popcorn 50 GM.,1.89000,3.49,Candy,8809827252027,ea.,1,False,1.30000,-198.00000,0,0,True
+306029,Japanese KitKat BANANA 9 Pcs.,Japanese KitKat BANANA 9 Pcs.,4.79000,7.99,Candy,4902201183987,ea.,1,False,3.60000,-277.00000,0,0,True
+298536,Japanese KitKat Chocolate Orange 9 Pcs.,Japanese KitKat Chocolate Orange 9 Pcs.,4.79000,7.99,Candy,4902201184052,ea.,1,False,3.35000,-419.00000,0,0,True
+321708,Japanese KitKat Cookies & Cream,Japanese KitKat Cookies & Cream,4.79000,7.99,Candy,4902201184106,,1,False,3.35000,-34.00000,0,0,True
+298537,Japanese KitKat Dark Chocolate 10 Pcs.,Japanese KitKat Dark Chocolate 10 Pcs.,4.79000,7.99,Candy,4902201183086,ea.,1,False,3.35000,-24.00000,0,0,True
+301186,Japanese KitKat Matcha Latte 9 Pcs.,Japanese KitKat Matcha Latte 9 Pcs.,4.79000,7.99,Candy,4902201183901,ea.,1,False,3.50000,-261.00000,0,0,True
+298535,Japanese KitKat Strawberry Chocolate 9 Pcs.,Japanese KitKat Strawberry Chocolate 9 Pcs.,4.79000,7.99,Candy,4902201183567,ea.,1,False,3.35000,-113.00000,0,0,True
+303797,Japanese PURE Gummy Plum 52 GM. 02635,Japanese PURE Gummy Plum 52 GM.,1.99000,3.49,Candy,4901351026359,ea.,1,False,1.41000,-54.00000,0,0,True
+228512,JOE Chips Bacon & Cheddar 2 Oz.,JOE Chips Bacon & Cheddar 2 Oz.,1.38000,2.29,Candy,743234002203,,1,False,1.38000,-14.00000,0,0,True
+228510,JOE Chips BARBEQUE 2 Oz.,JOE Chips BARBEQUE 2 Oz.,1.38000,2.29,Candy,743234001701,,1,False,1.38000,-14.00000,0,0,True
+228511,JOE Chips Classic Sea Salt 2 Oz.,JOE Chips Classic Sea Salt 2 Oz.,1.38000,2.29,Candy,743234001695,,1,False,1.38000,-14.00000,0,0,True
+228514,JOE Chips Jalapeno 2 Oz.,JOE Chips Jalapeno 2 Oz.,1.38000,2.29,Candy,743234001732,,1,False,1.38000,-14.00000,0,0,True
+228515,JOE Chips Pickle 2 Oz.,JOE Chips Pickle 2 Oz.,1.38000,2.29,Candy,743234002647,,1,False,1.38000,-14.00000,0,0,True
+228513,JOE Chips Sour Cream 2 Oz.,JOE Chips Sour Cream 2 Oz.,1.38000,2.29,Candy,743234001725,,1,False,1.38000,-14.00000,0,0,True
+306267,KABAYA TOUGH Gummy Cola Lemon 100 GM.,KABAYA TOUGH Gummy Cola Lemon 100 GM.,2.99000,4.99,Candy,4901550267393,ea.,1,False,2.15000,-42.00000,0,0,True
+292814,KALFANY Citrus Fruit Candies Drop 150 GM.,KALFANY Citrus Fruit Candies Drop 150 GM.,3.29000,5.49,Candy,4002590000039,ea.,1,False,2.19000,-74.00000,0,0,True
+292815,KALFANY Coffee Dose 150 GM.,KALFANY Coffee Dose 150 GM.,3.29000,5.49,Candy,4002590000619,ea.,1,False,2.19000,-119.00000,0,0,True
+292811,KALFANY Ice Refreshing Candies Dose 150 GM.,KALFANY Ice Refreshing Candies Dose 150 GM.,3.29000,5.49,Candy,4002590000046,ea.,1,False,2.19000,-119.00000,0,0,True
+298522,KALFANY Multivitamin DOSE 125 G.,KALFANY Multivitamin DOSE 125 G.,3.29000,5.49,Candy,4002590000657,ea.,1,False,2.19000,-15.00000,0,0,True
+298521,KALFANY Strawberry Candies DOSE 150 GM.,KALFANY Strawberry Candies DOSE 150 GM.,3.29000,5.49,Candy,4002590703541,,1,False,2.19000,-30.00000,0,0,True
+302688,KALFANY Watermelon Candies Drop 150 GM.,KALFANY Watermelon Candies Drop 150 GM.,3.29000,5.49,Candy,4002590703749,ea.,1,False,2.19000,-20.00000,0,0,True
+303428,KALFANY Watermelon Drop. 150g,KALFANY Watermelon Drop. 150g,3.29000,5.49,Candy,4002590703749,,1,False,2.19000,0.00000,0,0,True
+292812,"KALFANY Wildberry Candies Drop 150 GM. ","KALFANY Wildberry Candies Drop 150 GM. ",3.29000,5.49,Candy,4002590000022,ea.,1,False,2.19000,-99.00000,0,0,True
+315234,Kasugai HOKKAIDO Matcha Milk Candy 81 GM. 03692,Kasugai HOKKAIDO Matcha Milk Candy 81 GM.,2.59000,4.39,Candy,4901326034754,ea.,1,False,1.80000,-36.00000,0,0,True
+275949,"Kasugai PEACH CREAM FRAPPE 2.68 Oz. ",Kasugai PEACH CREAM FRAPPE 2.68 Oz.,2.39000,4.39,Candy,4901326035638,ea.,1,False,1.60000,-722.00000,0,0,True
+162712,Kinder bueno Chocolate Bar,Kinder bueno Chocolate Bar,29.49000,2.49,Candy,009800552016,box,20,False,22.95000,-1.00000,0,0,True
+257825,KOZED Mango 3D Gummy Candy,KOZED Mango 3D Gummy Candy,2.25000,3.99,Candy,6976791280935,,1,False,1.50000,-19.00000,0,0,True
+257824,KOZED Orange 3D Gummy Candy,KOZED Orange 3D Gummy Candy,2.25000,3.99,Candy,6976791281499,,1,False,1.50000,-19.00000,0,0,True
+257823,KOZED Strawberry 3D Gummy Candy,KOZED Strawberry 3D Gummy Candy,2.25000,3.99,Candy,6976791281482,,1,False,1.50000,-19.00000,0,0,True
+271365,KRAS Bananko Original 30 GM.,KRAS Bananko Original 30 GM.,0.89000,1.69,Candy,3850102127252,ea.,1,False,0.45000,-756.00000,0,0,True
+162719,Las Ollas Tamarind Pop,Las Ollas Tamarind Pop,31.49000,2.59,Candy,880342002418,box,20,False,24.95000,-1.00000,0,0,True
+162706,Mazapan Chocolate .88 Oz.,Mazapan Chocolate .88 Oz.,3.49000,0.49,Candy,724869001007,box,16,False,2.29000,-2.00000,0,0,True
+294431,Milka Caramel Chocolates,Milka Caramel Chocolates,2.99000,5.49,Candy,070221003197,ea.,1,False,1.93000,-303.00000,0,0,True
+320750,Milka Chocolate Biscoff,Milka Chocolate Biscoff,2.99000,5.49,Candy,891128143355,,1,False,1.70000,-48.00000,0,0,True
+272075,Milka Haselnuss Chocolate,Milka Haselnuss Chocolate,2.99000,5.49,Candy,070221003319,ea.,1,False,1.88000,-1020.00000,0,0,True
+298527,Milka JOGHURT Chocolate 100 GM.,Milka JOGHURT Chocolate 100 GM.,2.99000,5.49,Candy,070221003371,,1,False,1.74000,-253.00000,0,0,True
+272076,Milka OREO Chocolate,Milka OREO Chocolate,2.99000,5.49,Candy,891128148190,ea.,1,False,1.88000,-3812.00000,0,0,True
+304722,Milka OREO Sandwich Chocolate,Milka OREO Sandwich Chocolate,2.99000,5.49,Candy,891128148329,,1,False,1.88000,-134.00000,0,0,True
+302686,Milka Peanut Crisp CARAMEL Chocolate,Milka Peanut Crisp CARAMEL Chocolate,2.99000,5.49,Candy,891128143218,,1,False,1.77000,-288.00000,0,0,True
+292980,Milka Raisins & Nuts Chocolate,Milka Raisins & Nuts Chocolate,2.99000,5.49,Candy,070221003326,ea.,1,False,1.77400,-759.00000,0,0,True
+272074,Milka Strawberry Chocolate,Milka Strawberry Chocolate,2.99000,5.49,Candy,070221003340,ea.,1,False,1.88000,-4076.00000,0,0,True
+282761,Milka White Chocolate,Milka White Chocolate,2.99000,5.49,Candy,070221003364,,1,False,1.88000,-1608.00000,0,0,True
+162718,Mini PALETA PAYASO .88 Oz.,Mini PALETA PAYASO .88 Oz.,7.75000,0.99,Candy,757528003999,box,15,False,5.69000,-2.00000,0,0,True
+314530,MKD 4D Musical Lollipop BEAR,MKD 4D Musical Lollipop BEAR,2.69000,4.49,Candy,4897113205158,ea.,1,False,1.80000,-136.00000,0,0,True
+314531,MKD 4D Musical Lollipop Dinosaur,MKD 4D Musical Lollipop Dinosaur,2.69000,4.49,Candy,4897113205165,ea.,1,False,1.80000,-120.00000,0,0,True
+314529,MKD 4D Musical Lollipop Strawberry,MKD 4D Musical Lollipop Strawberry,2.69000,4.49,Candy,4897113205141,ea.,1,False,1.80000,-120.00000,0,0,True
+243075,Monkey SNAX Chocolate,Monkey SNAX Chocolate,3.79000,6.99,Candy,647535353302,,1,False,2.75000,-994.00000,0,0,True
+243072,Monkey SNAX Cookies & Cream,Monkey SNAX Cookies & Cream,3.79000,6.99,Candy,647535337494,,1,False,2.75000,-1394.00000,0,0,True
+243074,Monkey SNAX Mint Choco Chip,Monkey SNAX Mint Choco Chip,3.79000,6.99,Candy,647535049755,,1,False,2.75000,-998.00000,0,0,True
+243073,Monkey SNAX Neapolitan,Monkey SNAX Neapolitan,3.79000,6.99,Candy,647535401942,,1,False,2.75000,-878.00000,0,0,True
+243071,Monkey SNAX Vanilla BEAN,Monkey SNAX Vanilla BEAN,3.79000,6.99,Candy,647535010632,,1,False,2.75000,1432.00000,0,0,True
+271364,Mr. Bite WHOMP Pistachio 40 GM.,Mr. Bite WHOMP Pistachio 40 GM.,1.29000,2.29,Candy,8697439309396,,1,False,0.55000,-1824.00000,0,0,True
+320752,Nestle Aero Scoops Choco Strawberry 105 GM.,Nestle Aero Scoops Choco Strawberry 105 GM.,3.69000,6.49,Candy,059800752978,ea.,1,False,2.54000,-62.00000,0,0,True
+320753,Nestle Aero Scoops MAPLE 105 GM.,Nestle Aero Scoops MAPLE 105 GM.,3.69000,6.49,Candy,059800754194,,1,False,2.54000,-62.00000,0,0,True
+320751,Nestle Aero Truffle Tiramisu 105 GM.,Nestle Aero Truffle Tiramisu 105 GM.,3.69000,6.49,Candy,059800301909,case,1,False,2.54000,-62.00000,0,0,True
+162710,NUGS Recreo,NUGS Recreo,6.49000,1.49,Candy,724869001434,box,10,False,4.19000,-2.00000,0,0,True
+228158,PC Beef Jerky CARNE SECA Limon Con Chile 2.5 Oz.,PC Beef Jerky CARNE SECA Limon Con Chile 2.5 Oz.,3.99000,7.49,Candy,087694007119,,1,False,3.99000,-22.00000,0,0,True
+228160,PC Beef Jerky Cowboy Peppered 2.5 Oz.,PC Beef Jerky Cowboy Peppered 2.5 Oz.,3.99000,7.49,Candy,087694003128,,1,False,3.99000,-19.00000,0,0,True
+228163,PC Beef Jerky Dill Pickle 2.5 Oz.,PC Beef Jerky Dill Pickle 2.5 Oz.,3.99000,7.49,Candy,087694444228,,1,False,3.99000,-23.00000,0,0,True
+228161,PC Beef Jerky GARLIC Ginger 2.5 Oz.,PC Beef Jerky GARLIC Ginger 2.5 Oz.,3.99000,7.49,Candy,087694003043,,1,False,3.99000,-21.00000,0,0,True
+228162,PC Beef Jerky Nashville Hot 2.5 Oz.,PC Beef Jerky Nashville Hot 2.5 Oz.,3.99000,7.49,Candy,087694007423,,1,False,3.99000,-21.00000,0,0,True
+228159,PC Beef Jerky Sweet Chili Habanero 2.5 Oz.,PC Beef Jerky Sweet Chili Habanero 2.5 Oz.,3.99000,7.49,Candy,087694003111,,1,False,3.99000,-12.00000,0,0,True
+264842,Puchao Bubbly Soda 3.5 Oz. - 43689,Puchao Bubbly Soda 3.5 Oz.,2.59000,4.69,Candy,011152436890,ea.,1,False,1.80000,-1713.00000,0,0,True
+264843,Puchao Fruit 4 Flavors 3.5 Oz. - 43690,Puchao Fruit 4 Flavors 3.5 Oz.,2.59000,4.69,Candy,011152436906,ea.,1,False,1.80000,-1991.00000,0,0,True
+264844,Puchao Fruit Soda 3.5 Oz. - 61194,Puchao Fruit Soda 3.5 Oz.,2.59000,4.69,Candy,011152611945,ea.,1,False,1.80000,-612.00000,0,0,True
+265914,Puchao Matcha 3.17 Oz.,Puchao Matcha 3.17 Oz.,2.59000,4.69,Candy,011152482668,,1,False,1.80000,-858.00000,0,0,True
+290877,Puchao Shaved Ice Mix Orange & Mango 2.82 Oz. - 89335,Puchao Shaved Ice Mix Orange & Mango 2.82 Oz.,2.59000,4.69,Candy,011152893358,ea.,1,False,1.80000,-942.00000,0,0,True
+264845,Puchao Yogurt & Peach 3.5 Oz. - 84330,Puchao Yogurt & Peach 3.5 Oz.,2.59000,4.69,Candy,011152843308,ea.,1,False,1.80000,-1704.00000,0,0,True
+162708,Pulparindo Extra Spicy Picante,Pulparindo Extra Spicy Picante,2.99000,0.39,Candy,725226003504,box,20,False,1.89000,-2.00000,0,0,True
+162709,Pulparindo Mango,Pulparindo Mango,2.99000,0.39,Candy,725226001418,box,20,False,1.89000,-2.00000,0,0,True
+162707,Pulparindo Watermelon,Pulparindo Watermelon,2.99000,0.39,Candy,725226001197,box,20,False,1.89000,-2.00000,0,0,True
+228238,RepRally Products,RepRally Products,2400.00000,0.00,Candy,081013977182,box,1,False,2000.00000,6.00000,0,0,True
+307772,Ritter SPORT Amicelli 100 GM. 60156,Ritter SPORT Amicelli 100 GM.,3.39000,5.99,Candy,4000417601513,ea.,1,False,2.34000,-156.00000,0,0,True
+307770,Ritter SPORT Marzipan Dark Choco filling 100 GM. 60256,Ritter SPORT Marzipan Dark Choco filling 100 GM.,3.39000,5.99,Candy,050255025006,ea.,1,False,2.34000,-107.00000,0,0,True
+307771,Ritter SPORT Milk PISTAZIE 100 GM. 67096,Ritter SPORT Milk PISTAZIE 100 GM.,3.39000,5.99,Candy,4000417670915,ea.,1,False,2.34000,-204.00000,0,0,True
+307773,Ritter SPORT Roasted Peanut 100 GM. 67066B,Ritter SPORT Roasted Peanut 100 GM.,3.39000,5.99,Candy,4000417670618,ea.,1,False,2.34000,-231.00000,0,0,True
+304634,"Russian 140 KOROVKA Cheese Bar On Stick ","Russian 140 KOROVKA Cheese Bar On Stick ",2.69000,4.99,Candy,4602358010081,,1,False,1.81000,0.00000,0,0,True
+304642,Russian 144 KOROVKA Cheese Bar On Stick Almond,Russian 144 KOROVKA Cheese Bar On Stick Almond,2.69000,4.99,Candy,4602358010784,,1,False,1.81000,0.00000,0,0,True
+303878,Russian 20756 CTEN STEP XL Nougat Peanut Caramel 65 GR. 14605142053827,Russian 20756 CTEN STEP XL Nougat Peanut Caramel 65 GR.,1.59000,2.99,Candy,4605142053820,,1,False,0.85000,-120.00000,0,0,True
+303877,Russian 20857 CTEN STEP XL with Hazelnut 65 GR. 14605142054091,Russian 20857 CTEN STEP XL with Hazelnut 65 GR.,1.59000,2.99,Candy,4605142054094,ea.,1,False,0.85000,-60.00000,0,0,True
+304628,Russian 30926 OBYKNOVENNOE CHUDO Creamy BAR,Russian 30926 OBYKNOVENNOE CHUDO Creamy Bar,1.55000,2.79,Candy,4605142020464,,1,False,0.99000,-120.00000,0,0,True
+304625,Russian 30947 OBYKNOVENNOE CHUDO Choco BAR,Russian 30947 OBYKNOVENNOE CHUDO Choco BAR,1.55000,2.79,Candy,4605142020471,,1,False,0.99000,-72.00000,0,0,True
+303873,Russian ALENKA Blueberry Yogurt Chocolate 165 GM. 24600080449630,Russian ALENKA Blueberry Yogurt Chocolate 165 GM.,3.79000,6.99,Candy,4600080449636,,1,False,2.35000,-45.00000,0,0,True
+304615,Russian Alenka Strawberry & Cream 2460008024,Russian Alenka Strawberry & Cream,3.29000,5.99,Candy,4600080299187,,1,False,1.99000,-70.00000,0,0,True
+303887,Russian AZOVSKAYA Black Currant MARMALADE 300 GR.,Russian AZOVSKAYA Black Currant MARMALADE 300 GR.,2.99000,5.49,Candy,4620004252661,,1,False,1.99000,-34.00000,0,0,True
+303889,Russian AZOVSKAYA Cherry MARMALADE 300 GR.,Russian AZOVSKAYA Cherry MARMALADE 300 GR.,2.99000,5.49,Candy,4620004252074,,1,False,1.99000,-29.00000,0,0,True
+303886,Russian AZOVSKAYA ORANGE MARMALADE 300 GR.,Russian AZOVSKAYA ORANGE MARMALADE 300 GR.,2.99000,5.49,Candy,4620004252685,,1,False,1.99000,-24.00000,0,0,True
+304674,Russian Choc BABAEVSKIY Rasp & Lime 4600300099627,"Russian Choc BABAEVSKIY Rasp & Lime ",3.69000,6.69,Candy,4600300099610,,1,False,2.49000,-52.00000,0,0,True
+304675,Russian Chocolate BABAEVSKIY Orange & Cherry 4600300099658,Russian Chocolate BABAEVSKIY Orange & Cherry,3.69000,6.69,Candy,4600300099641,,1,False,2.49000,-78.00000,0,0,True
+304676,Russian Chocolate BABAEVSKIY Tangerine & Walnut,Russian Chocolate BABAEVSKIY Tangerine & Walnut,3.29000,5.99,Candy,4600823651135,,1,False,1.99000,-36.00000,0,0,True
+304677,Russian CRAZY PARTY Gummy Candy Zoo Flv.,Russian CRAZY PARTY Gummy Candy Zoo Flv.,2.29000,4.19,Candy,4620004253736,,1,False,1.55000,-20.00000,0,0,True
+304680,Russian CRAZY PARTY Gummy RACING Flv.,Russian CRAZY PARTY Gummy RACING Flv.,2.29000,4.19,Candy,4620004254061,,1,False,1.55000,-48.00000,0,0,True
+304681,Russian CRAZY PARTY Gummy Tropical Flv.,Russian CRAZY PARTY Gummy Tropical Flv.,2.29000,4.19,Candy,4620004253750,,1,False,1.55000,-48.00000,0,0,True
+292798,SNICKERS Brazil - MARACUJA 42 GM. - 20 Ct. 7896423456431,SNICKERS Brazil - MARACUJA 42 GM. - 20 Ct.,43.80000,3.69,Candy,7896423456561,box,20,False,31.50000,-808.00000,0,0,True
+292797,SNICKERS Brazil - MORANGO 42 GM. - 20 Ct. 7896423445893,SNICKERS Brazil - MORANGO 42 GM. - 20 Ct.,43.80000,3.69,Candy,7896423445985,box,20,False,31.50000,-800.00000,0,0,True
+302684,Stuffed Puffs GF CHILI Mango 4.23 Oz.,Stuffed Puffs GF CHILI Mango 4.23 Oz.,3.39000,5.69,Candy,810120110509,ea.,1,False,2.29000,-83.00000,0,0,True
+302682,Stuffed Puffs GF Fruity Punch 4.23 Oz.,Stuffed Puffs GF Fruity Punch 4.23 Oz.,3.39000,5.69,Candy,810120110479,ea.,1,False,2.29000,-75.00000,0,0,True
+302683,Stuffed Puffs GF Mixed Berry 4.23 Oz.,Stuffed Puffs GF Mixed Berry 4.23 Oz.,3.39000,5.69,Candy,810120110547,ea.,1,False,2.29000,-83.00000,0,0,True
+162720,Super Rebanaditas Mango,Super Rebanaditas Mango,5.99000,0.69,Candy,7502225962208,box,20,False,4.49000,-1.00000,0,0,True
+162721,Super Rebanaditas Watermelon,Super Rebanaditas Watermelon,5.99000,0.69,Candy,7502225961539,box,20,False,4.49000,-1.00000,0,0,True
+306752,Swedish BUBS Sour Diamond Strawberry Vanilla 5.5 Oz.,Swedish BUBS Sour Diamond Strawberry Vanilla 5.5 Oz.,3.29000,5.69,Candy,051756021061,ea.,1,False,2.30000,-64.00000,0,0,True
+306751,Swedish BUBS Sour Diamond Tutti Frutti 5.5 Oz.,Swedish BUBS Sour Diamond Tutti Frutti 5.5 Oz.,3.29000,5.69,Candy,051756020064,ea.,1,False,2.30000,-64.00000,0,0,True
+306753,Swedish BUBS Sweet Ovals Banana 5.5 Oz.,Swedish BUBS Sweet Ovals Banana 5.5 Oz.,3.29000,5.69,Candy," 051756022068",ea.,1,False,2.30000,-56.00000,0,0,True
+197315,Too Tarts Super Roller Candy  15 Ct.,Too Tarts Super Roller Candy  15 Ct.,22.49000,2.99,Candy,850041475127,box,15,False,15.95000,-15.00000,0,0,True
+275948,UHA Matcha Milk Candy 2.36 Oz. 44939,UHA Matcha Milk Candy 2.36 Oz.,2.39000,4.35,Candy,011152850023,,1,False,1.60000,-89.00000,0,0,True
+281728,UHA Rich Milk Candy 2.99 Oz.,UHA Rich Milk Candy,2.39000,4.35,Candy,011152850016,,1,False,1.60000,-180.00000,0,0,True
+275947,UHA Strawberry Milk Candy 2.53 Oz. 44923,UHA Strawberry Milk Candy 2.53 Oz.,2.39000,4.35,Candy,011152850054,,1,False,1.60000,-246.00000,0,0,True
+228476,VERB Caffeinated Birthday Cake,VERB Caffeinated Birthday Cake,24.00000,2.99,Candy,850043221425,,16,False,21.92000,0.00000,0,0,True
+228475,VERB Caffeinated Choco Chip BB,VERB Caffeinated Choco Chip BB,24.00000,2.99,Candy,850031387720,,16,False,21.92000,0.00000,0,0,True
+228480,VERB Caffeinated Choco PB Cup,VERB Caffeinated Choco PB Cup,22.00000,2.49,Candy,850043221371,,16,False,21.92000,-1.00000,0,0,True
+228478,VERB Caffeinated Lemon,VERB Caffeinated Lemon,24.00000,2.99,Candy,850043221319,,16,False,21.92000,0.00000,0,0,True
+228477,VERB Caffeinated S’mores,VERB Caffeinated S’mores,24.00000,2.99,Candy,850031387843,,16,False,21.92000,0.00000,0,0,True
+303030,WELORA GOLD Chocolate Gift Box 500 GM.,WELORA GOLD Chocolate Gift Box 500 GM.,6.99000,12.99,Candy,8731379517661,box,1,False,4.55000,-49.00000,0,0,True
+304763,WHP ALENKA Milk Chocolate with Blueberry Yogurt 165 GM. 24600080449630,WHP ALENKA Milk Chocolate with Blueberry Yogurt 165 GM. 24600080449630,3.29000,5.99,Candy,4600080449636,,1,False,2.35000,-1.00000,0,0,True
+301032,WHP Casali SCHOKO Banane XL 35 Ct. 9000332012109,"WHP Casali SCHOKO Banane XL 35 Ct. ",25.00000,1.39,Candy,9000332812105,,35,False,19.95000,-1.00000,0,0,True
+301683,WHP CENTER SHOCK COLA 100 Pcs./Box,WHP CENTER SHOCK COLA 100 Pcs./Box,17.50000,0.39,Candy,8003440915011,,100,False,11.70000,-2.00000,0,0,True
+301684,WHP CENTER SHOCK Erdbeere 100 Pcs./Box,WHP CENTER SHOCK Erdbeere 100 Pcs./Box,17.50000,0.39,Candy,8003440915004,,100,False,11.70000,-2.00000,0,0,True
+301685,WHP CENTER SHOCK Monster MIX 100 Pcs./Box,WHP CENTER SHOCK Monster MIX 100 Pcs./Box,17.50000,0.39,Candy,8003440915509,,100,False,11.70000,-2.00000,0,0,True
+303843,WHP CHAO YOU WEI Mochi Mango Flavor 126 GM.,WHP CHAO YOU WEI Mochi Mango Flavor 126 GM.,2.49000,4.39,Candy,4895235566997,ea.,1,False,1.90000,-5.00000,0,0,True
+303841,WHP CHAO YOU WEI Mochi Matcha Flavor 126 GM.,WHP CHAO YOU WEI Mochi Matcha Flavor 126 GM.,2.49000,4.39,Candy,4895235567000,,1,False,1.90000,-4.00000,0,0,True
+303842,WHP CHAO YOU WEI Mochi Strawberry Flavor 126 GM.,WHP CHAO YOU WEI Mochi Strawberry Flavor 126 GM.,2.49000,4.39,Candy,4895235566980,,1,False,1.90000,-4.00000,0,0,True
+297065,WHP CHOMIS GOMIS Chamoy Kids,WHP CHOMIS GOMIS Chamoy Kids,4.49000,7.99,Candy,762983638051,,1,False,3.35000,-236.00000,0,0,True
+315187,WHP CHOMIS GOMIS Chamoy Starbies,WHP CHOMIS GOMIS Chamoy Starbies,4.49000,7.49,Candy,767461610147,,1,False,3.35000,-220.00000,0,0,True
+297068,WHP CHOMIS GOMIS Gushers,WHP CHOMIS GOMIS Gushers,5.09000,8.99,Candy,762983638105,,1,False,4.10000,-359.00000,0,0,True
+297059,WHP CHOMIS GOMIS Mangitos,WHP CHOMIS GOMIS Mangitos,4.49000,7.99,Candy,618056630852,,1,False,3.35000,-383.00000,0,0,True
+297064,WHP CHOMIS GOMIS Sandillitas,WHP CHOMIS GOMIS Sandillitas,4.49000,7.99,Candy,618056630890,,1,False,3.35000,-320.00000,0,0,True
+297067,WHP CHOMIS GOMIS Skitlz,WHP CHOMIS GOMIS Skitlz,4.49000,7.99,Candy,767461610123,,1,False,3.35000,-124.00000,0,0,True
+297069,WHP CHOMIS Nerdies,WHP CHOMIS Nerdies,5.09000,8.99,Candy,767461610352,,1,False,4.10000,-286.00000,0,0,True
+297066,WHP CHOMIS PEPINOS LOCOS Cucumber,WHP CHOMIS PEPINOS LOCOS Cucumber,4.49000,7.99,Candy,759382497518,,1,False,3.35000,-246.00000,0,0,True
+315741,WHP CHOMIS RAINBOWS 6 Oz.,WHP CHOMIS RAINBOWS 6 Oz.,4.69000,7.99,Candy,759382497501,,1,False,3.35000,-168.00000,0,0,True
+321156,WHP Exotic Austrian CASALI MINI SCHOKO BANANEN 110 GM.,WHP Exotic Austrian CASALI MINI SCHOKO BANANEN 110 GM.,2.69000,4.89,Candy,9000332812662,,1,False,1.86000,-12.00000,0,0,True
+321157,WHP Exotic Austrian CASALI PINA COLADA Choco Ball 175 GM.,WHP Exotic Austrian CASALI PINA COLADA Choco Ball 175 GM.,3.69000,6.39,Candy,9015810000912,,1,False,2.78000,-3.00000,0,0,True
+320929,WHP Exotic DOUBLEMINT Lemon & Mint Chewing Gum,WHP Exotic DOUBLEMINT Lemon & Mint Chewing Gum,2.99000,5.29,Candy,6923450690703,ea.,1,False,1.95000,-24.00000,0,0,True
+320930,WHP Exotic DOUBLEMINT Strawberry & Mint Chewing Gum,WHP Exotic DOUBLEMINT Strawberry & Mint Chewing Gum,2.99000,5.29,Candy,6923450661581,ea.,1,False,1.95000,-24.00000,0,0,True
+315768,WHP Exotic HI-CHEW Mixed Berry Soft Candy 23028,WHP Exotic HI-CHEW Mixed Berry Soft Candy,2.15000,3.69,Candy,4710035230230,ea.,1,False,1.65000,0.00000,0,0,True
+315769,WHP Exotic HI-CHEW Mixed Fruit Soft Candy 23038,WHP Exotic HI-CHEW Mixed Fruit Soft Candy,2.15000,3.69,Candy,4710035230384,ea.,1,False,1.65000,0.00000,0,0,True
+314616,WHP Exotic HI-CHEW Mixed Fruit Soft Candy LGP 23039,WHP Exotic HI-CHEW Mixed Fruit Soft Candy LGP,2.15000,3.69,Candy,4710035230391,ea.,1,False,1.65000,-10.00000,0,0,True
+314617,WHP Exotic HI-CHEW Mix Soda Soft Candy 23042,WHP Exotic HI-CHEW Mix Soda Soft Candy,2.15000,3.69,Candy,4710035230421,ea.,1,False,1.65000,-10.00000,0,0,True
+314615,WHP Exotic HI-CHEW Mix Yogurt Soft Candy 23041,WHP Exotic HI-CHEW Mix Yogurt Soft Candy,2.15000,3.69,Candy,4710035230414,ea.,1,False,1.65000,-16.00000,0,0,True
+319374,WHP Exotic HI-CHEW Mystic Blue Raspberry 211111,WHP Exotic HI-CHEW Mystic Blue Raspberry,1.39000,2.39,Candy,4710035221498,,1,False,1.09000,-30.00000,0,0,True
+319373,WHP Exotic HI-CHEW PEACH Yogurt 211109,WHP Exotic HI-CHEW PEACH Yogurt,1.39000,2.39,Candy,4710035221429,,1,False,1.09000,-30.00000,0,0,True
+321432,WHP Exotic Jasmine Rose Green Plums,WHP Exotic Jasmine Rose Green Plums,2.89000,4.99,Candy,6952480008011,,1,False,2.15000,-8.00000,0,0,True
+320927,WHP Exotic ORION Pink Guava Soft Candy,WHP Exotic ORION Pink Guava Soft Candy,1.89000,3.49,Candy,6920907834369,,1,False,1.15000,0.00000,0,0,True
+320925,WHP Exotic PANDA Bobo Grape & Apple Flv.,WHP Exotic PANDA Bobo Grape & Apple Flv.,1.85000,3.39,Candy,6977594181931,,1,False,1.15000,-4.00000,0,0,True
+320924,WHP Exotic PANDA Bobo Soda & Apple Flv.,WHP Exotic PANDA Bobo Soda & Apple Flv.,1.85000,3.39,Candy,6977594181948,,1,False,1.15000,-8.00000,0,0,True
+320926,WHP Exotic Salted Plum & Hawthorn Candy,WHP Exotic Salted Plum & Hawthorn Candy,2.89000,4.99,Candy,6952480007427,ea.,1,False,2.15000,-7.00000,0,0,True
+321153,WHP Exotic Spanish Chupa Chups SOUR 10 Pcs./Bag,WHP Exotic Spanish Chupa Chups SOUR 10 Pcs./Bag,3.19000,5.49,Candy,8410031976373,,1,False,2.34000,-9.00000,0,0,True
+321154,WHP Exotic Spanish Chupa Chups Strawberry LOVERS 10 Pcs./Bag,WHP Exotic Spanish Chupa Chups Strawberry LOVERS 10 Pcs./Bag,3.19000,5.49,Candy,8410031972337,,1,False,2.34000,-9.00000,0,0,True
+321155,WHP Exotic Spanish Chupa Chups Tongue Painter 10 Pcs./Bag,WHP Exotic Spanish Chupa Chups Tongue Painter 10 Pcs./Bag,3.19000,5.49,Candy,8410031990584,,1,False,2.34000,-10.00000,0,0,True
+320928,WHP Exotic Wrigley's Iced Cold Guava Tea Chewing Gum,WHP Exotic Wrigley's Iced Cold Guava Tea Chewing Gum,2.99000,5.39,Candy,6923450632444,ea.,1,False,2.05000,-12.00000,0,0,True
+321158,WHP HARIBO German BAERCHEN PAERCHEN 160 GM.,WHP HARIBO German BAERCHEN PAERCHEN 160 GM.,2.49000,4.29,Candy,4001686331668,ea.,1,False,1.94000,0.00000,0,0,True
+321160,WHP HARIBO Germany Beach Party 175 GM.,WHP HARIBO Germany Beach Party 175 GM.,2.49000,4.29,Candy,4001686020845,ea.,1,False,1.90000,0.00000,0,0,True
+301033,"WHP HARIBO Germany - Bunte Schnecken 160 GM. ","WHP HARIBO Germany - Bunte Schnecken 160 GM. ",2.49000,4.29,Candy,4001686002421,ea.,1,False,1.94000,-37.00000,0,0,True
+303462,WHP HARIBO Germany - COLOR RADO 175 GM.,WHP HARIBO Germany - COLOR RADO 175 GM.,2.49000,4.29,Candy,4001686725504,ea.,1,False,1.94000,-33.00000,0,0,True
+301035,WHP HARIBO Germany - Crazy Schnuller 175 GM.,WHP HARIBO Germany - Crazy Schnuller 175 GM.,2.49000,4.49,Candy,4001686331729,,1,False,1.94000,-58.00000,0,0,True
+303467,WHP HARIBO Germany - Fruchtballe 160 GM.,WHP HARIBO Germany - Fruchtballe 160 GM.,2.49000,4.29,Candy,4001686019566,,1,False,1.94000,-34.00000,0,0,True
+301037,WHP HARIBO Germany - FRUITMANIA Joghurt 160 GM.,WHP HARIBO Germany - FRUITMANIA Joghurt 160 GM.,2.49000,4.29,Candy,4001686322567,,1,False,1.94000,-50.00000,0,0,True
+315068,WHP HARIBO Germany Jelly Beans 160 GM.,WHP HARIBO Germany Jelly Beans 160 GM.,2.49000,4.29,Candy,9002975002523,,1,False,1.94000,0.00000,0,0,True
+312995,WHP HARIBO Germany - Kicker Brause 175 GM.,WHP HARIBO Germany - Kicker Brause 175 GM.,2.49000,4.29,Candy,4001686002001,,1,False,1.94000,-15.00000,0,0,True
+321159,WHP HARIBO Germany KIRSCH Cola 175 GM.,WHP HARIBO Germany KIRSCH Cola 175 GM.,2.49000,4.29,Candy,4001686331842,ea.,1,False,1.94000,0.00000,0,0,True
+301038,"WHP HARIBO Germany - KONFEKT LAKRITZ 175 GM. ","WHP HARIBO Germany - KONFEKT LAKRITZ 175 GM. ",2.49000,4.49,Candy,4001686151105,,1,False,1.94000,-47.00000,0,0,True
+301039,"WHP HARIBO  Germany -  MAOAM KRACHER 200 GM. ","WHP HARIBO  Germany -  MAOAM KRACHER 200 GM. ",2.49000,4.29,Candy,4001686536025,,1,False,1.94000,-58.00000,0,0,True
+303466,WHP HARIBO Germany - MarioKart Edition 160 GM.,WHP HARIBO Germany - MarioKart Edition 160 GM.,2.49000,4.29,Candy,4001686020081,,1,False,1.94000,-67.00000,0,0,True
+301040,"WHP HARIBO Germany - Pasta Penne 160 GM. ","WHP HARIBO Germany - Pasta Penne 160 GM. ",2.49000,4.29,Candy,4001686009703,,1,False,1.94000,-85.00000,0,0,True
+303464,WHP HARIBO Germany - Phantasia 175 GM.,WHP HARIBO Germany - Phantasia 175 GM.,2.49000,4.39,Candy,4001686322901,,1,False,1.94000,-33.00000,0,0,True
+301041,WHP HARIBO Germany - Pico BALLA 160 GM.,WHP HARIBO Germany - Pico BALLA 160 GM.,2.49000,4.49,Candy,4001686120132,,1,False,1.94000,-19.00000,0,0,True
+301042,WHP HARIBO Germany - Rainbow Pixel 160 GM.,WHP HARIBO Germany - Rainbow Pixel 160 GM.,2.49000,4.29,Candy,4001686376829,,1,False,1.94000,-52.00000,0,0,True
+305319,WHP HARIBO Germany - Rainbow SAVER 160 GM.,WHP HARIBO Germany - Rainbow SAVER 160 GM.,2.49000,4.29,Candy,4001686120163,,1,False,1.94000,-33.00000,0,0,True
+315067,WHP HARIBO Germany Rainbow Worms 5 Oz.,WHP HARIBO Germany Rainbow Worms 5 Oz.,2.19000,3.69,Candy,042238724563,,1,False,1.50000,-5.00000,0,0,True
+301043,"WHP HARIBO  Germany -  ROTELLA Frucht 160 GM. ",HARIBO  Germany -  ROTELLA Frucht 160 GM.,2.49000,4.49,Candy,4001686328910,,1,False,1.94000,0.00000,0,0,True
+303465,WHP HARIBO Germany - SaureTute 175 GM.,WHP HARIBO Germany - SaureTute 175 GM.,2.49000,4.29,Candy,4001686376850,,1,False,1.94000,-28.00000,0,0,True
+304947,WHP HARIBO Germany - Tropifrutti 175 GM.,WHP HARIBO Germany - Tropifrutti 175 GM.,2.49000,4.49,Candy,4001686322963,,1,False,1.94000,-30.00000,0,0,True
+301044,"WHP HARIBO Germany - Vampire 175 GM. ","WHP HARIBO Germany - Vampire 175 GM. ",2.49000,4.49,Candy,4001686327456,,1,False,1.94000,-67.00000,0,0,True
+303463,WHP HARIBO Germany - Wackelgeister 160 GM.,WHP HARIBO Germany - Wackelgeister 160 GM.,2.49000,4.29,Candy,4001686329351,,1,False,1.94000,-23.00000,0,0,True
+303461,WHP HARIBO Germany - Wasser Melonen - 160. MG.,WHP HARIBO Germany - Wasser Melonen - 160. MG.,2.49000,4.49,Candy,9002975378956,,1,False,1.49000,-67.00000,0,0,True
+314622,WHP Hershey's Seasalt Caramel Choco Popcorn 50 GM. 428012,WHP Hershey's Seasalt Caramel Choco Popcorn 50 GM. 428012,1.69000,3.19,Candy,8809827252027,,1,False,1.30000,0.00000,0,0,True
+306106,WHP Japanese KitKat BANANA 9 Pcs.,WHP Japanese KitKat BANANA 9 Pcs.,4.49000,7.49,Candy,4902201183987,ea.,1,False,3.60000,-64.00000,0,0,True
+305039,WHP Japanese KitKat Chocolate Orange 9 Pcs.,WHP Japanese KitKat Chocolate Orange 9 Pcs.,4.49000,7.49,Candy,4902201184052,ea.,1,False,3.60000,-75.00000,0,0,True
+321709,WHP Japanese KitKat Cookies & Cream,WHP Japanese KitKat Cookies & Cream,4.49000,7.49,Candy,4902201184106,,1,False,3.35000,-20.00000,0,0,True
+305040,WHP Japanese KitKat Matcha Latte 9 Pcs.,WHP Japanese KitKat Matcha Latte 9 Pcs.,4.49000,7.49,Candy,4902201183901,ea.,1,False,3.50000,-41.00000,0,0,True
+305041,WHP Japanese PURE Gummy Plum 52 GM. 02635,WHP Japanese PURE Gummy Plum 52 GM.,1.79000,2.99,Candy,4901351026359,ea.,1,False,1.41000,0.00000,0,0,True
+307201,WHP KABAYA TOUGH Gummy Cola Lemon 100 GM.,WHP KABAYA TOUGH Gummy Cola Lemon 100 GM.,2.69000,4.49,Candy,4901550267393,ea.,1,False,2.15000,0.00000,0,0,True
+301569,WHP KALFANY Citrus Fruit Candies Drop 150 GM.,WHP KALFANY Citrus Fruit Candies Drop 150 GM.,2.99000,4.99,Candy,4002590000039,,1,False,2.19000,-20.00000,0,0,True
+301570,WHP KALFANY Coffee Dose 150 GM.,WHP KALFANY Coffee Dose 150 GM.,2.99000,4.99,Candy,4002590000619,,1,False,2.19000,-16.00000,0,0,True
+301572,WHP KALFANY Ice Refreshing Candies Dose 150 GM.,WHP KALFANY Ice Refreshing Candies Dose 150 GM.,2.99000,4.99,Candy,4002590000046,,1,False,2.19000,-22.00000,0,0,True
+301574,WHP KALFANY Multivitamin DOSE 125 GM.,WHP KALFANY Multivitamin DOSE 125 GM.,2.99000,4.99,Candy,4002590000657,,1,False,2.19000,-20.00000,0,0,True
+301576,WHP KALFANY Strawberry Candies DOSE 150 GM.,WHP KALFANY Strawberry Candies DOSE 150 GM.,2.99000,4.99,Candy,4002590703541,,1,False,2.19000,-28.00000,0,0,True
+303429,WHP KALFANY Watermelon Drop. 150g,WHP KALFANY Watermelon Drop. 150g,2.99000,4.99,Candy,4002590703749,,1,False,2.19000,-12.00000,0,0,True
+301577,WHP KALFANY Wildberry Candies Drop 150 GM.,WHP KALFANY Wildberry Candies Drop 150 GM.,2.99000,4.99,Candy,4002590000022,,1,False,2.19000,-22.00000,0,0,True
+315235,WHP Kasugai HOKKAIDO Matcha Milk Candy 81 GM. 03692,WHP Kasugai HOKKAIDO Matcha Milk Candy 81 GM.,2.39000,4.09,Candy,4901326034754,,1,False,1.80000,0.00000,0,0,True
+315249,WHP Kasugai PEACH CREAM FRAPPE 2.68 Oz. 03611,WHP Kasugai PEACH CREAM FRAPPE 2.68 Oz.,2.19000,3.69,Candy,4901326035638,,1,False,1.60000,-12.00000,0,0,True
+297225,WHP Milka Caramel Chocolates,WHP Milka Caramel Chocolates,2.69000,4.99,Candy,070221003197,ea.,1,False,1.93000,0.00000,0,0,True
+321161,"WHP Milka Chocolate Biscoff ","WHP Milka Chocolate Biscoff ",2.69000,4.99,Candy,891128143355,,1,False,1.70000,-31.00000,0,0,True
+297227,WHP Milka Haselnuss Chocolate,WHP Milka Haselnuss Chocolate,2.69000,4.99,Candy,070221003319,ea.,1,False,1.88000,0.00000,0,0,True
+297228,WHP Milka OREO Chocolate,WHP Milka OREO Chocolate,2.69000,4.69,Candy,891128148190,,1,False,1.88000,-196.00000,0,0,True
+305461,WHP Milka OREO Sandwich Chocolate,WHP Milka OREO Sandwich Chocolate,2.69000,4.89,Candy,891128148329,,1,False,1.75000,-32.00000,0,0,True
+304139,WHP Milka Peanut Crisp CARAMEL Chocolate,WHP Milka Peanut Crisp CARAMEL Chocolate,2.69000,4.99,Candy,891128143218,,1,False,1.77000,-72.00000,0,0,True
+297229,WHP Milka Raisins & Nuts Chocolate,WHP Milka Raisins & Nuts Chocolate,2.69000,4.99,Candy,070221003326,ea.,1,False,1.77400,-42.00000,0,0,True
+297230,WHP Milka Strawberry Chocolate,WHP Milka Strawberry Chocolate,2.69000,4.99,Candy,070221003340,ea.,1,False,1.88000,-339.00000,0,0,True
+297231,WHP Milka White Chocolate,WHP Milka White Chocolate,2.69000,4.99,Candy,070221003364,ea.,1,False,1.88000,-202.00000,0,0,True
+301007,"WHP Milka Yogurt Chocolate 100 GM. ","WHP Milka Yogurt Chocolate 100 GM. ",2.69000,4.99,Candy,070221003371,ea.,1,False,1.74000,-51.00000,0,0,True
+315117,WHP MKD 4D Musical Lollipop BEAR,WHP MKD 4D Musical Lollipop BEAR,2.49000,4.39,Candy,4897113205158,,1,False,1.80000,-16.00000,0,0,True
+315119,WHP MKD 4D Musical Lollipop Dinosaur,WHP MKD 4D Musical Lollipop Dinosaur,2.49000,4.39,Candy,4897113205165,,1,False,1.80000,-16.00000,0,0,True
+315118,WHP MKD 4D Musical Lollipop Strawberry,WHP MKD 4D Musical Lollipop Strawberry,2.49000,4.39,Candy,4897113205141,,1,False,1.80000,-16.00000,0,0,True
+321146,WHP Nestle Aero Scoops Choco Strawberry 105 GM.,WHP Nestle Aero Scoops Choco Strawberry 105 GM.,3.39000,5.99,Candy,059800752978,,1,False,2.54000,-45.00000,0,0,True
+321147,WHP Nestle Aero Scoops MAPLE 105 GM.,WHP Nestle Aero Scoops MAPLE 105 GM.,3.39000,5.99,Candy,059800754194,,1,False,2.54000,-45.00000,0,0,True
+321149,WHP Nestle Aero Truffle Tiramisu 105 GM.,WHP Nestle Aero Truffle Tiramisu 105 GM.,3.39000,5.99,Candy,059800301909,,1,False,2.54000,-45.00000,0,0,True
+297217,WHP Puchao Bubbly Soda 3.5 Oz. - 43689,WHP Puchao Bubbly Soda 3.5 Oz. - 43689,2.35000,4.69,Candy,011152436890,,1,False,1.80000,-114.00000,0,0,True
+297219,WHP Puchao Fruit 4 Flavors 3.5 Oz. - 43690,WHP Puchao Fruit 4 Flavors 3.5 Oz. - 43690,2.35000,4.69,Candy,011152436906,,1,False,1.80000,-132.00000,0,0,True
+297220,WHP Puchao Fruit Soda 3.5 Oz. - 61194,WHP Puchao Fruit Soda 3.5 Oz. - 61194,2.35000,4.69,Candy,011152611945,,1,False,1.80000,0.00000,0,0,True
+297221,WHP Puchao Matcha 3.17 Oz.,WHP Puchao Matcha 3.17 Oz.,2.35000,4.29,Candy,011152484778,,1,False,1.80000,-34.00000,0,0,True
+297223,WHP Puchao Shaved Ice Mix Orange & Mango 2.82 Oz. - 89335,WHP Puchao Shaved Ice Mix Orange & Mango 2.82 Oz. - 89335,2.35000,4.69,Candy,011152893358,,1,False,1.80000,-78.00000,0,0,True
+297224,WHP Puchao Yogurt & Peach 3.5 Oz. - 84330,WHP Puchao Yogurt & Peach 3.5 Oz. - 84330,2.35000,4.69,Candy,011152843308,,1,False,1.80000,-102.00000,0,0,True
+307893,WHP Ritter SPORT Amicelli 100 GM. 60156,WHP Ritter SPORT Amicelli 100 GM.,3.19000,5.69,Candy,4000417601513,ea.,1,False,2.34000,-12.00000,0,0,True
+307892,WHP Ritter SPORT Marzipan Dark Choco filling 100 GM. 60256,WHP Ritter SPORT Marzipan Dark Choco filling 100 GM.,3.19000,5.69,Candy,050255025006,ea.,1,False,2.34000,-24.00000,0,0,True
+307890,WHP Ritter SPORT Milk PISTAZIE 100 GM. 67096,WHP Ritter SPORT Milk PISTAZIE 100 GM.,3.19000,5.69,Candy,4000417670915,ea.,1,False,2.34000,-24.00000,0,0,True
+307891,WHP Ritter SPORT Roasted Peanut 100 GM. 67066B,WHP Ritter SPORT Roasted Peanut 100 GM.,3.19000,5.69,Candy,4000417670618,ea.,1,False,2.34000,-11.00000,0,0,True
+304765,WHP Russian 20756 CTEN STEP XL Nougat Peanut Caramel 65 GR.,WHP Russian 20756 CTEN STEP XL Nougat Peanut Caramel 65 GR.,1.29000,2.39,Candy,4605142053820,ea.,1,False,0.85000,-1.00000,0,0,True
+304768,WHP Russian 20857 CTEN STEP XL with Hazelnut 65 GR. 14605142054091,WHP Russian 20857 CTEN STEP XL with Hazelnut 65 GR. 14605142054091,1.29000,2.39,Candy,4605142054094,ea.,1,False,0.85000,-1.00000,0,0,True
+304771,WHP Russian 30926 OBYKNOVENNOE CHUDO Creamy Bar 01825411,WHP Russian 30926 OBYKNOVENNOE CHUDO Creamy Bar 01825411,1.35000,2.49,Candy,4605142020464,ea.,1,False,0.99000,-2.00000,0,0,True
+304773,WHP Russian 30947 OBYKNOVENNOE CHUDO Choco BAR,WHP Russian 30947 OBYKNOVENNOE CHUDO Choco BAR,1.35000,2.49,Candy,4605142020471,ea.,1,False,0.99000,-2.00000,0,0,True
+304761,WHP Russian Alenka Chocolate Strawberry & Cream 2460008024,WHP Russian Alenka Chocolate Strawberry & Cream,2.99000,5.49,Candy,4600080299187,ea.,1,False,1.99000,-8.00000,0,0,True
+304780,WHP Russian AZOVSKAYA Black Currant MARMALADE 300 GR.,WHP Russian AZOVSKAYA Black Currant MARMALADE 300 GR.,2.69000,4.99,Candy,4620004252661,ea.,1,False,1.99000,-3.00000,0,0,True
+304783,WHP Russian AZOVSKAYA Cherry MARMALADE 300 GR.,WHP Russian AZOVSKAYA Cherry MARMALADE 300 GR.,2.69000,4.99,Candy,4620004252074,ea.,1,False,1.99000,-3.00000,0,0,True
+304782,WHP Russian AZOVSKAYA ORANGE MARMALADE 300 GR.,WHP Russian AZOVSKAYA ORANGE MARMALADE 300 GR.,2.69000,4.99,Candy,4620004252685,,1,False,1.99000,-3.00000,0,0,True
+304759,WHP Russian Choc BABAEVSKIY Rasp & Lime,WHP Russian Choc BABAEVSKIY Rasp & Lime,3.29000,5.99,Candy,4600300099610,ea.,1,False,2.49000,-3.00000,0,0,True
+304753,WHP Russian Chocolate BABAEVSKIY Orange & Cherry,WHP Russian Chocolate BABAEVSKIY Orange & Cherry,3.29000,5.99,Candy,4600300099641,,1,False,2.49000,-3.00000,0,0,True
+304755,WHP Russian Chocolate BABAEVSKIY Tangerine & Walnut,WHP Russian Chocolate BABAEVSKIY Tangerine & Walnut,2.75000,4.99,Candy,4600823651135,,1,False,1.99000,-3.00000,0,0,True
+304778,WHP Russian CRAZY PARTY Gummy Candy Zoo Flv.,WHP Russian CRAZY PARTY Gummy Candy Zoo Flv.,1.99000,3.59,Candy,4620004253736,,1,False,1.55000,-2.00000,0,0,True
+304779,WHP Russian CRAZY PARTY Gummy RACING Flv.,WHP Russian CRAZY PARTY Gummy RACING Flv.,1.99000,3.59,Candy,4620004254061,,1,False,1.55000,-2.00000,0,0,True
+304777,WHP Russian CRAZY PARTY Gummy Tropical Flv.,WHP Russian CRAZY PARTY Gummy Tropical Flv.,1.99000,3.59,Candy,4620004253750,,1,False,1.55000,-2.00000,0,0,True
+297246,WHP SNICKERS Brazil - MARACUJA 42 GM. 20 Ct. 7896423456431,WHP SNICKERS Brazil - MARACUJA 42 GM. - 20 Ct.,39.80000,3.49,Candy,7896423456561,,20,False,31.50000,-4.00000,0,0,True
+297247,WHP SNICKERS Brazil - MORANGO 42 GM. - 20 Ct. 7896423445893,WHP SNICKERS Brazil - MORANGO 42 GM. - 20 Ct.,39.80000,3.49,Candy,7896423445985,,20,False,31.50000,-1.00000,0,0,True
+307887,WHP Swedish BUBS Sour Diamond Strawberry Vanilla 5.5 Oz.,WHP Swedish BUBS Sour Diamond Strawberry Vanilla 5.5 Oz.,2.99000,4.99,Candy,051756021061,,1,False,2.30000,-10.00000,0,0,True
+307889,WHP Swedish BUBS Sour Diamond Tutti Frutti 5.5 Oz.,WHP Swedish BUBS Sour Diamond Tutti Frutti 5.5 Oz.,2.99000,4.99,Candy,051756020064,,1,False,2.30000,-13.00000,0,0,True
+307888,WHP Swedish BUBS Sweet Ovals Banana 5.5 Oz.,WHP Swedish BUBS Sweet Ovals Banana 5.5 Oz.,2.99000,4.99,Candy," 051756022068",,1,False,2.30000,-13.00000,0,0,True

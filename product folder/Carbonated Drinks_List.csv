@@ -1,0 +1,119 @@
+ProductId,ProductName,Description,SalePrice,SuggestedRetailPrice,CategoryName,Barcode,Unit,UnitPerCase,IsTaxable,PurchaseCost,QuantityInHand,InitialCost,InitialStock,IsActive
+302985,Exotic Cinnamoroll Honey Lemonade 330 Ml,Exotic Cinnamoroll Honey Lemonade 330 Ml,2.25000,3.79,Carbonated Drinks,4711085707482,,1,False,1.49000,-312.00000,0,0,True
+273586,Exotic Coke Fiber + Zero 500 Ml.,Exotic Coke Fiber + Zero 500 Ml.,2.19000,3.69,Carbonated Drinks,6928804016970,ea.,1,False,1.51000,-600.00000,0,0,True
+293345,Exotic Coke Peach 500 Ml.,Exotic Coke Peach 500 Ml.,2.19000,3.69,Carbonated Drinks,6928804022537,ea.,1,False,1.50000,-1116.00000,0,0,True
+281886,Exotic Coke Strawberry 330 Ml. 24 Ct.,Exotic Coke Strawberry 330 Ml. 24 Ct.,47.76000,3.49,Carbonated Drinks,6954767411750,,24,False,27.60000,-360.00000,0,0,True
+270702,Exotic Coke Strawberry 500 Ml.,Exotic Coke Strawberry 500 Ml.,2.19000,3.69,Carbonated Drinks,6928804024173,,1,False,1.51000,-3792.00000,0,0,True
+303630,Exotic Collectible BUMBLEEBEE TRANSFORMERS Grape 330 Ml. 614002,Exotic Collectible BUMBLEEBEE TRANSFORMERS Grape 330 Ml.,1.75000,2.99,Carbonated Drinks,4711085709981,ea.,1,False,1.29000,-120.00000,0,0,True
+303618,Exotic Collectible PoCHAcco Original Flavor 330 Ml,Exotic Collectible PoCHAcco Original Flavor 330 Ml,1.75000,2.99,Carbonated Drinks,4711085707772,,1,False,1.29000,-216.00000,0,0,True
+303623,Exotic Collectible TRANSFORMERS Original flv. 330 Ml.  614001,Exotic Collectible TRANSFORMERS Original flv. 330 Ml.,1.75000,2.99,Carbonated Drinks,4711085709998,,1,False,1.29000,-96.00000,0,0,True
+282065,Exotic Fanta Grape 500 Ml.,Exotic Fanta Grape 500 Ml.,2.19000,3.69,Carbonated Drinks,6928804010800,ea.,1,False,1.50000,-1356.00000,0,0,True
+302339,Exotic Fanta Grape Slim Can 330 Ml,Exotic Fanta Grape Slim Can 330 Ml,1.99000,3.49,Carbonated Drinks,6928804015461,ea.,1,False,1.15000,-74.00000,0,0,True
+292934,Exotic Fanta Green Apple 500 Ml.,Exotic Fanta Green Apple 500 Ml.,2.19000,3.69,Carbonated Drinks,6928804011456,,1,False,1.50000,-1332.00000,0,0,True
+290442,Exotic Fanta Jasmine Peach 500 Ml,Exotic Fanta Jasmine Peach 500 Ml,2.19000,3.69,Carbonated Drinks,6928804019414,ea.,1,False,1.26500,-1752.00000,0,0,True
+282066,Exotic Fanta Orange 500 Ml.,Exotic Fanta Orange 500 Ml.,2.19000,3.69,Carbonated Drinks,6928804011326,ea.,1,False,1.50000,-1680.00000,0,0,True
+302340,Exotic Fanta Orange Slim Can  330 Ml,Exotic Fanta Orange Slim Can  330 Ml,1.99000,3.39,Carbonated Drinks,6928804014662,ea.,1,False,1.15000,-74.00000,0,0,True
+302987,"Exotic Fanta Peach 500 ML. ","Exotic Fanta Peach 500 ML. ",2.19000,3.69,Carbonated Drinks,6928804010886,ea.,1,False,1.51000,-1452.00000,0,0,True
+281885,"Exotic FANTA Pineapple 330 Ml SLIM CAN ","Exotic FANTA Pineapple 330 Ml SLIM CAN ",1.99000,3.39,Carbonated Drinks,6928804025224,ea.,1,False,1.15000,-720.00000,0,0,True
+301839,Exotic FANTA Pineapple 500 Ml,Exotic FANTA Pineapple 500 Ml,2.19000,3.69,Carbonated Drinks,6928804010916,,1,False,1.50000,-504.00000,0,0,True
+292805,Exotic FANTA Tropical 330 Ml 5449000042101,Exotic FANTA Tropical 330 Ml,1.99000,3.49,Carbonated Drinks,5449000042101,ea.,1,False,1.19000,-816.00000,0,0,True
+281887,Exotic Fanta Watermelon 330 Ml.,Exotic Fanta Watermelon 330 Ml.,2.19000,3.99,Carbonated Drinks,6928804015454,ea.,1,False,1.21000,-264.00000,0,0,True
+290443,Exotic Fanta Watermelon 500 Ml,Exotic Fanta Watermelon 500 Ml,2.19000,3.69,Carbonated Drinks,6928804011586,ea.,1,False,1.50000,-1164.00000,0,0,True
+272748,Exotic Japanese Coke ORIGINAL 300 Ml. - 012272,"Exotic Japanese Coke ORIGINAL 300 Ml. ",2.49000,3.99,Carbonated Drinks,4902102038690,ea.,1,False,1.86000,-13076.00000,0,0,True
+293051,Exotic Japanese FANTA GOLDEN Grape 500 Ml. 054927,Exotic Japanese FANTA GOLDEN Grape 500 Ml.,2.89000,4.99,Carbonated Drinks,4902102146326,,1,False,1.95000,-1690.00000,0,0,True
+272749,Exotic Japanese FANTA Grape 300 Ml. - 055155,Exotic Japanese FANTA Grape 300 Ml.,2.49000,3.99,Carbonated Drinks,4902102038720,,1,False,1.86000,-4608.00000,0,0,True
+298504,Exotic Japanese Fanta Orange 500 Ml.,Exotic Japanese Fanta Orange 500 Ml.,2.89000,4.89,Carbonated Drinks,4902102035415,ea.,1,False,2.14000,-468.00000,0,0,True
+293052,Exotic Japanese FANTA Shine MUSCAT 500 Ml 054780,Exotic Japanese FANTA Shine MUSCAT 500 Ml,2.89000,4.99,Carbonated Drinks,4902102155748,,1,False,1.95000,-1488.00000,0,0,True
+272750,Exotic Japanese FANTA White Peach 300 Ml. - 054998,Exotic Japanese FANTA White Peach 300 Ml.,2.49000,3.99,Carbonated Drinks,4902102144995,ea.,1,False,1.86000,-10598.00000,0,0,True
+303161,Exotic Japanese Pepsi COLA 340 Ml,Exotic Japanese Pepsi COLA 340 Ml,2.25000,3.69,Carbonated Drinks,04901777333871,,1,False,1.45000,-120.00000,0,0,True
+302414,Exotic Korean Coca Cola Lemon Zero 350 Ml,Exotic Korean Coca Cola Lemon Zero 350 Ml,1.99000,3.49,Carbonated Drinks,8801094063283,,1,False,1.29000,-264.00000,0,0,True
+302404,"Exotic Korean Dr. Pepper Strawberry Cream Zero 350 Ml ",Exotic Korean Dr. Pepper Strawberry Cream Zero 350 Ml,1.99000,3.39,Carbonated Drinks,8801094000455,,1,False,1.45000,-144.00000,0,0,True
+302405,"Exotic Korean FANTA Melon 350 Ml ","Exotic Korean FANTA Melon 350 Ml ",2.15000,3.59,Carbonated Drinks,8801094000387,,1,False,1.50000,-1055.00000,0,0,True
+302411,Exotic Korean Lipton Tea Peach 355 Ml,Exotic Korean Lipton Tea Peach 355 Ml,1.99000,3.39,Carbonated Drinks,8801056044503,,1,False,1.45000,-144.00000,0,0,True
+298534,Exotic Minute Maid Peach 480 Ml.,Exotic Minute Maid Peach 480 Ml.,2.19000,3.69,Carbonated Drinks,6928804021882,ea.,1,False,1.50000,-36.00000,0,0,True
+298533,Exotic Mtn DEW Lemon 500 Ml,Exotic Mtn DEW Lemon 500 Ml,2.19000,3.69,Carbonated Drinks,6908946287285,,1,False,1.46000,-216.00000,0,0,True
+293344,Exotic Pepsi Bamboo Yuzu 500 Ml.,Exotic Pepsi Bamboo Yuzu 500 Ml.,2.19000,3.69,Carbonated Drinks,6908946290100,ea.,1,False,1.50000,-612.00000,0,0,True
+305036,Exotic Pepsi Peach Oolong 500 Ml,Exotic Pepsi Peach Oolong 500 Ml,2.19000,3.69,Carbonated Drinks,6908946289500,,1,False,1.50000,-96.00000,0,0,True
+298411,Exotic Red Bull Vitamin Drink 250 Ml 28868,Exotic Red Bull Vitamin Drink 250 Ml,2.49000,3.99,Carbonated Drinks,6970640429988,,1,False,1.67000,-5447.00000,0,0,True
+293346,Exotic Sprite Lemon 500 Ml.,Exotic Sprite Lemon 500 Ml.,2.19000,3.69,Carbonated Drinks,855000000037,ea.,1,False,1.50000,-108.00000,0,0,True
+293767,Exotic Sprite Lemon Flv. 500 Ml.,Exotic Sprite Lemon Flv. 500 Ml.,2.19000,3.69,Carbonated Drinks,6928804016567,,1,False,1.50000,-216.00000,0,0,True
+301704,Exotic Sprite Lemon Tea 500 Ml.,Exotic Sprite Lemon Tea 500 Ml.,2.19000,3.69,Carbonated Drinks,6928804026917,,1,False,1.50000,-444.00000,0,0,True
+281518,"Exotic Sprite Raspberry 500 Ml, ","Exotic Sprite Raspberry 500 Ml, ",2.19000,3.69,Carbonated Drinks,6928804025934,ea.,1,False,1.51000,-1524.00000,0,0,True
+303621,Exotic SUPERHEROES Venom Lemon Strawberry 330 Ml,Exotic SUPERHEROES Venom Lemon Strawberry 330 Ml,1.99000,3.49,Carbonated Drinks,4711085701701,,1,False,1.29000,-120.00000,0,0,True
+303007,FANTA German Lemon 330 Ml,FANTA German Lemon 330 Ml,1.99000,3.39,Carbonated Drinks,5449000286932,,1,False,1.26000,-456.00000,0,0,True
+292808,FANTA Grape 330 Ml Slim Can,FANTA Grape 330 Ml Slim Can,2.19000,3.69,Carbonated Drinks,4260231227515,,1,False,1.17000,-264.00000,0,0,True
+292806,FANTA Orange 330 Ml Slim Can,FANTA Orange 330 Ml Slim Can,1.99000,3.49,Carbonated Drinks,6928804014662,,1,False,1.15000,-588.00000,0,0,True
+302113,Kimura Ramune Kiwi 200 Ml 87672,Kimura Ramune Kiwi 200 Ml,2.19000,3.69,Carbonated Drinks,011152876726,,1,False,1.33000,-648.00000,0,0,True
+302114,Kimura Ramune Mojito 200 Ml 87671,Kimura Ramune Mojito 200 Ml,2.19000,3.69,Carbonated Drinks,011152876719,,1,False,1.33000,-702.00000,0,0,True
+302968,Kimura Ramune Tropical Fruit 200 ML 87675,Kimura Ramune Tropical Fruit 200 ML 87675,2.19000,3.69,Carbonated Drinks,011152876757,,1,False,1.33000,-594.00000,0,0,True
+303025,KOLA SODA Colombiana 310 Ml,KOLA SODA Colombiana 310 Ml,1.49000,2.69,Carbonated Drinks,850050430995,ea.,1,False,0.99000,-120.00000,0,0,True
+298558,Milaf Cola - Dates extract Carbonated Drink,Milaf Cola - Dates extract Carbonated Drink,1.49000,2.69,Carbonated Drinks,6288004001030,,1,False,1.03000,-335.00000,0,0,True
+264419,Mirinda Geeen Apple 600 Ml. BKL201,Mirinda Geeen Apple 600 Ml.,2.29000,3.99,Carbonated Drinks,6902827110242,ea.,1,False,1.71000,-24.00000,0,0,True
+264420,Mirinda Grape 600 Ml. BKL202,Mirinda Grape 600 Ml.,2.29000,3.99,Carbonated Drinks,6902827110235,ea.,1,False,1.71000,-24.00000,0,0,True
+264422,Mirinda Orange 600 Ml. BKL208,Mirinda Orange 600 Ml.,2.29000,3.99,Carbonated Drinks,6902827110228,ea.,1,False,1.71000,-48.00000,0,0,True
+264421,Mirinda Watermelon 600 Ml. BKL503,Mirinda Watermelon 600 Ml.,2.29000,3.99,Carbonated Drinks,6902827140317,ea.,1,False,1.71000,-48.00000,0,0,True
+303046,POSTOBON Apple Soda 310 Ml,POSTOBON Apple Soda 310 Ml,1.49000,2.69,Carbonated Drinks,810184900009,ea.,1,False,0.99000,-168.00000,0,0,True
+282450,SANGARIA Ramune Grape 200 Ml.,SANGARIA Ramune Grape 200 Ml.,2.19000,3.59,Carbonated Drinks,733815003309,,1,False,1.50000,-1758.00000,0,0,True
+298831,SANGARIA Ramune HATSUNE Miku 200 Ml,SANGARIA Ramune HATSUNE Miku 200 Ml,2.19000,3.59,Carbonated Drinks,733815008335,,1,False,1.50000,-306.00000,0,0,True
+264481,SANGARIA Ramune Lychee 200 Ml.,SANGARIA Ramune Lychee 200 Ml.,2.19000,3.59,Carbonated Drinks,011152225654,,1,False,1.50000,-2082.00000,0,0,True
+264479,SANGARIA Ramune Orange 200 Ml.,SANGARIA Ramune Orange 200 Ml.,2.19000,3.59,Carbonated Drinks,733815003682,,1,False,1.50000,-2364.00000,0,0,True
+264480,SANGARIA Ramune PEACH 200 Ml.,SANGARIA Ramune PEACH 200 Ml.,2.19000,3.69,Carbonated Drinks,733815005006,,1,False,1.50000,-1920.00000,0,0,True
+264839,SANGARIA Ramune Soda Grape 16.2 Oz. - 18191,SANGARIA Ramune Soda Grape 16.2 Oz.,2.39000,3.99,Carbonated Drinks,733815002661,ea.,1,False,1.60000,-1711.00000,0,0,True
+264841,SANGARIA Ramune Soda Melon 16.2 Oz. - 44370,SANGARIA Ramune Soda Melon 16.2 Oz.,2.39000,3.99,Carbonated Drinks,733815006737,ea.,1,False,1.60000,-4779.00000,0,0,True
+272922,SANGARIA Ramune Soda ORG. 16.2 Oz.,SANGARIA Ramune Soda ORG. 16.2 Oz.,2.39000,3.99,Carbonated Drinks,733815006669,,1,False,1.60000,-3696.00000,0,0,True
+264840,SANGARIA Ramune Soda Strawberry 16.2 Oz. - 44369,SANGARIA Ramune Soda Strawberry 16.2 Oz.,2.39000,3.99,Carbonated Drinks,733815006720,ea.,1,False,1.60000,-5535.00000,0,0,True
+281309,SANGARIA Ramune Strawberry 200 Ml. 157,SANGARIA Ramune Strawberry 200 Ml. 157,2.19000,3.59,Carbonated Drinks,733815003675,,1,False,1.50000,-2028.00000,0,0,True
+291140,STARBUCKS Oolong Latte 270 Ml.,STARBUCKS Oolong Latte,2.39000,3.99,Carbonated Drinks,6970870272934,,1,False,1.85000,-135.00000,0,0,True
+291018,STARBUCKS PINK 270 Ml.,STARBUCKS PINK 270 Ml.,2.39000,3.99,Carbonated Drinks,6970870272644,ea.,1,False,1.85000,-176.00000,0,0,True
+291017,STARBUCKS PURPULE 270 Ml.,STARBUCKS PURPULE 270 Ml.,2.39000,3.99,Carbonated Drinks,6970870272705,ea.,1,False,1.85000,-161.00000,0,0,True
+264660,Sushi Depot Products,Sushi Depot Products,366.67000,670.00,Carbonated Drinks,071399365126,box,1,False,275.00000,1.00000,0,0,True
+264483,Tasty Mango Cream Soda 490 Ml.,Tasty Mango Cream Soda 490 Ml.,2.39000,3.99,Carbonated Drinks,022304203116,ea.,1,False,1.35500,-36.00000,0,0,True
+264484,Tasty Melon Creamy Soda 490 Ml.,Tasty Melon Creamy Soda 490 Ml.,2.39000,3.99,Carbonated Drinks,022304203062,ea.,1,False,1.35400,-36.00000,0,0,True
+303631,WHP Exotic BUMBLEEBEE TRANSFORMERS Grape Flavor 330 Ml.,WHP Exotic BUMBLEEBEE TRANSFORMERS Grape Flavor 330 Ml.,1.75000,3.19,Carbonated Drinks,4711085709981,,1,False,1.29000,-6.00000,0,0,True
+303627,WHP Exotic BUNNI KONBINY Strawberry Daifuku 330 Ml,WHP Exotic BUNNI KONBINY Strawberry Daifuku 330 Ml,1.99000,3.39,Carbonated Drinks,4711085709035,,1,False,1.29000,-48.00000,0,0,True
+303027,WHP Exotic Cinnamonroll  Honey Lemonade 330 Ml,WHP Exotic Cinnamonroll  Honey Lemonade 330 Ml,1.99000,3.39,Carbonated Drinks,4711085707482,,1,False,1.49000,-24.00000,0,0,True
+302354,WHP Exotic Coke Peach 500 Ml.,WHP Exotic Coke Peach 500 Ml.,1.99000,3.39,Carbonated Drinks,6928804022537,ea.,1,False,1.50000,-360.00000,0,0,True
+302363,WHP Exotic Coke Strawberry 330 Ml. 24 Ct.,WHP Exotic Coke Strawberry 330 Ml. 24 Ct.,38.40000,2.99,Carbonated Drinks,6954767411750,,24,False,27.60000,0.00000,0,0,True
+302361,WHP Exotic Coke Strawberry 500 Ml. 6928804024173,WHP Exotic Coke Strawberry 500 Ml.,1.99000,3.39,Carbonated Drinks,6928804024173,ea.,1,False,1.50000,-1164.00000,0,0,True
+303028,WHP Exotic Collectible Hello Kitty Strawberry Lemonade 330 ML,WHP Exotic Collectible Hello Kitty Strawberry Lemonade 330 ML,1.59000,2.75,Carbonated Drinks,4711085700285,ea.,1,False,1.20000,-238.00000,0,0,True
+303625,WHP Exotic Collectible SUPER SOLDIER 330 Ml. 614013,WHP Exotic Collectible SUPER SOLDIER 330 Ml.,1.59000,2.75,Carbonated Drinks,4711085702029,ea.,1,False,1.20000,-84.00000,0,0,True
+303019,WHP Exotic Fanta Grape 500 Ml.,WHP Exotic Fanta Grape 500 Ml.,1.99000,3.39,Carbonated Drinks,6928804010800,ea.,1,False,1.50000,-432.00000,0,0,True
+302342,WHP Exotic Fanta Grape Slim Can 330 Ml,WHP Exotic Fanta Grape Slim Can 330 Ml,1.99000,3.29,Carbonated Drinks,6928804015461,ea.,1,False,1.15000,0.00000,0,0,True
+303011,WHP Exotic Fanta Green Apple 500 Ml.,WHP Exotic Fanta Green Apple 500 Ml.,1.99000,3.39,Carbonated Drinks,6928804011456,ea.,1,False,1.50000,-372.00000,0,0,True
+302362,WHP Exotic Fanta Jasmine Peach 500 Ml,WHP Exotic Fanta Jasmine Peach 500 Ml,1.99000,3.39,Carbonated Drinks,6928804019414,,1,False,1.50000,-708.00000,0,0,True
+309661,WHP Exotic FANTA Lemon 330 Ml,WHP Exotic FANTA Lemon 330 Ml,1.75000,2.99,Carbonated Drinks,5449000286932,,1,False,1.26000,-23.00000,0,0,True
+302343,WHP Exotic Fanta Orange 330 Ml,WHP Exotic Fanta Orange 330 Ml,1.99000,3.29,Carbonated Drinks,6928804014662,ea.,1,False,1.15000,0.00000,0,0,True
+302359,WHP Exotic Fanta Orange 500 Ml.,WHP Exotic Fanta Orange 500 Ml.,1.99000,3.39,Carbonated Drinks,6928804011326,ea.,1,False,1.50000,-492.00000,0,0,True
+303006,WHP Exotic Fanta Peach 500 ML.,WHP Exotic Fanta Peach 500 ML.,1.99000,3.39,Carbonated Drinks,6928804010886,ea.,1,False,1.50000,-516.00000,0,0,True
+310789,WHP Exotic FANTA Pineapple 330 Ml SLIM CAN,WHP Exotic FANTA Pineapple 330 Ml SLIM CAN,1.75000,2.99,Carbonated Drinks,6928804025224,,1,False,1.15000,-48.00000,0,0,True
+302357,WHP Exotic FANTA Pineapple 500 Ml,WHP Exotic FANTA Pineapple 500 Ml,1.99000,3.39,Carbonated Drinks,6928804010916,ea.,1,False,1.50000,-180.00000,0,0,True
+307885,WHP Exotic FANTA Tropical 330 Ml,WHP Exotic FANTA Tropical 330 Ml,1.69000,3.19,Carbonated Drinks,5449000042101,,1,False,1.19000,-24.00000,0,0,True
+302356,WHP Exotic Fanta Watermelon 500 Ml,WHP Exotic Fanta Watermelon 500 Ml,1.99000,3.39,Carbonated Drinks,6928804011586,ea.,1,False,1.50000,-312.00000,0,0,True
+302472,"WHP Exotic Japanese Coke ORIGINAL 300 Ml. - 012272 ",WHP Exotic Japanese Coke ORIGINAL 300 Ml.,2.29000,3.99,Carbonated Drinks,4902102038690,ea.,1,False,1.86000,-4682.00000,0,0,True
+302474,WHP Exotic Japanese FANTA Grape 300 Ml. 055155,WHP Exotic Japanese FANTA Grape 300 Ml.,2.29000,3.99,Carbonated Drinks,4902102038720,,1,False,1.86000,-1272.00000,0,0,True
+302475,WHP Exotic Japanese FANTA White Peach 300 Ml. - 054998,WHP Exotic Japanese FANTA White Peach 300 Ml.,2.29000,3.99,Carbonated Drinks,4902102144995,ea.,1,False,1.86000,-2090.00000,0,0,True
+303178,WHP Exotic Japanese Pepsi COLA 340 Ml,WHP Exotic Japanese Pepsi COLA 340 Ml,2.29000,3.99,Carbonated Drinks,0490177733387,ea.,1,False,1.45000,0.00000,0,0,True
+310990,WHP Exotic Korean Coca Cola Lemon Zero 350 Ml,WHP Exotic Korean Coca Cola Lemon Zero 350 Ml,1.75000,3.19,Carbonated Drinks,8801094063283,,1,False,1.29000,-48.00000,0,0,True
+310989,WHP Exotic Korean FANTA Melon 350 Ml,WHP Exotic Korean FANTA Melon 350 Ml,1.99000,3.39,Carbonated Drinks,8801094000387,,1,False,1.50000,-288.00000,0,0,True
+320923,WHP Exotic Mtn DEW Lemon 500 Ml,WHP Exotic Mtn DEW Lemon 500 Ml,1.99000,3.39,Carbonated Drinks,6908946287285,,1,False,1.46000,-60.00000,0,0,True
+302358,WHP Exotic Pepsi Bamboo Yuzu 500 Ml.,WHP Exotic Pepsi Bamboo Yuzu 500 Ml.,1.99000,3.39,Carbonated Drinks,6908946290100,,1,False,1.50000,-120.00000,0,0,True
+305075,WHP Exotic Pepsi Peach Oolong 500 Ml,WHP Exotic Pepsi Peach Oolong 500 Ml,1.99000,3.39,Carbonated Drinks,6908946289500,,1,False,1.50000,-24.00000,0,0,True
+303624,WHP Exotic PoCHAcco Original Flavor 330 Ml,WHP Exotic PoCHAcco Original Flavor 330 Ml,1.75000,3.19,Carbonated Drinks,4711085707772,ea.,1,False,1.29000,-62.00000,0,0,True
+302355,WHP Exotic Sprite Lemon Tea 500 Ml.,WHP Exotic Sprite Lemon Tea 500 Ml.,1.99000,3.39,Carbonated Drinks,6928804026917,ea.,1,False,1.50000,-180.00000,0,0,True
+302360,"WHP Exotic Sprite Raspberry 500 Ml,","WHP Exotic Sprite Raspberry 500 Ml,",1.99000,3.39,Carbonated Drinks,6928804025934,ea.,1,False,1.50000,-348.00000,0,0,True
+303626,WHP Exotic SUPERHEROES Venom Lemon Strawberry 330 Ml,WHP Exotic SUPERHEROES Venom Lemon Strawberry 330 Ml,1.75000,3.19,Carbonated Drinks,4711085701701,,1,False,1.29000,-78.00000,0,0,True
+303628,WHP Exotic TRANSFORMERS Original Flavor 330 Ml.,WHP Exotic TRANSFORMERS Original Flavor 330 Ml.,1.99000,3.39,Carbonated Drinks,4711085709998,,1,False,1.29000,-24.00000,0,0,True
+302282,WHP Kimura Ramune Kiwi 200 Ml 87672,WHP Kimura Ramune Kiwi 200 Ml,1.99000,3.39,Carbonated Drinks,011152876726,,1,False,1.33000,-224.00000,0,0,True
+302279,"WHP Kimura Ramune Mojito 200 Ml 87671 ",WHP Kimura Ramune Mojito 200 Ml,1.99000,3.39,Carbonated Drinks,011152876719,,1,False,1.33000,-270.00000,0,0,True
+302969,WHP Kimura Ramune Tropical Fruit 200 ML 87675,WHP Kimura Ramune Tropical Fruit 200 ML 87675,1.99000,3.39,Carbonated Drinks,011152876757,,1,False,1.33000,-260.00000,0,0,True
+303026,WHP KOLA SODA Colombiana 310 Ml,WHP KOLA SODA Colombiana 310 Ml,1.39000,2.49,Carbonated Drinks,850050430995,,1,False,0.99000,0.00000,0,0,True
+297232,WHP SANGARIA Ramune Grape 200 Ml.,WHP SANGARIA Ramune Grape 200 Ml.,1.99000,3.39,Carbonated Drinks,733815003309,,1,False,1.50000,-252.00000,0,0,True
+301183,WHP SANGARIA Ramune HATSUNE Miku 6.76 Oz.,WHP SANGARIA Ramune HATSUNE Miku 6.76 Oz.,1.99000,3.39,Carbonated Drinks,733815008335,,1,False,1.50000,-54.00000,0,0,True
+297233,WHP SANGARIA Ramune Lychee 200 Ml.,WHP SANGARIA Ramune Lychee 200 Ml.,1.99000,3.39,Carbonated Drinks,733815005013,,1,False,1.50000,-236.00000,0,0,True
+297235,WHP SANGARIA Ramune Orange 200 Ml.,WHP SANGARIA Ramune Orange 200 Ml.,1.99000,3.39,Carbonated Drinks,733815003682,,1,False,1.50000,-350.00000,0,0,True
+297236,WHP SANGARIA Ramune PEACH 200 Ml.,WHP SANGARIA Ramune PEACH 200 Ml.,1.99000,3.39,Carbonated Drinks,733815005006,,1,False,1.50000,-306.00000,0,0,True
+297237,WHP SANGARIA Ramune Soda Grape 16.2 Oz. - 18191,WHP SANGARIA Ramune Soda Grape 16.2 Oz. - 18191,2.09000,3.69,Carbonated Drinks,733815002661,,1,False,1.60000,0.00000,0,0,True
+297238,WHP SANGARIA Ramune Soda Melon 16.2 Oz. - 44370,WHP SANGARIA Ramune Soda Melon 16.2 Oz. - 44370,2.09000,3.69,Carbonated Drinks,733815006737,,1,False,1.60000,-432.00000,0,0,True
+297239,WHP SANGARIA Ramune Soda ORG. 16.2 Oz.,WHP SANGARIA Ramune Soda ORG. 16.2 Oz.,2.09000,3.69,Carbonated Drinks,733815006669,,1,False,1.60000,-362.00000,0,0,True
+297240,WHP SANGARIA Ramune Soda Strawberry 16.2 Oz. - 44369,WHP SANGARIA Ramune Soda Strawberry 16.2 Oz. - 44369,2.09000,3.69,Carbonated Drinks,733815006720,,1,False,1.60000,-456.00000,0,0,True
+297241,WHP SANGARIA Ramune Strawberry 200 Ml. 157,WHP SANGARIA Ramune Strawberry 200 Ml. 157,1.99000,3.39,Carbonated Drinks,733815003675,,1,False,1.50000,-620.00000,0,0,True
