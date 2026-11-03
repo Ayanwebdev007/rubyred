@@ -302,7 +302,7 @@ export default function LoginPage() {
                   </button>
 
                   <button
-                    onClick={() => navigate(currentUser.role === 'b2b' ? '/wholesale' : '/')}
+                    onClick={() => navigate('/')}
                     className="p-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 font-bold text-slate-800 text-left transition-all hover:border-[#d9232e] cursor-pointer"
                   >
                     {currentUser.role === 'b2b' ? (
