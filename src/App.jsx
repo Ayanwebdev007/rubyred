@@ -8,6 +8,9 @@ import BulkOrderingSection from './components/BulkOrderingSection';
 import WhyRubyRedSection from './components/WhyRubyRedSection';
 import AboutRubyRedSection from './components/AboutRubyRedSection';
 import AboutUsPage from './components/AboutUsPage';
+import ShopPage from './components/ShopPage';
+import CategoriesPage from './components/CategoriesPage';
+import ContactPage from './components/ContactPage';
 import ProductDetailsPage from './components/ProductDetailsPage';
 import B2BWholesalePortal from './components/B2BWholesalePortal';
 import AdminPanel from './components/AdminPanel';
@@ -23,7 +26,29 @@ import { AuthProvider } from './context/AuthContext';
 import LoginPage from './components/LoginPage';
 import AdminLoginPage from './components/AdminLoginPage';
 
-function MainAppContent({ cart, handleAddToCart, handleUpdateQty, handleRemoveFromCart, searchQuery, setSearchQuery }) {
+function CategoryPage() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [id]);
+
+  return (
+    <div className="py-8">
+      <CategoriesSection
+        activeCategoryId={id}
+        onSelectCategory={(catId) => navigate(`/category/${catId}`)}
+      />
+      <FeaturedProductsSection
+        categoryId={id}
+        onSelectProduct={(p) => navigate(`/product/${p.id}`)}
+      />
+    </div>
+  );
+}
+
+function MainAppContent({ cart, setCart, handleAddToCart, handleUpdateQty, handleRemoveFromCart, searchQuery, setSearchQuery }) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -96,17 +121,7 @@ function MainAppContent({ cart, handleAddToCart, handleUpdateQty, handleRemoveFr
           {/* Category View Route */}
           <Route
             path="/category/:id"
-            element={
-              <div className="py-8">
-                <CategoriesSection 
-                  onSelectCategory={(catId) => navigate(`/category/${catId}`)}
-                />
-                <FeaturedProductsSection
-                  onAddToCart={handleAddToCart}
-                  onSelectProduct={(p) => navigate(`/product/${p.id}`)}
-                />
-              </div>
-            }
+            element={<CategoryPage />}
           />
 
           {/* B2B Wholesale Portal Route */}
@@ -154,9 +169,9 @@ function MainAppContent({ cart, handleAddToCart, handleUpdateQty, handleRemoveFr
 
           {/* Fallback Aliases & Wildcard Redirects to prevent blank pages */}
           <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="/shop" element={<Navigate to="/" replace />} />
-          <Route path="/categories" element={<Navigate to="/" replace />} />
-          <Route path="/contact" element={<Navigate to="/social" replace />} />
+          <Route path="/shop" element={<ShopPage searchQuery={searchQuery} setSearchQuery={setSearchQuery} />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
@@ -172,7 +187,23 @@ function MainAppContent({ cart, handleAddToCart, handleUpdateQty, handleRemoveFr
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('rubyred_cart') || '[]');
+      return Array.isArray(saved) ? saved : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // Keep the cart across page reloads
+  React.useEffect(() => {
+    try {
+      localStorage.setItem('rubyred_cart', JSON.stringify(cart));
+    } catch {
+      /* storage unavailable */
+    }
+  }, [cart]);
 
   const handleAddToCart = (productToAdd) => {
     setCart((prevCart) => {
@@ -209,6 +240,7 @@ export default function App() {
       <Router>
         <MainAppContent
           cart={cart}
+          setCart={setCart}
           handleAddToCart={handleAddToCart}
           handleUpdateQty={handleUpdateQty}
           handleRemoveFromCart={handleRemoveFromCart}

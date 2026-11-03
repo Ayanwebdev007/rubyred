@@ -7,7 +7,7 @@ export default function WhatsAppWidget() {
   );
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center group">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center group">
       {/* Tooltip Label on Hover */}
       <span className="hidden sm:block opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md mr-3 whitespace-nowrap">
         Need Help? Chat on WhatsApp!
@@ -18,12 +18,12 @@ export default function WhatsAppWidget() {
         href={`https://wa.me/${whatsappNumber}?text=${defaultText}`}
         target="_blank"
         rel="noreferrer"
-        className="p-3.5 sm:p-4 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center cursor-pointer border-2 border-white"
+        className="p-3 sm:p-4 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center cursor-pointer border-2 border-white"
         aria-label="Chat on WhatsApp"
       >
         {/* Real Official WhatsApp SVG Logo */}
         <svg 
-          className="w-6.5 h-6.5 fill-white" 
+          className="w-6 h-6 sm:w-6.5 sm:h-6.5 fill-white" 
           viewBox="0 0 24 24" 
           xmlns="http://www.w3.org/2000/svg"
         >

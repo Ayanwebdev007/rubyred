@@ -15,7 +15,7 @@ export default function RollingOfferTicker() {
   const doubledOffers = [...offers, ...offers];
 
   return (
-    <div className="w-full bg-[#d9232e] text-white py-3 border-y border-red-700/80 shadow-md overflow-hidden relative select-none sticky top-[80px] z-40 backdrop-blur-md">
+    <div className="w-full bg-[#d9232e] text-white py-3 border-y border-red-700/80 shadow-md overflow-hidden relative select-none sticky top-16 xs:top-20 z-40 backdrop-blur-md">
       
       {/* Decorative Subtle Side Fades */}
       <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#d9232e] to-transparent z-10 pointer-events-none" />

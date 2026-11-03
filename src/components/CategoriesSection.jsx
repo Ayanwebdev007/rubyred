@@ -1,34 +1,17 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
+import useCatalog from '../hooks/useCatalog';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
-export const CATEGORIES_DATA = [
-  {
-    id: "koikeya-snacks",
-    name: "Koikeya Snacks",
-    image: "/images/koikeya_karamucho_hot_chili_chips.png"
-  },
-  {
-    id: "milka-chocolates",
-    name: "Milka Chocolates",
-    image: "/images/Milka Oreo Lavender Kitchen Still Life.png"
-  },
-  {
-    id: "haribo-candies",
-    name: "Haribo Gummies",
-    image: "/images/Haribo Vampire Gummy Candy Bag.png"
-  },
-  {
-    id: "maoam-chews",
-    name: "MAOAM Kracher",
-    image: "/images/MAOAM Kracher Candy Showcase.png"
-  }
-];
-
-// Replicate categories array for seamless infinite looping
+// Repeat the category list so the carousel can loop seamlessly
 const REPEAT_COUNT = 4;
-const REPEATED_CATEGORIES = Array.from({ length: REPEAT_COUNT }, () => CATEGORIES_DATA).flat();
 
-export default function CategoriesSection({ onSelectCategory }) {
+export default function CategoriesSection({ onSelectCategory, activeCategoryId }) {
+  const { categories } = useCatalog();
+  const repeatedCategories = useMemo(
+    () => Array.from({ length: REPEAT_COUNT }, () => categories).flat(),
+    [categories]
+  );
+
   const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -36,7 +19,7 @@ export default function CategoriesSection({ onSelectCategory }) {
       const singleSetWidth = scrollRef.current.scrollWidth / REPEAT_COUNT;
       scrollRef.current.scrollLeft = singleSetWidth;
     }
-  }, []);
+  }, [categories.length]);
 
   const handleScroll = () => {
     if (!scrollRef.current) return;
@@ -116,24 +99,28 @@ export default function CategoriesSection({ onSelectCategory }) {
               WebkitOverflowScrolling: 'touch'
             }}
           >
-            {REPEATED_CATEGORIES.map((cat, index) => (
+            {repeatedCategories.map((cat, index) => (
               <div
                 key={`${cat.id}-${index}`}
                 onClick={() => onSelectCategory && onSelectCategory(cat.id)}
-                className="group/card cursor-pointer relative shrink-0 w-[125px] xs:w-[140px] sm:w-[190px] md:w-[220px] aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-100 shadow-xs sm:shadow-md hover:shadow-xl transition-all duration-300 border border-slate-200/80 hover:border-red-500/40 active:scale-95 snap-start"
+                className={`group/card cursor-pointer relative shrink-0 w-[125px] xs:w-[140px] sm:w-[190px] md:w-[220px] aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden bg-white shadow-xs sm:shadow-md hover:shadow-xl transition-all duration-300 border active:scale-95 snap-start ${
+                  activeCategoryId === cat.id
+                    ? 'border-[#d9232e] ring-2 ring-[#d9232e]/40'
+                    : 'border-slate-200/80 hover:border-red-500/40'
+                }`}
               >
                 {/* Photo Background */}
                 <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500 ease-out"
+                  src={cat.img || cat.image}
+                  alt={cat.title || cat.name}
+                  className="absolute inset-x-0 top-0 bottom-8 sm:bottom-10 w-full h-[calc(100%-2rem)] sm:h-[calc(100%-2.5rem)] object-contain p-3 sm:p-4 group-hover/card:scale-105 transition-transform duration-500 ease-out"
                   loading="lazy"
                 />
 
                 {/* Bottom Red Label Bar */}
                 <div className="absolute bottom-0 inset-x-0 w-full bg-[#d9232e] py-1.5 sm:py-2 px-2 text-center transition-colors">
                   <h3 className="font-semibold text-white text-xs sm:text-sm lg:text-base leading-tight line-clamp-1">
-                    {cat.name}
+                    {cat.title || cat.name}
                   </h3>
                 </div>
               </div>

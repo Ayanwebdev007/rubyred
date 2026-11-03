@@ -19,14 +19,14 @@ services:
       - key: NODE_VERSION
         value: 22.14.0
       - key: VITE_FIREBASE_API_KEY
-        value: AIzaSyAMMWrOUIldja-Lz9p10npv0rQ4XvO1zDc
+        value: AIzaSyAiizyrH_pX0q_Q5_8AVCPBalYFG2OQh4w
       - key: VITE_FIREBASE_AUTH_DOMAIN
-        value: rubyred-564af.firebaseapp.com
+        value: rubyred-4d5e1.firebaseapp.com
       - key: VITE_FIREBASE_PROJECT_ID
-        value: rubyred-564af
+        value: rubyred-4d5e1
       - key: VITE_FIREBASE_STORAGE_BUCKET
-        value: rubyred-564af.firebasestorage.app
+        value: rubyred-4d5e1.firebasestorage.app
       - key: VITE_FIREBASE_MESSAGING_SENDER_ID
-        value: "1039753044968"
+        value: "321534534071"
       - key: VITE_FIREBASE_APP_ID
-        value: "1:1039753044968:web:06f6936cd270f2dc2e3a5d"
+        value: "1:321534534071:web:3bb3ef8048236c1c17c832"

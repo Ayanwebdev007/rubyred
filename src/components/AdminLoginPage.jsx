@@ -37,17 +37,10 @@ export default function AdminLoginPage() {
       const cleanUser = userId.trim().toLowerCase();
       const cleanPass = password.trim();
 
-      const validUsernames = [
-        'admin', 
-        'salim', 
-        'admin@rubyred.com', 
-        'salim@rubyred.com', 
-        'admin@rubyredhouston.com',
-        'gs3websolutions@gmail.com'
-      ];
-      const validPasswords = ['rubyred@2026', 'admin123', 'admin', 'password'];
+      const ADMIN_USER = 'admin';
+      const ADMIN_PASSWORD = 'Yaali786$A3007';
 
-      if (validUsernames.includes(cleanUser) && validPasswords.includes(cleanPass)) {
+      if (cleanUser === ADMIN_USER && cleanPass === ADMIN_PASSWORD) {
         setIsAdminAuthenticated(true);
         try {
           sessionStorage.setItem('rubyred_admin_auth', 'true');

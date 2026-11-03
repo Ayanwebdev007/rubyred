@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   Building2, 
   User, 
@@ -12,7 +12,6 @@ import {
   Clock, 
   Phone, 
   AlertCircle,
-  KeyRound,
   Lock,
   Mail,
   Package,
@@ -22,24 +21,27 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { STORE_INFO } from '../data/products';
+import { MIN_PASSWORD_LENGTH, validateCertificateFile } from '../services/authService';
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { 
     currentUser, 
     registerRetail, 
     registerB2B, 
     loginUser, 
+    refreshAccount,
     logout 
   } = useAuth();
 
   // Active customer flow tab: 'retail' | 'b2b'
   const [accountType, setAccountType] = useState('retail');
   
-  // Sub-mode for retail: 'signin' | 'register' | 'otp' | 'success'
+  // Sub-mode for retail: 'signin' | 'register'
   const [retailMode, setRetailMode] = useState('signin');
   
-  // Sub-mode for b2b: 'signin' | 'apply' | 'success'
+  // Sub-mode for b2b: 'signin' | 'apply'
   const [b2bMode, setB2bMode] = useState('signin');
 
   // Password visibility
@@ -52,7 +54,6 @@ export default function LoginPage() {
     password: '',
     isAgeVerified: true
   });
-  const [otpCode, setOtpCode] = useState(['8', '4', '9', '2', '0', '1']);
 
   // B2B Form State (Cleaned, streamlined, includes password for instant login)
   const [b2bForm, setB2bForm] = useState({
@@ -64,9 +65,7 @@ export default function LoginPage() {
     phone: '',
     password: '',
     taxId: '',
-    documents: [
-      { name: 'Resale_Tax_Certificate_2026.pdf', size: '1.4 MB', type: 'application/pdf', uploadedAt: 'Just now' }
-    ]
+    monthlyVolume: ''
   });
 
   const [selectedB2bFile, setSelectedB2bFile] = useState(null);
@@ -77,6 +76,26 @@ export default function LoginPage() {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Arriving from the Wholesale page's quick form: open the application pre-filled
+  useEffect(() => {
+    const prefill = location.state?.b2bApplication;
+    if (prefill) {
+      setAccountType('b2b');
+      setB2bMode('apply');
+      setB2bForm(prev => ({ ...prev, ...prefill }));
+    }
+  }, [location.state]);
+
+  // Pick up admin approval while the account page is open
+  useEffect(() => {
+    if (currentUser?.role === 'b2b') refreshAccount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const forgotPasswordHref = `https://wa.me/${STORE_INFO.whatsappFormatted}?text=${encodeURIComponent(
+    `Hi Ruby Red! I forgot the password for my account (${loginEmail.trim() || 'email / phone'}). Please help me reset it.`
+  )}`;
 
   // Handle Retail Sign In
   const handleRetailSignIn = async (e) => {
@@ -97,45 +116,32 @@ export default function LoginPage() {
     }
   };
 
-  // Handle Retail Registration -> OTP
-  const handleRetailRegister = (e) => {
+  // Handle Retail Registration
+  const handleRetailRegister = async (e) => {
     e.preventDefault();
     if (!retailForm.name.trim() || !retailForm.emailOrPhone.trim() || !retailForm.password) {
       setErrorMessage('Please fill in all fields to create an account');
       return;
     }
-    if (retailForm.password.length < 6) {
-      setErrorMessage('Password must be at least 6 characters long');
+    if (retailForm.password.length < MIN_PASSWORD_LENGTH) {
+      setErrorMessage(`Password must be at least ${MIN_PASSWORD_LENGTH} characters long`);
       return;
     }
     setErrorMessage('');
-    setRetailMode('otp');
-  };
-
-  // Complete OTP Verification
-  const handleVerifyOtp = async () => {
     setIsSubmitting(true);
-    setErrorMessage('');
     try {
-      const email = retailForm.emailOrPhone.includes('@') 
-        ? retailForm.emailOrPhone 
-        : `${retailForm.emailOrPhone.replace(/\D/g, '')}@phone.rubyred`;
-      const pass = retailForm.password;
-
+      const identifier = retailForm.emailOrPhone.trim();
+      const isEmail = identifier.includes('@');
       await registerRetail({
         name: retailForm.name,
-        email: email,
-        phone: !retailForm.emailOrPhone.includes('@') ? retailForm.emailOrPhone : '',
-        password: pass,
+        email: isEmail ? identifier : '',
+        phone: isEmail ? '' : identifier,
+        password: retailForm.password,
         isAgeVerified: retailForm.isAgeVerified
       });
-      setRetailMode('success');
-      setTimeout(() => {
-        navigate('/');
-      }, 1000);
+      navigate('/');
     } catch (err) {
-      setErrorMessage(err.message || 'Registration failed.');
-      setRetailMode('register');
+      setErrorMessage(err.message || 'Registration failed. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -148,18 +154,15 @@ export default function LoginPage() {
       setErrorMessage('Please complete all required fields including password');
       return;
     }
-    if (b2bForm.password.length < 6) {
-      setErrorMessage('Password must be at least 6 characters long');
+    if (b2bForm.password.length < MIN_PASSWORD_LENGTH) {
+      setErrorMessage(`Password must be at least ${MIN_PASSWORD_LENGTH} characters long`);
       return;
     }
     setErrorMessage('');
     setIsSubmitting(true);
     try {
-      await registerB2B({
-        ...b2bForm,
-        address: ''
-      }, selectedB2bFile);
-      setB2bMode('success');
+      await registerB2B(b2bForm, selectedB2bFile);
+      setB2bMode('signin');
     } catch (err) {
       setErrorMessage(err.message || 'Application submission failed.');
     } finally {
@@ -257,6 +260,38 @@ export default function LoginPage() {
                   </span>
                 </div>
 
+                {currentUser.role === 'b2b' && currentUser.status !== 'Approved' && (
+                  <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-2">
+                    <p className="font-bold flex items-center gap-1.5">
+                      <Clock className="w-4 h-4 shrink-0" /> Wholesale application under review
+                    </p>
+                    <p>
+                      Thanks{currentUser.businessName ? `, ${currentUser.businessName}` : ''}! Our team is verifying your resale
+                      certificate{currentUser.taxId ? ` (${currentUser.taxId})` : ''}. Wholesale case pricing unlocks as soon as
+                      your account is approved. You can shop at retail prices meanwhile.
+                    </p>
+                    {currentUser.documentsUploadFailed && (
+                      <p className="font-semibold text-red-700">
+                        Your certificate file did not upload. Please send it to us on WhatsApp.
+                      </p>
+                    )}
+                    <a
+                      href={`https://wa.me/${STORE_INFO.whatsappFormatted}?text=${encodeURIComponent(`Hi Ruby Red! Checking on the wholesale application for ${currentUser.businessName || currentUser.email}.`)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 font-bold text-emerald-700 hover:underline"
+                    >
+                      <Phone className="w-3.5 h-3.5" /> Ask about my application
+                    </a>
+                  </div>
+                )}
+
+                {currentUser.role === 'b2b' && currentUser.status === 'Approved' && (
+                  <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 font-semibold flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 shrink-0" /> Approved wholesale account. Case pricing is active in your cart.
+                  </div>
+                )}
+
                 <div className="grid grid-cols-2 gap-2.5 text-xs">
                   <button
                     onClick={() => navigate('/orders')}
@@ -332,7 +367,7 @@ export default function LoginPage() {
                 <div>
                   <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
                     {accountType === 'retail' 
-                      ? (retailMode === 'signin' ? 'Sign In' : retailMode === 'otp' ? 'Verification' : 'Create Account')
+                      ? (retailMode === 'signin' ? 'Sign In' : 'Create Account')
                       : (b2bMode === 'signin' ? 'Wholesale Sign In' : 'Wholesale Application')
                     }
                   </h1>
@@ -345,7 +380,7 @@ export default function LoginPage() {
                 </div>
 
                 {/* Submode Switcher Tabs */}
-                {accountType === 'retail' && retailMode !== 'otp' && retailMode !== 'success' && (
+                {accountType === 'retail' && (
                   <div className="flex items-center gap-5 border-b border-slate-100 pb-2">
                     <button
                       type="button"
@@ -374,7 +409,7 @@ export default function LoginPage() {
                   </div>
                 )}
 
-                {accountType === 'b2b' && b2bMode !== 'success' && (
+                {accountType === 'b2b' && (
                   <div className="flex items-center gap-5 border-b border-slate-100 pb-2">
                     <button
                       type="button"
@@ -448,6 +483,7 @@ export default function LoginPage() {
                         <input
                           type={showPassword ? 'text' : 'password'}
                           placeholder="••••••••••••"
+                          autoComplete="current-password"
                           value={loginPassword}
                           onChange={(e) => setLoginPassword(e.target.value)}
                           className="w-full bg-slate-50/70 border border-slate-200 hover:border-slate-300 rounded-xl pl-10 pr-3.5 py-2.5 text-slate-900 font-medium placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-[#d9232e] focus:ring-2 focus:ring-red-100 transition-all text-xs"
@@ -455,10 +491,21 @@ export default function LoginPage() {
                       </div>
                     </div>
 
+                    <div className="text-right -mt-1">
+                      <a
+                        href={forgotPasswordHref}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[11px] font-semibold text-slate-500 hover:text-[#d9232e] transition-colors"
+                      >
+                        Forgot password?
+                      </a>
+                    </div>
+
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3 px-4 bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-red-500/15 flex items-center justify-center gap-2 cursor-pointer mt-1"
+                      className="w-full py-3 px-4 bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-red-500/15 flex items-center justify-center gap-2 cursor-pointer mt-1 disabled:opacity-60 disabled:cursor-wait"
                     >
                       {isSubmitting ? <span>Signing In...</span> : (
                         <>
@@ -514,7 +561,8 @@ export default function LoginPage() {
                       <input
                         type={showPassword ? 'text' : 'password'}
                         required
-                        placeholder="Create a password"
+                        placeholder={`Create a password (min ${MIN_PASSWORD_LENGTH} characters)`}
+                        autoComplete="new-password"
                         value={retailForm.password}
                         onChange={(e) => setRetailForm({...retailForm, password: e.target.value})}
                         className="w-full bg-slate-50/70 border border-slate-200 hover:border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 font-medium placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-[#d9232e] focus:ring-2 focus:ring-red-100 transition-all text-xs"
@@ -536,75 +584,13 @@ export default function LoginPage() {
 
                     <button
                       type="submit"
-                      className="w-full py-3 px-4 bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-red-500/15 flex items-center justify-center gap-2 cursor-pointer mt-2"
+                      disabled={isSubmitting}
+                      className="w-full py-3 px-4 bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-red-500/15 flex items-center justify-center gap-2 cursor-pointer mt-2 disabled:opacity-60 disabled:cursor-wait"
                     >
-                      <span>Create Account</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <span>{isSubmitting ? 'Creating Account...' : 'Create Account'}</span>
+                      {!isSubmitting && <ArrowRight className="w-4 h-4" />}
                     </button>
                   </form>
-                )}
-
-                {/* ======================================================== */}
-                {/* RETAIL: OTP VERIFICATION                                 */}
-                {/* ======================================================== */}
-                {accountType === 'retail' && retailMode === 'otp' && (
-                  <div className="text-center space-y-4 py-2">
-                    <div className="w-10 h-10 rounded-full bg-red-50 text-[#d9232e] mx-auto flex items-center justify-center">
-                      <KeyRound className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-slate-500">
-                        Enter code sent to <strong className="text-slate-800">{retailForm.emailOrPhone}</strong>
-                      </p>
-                    </div>
-
-                    <div className="flex justify-center gap-2">
-                      {otpCode.map((digit, idx) => (
-                        <input
-                          key={idx}
-                          type="text"
-                          maxLength={1}
-                          value={digit}
-                          onChange={(e) => {
-                            const updated = [...otpCode];
-                            updated[idx] = e.target.value;
-                            setOtpCode(updated);
-                          }}
-                          className="w-9 h-11 text-center font-black text-base bg-slate-50 border border-slate-200 rounded-xl focus:border-[#d9232e] focus:bg-white focus:outline-none transition-all"
-                        />
-                      ))}
-                    </div>
-
-                    <button
-                      onClick={handleVerifyOtp}
-                      disabled={isSubmitting}
-                      className="w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <CheckCircle2 className="w-4 h-4" />
-                      <span>{isSubmitting ? 'Verifying...' : 'Verify & Continue'}</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setRetailMode('register')}
-                      className="text-xs text-slate-400 hover:text-slate-700 cursor-pointer"
-                    >
-                      Back
-                    </button>
-                  </div>
-                )}
-
-                {/* ======================================================== */}
-                {/* RETAIL: SUCCESS                                          */}
-                {/* ======================================================== */}
-                {accountType === 'retail' && retailMode === 'success' && (
-                  <div className="text-center space-y-3 py-6">
-                    <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 mx-auto flex items-center justify-center">
-                      <CheckCircle2 className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-xl font-extrabold text-slate-900">Account Ready</h3>
-                    <p className="text-xs text-slate-500">Redirecting to store...</p>
-                  </div>
                 )}
 
                 {/* ======================================================== */}
@@ -644,6 +630,7 @@ export default function LoginPage() {
                         <input
                           type={showPassword ? 'text' : 'password'}
                           placeholder="••••••••••••"
+                          autoComplete="current-password"
                           value={loginPassword}
                           onChange={(e) => setLoginPassword(e.target.value)}
                           className="w-full bg-slate-50/70 border border-slate-200 hover:border-slate-300 rounded-xl pl-10 pr-3.5 py-2.5 text-slate-900 font-medium placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-[#d9232e] focus:ring-2 focus:ring-red-100 transition-all text-xs"
@@ -651,10 +638,21 @@ export default function LoginPage() {
                       </div>
                     </div>
 
+                    <div className="text-right -mt-1">
+                      <a
+                        href={forgotPasswordHref}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[11px] font-semibold text-slate-500 hover:text-[#d9232e] transition-colors"
+                      >
+                        Forgot password?
+                      </a>
+                    </div>
+
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3 px-4 bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-red-500/15 flex items-center justify-center gap-2 cursor-pointer mt-1"
+                      className="w-full py-3 px-4 bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-red-500/15 flex items-center justify-center gap-2 cursor-pointer mt-1 disabled:opacity-60 disabled:cursor-wait"
                     >
                       {isSubmitting ? <span>Signing In...</span> : (
                         <>
@@ -749,7 +747,8 @@ export default function LoginPage() {
                         <input
                           type={showPassword ? 'text' : 'password'}
                           required
-                          placeholder="Create password (min 6 characters)"
+                          placeholder={`Create password (min ${MIN_PASSWORD_LENGTH} characters)`}
+                          autoComplete="new-password"
                           value={b2bForm.password}
                           onChange={e => setB2bForm({...b2bForm, password: e.target.value})}
                           className="w-full bg-slate-50/70 border border-slate-200 hover:border-slate-300 rounded-xl pl-10 pr-3.5 py-2 text-slate-900 font-medium placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-[#d9232e] focus:ring-2 focus:ring-red-100 transition-all text-xs"
@@ -767,13 +766,16 @@ export default function LoginPage() {
                         className="hidden"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
-                          if (file) {
+                          if (!file) return;
+                          try {
+                            validateCertificateFile(file);
                             setSelectedB2bFile(file);
-                            setB2bForm(prev => ({
-                              ...prev,
-                              documents: [{ name: file.name, size: `${(file.size / 1024).toFixed(0)} KB` }]
-                            }));
+                            setErrorMessage('');
+                          } catch (err) {
+                            setSelectedB2bFile(null);
+                            setErrorMessage(err.message);
                           }
+                          e.target.value = '';
                         }}
                       />
                       <div 
@@ -782,7 +784,7 @@ export default function LoginPage() {
                       >
                         <UploadCloud className="w-4 h-4 text-[#d9232e]" />
                         <span className="text-[11px] font-bold text-slate-700">
-                          {selectedB2bFile ? selectedB2bFile.name : 'Upload Resale Certificate File'}
+                          {selectedB2bFile ? `${selectedB2bFile.name} (${Math.ceil(selectedB2bFile.size / 1024)} KB)` : 'Upload Resale Certificate (PDF or photo, max 700 KB)'}
                         </span>
                       </div>
                     </div>
@@ -798,37 +800,6 @@ export default function LoginPage() {
                   </form>
                 )}
 
-                {/* ======================================================== */}
-                {/* WHOLESALE: SUCCESS STATE                                 */}
-                {/* ======================================================== */}
-                {accountType === 'b2b' && b2bMode === 'success' && (
-                  <div className="text-center space-y-3 py-6">
-                    <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 mx-auto flex items-center justify-center">
-                      <Clock className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-xl font-extrabold text-slate-900">Application Received</h3>
-                    <p className="text-xs text-slate-500 max-w-xs mx-auto">
-                      Our warehouse team is reviewing your tax certificate ({b2bForm.taxId}).
-                    </p>
-                    <div className="pt-2 flex flex-col gap-2">
-                      <a
-                        href={`https://wa.me/${STORE_INFO.whatsappFormatted}?text=Hi%20Ruby%20Red!%20I%20just%20submitted%20a%20B2B%20wholesale%20application%20for%20${encodeURIComponent(b2bForm.businessName)}.`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="py-2.5 px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5"
-                      >
-                        <Phone className="w-3.5 h-3.5" />
-                        <span>Chat on WhatsApp</span>
-                      </a>
-                      <button
-                        onClick={() => navigate('/')}
-                        className="py-2 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl cursor-pointer"
-                      >
-                        Return to Store
-                      </button>
-                    </div>
-                  </div>
-                )}
 
               </div>
             )}

@@ -26,17 +26,16 @@ export default function OrderDetailsPage({
   onBack,
   onUpdateStatus
 }) {
-  if (!order) return null;
-
   const isWholesale = orderType === 'wholesale';
-  const [currentStatus, setCurrentStatus] = useState(order.status || 'Processing');
+  const [currentStatus, setCurrentStatus] = useState(order?.status || 'Processing');
   const [isUpdating, setIsUpdating] = useState(false);
 
   // Parse items
   const lineItems = React.useMemo(() => {
-    if (Array.isArray(order.items)) return order.items;
-    if (typeof order.items === 'string') {
-      return order.items.split(',').map((item, idx) => {
+    const items = order?.items;
+    if (Array.isArray(items)) return items;
+    if (typeof items === 'string') {
+      return items.split(',').map((item, idx) => {
         const trimmed = item.trim();
         // check for "5 Cases Sangaria Ramune" or "2x Milka Oreo"
         const caseMatch = trimmed.match(/^(\d+)\s*(?:Cases?|cases?|x)?\s*(.*)$/i);
@@ -47,22 +46,24 @@ export default function OrderDetailsPage({
           name: name || trimmed,
           qty: qty || '1',
           unitLabel: isWholesale ? 'Cases' : 'Units',
-          unitPrice: isWholesale ? 61.50 : 3.79,
-          total: isWholesale ? Number(qty || 1) * 61.50 : Number(qty || 1) * 3.79
+          unitPrice: null,
+          total: null
         };
       });
     }
-    return [
-      { id: 'item-1', name: 'Import Snack Variety Pack', qty: '1', unitLabel: 'Units', unitPrice: Number(order.amount || 24.50), total: Number(order.amount || 24.50) }
-    ];
-  }, [order.items, isWholesale, order.amount]);
+    return [];
+  }, [order?.items, isWholesale]);
+
+  if (!order) return null;
 
   const handleStatusChange = async (newStatus) => {
+    const previous = currentStatus;
     setCurrentStatus(newStatus);
     if (onUpdateStatus) {
       setIsUpdating(true);
-      await onUpdateStatus(order.id, newStatus, isWholesale);
+      const ok = await onUpdateStatus(order.id, newStatus, isWholesale);
       setIsUpdating(false);
+      if (ok === false) setCurrentStatus(previous);
     }
   };
 
@@ -73,26 +74,27 @@ export default function OrderDetailsPage({
         ? 'bg-blue-50 text-blue-700 border-blue-200' 
         : 'bg-amber-50 text-amber-700 border-amber-200';
 
-  const orderTotal = Number(order.amount || order.total || 0);
+  const orderTotal = Number(order.total ?? order.amount ?? 0);
+  const money = (n) => `$${(Number(n) || 0).toFixed(2)}`;
 
   return (
-    <div className="space-y-6 font-['Outfit',sans-serif] animate-in fade-in duration-150">
+    <div className="space-y-4 sm:space-y-6 font-['Outfit',sans-serif] animate-in fade-in duration-150 min-w-0">
       
       {/* 1. TOP HEADER & BREADCRUMB BAR */}
       <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col xs:flex-row items-start xs:items-center gap-2 xs:gap-3 min-w-0">
           <button
             onClick={onBack}
-            className="p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-semibold"
+            className="-ml-2 xs:ml-0 shrink-0 p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-semibold"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Orders</span>
           </button>
-          <div className="h-4 w-px bg-slate-200" />
-          <div>
-            <div className="flex items-center gap-2">
-              <h2 className="text-lg font-semibold text-[#d9232e] tracking-tight">
+          <div className="hidden xs:block h-4 w-px bg-slate-200" />
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <h2 className="text-lg font-semibold text-[#d9232e] tracking-tight break-all">
                 Order {order.id}
               </h2>
               <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
@@ -102,7 +104,7 @@ export default function OrderDetailsPage({
               </span>
             </div>
             <p className="text-xs text-slate-400 font-normal mt-0.5">
-              Placed on {order.date || 'October 17, 2026'} • Texas Regional Fulfillment
+              Placed on {order.date || '—'} • {order.deliveryMethod || (isWholesale ? 'Wholesale' : 'Retail')}
             </p>
           </div>
         </div>
@@ -121,6 +123,7 @@ export default function OrderDetailsPage({
               <option value="Processing">Processing</option>
               <option value="Shipped">Shipped</option>
               <option value="Delivered">Delivered</option>
+              <option value="Cancelled">Cancelled</option>
             </select>
           </div>
 
@@ -147,7 +150,7 @@ export default function OrderDetailsPage({
       </div>
 
       {/* 2. ORDER FULFILLMENT LIFECYCLE STEPPER */}
-      <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
+      <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
         <div className="flex items-center justify-between text-xs">
           <span className="font-semibold text-slate-900">Fulfillment Progression</span>
           <span className={`inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${statusColor}`}>
@@ -206,10 +209,10 @@ export default function OrderDetailsPage({
       </div>
 
       {/* 3. TWO-COLUMN ORDER DETAILS GRID */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
         
         {/* Left Column (8 cols): Line Items & Freight Manifest */}
-        <div className="lg:col-span-8 space-y-6">
+        <div className="lg:col-span-8 space-y-4 sm:space-y-6 min-w-0">
           
           {/* Card A: Ordered Line Items Table */}
           <div className="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
@@ -228,7 +231,7 @@ export default function OrderDetailsPage({
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs text-slate-600">
+              <table className="w-full min-w-[560px] text-left text-xs text-slate-600">
                 <thead className="bg-slate-50 text-slate-500 text-[11px] font-medium border-b border-slate-200">
                   <tr>
                     <th className="py-3 px-4">Item & Specification</th>
@@ -251,17 +254,17 @@ export default function OrderDetailsPage({
                         <span className={`inline-block text-[10px] font-medium px-2 py-0.5 rounded-md ${
                           isWholesale ? 'bg-amber-50 text-amber-800 border border-amber-200' : 'bg-slate-100 text-slate-700'
                         }`}>
-                          {isWholesale ? 'Factory Master Carton' : 'Retail Pack'}
+                          {item.unitLabel === 'Cases' ? `Case${item.caseQty > 1 ? ` of ${item.caseQty}` : ''}` : 'Single unit'}
                         </span>
                       </td>
                       <td className="py-3 px-4 text-center font-semibold text-slate-800">
                         {item.qty} {item.unitLabel}
                       </td>
                       <td className="py-3 px-4 text-right font-mono text-slate-600">
-                        ${item.unitPrice.toFixed(2)}
+                        {item.unitPrice == null ? '—' : money(item.unitPrice)}
                       </td>
                       <td className="py-3 px-4 text-right font-mono font-semibold text-slate-900">
-                        ${item.total.toFixed(2)}
+                        {item.total == null ? '—' : money(item.total)}
                       </td>
                     </tr>
                   ))}
@@ -269,178 +272,147 @@ export default function OrderDetailsPage({
               </table>
             </div>
 
-            {/* Financial Summary Calculation Footer */}
+            {/* Financial Summary */}
             <div className="p-4 sm:p-5 bg-slate-50/70 border-t border-slate-200 space-y-2 text-xs">
-              <div className="flex justify-between text-slate-600">
+              <div className="flex justify-between gap-3 text-slate-600">
                 <span>Items Subtotal:</span>
-                <span className="font-mono font-medium">${orderTotal.toFixed(2)}</span>
+                <span className="font-mono font-medium">{money(order.subtotal ?? orderTotal)}</span>
               </div>
-              <div className="flex justify-between text-slate-600">
-                <span>Freight & Delivery:</span>
-                <span className="font-medium text-emerald-700">Free Texas Regional Logistics</span>
+              {Number(order.discount) > 0 && (
+                <div className="flex justify-between gap-3 text-emerald-700">
+                  <span>Discounts{order.promoCode ? ` (${order.promoCode})` : ''}:</span>
+                  <span className="font-mono font-medium">-{money(order.discount)}</span>
+                </div>
+              )}
+              <div className="flex justify-between gap-3 text-slate-600">
+                <span>Shipping / Delivery:</span>
+                <span className="font-mono font-medium">{Number(order.shipping) > 0 ? money(order.shipping) : 'FREE'}</span>
               </div>
-              <div className="flex justify-between text-slate-600">
-                <span>State & Local Sales Tax:</span>
-                <span className="font-mono font-medium">
-                  {isWholesale ? '$0.00 (TX Resale Tax Exemption)' : '$0.00 (Included)'}
-                </span>
+              <div className="flex justify-between gap-3 text-slate-600">
+                <span>TX Sales Tax:</span>
+                <span className="font-mono font-medium">{order.tax != null ? money(order.tax) : '—'}</span>
               </div>
-              <div className="pt-2.5 border-t border-slate-200 flex justify-between items-baseline">
-                <span className="text-sm font-semibold text-slate-900">Total Invoiced:</span>
+              <div className="pt-2.5 border-t border-slate-200 flex justify-between items-baseline gap-3">
+                <span className="text-sm font-semibold text-slate-900">Order Total:</span>
                 <span className="text-xl font-semibold text-[#d9232e] font-mono">
-                  ${orderTotal.toFixed(2)}
+                  {money(orderTotal)}
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Card B: Freight Manifest & Delivery Logistics */}
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-slate-900 tracking-tight flex items-center gap-2">
-                <Truck className="w-4 h-4 text-[#d9232e]" />
-                <span>Shipping & Transport Manifest</span>
-              </h3>
-              <span className="text-[11px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
-                BOL #{order.id}-TX
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          {/* Fulfillment & status history */}
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+            <h3 className="text-sm font-semibold text-slate-900 tracking-tight flex items-center gap-2">
+              <Truck className="w-4 h-4 text-[#d9232e]" />
+              <span>Fulfillment</span>
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/70 space-y-1">
-                <p className="text-[10px] text-slate-400 uppercase font-semibold">Logistics Type</p>
-                <p className="font-semibold text-slate-800">
-                  {isWholesale ? 'Palletized LTL Freight' : 'Direct Ground Courier'}
-                </p>
-                <p className="text-[10px] text-slate-500">Scheduled Dispatch</p>
+                <p className="text-[11px] text-slate-400 uppercase font-semibold">Method</p>
+                <p className="font-semibold text-slate-800">{order.deliveryMethod || '—'}</p>
               </div>
-
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/70 space-y-1">
-                <p className="text-[10px] text-slate-400 uppercase font-semibold">Origin Hub</p>
-                <p className="font-semibold text-slate-800">Houston Harwin Depot</p>
-                <p className="text-[10px] text-slate-500">Warehouse Dock 4</p>
-              </div>
-
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/70 space-y-1">
-                <p className="text-[10px] text-slate-400 uppercase font-semibold">Handling Requirements</p>
-                <p className="font-semibold text-slate-800">Climate Controlled (Cool)</p>
-                <p className="text-[10px] text-emerald-700 font-medium">Food-Grade Certified</p>
+                <p className="text-[11px] text-slate-400 uppercase font-semibold">Placed Via</p>
+                <p className="font-semibold text-slate-800">{order.source === 'whatsapp' ? 'Website + WhatsApp' : 'Website checkout'}</p>
               </div>
             </div>
-
-            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs space-y-1">
-              <p className="font-semibold text-slate-800">Receiving & Delivery Instructions:</p>
-              <p className="text-slate-600 font-normal">
-                {isWholesale 
-                  ? 'Deliver to rear loading dock bay 2. Forklift and pallet jack available on site. Inspect cartons and sign physical BOL.'
-                  : 'Deliver directly to front address. Ring doorbell upon delivery. Age 21+ ID verified for snack order delivery.'
-                }
-              </p>
-            </div>
+            {order.notes && (
+              <div className="p-3.5 rounded-xl bg-amber-50/60 border border-amber-200 text-xs space-y-1">
+                <p className="font-semibold text-amber-900">Customer Notes</p>
+                <p className="text-amber-900/90 break-words">{order.notes}</p>
+              </div>
+            )}
+            {Array.isArray(order.statusHistory) && order.statusHistory.length > 0 && (
+              <div className="text-xs space-y-1.5">
+                <p className="font-semibold text-slate-800">Status History</p>
+                <ul className="space-y-1">
+                  {order.statusHistory.map((h, idx) => (
+                    <li key={idx} className="flex justify-between gap-3 text-slate-600">
+                      <span className="font-medium">{h.status}</span>
+                      <span className="text-slate-400">{new Date(h.at).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-
         </div>
 
-        {/* Right Column (4 cols): Customer Account & Payment Terms */}
-        <div className="lg:col-span-4 space-y-6">
-          
+        {/* Right Column (4 cols): Customer & Payment */}
+        <div className="lg:col-span-4 space-y-4 sm:space-y-6 min-w-0">
+
           {/* Card 1: Customer / Business Profile */}
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <h3 className="text-sm font-semibold text-slate-900 tracking-tight flex items-center gap-2">
                 {isWholesale ? <Building2 className="w-4 h-4 text-amber-600" /> : <User className="w-4 h-4 text-[#d9232e]" />}
-                <span>{isWholesale ? 'Business Account' : 'Customer Profile'}</span>
+                <span>{isWholesale ? 'Business Account' : 'Customer'}</span>
               </h3>
-              <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                Verified
-              </span>
             </div>
-
             <div className="space-y-3 text-xs">
               <div>
-                <p className="text-[10px] text-slate-400 font-medium uppercase">
+                <p className="text-[11px] text-slate-400 font-medium uppercase">
                   {isWholesale ? 'Store / Company Name' : 'Customer Name'}
                 </p>
-                <p className="font-semibold text-slate-900 text-sm mt-0.5">
-                  {order.storeName || order.customer || 'Harwin Partner Account'}
+                <p className="font-semibold text-slate-900 text-sm mt-0.5 break-words">
+                  {order.storeName || order.customer || '—'}
                 </p>
               </div>
-
               {isWholesale && order.contact && (
                 <div>
-                  <p className="text-[10px] text-slate-400 font-medium uppercase">Primary Buyer Contact</p>
+                  <p className="text-[11px] text-slate-400 font-medium uppercase">Primary Buyer Contact</p>
                   <p className="font-medium text-slate-800 mt-0.5">{order.contact}</p>
                 </div>
               )}
-
               <div className="space-y-1.5 pt-1 border-t border-slate-100">
-                <div className="flex items-center gap-2 text-slate-600">
-                  <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                  <span className="truncate">{order.email || 'billing@rubyredwholesale.com'}</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-600">
-                  <Phone className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                  <span>{order.phone || '713-555-0144'}</span>
-                </div>
+                {order.email && (
+                  <a href={`mailto:${order.email}`} className="flex items-center gap-2 text-slate-600 hover:text-[#d9232e]">
+                    <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span className="truncate">{order.email}</span>
+                  </a>
+                )}
+                {order.phone && (
+                  <a href={`tel:${order.phone.replace(/[^\d+]/g, '')}`} className="flex items-center gap-2 text-slate-600 hover:text-[#d9232e]">
+                    <Phone className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span>{order.phone}</span>
+                  </a>
+                )}
+                {!order.email && !order.phone && <p className="text-slate-400">No contact details on this order.</p>}
               </div>
-
-              {isWholesale && (
-                <div className="p-2.5 rounded-lg bg-amber-50/60 border border-amber-200 text-[11px] space-y-1">
-                  <p className="font-semibold text-amber-900">Texas Resale Tax Exemption</p>
-                  <p className="font-mono text-amber-800">Certificate: TX-881234-1</p>
-                </div>
-              )}
             </div>
           </div>
 
           {/* Card 2: Delivery Destination */}
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
             <h3 className="text-sm font-semibold text-slate-900 tracking-tight flex items-center gap-2">
               <MapPin className="w-4 h-4 text-slate-500" />
-              <span>Delivery Destination</span>
+              <span>{order.deliveryMethod === 'Store Pickup' ? 'Pickup Location' : 'Delivery Address'}</span>
             </h3>
-
-            <div className="text-xs space-y-1 text-slate-700 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
-              <p className="font-semibold text-slate-900">
-                {order.storeName || order.customer}
-              </p>
-              <p className="text-slate-600">7420 Harwin Drive, Suite B</p>
-              <p className="text-slate-600">Houston, TX 77036</p>
-              <p className="text-[11px] text-slate-400 pt-1">United States • Metro Houston Region</p>
+            <div className="text-xs text-slate-700 p-3 rounded-xl bg-slate-50 border border-slate-200/70 whitespace-pre-line break-words">
+              {order.address || '—'}
             </div>
           </div>
 
-          {/* Card 3: Payment & Terms */}
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
+          {/* Card 3: Payment */}
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
             <h3 className="text-sm font-semibold text-slate-900 tracking-tight flex items-center gap-2">
               <CreditCard className="w-4 h-4 text-slate-500" />
-              <span>Payment & Terms</span>
+              <span>Payment</span>
             </h3>
-
             <div className="text-xs space-y-2 p-3 rounded-xl bg-slate-50 border border-slate-200/70">
-              <div className="flex justify-between">
+              <div className="flex justify-between gap-3">
                 <span className="text-slate-500">Method:</span>
-                <span className="font-semibold text-slate-800">
-                  {isWholesale ? 'Net 30 Wholesale Terms' : 'Credit Card (Online)'}
-                </span>
+                <span className="font-semibold text-slate-800 text-right">{order.paymentMethod || '—'}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Payment Status:</span>
-                <span className="font-semibold text-emerald-700">
-                  {isWholesale ? 'Invoice Dispatched (Net 30)' : 'Paid in Full'}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Currency:</span>
-                <span className="font-mono font-semibold text-slate-800">USD ($)</span>
+              <div className="flex justify-between gap-3">
+                <span className="text-slate-500">Amount Due:</span>
+                <span className="font-mono font-semibold text-slate-800">{money(orderTotal)}</span>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }

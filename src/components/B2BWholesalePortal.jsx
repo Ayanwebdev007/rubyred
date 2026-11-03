@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { STORE_INFO, INITIAL_PRODUCTS } from '../data/products';
+import { STORE_INFO } from '../data/products';
+import useCatalog, { pickFeatured } from '../hooks/useCatalog';
 import { Building2, ShieldCheck, DollarSign, Truck, FileCheck, Phone, CheckCircle2, ChevronRight, Clock, Sparkles } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 export default function B2BWholesalePortal({ onAddToCart }) {
   const navigate = useNavigate();
-  const { currentUser, registerB2B } = useAuth();
+  const { currentUser, refreshAccount } = useAuth();
+  const { products } = useCatalog();
+  const restockProducts = pickFeatured(products, 3);
 
   const [formData, setFormData] = useState({
     businessName: '',
@@ -17,25 +20,32 @@ export default function B2BWholesalePortal({ onAddToCart }) {
     storeType: 'Convenience Store',
     estimatedMonthlyCases: '50-100 Cases'
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const isSubmitted = false;
 
+  // Pick up an admin approval without needing to sign out and back in
+  React.useEffect(() => {
+    if (currentUser?.role === 'b2b') refreshAccount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // The full application (password + resale certificate) lives on the login page;
+  // carry over what was typed here so nothing has to be re-entered.
   const handleSubmit = (e) => {
     e.preventDefault();
-    registerB2B({
-      businessName: formData.businessName,
-      dba: formData.businessName,
-      storeType: formData.storeType,
-      address: 'Houston, TX',
-      contactName: formData.contactName,
-      email: formData.email,
-      phone: formData.phone,
-      taxId: formData.taxId,
-      monthlyVolume: formData.estimatedMonthlyCases,
-      documents: [
-        { name: `Texas_Sales_Tax_Cert_${formData.taxId || 'Uploaded'}.pdf`, size: '1.4 MB', type: 'application/pdf', uploadedAt: 'Just now' }
-      ]
+    navigate('/login', {
+      state: {
+        b2bApplication: {
+          businessName: formData.businessName,
+          dba: formData.businessName,
+          storeType: formData.storeType,
+          contactName: formData.contactName,
+          email: formData.email,
+          phone: formData.phone,
+          taxId: formData.taxId,
+          monthlyVolume: formData.estimatedMonthlyCases
+        }
+      }
     });
-    setIsSubmitted(true);
   };
 
   return (
@@ -137,17 +147,17 @@ export default function B2BWholesalePortal({ onAddToCart }) {
                   Wholesale Quick Restock (Popular Cases)
                 </h4>
                 <div className="space-y-2">
-                  {INITIAL_PRODUCTS.slice(0, 3).map(p => (
+                  {restockProducts.map(p => (
                     <div key={p.id} className="flex items-center justify-between p-2 rounded-xl bg-slate-900/80 text-xs">
                       <div className="flex items-center gap-2">
-                        <img src={p.image} alt={p.name} className="w-8 h-8 object-contain rounded bg-slate-950 p-1" />
+                        <img src={p.img || p.image} alt={p.title || p.name} className="w-8 h-8 object-contain rounded bg-slate-950 p-1" />
                         <div>
-                          <p className="font-bold text-white text-xs truncate max-w-[180px]">{p.name}</p>
+                          <p className="font-bold text-white text-xs truncate max-w-[180px]">{p.title || p.name}</p>
                           <p className="text-[10px] text-amber-400 font-semibold">${(p.b2bPrice * p.caseQty).toFixed(2)} / case of {p.caseQty}</p>
                         </div>
                       </div>
                       <button
-                        onClick={() => onAddToCart && onAddToCart({ ...p, qty: p.caseQty, isCase: true, price: p.b2bPrice * p.caseQty })}
+                        onClick={() => onAddToCart && onAddToCart({ ...p, name: p.title || p.name, image: p.img || p.image, qty: p.caseQty, isCase: true, price: p.b2bPrice * p.caseQty })}
                         className="px-2.5 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-lg text-[10px] cursor-pointer"
                       >
                         + Add Case
@@ -297,7 +307,7 @@ export default function B2BWholesalePortal({ onAddToCart }) {
                 type="submit"
                 className="w-full py-3.5 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-amber-950/40"
               >
-                Submit B2B Wholesale Application
+                Continue Application
               </button>
             </form>
             </>

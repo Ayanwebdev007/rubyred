@@ -32,11 +32,13 @@ export default function AboutRubyRedSection({ onLearnMore }) {
             <div className="relative rounded-2xl sm:rounded-3xl border-4 border-white bg-white shadow-md sm:shadow-lg group w-full max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-md">
               
               {/* Pure Clean Image */}
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden bg-slate-50">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden bg-slate-50 aspect-[1222/1287]">
                 <img
                   src="/images/founder.png"
                   alt="Our Beloved Founder - Ruby Red Sales & Services"
-                  className="w-full h-auto block group-hover:scale-102 transition-transform duration-700"
+                  width="1222"
+                  height="1287"
+                  className="w-full h-full object-cover block group-hover:scale-102 transition-transform duration-700"
                   loading="lazy"
                 />
               </div>
@@ -46,7 +48,7 @@ export default function AboutRubyRedSection({ onLearnMore }) {
                 <span className="text-sm sm:text-base font-black text-slate-950 tracking-tight leading-none">
                   Salim NM
                 </span>
-                <p className="text-[10px] sm:text-xs font-bold text-slate-900/90 tracking-wide">
+                <p className="text-[11px] sm:text-xs font-bold text-slate-900/90 tracking-wide">
                   Founder, Ruby Red Sales & Services
                 </p>
               </div>

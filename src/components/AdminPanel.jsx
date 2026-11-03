@@ -50,11 +50,10 @@ import {
   fetchProductsFromDb,
   saveProductToDb,
   deleteProductFromDb,
-  fetchOrdersFromDb,
-  updateOrderStatusInDb,
-  fetchCustomersFromDb,
   uploadProjectMedia
 } from '../services/firebaseService';
+import { fetchAllOrders, updateOrderStatus } from '../services/orderService';
+import { listAccounts, setAccountStatus, fetchCertificate } from '../services/authService';
 import ModernAdminDashboard from './admin/ModernAdminDashboard';
 import OrderDetailsPage from './admin/OrderDetailsPage';
 
@@ -73,6 +72,8 @@ export default function AdminPanel({ onSignOut }) {
   const [retailCustomers, setRetailCustomers] = useState([]);
   const [wholesaleCustomers, setWholesaleCustomers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadErrors, setLoadErrors] = useState([]);
+  const [accountActionId, setAccountActionId] = useState(null);
 
   // Search & Filter States
   const [searchQuery, setSearchQuery] = useState('');
@@ -114,24 +115,29 @@ export default function AdminPanel({ onSignOut }) {
   // Initial Data Load from Database
   const loadDatabaseData = async () => {
     setIsLoading(true);
-    try {
-      const [cats, prods, ordersData, customersData] = await Promise.all([
-        fetchCategoriesFromDb(),
-        fetchProductsFromDb(),
-        fetchOrdersFromDb(),
-        fetchCustomersFromDb()
-      ]);
-      setCategories(cats);
-      setProductsList(prods);
-      setRetailOrders(ordersData.retail || []);
-      setWholesaleOrders(ordersData.wholesale || []);
-      setRetailCustomers(customersData.retail || []);
-      setWholesaleCustomers(customersData.wholesale || []);
-    } catch (err) {
-      console.error('Failed to load database data:', err);
-    } finally {
-      setIsLoading(false);
+    const errors = [];
+    const [cats, prods, ordersData, customersData] = await Promise.allSettled([
+      fetchCategoriesFromDb(),
+      fetchProductsFromDb(),
+      fetchAllOrders(),
+      listAccounts()
+    ]);
+    if (cats.status === 'fulfilled') setCategories(cats.value);
+    if (prods.status === 'fulfilled') setProductsList(prods.value);
+    if (ordersData.status === 'fulfilled') {
+      setRetailOrders(ordersData.value.retail || []);
+      setWholesaleOrders(ordersData.value.wholesale || []);
+    } else {
+      errors.push(`Orders: ${ordersData.reason?.message || 'could not be loaded'}`);
     }
+    if (customersData.status === 'fulfilled') {
+      setRetailCustomers(customersData.value.retail || []);
+      setWholesaleCustomers(customersData.value.wholesale || []);
+    } else {
+      errors.push(`Customers: ${customersData.reason?.message || 'could not be loaded'}`);
+    }
+    setLoadErrors(errors);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -196,31 +202,30 @@ export default function AdminPanel({ onSignOut }) {
       id: `prod-${Date.now()}`,
       title: '',
       name: '',
-      categoryId: categories[0]?.id || 'koikeya-snacks',
-      categoryName: categories[0]?.title || 'Koikeya Snacks',
-      brand: 'Koikeya (湖池屋)',
-      origin: '🇯🇵 Japan',
-      netWeight: '115g (Large Size)',
-      retailPrice: 4.49,
-      price: 4.49,
-      originalPrice: 5.99,
-      wholesalePrice: 2.45,
-      b2bPrice: 2.45,
-      caseQty: 24,
+      sku: '',
+      barcode: '',
+      unit: 'ea.',
+      categoryId: categories[0]?.id || '',
+      categoryName: categories[0]?.title || '',
+      brand: '',
+      origin: '🌍 Imported',
+      netWeight: '',
+      retailPrice: '',
+      price: '',
+      originalPrice: '',
+      wholesalePrice: '',
+      b2bPrice: '',
+      caseQty: 1,
       moq: 1,
-      stock: 250,
+      stock: 100,
       inStock: true,
-      rating: 5.0,
-      reviewsCount: 128,
+      featured: false,
       img: '/images/ruby_red_hero.jpg',
       image: '/images/ruby_red_hero.jpg',
-      gallery: [
-        '/images/koikeya_karamucho_hot_chili_chips.png',
-        '/images/koikeya_karamucho_hot_chili_snack.png',
-        '/images/Pure Potato Black Pepper Chips.png'
-      ],
+      gallery: [],
       description: '',
-      flavors: ['Hot Chili Large', 'Mild Chili', 'Extra Spicy']
+      bullets: [],
+      flavors: []
     });
     setActiveTab('product-editor');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -230,43 +235,36 @@ export default function AdminPanel({ onSignOut }) {
   const handleStartEditProduct = (prod) => {
     setIsNewProductMode(false);
     setEditorSaveSuccess(false);
-    const retailVal = parseFloat(prod.retailPrice || prod.price || 4.49);
-    const origVal = parseFloat(prod.originalPrice || (retailVal * 1.33).toFixed(2));
-    const wholesaleVal = parseFloat(prod.wholesalePrice || prod.b2bPrice || 2.45);
-    const desc = prod.description || prod.fullDesc || prod.shortDesc || '';
-    const brandVal = prod.brand || prod.overview?.brand || 'Koikeya (湖池屋)';
-    const originVal = prod.origin || prod.overview?.origin || '🇯🇵 Japan';
-    const netWeightVal = prod.netWeight || prod.overview?.netWeight || '115g (Large Size)';
+    const image = prod.img || prod.image || '/images/ruby_red_hero.jpg';
 
     setEditingProduct({
       ...prod,
       title: prod.title || prod.name || '',
       name: prod.title || prod.name || '',
-      categoryId: prod.categoryId || (categories[0]?.id || 'koikeya-snacks'),
+      sku: prod.sku || '',
+      barcode: prod.barcode || '',
+      unit: prod.unit || 'ea.',
+      categoryId: prod.categoryId || categories[0]?.id || '',
       categoryName: prod.categoryName || '',
-      brand: brandVal,
-      origin: originVal,
-      netWeight: netWeightVal,
-      retailPrice: retailVal,
-      price: retailVal,
-      originalPrice: origVal,
-      wholesalePrice: wholesaleVal,
-      b2bPrice: wholesaleVal,
-      caseQty: parseInt(prod.caseQty || 24),
-      moq: parseInt(prod.moq || 1),
-      stock: parseInt(prod.stock || prod.stockCount || 200),
+      brand: prod.brand || prod.overview?.brand || '',
+      origin: prod.origin || prod.overview?.origin || '🌍 Imported',
+      netWeight: prod.netWeight || prod.overview?.netWeight || '',
+      retailPrice: prod.retailPrice ?? prod.price ?? '',
+      price: prod.retailPrice ?? prod.price ?? '',
+      originalPrice: prod.originalPrice ?? '',
+      wholesalePrice: prod.wholesalePrice ?? prod.b2bPrice ?? '',
+      b2bPrice: prod.wholesalePrice ?? prod.b2bPrice ?? '',
+      caseQty: prod.caseQty ?? 1,
+      moq: prod.moq ?? 1,
+      stock: prod.stock ?? prod.stockCount ?? 100,
       inStock: prod.inStock !== false,
-      rating: parseFloat(prod.rating || 5.0),
-      reviewsCount: parseInt(prod.reviewsCount || 128),
-      img: prod.img || prod.image || '/images/ruby_red_hero.jpg',
-      image: prod.img || prod.image || '/images/ruby_red_hero.jpg',
-      gallery: Array.isArray(prod.gallery) && prod.gallery.length > 0 
-        ? prod.gallery 
-        : [prod.img || prod.image || '/images/ruby_red_hero.jpg'],
-      description: desc,
-      flavors: Array.isArray(prod.flavors) && prod.flavors.length > 0 
-        ? prod.flavors 
-        : ['Hot Chili Large', 'Mild Chili', 'Extra Spicy']
+      featured: prod.featured === true,
+      img: image,
+      image,
+      gallery: Array.isArray(prod.gallery) && prod.gallery.length > 0 ? prod.gallery : [image],
+      description: prod.description || prod.fullDesc || prod.shortDesc || '',
+      bullets: Array.isArray(prod.bullets) ? prod.bullets : [],
+      flavors: Array.isArray(prod.flavors) ? prod.flavors : []
     });
     setActiveTab('product-editor');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -279,57 +277,20 @@ export default function AdminPanel({ onSignOut }) {
       alert('Please provide a product title');
       return;
     }
+    if (!editingProduct.categoryId) {
+      alert('Please choose a category');
+      return;
+    }
     setIsSavingProduct(true);
     try {
       const matchedCat = categories.find(c => c.id === editingProduct.categoryId);
-      const retailP = parseFloat(editingProduct.retailPrice || 0);
-      const wholesaleP = parseFloat(editingProduct.wholesalePrice || 0);
-      const origP = parseFloat(editingProduct.originalPrice || (retailP > 0 ? (retailP * 1.33).toFixed(2) : 5.99));
-      const desc = editingProduct.description || '';
-      const brandVal = editingProduct.brand || 'Koikeya (湖池屋)';
-      const originVal = editingProduct.origin || '🇯🇵 Japan';
-      const netWeightVal = editingProduct.netWeight || '115g (Large Size)';
-
       const prodPayload = {
         ...editingProduct,
         id: editingProduct.id || editingProduct.title.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-'),
-        title: editingProduct.title,
-        name: editingProduct.title,
-        categoryId: editingProduct.categoryId || 'koikeya-snacks',
-        categoryName: matchedCat ? (matchedCat.title || matchedCat.name) : (editingProduct.categoryName || 'Koikeya Snacks'),
-        brand: brandVal,
-        origin: originVal,
-        netWeight: netWeightVal,
-        retailPrice: retailP,
-        price: retailP,
-        originalPrice: origP,
-        wholesalePrice: wholesaleP,
-        b2bPrice: wholesaleP,
-        caseQty: parseInt(editingProduct.caseQty || 24),
-        moq: parseInt(editingProduct.moq || 1),
-        stock: parseInt(editingProduct.stock || 100),
-        stockCount: parseInt(editingProduct.stock || 100),
-        inStock: editingProduct.inStock !== false,
-        rating: parseFloat(editingProduct.rating || 5.0),
-        reviewsCount: parseInt(editingProduct.reviewsCount || 128),
-        img: editingProduct.img || editingProduct.image || '/images/ruby_red_hero.jpg',
-        image: editingProduct.img || editingProduct.image || '/images/ruby_red_hero.jpg',
-        gallery: editingProduct.gallery && editingProduct.gallery.length > 0 
-          ? editingProduct.gallery 
-          : [editingProduct.img || '/images/ruby_red_hero.jpg'],
-        description: desc,
-        shortDesc: desc,
-        fullDesc: desc,
-        flavors: editingProduct.flavors || ['Hot Chili Large', 'Mild Chili', 'Extra Spicy'],
-        overview: {
-          origin: originVal,
-          netWeight: netWeightVal,
-          brand: brandVal,
-          flavor: Array.isArray(editingProduct.flavors) && editingProduct.flavors.length > 0 ? editingProduct.flavors[0] : 'Original',
-          shelfLife: editingProduct.overview?.shelfLife || '8 Months',
-          storage: editingProduct.overview?.storage || 'Store in a cool, dry place away from direct sunlight'
-        }
+        categoryName: matchedCat ? (matchedCat.title || matchedCat.name) : editingProduct.categoryName,
+        stockCount: editingProduct.stock
       };
+      // saveProductToDb normalises prices, stock, gallery, overview and the rest
 
       const saved = await saveProductToDb(prodPayload);
       setProductsList(prev => [saved, ...prev.filter(p => p.id !== saved.id)]);
@@ -397,17 +358,67 @@ export default function AdminPanel({ onSignOut }) {
 
   // Update Order Status Handler
   const handleUpdateOrderStatus = async (orderId, newStatus, isWholesale = false) => {
-    await updateOrderStatusInDb(orderId, newStatus);
+    try {
+      await updateOrderStatus(orderId, newStatus);
+    } catch (err) {
+      alert(`Could not update order ${orderId}: ${err.message}`);
+      return false;
+    }
     if (isWholesale) {
       setWholesaleOrders(prev => prev.map(o => o.id === orderId ? { ...o, status: newStatus } : o));
     } else {
       setRetailOrders(prev => prev.map(o => o.id === orderId ? { ...o, status: newStatus } : o));
     }
+    return true;
+  };
+
+  // Orders + spend per customer account (orders store the account id as userId)
+  const customerOrderStats = React.useMemo(() => {
+    const stats = new Map();
+    [...retailOrders, ...wholesaleOrders].forEach(o => {
+      if (!o.userId || o.status === 'Cancelled') return;
+      const s = stats.get(o.userId) || { count: 0, spent: 0 };
+      s.count += 1;
+      s.spent += Number(o.total ?? o.amount) || 0;
+      stats.set(o.userId, s);
+    });
+    return stats;
+  }, [retailOrders, wholesaleOrders]);
+
+  // Wholesale approval workflow
+  const handleSetAccountStatus = async (account, status) => {
+    const label = { Approved: 'approve', Rejected: 'reject', Suspended: 'suspend' }[status] || status;
+    if (!window.confirm(`Are you sure you want to ${label} ${account.businessName || account.email}?`)) return;
+    setAccountActionId(account.id);
+    try {
+      await setAccountStatus(account.id, status);
+      setWholesaleCustomers(prev => prev.map(w => w.id === account.id ? { ...w, status } : w));
+    } catch (err) {
+      alert(`Could not update this account: ${err.message}`);
+    } finally {
+      setAccountActionId(null);
+    }
+  };
+
+  const handleViewCertificate = async (account) => {
+    const popup = window.open('', '_blank');
+    try {
+      const file = await fetchCertificate(account.id);
+      if (!file?.dataUrl) throw new Error('No certificate file was found for this account.');
+      const blob = await (await fetch(file.dataUrl)).blob();
+      const url = URL.createObjectURL(blob);
+      if (popup) popup.location.href = url;
+      else window.open(url, '_blank');
+    } catch (err) {
+      if (popup) popup.close();
+      alert(err.message);
+    }
   };
 
   // Filtered Products for Products Tab
   const filteredProducts = productsList.filter(p => {
-    const matchesSearch = (p.title || p.name || '').toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = [p.title || p.name, p.sku, p.barcode]
+      .some(v => String(v || '').toLowerCase().includes(searchQuery.toLowerCase()));
     const matchesCategory = selectedCategoryFilter === 'all' || p.categoryId === selectedCategoryFilter;
     return matchesSearch && matchesCategory;
   });
@@ -418,7 +429,7 @@ export default function AdminPanel({ onSignOut }) {
     const matchesSearch = (o.id || '').toLowerCase().includes(q) ||
       (o.customer || '').toLowerCase().includes(q) ||
       (o.email || '').toLowerCase().includes(q) ||
-      (o.items || '').toLowerCase().includes(q);
+      (o.itemsSummary || (typeof o.items === 'string' ? o.items : '')).toLowerCase().includes(q);
     const matchesStatus = retailStatusFilter === 'all' || o.status === retailStatusFilter;
     return matchesSearch && matchesStatus;
   });
@@ -435,7 +446,7 @@ export default function AdminPanel({ onSignOut }) {
       (w.storeName || '').toLowerCase().includes(q) ||
       (w.contact || '').toLowerCase().includes(q) ||
       (w.email || '').toLowerCase().includes(q) ||
-      (w.items || '').toLowerCase().includes(q) ||
+      (w.itemsSummary || (typeof w.items === 'string' ? w.items : '')).toLowerCase().includes(q) ||
       (w.cases || '').toLowerCase().includes(q);
     const matchesStatus = wholesaleStatusFilter === 'all' || w.status === wholesaleStatusFilter;
     return matchesSearch && matchesStatus;
@@ -451,13 +462,13 @@ export default function AdminPanel({ onSignOut }) {
   }, 0);
 
   return (
-    <div className="h-screen overflow-hidden bg-slate-100/70 text-slate-900 flex selection:bg-[#d9232e] selection:text-white font-sans antialiased">
+    <div className="h-[100dvh] overflow-hidden bg-slate-100/70 text-slate-900 flex selection:bg-[#d9232e] selection:text-white font-sans antialiased">
       
       {/* ========================================================================= */}
       {/* 1. LEFT SIDEBAR NAVIGATION (Light Theme, Clean & Professional)            */}
       {/* ========================================================================= */}
       <aside className={`
-        fixed inset-y-0 left-0 z-50 w-64 h-screen bg-[#d9232e] border-r border-[#b91c1c] flex flex-col justify-between shrink-0 transition-transform duration-200 lg:static lg:translate-x-0 font-['Outfit',sans-serif]
+        fixed inset-y-0 left-0 z-50 w-64 max-w-[85vw] h-[100dvh] lg:h-screen overflow-y-auto bg-[#d9232e] border-r border-[#b91c1c] flex flex-col justify-between shrink-0 transition-transform duration-200 lg:static lg:translate-x-0 font-['Outfit',sans-serif]
         ${isMobileSidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}
       `}>
         <div>
@@ -476,9 +487,10 @@ export default function AdminPanel({ onSignOut }) {
             </div>
             <button 
               onClick={() => setIsMobileSidebarOpen(false)}
-              className="lg:hidden p-1.5 rounded-lg text-white/80 hover:text-white hover:bg-white/10"
+              className="lg:hidden p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10"
+              aria-label="Close admin menu"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
           </div>
 
@@ -636,17 +648,18 @@ export default function AdminPanel({ onSignOut }) {
       {/* ========================================================================= */}
       {/* 2. MAIN ADMIN CONTENT WORKSPACE                                            */}
       {/* ========================================================================= */}
-      <div className="flex-1 min-w-0 flex flex-col h-screen overflow-y-auto">
+      <div className="flex-1 min-w-0 flex flex-col h-[100dvh] overflow-y-auto">
         
         {/* Top Header Bar */}
-        <header className="bg-white border-b border-slate-200/90 h-16 px-4 sm:px-8 flex items-center justify-between sticky top-0 z-30 shadow-2xs shrink-0">
+        <header className="bg-white border-b border-slate-200/90 h-16 px-3 sm:px-8 flex items-center justify-between gap-2 sticky top-0 z-30 shadow-2xs shrink-0">
           {activeTab === 'product-editor' ? (
             <>
               {/* Product Editor: Breadcrumb & Title */}
               <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                 <button
                   onClick={() => setIsMobileSidebarOpen(true)}
-                  className="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100"
+                  aria-label="Open admin menu"
+                  className="lg:hidden p-2 -ml-1 rounded-xl text-slate-600 hover:bg-slate-100 shrink-0"
                 >
                   <Menu className="w-5 h-5" />
                 </button>
@@ -657,8 +670,8 @@ export default function AdminPanel({ onSignOut }) {
                   <ArrowLeft className="w-4 h-4" />
                   <span>Products</span>
                 </button>
-                <span className="text-slate-300">/</span>
-                <span className="text-xs font-semibold text-slate-400 shrink-0">
+                <span className="text-slate-300 hidden xs:inline">/</span>
+                <span className="text-xs font-semibold text-slate-400 shrink-0 hidden xs:inline">
                   {isNewProductMode ? 'New' : 'Edit'}
                 </span>
                 <span className="text-slate-300 hidden sm:inline">/</span>
@@ -677,11 +690,11 @@ export default function AdminPanel({ onSignOut }) {
               </div>
 
               {/* Product Editor Actions */}
-              <div className="flex items-center gap-2 shrink-0">
+              <div className="flex items-center gap-1 sm:gap-2 shrink-0">
                 <button
                   type="button"
                   onClick={() => setActiveTab('products')}
-                  className="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-bold text-xs transition-colors cursor-pointer"
+                  className="hidden sm:inline-block px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-bold text-xs transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
@@ -694,8 +707,9 @@ export default function AdminPanel({ onSignOut }) {
                         await handleDeleteProduct(editingProduct.id, editingProduct.title || editingProduct.name);
                         setActiveTab('products');
                       }}
-                      className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors cursor-pointer"
+                      className="p-2 sm:p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors cursor-pointer"
                       title="Delete Product"
+                      aria-label="Delete Product"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -703,8 +717,9 @@ export default function AdminPanel({ onSignOut }) {
                     <button
                       type="button"
                       onClick={() => window.open(`/#/product/${editingProduct.id}`, '_blank')}
-                      className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-colors cursor-pointer"
+                      className="p-2 sm:p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-colors cursor-pointer"
                       title="View on Storefront"
+                      aria-label="View on Storefront"
                     >
                       <ExternalLink className="w-4 h-4" />
                     </button>
@@ -715,7 +730,7 @@ export default function AdminPanel({ onSignOut }) {
                   type="button"
                   disabled={isSavingProduct}
                   onClick={handleSaveProductFromEditor}
-                  className="px-4 py-2 bg-[#d9232e] hover:bg-[#b91c1c] text-white font-extrabold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                  className="px-3 sm:px-4 py-2 bg-[#d9232e] hover:bg-[#b91c1c] text-white font-extrabold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50 whitespace-nowrap"
                 >
                   {isSavingProduct ? (
                     <>
@@ -725,7 +740,7 @@ export default function AdminPanel({ onSignOut }) {
                   ) : (
                     <>
                       <Save className="w-4 h-4" />
-                      <span>{isNewProductMode ? 'Publish' : 'Save Changes'}</span>
+                      <span>{isNewProductMode ? 'Publish' : <>Save<span className="hidden sm:inline"> Changes</span></>}</span>
                     </>
                   )}
                 </button>
@@ -733,15 +748,16 @@ export default function AdminPanel({ onSignOut }) {
             </>
           ) : (
             <>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                 <button
                   onClick={() => setIsMobileSidebarOpen(true)}
-                  className="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100"
+                  aria-label="Open admin menu"
+                  className="lg:hidden p-2 -ml-1 rounded-xl text-slate-600 hover:bg-slate-100 shrink-0"
                 >
                   <Menu className="w-5 h-5" />
                 </button>
-                <div>
-                  <h1 className="text-base sm:text-lg font-semibold font-['Outfit',sans-serif] tracking-tight text-[#d9232e] capitalize">
+                <div className="min-w-0">
+                  <h1 className="text-base sm:text-lg font-semibold font-['Outfit',sans-serif] tracking-tight text-[#d9232e] capitalize truncate">
                     {activeTab === 'overview' && 'Dashboard Overview'}
                     {activeTab === 'categories' && 'Categories'}
                     {activeTab === 'products' && 'Products'}
@@ -752,46 +768,50 @@ export default function AdminPanel({ onSignOut }) {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
                 {activeTab === 'categories' && (
                   <button
                     onClick={handleStartCreateCategory}
-                    className="px-3.5 py-1.5 bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white font-medium text-xs rounded-lg transition-all flex items-center gap-1.5 shadow-xs cursor-pointer font-['Outfit',sans-serif]"
+                    aria-label="Create Category"
+                    className="p-2 sm:px-3.5 sm:py-1.5 bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white font-medium text-xs rounded-lg transition-all flex items-center gap-1.5 shadow-xs cursor-pointer font-['Outfit',sans-serif] whitespace-nowrap"
                   >
-                    <Plus className="w-4 h-4" />
-                    <span>Create Category</span>
+                    <Plus className="w-4 h-4 shrink-0" />
+                    <span className="hidden sm:inline">Create Category</span>
                   </button>
                 )}
 
                 {activeTab === 'products' && (
                   <button
                     onClick={handleStartAddProduct}
-                    className="px-3.5 py-1.5 bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white font-medium text-xs rounded-lg transition-all flex items-center gap-1.5 shadow-xs cursor-pointer font-['Outfit',sans-serif]"
+                    aria-label="Add Product"
+                    className="p-2 sm:px-3.5 sm:py-1.5 bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white font-medium text-xs rounded-lg transition-all flex items-center gap-1.5 shadow-xs cursor-pointer font-['Outfit',sans-serif] whitespace-nowrap"
                   >
-                    <Plus className="w-4 h-4" />
-                    <span>Add Product</span>
+                    <Plus className="w-4 h-4 shrink-0" />
+                    <span className="hidden sm:inline">Add Product</span>
                   </button>
                 )}
 
                 {/* Storefront button */}
                 <button
                   onClick={() => navigate('/')}
-                  className="px-3 py-1.5 rounded-lg bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white text-xs font-medium font-['Outfit',sans-serif] tracking-tight transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+                  className="p-2 sm:px-3 sm:py-1.5 rounded-lg bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white text-xs font-medium font-['Outfit',sans-serif] tracking-tight transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap"
                   title="Open Public Storefront"
+                  aria-label="Open Public Storefront"
                 >
-                  <ExternalLink className="w-3.5 h-3.5 text-white/90" />
-                  <span>Storefront</span>
+                  <ExternalLink className="w-4 h-4 sm:w-3.5 sm:h-3.5 shrink-0 text-white/90" />
+                  <span className="hidden sm:inline">Storefront</span>
                 </button>
 
                 {/* Sign Out button */}
                 {onSignOut && (
                   <button
                     onClick={onSignOut}
-                    className="px-3 py-1.5 rounded-lg bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white text-xs font-medium font-['Outfit',sans-serif] tracking-tight transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+                    className="p-2 sm:px-3 sm:py-1.5 rounded-lg bg-[#d9232e] hover:bg-[#b91c1c] active:scale-[0.99] text-white text-xs font-medium font-['Outfit',sans-serif] tracking-tight transition-all flex items-center gap-1.5 cursor-pointer shadow-xs whitespace-nowrap"
                     title="Sign Out of Admin Console"
+                    aria-label="Sign Out of Admin Console"
                   >
-                    <LogOut className="w-3.5 h-3.5 text-white/90" />
-                    <span>Sign Out</span>
+                    <LogOut className="w-4 h-4 sm:w-3.5 sm:h-3.5 shrink-0 text-white/90" />
+                    <span className="hidden sm:inline">Sign Out</span>
                   </button>
                 )}
               </div>
@@ -800,7 +820,20 @@ export default function AdminPanel({ onSignOut }) {
         </header>
 
         {/* Content Body */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 max-w-[1600px] w-full mx-auto">
+        <main className="flex-1 p-3 xs:p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 max-w-[1600px] w-full mx-auto">
+          {loadErrors.length > 0 && (
+            <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold flex flex-wrap items-center justify-between gap-2">
+              <span>{loadErrors.join(' ')}</span>
+              <button
+                type="button"
+                onClick={loadDatabaseData}
+                className="px-3 py-1.5 rounded-lg bg-white border border-red-200 hover:bg-red-100 cursor-pointer"
+              >
+                Retry
+              </button>
+            </div>
+          )}
+
           
           {/* ===================================================================== */}
           {/* ===================================================================== */}
@@ -834,7 +867,7 @@ export default function AdminPanel({ onSignOut }) {
           {activeTab === 'categories' && (
             <div className="space-y-6 animate-in fade-in duration-150">
               {/* Categories Cards Grid - 5 Cards per row with full-cover images */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
                 {categories.map((cat) => {
                   const categoryProductsCount = productsList.filter(p => p.categoryId === cat.id).length;
                   return (
@@ -948,7 +981,7 @@ export default function AdminPanel({ onSignOut }) {
               {/* Products Table with SEPARATE Retail & Wholesale Pricing */}
               <div className="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
                 <div className="overflow-x-auto">
-                  <table className="w-full text-center text-xs text-slate-600">
+                  <table className="w-full min-w-[760px] text-center text-xs text-slate-600">
                     <thead className="bg-slate-50 text-slate-500 uppercase text-[10px] font-bold border-b border-slate-200">
                       <tr>
                         <th className="p-3.5 w-[35%] text-left">Product Title</th>
@@ -975,7 +1008,7 @@ export default function AdminPanel({ onSignOut }) {
                               />
                               <div>
                                 <p className="font-bold text-slate-900 hover:text-[#d9232e] transition-colors">{p.title || p.name}</p>
-                                <p className="text-[10px] text-slate-400">{p.brand || 'Koikeya'} • {p.origin || '🇯🇵 Japan'} • Stock: {p.stock || p.stockCount || 200}</p>
+                                <p className="text-[10px] text-slate-400">{[p.sku && `SKU ${p.sku}`, p.netWeight, p.origin].filter(Boolean).join(' • ')} • Stock: {p.stock ?? p.stockCount ?? 0}</p>
                               </div>
                             </div>
                           </td>
@@ -1064,7 +1097,7 @@ export default function AdminPanel({ onSignOut }) {
                         <input
                           type="text"
                           required
-                          placeholder="e.g. Koikeya Karamucho Hot Chili Potato Chips"
+                          placeholder="e.g. Calbee Hot & Spicy Potato Chips 80 GM"
                           value={editingProduct.title || ''}
                           onChange={e => setEditingProduct({ ...editingProduct, title: e.target.value, name: e.target.value })}
                           className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-slate-900 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors"
@@ -1102,7 +1135,7 @@ export default function AdminPanel({ onSignOut }) {
                           </label>
                           <input
                             type="text"
-                            placeholder="e.g. Koikeya (湖池屋)"
+                            placeholder="e.g. Calbee"
                             value={editingProduct.brand || ''}
                             onChange={e => setEditingProduct({ ...editingProduct, brand: e.target.value })}
                             className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-slate-900"
@@ -1128,10 +1161,36 @@ export default function AdminPanel({ onSignOut }) {
                           </label>
                           <input
                             type="text"
-                            placeholder="e.g. 115g (Large)"
+                            placeholder="e.g. 80 g"
                             value={editingProduct.netWeight || ''}
                             onChange={e => setEditingProduct({ ...editingProduct, netWeight: e.target.value })}
                             className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-slate-900"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-slate-700 font-semibold mb-1.5">
+                            SKU / Product ID
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="e.g. 290878"
+                            value={editingProduct.sku || ''}
+                            onChange={e => setEditingProduct({ ...editingProduct, sku: e.target.value })}
+                            className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 font-mono focus:outline-none focus:border-slate-900"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-slate-700 font-semibold mb-1.5">
+                            Barcode (UPC / EAN)
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="e.g. 4901330507935"
+                            value={editingProduct.barcode || ''}
+                            onChange={e => setEditingProduct({ ...editingProduct, barcode: e.target.value })}
+                            className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 font-mono focus:outline-none focus:border-slate-900"
                           />
                         </div>
                       </div>
@@ -1197,7 +1256,7 @@ export default function AdminPanel({ onSignOut }) {
                           <button
                             type="button"
                             onClick={() => productMainFileInputRef.current?.click()}
-                            className="px-3 py-2 bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold rounded-xl border border-slate-200 cursor-pointer flex items-center gap-1.5 transition-colors"
+                            className="shrink-0 whitespace-nowrap px-3 py-2 bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold rounded-xl border border-slate-200 cursor-pointer flex items-center gap-1.5 transition-colors"
                           >
                             <Upload className="w-3.5 h-3.5 text-slate-600" />
                             <span>Upload</span>
@@ -1236,7 +1295,7 @@ export default function AdminPanel({ onSignOut }) {
                                 <button
                                   type="button"
                                   onClick={() => handleRemoveGalleryImage(gIdx)}
-                                  className="absolute top-1 right-1 p-1 bg-black/60 hover:bg-rose-600 text-white rounded-md opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                                  className="absolute top-1 right-1 p-1 bg-black/60 hover:bg-rose-600 text-white rounded-md opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity cursor-pointer"
                                   title="Remove image"
                                 >
                                   <Trash2 className="w-3 h-3" />
@@ -1273,7 +1332,7 @@ export default function AdminPanel({ onSignOut }) {
                           <button
                             type="button"
                             onClick={() => galleryFileInputRef.current?.click()}
-                            className="px-3 py-2 bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold rounded-xl border border-slate-200 cursor-pointer flex items-center gap-1.5 transition-colors"
+                            className="shrink-0 whitespace-nowrap px-3 py-2 bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold rounded-xl border border-slate-200 cursor-pointer flex items-center gap-1.5 transition-colors"
                           >
                             <Upload className="w-3.5 h-3.5 text-slate-600" />
                             <span>Upload</span>
@@ -1281,7 +1340,7 @@ export default function AdminPanel({ onSignOut }) {
                           <button
                             type="button"
                             onClick={() => handleAddGalleryImage(newGalleryInput)}
-                            className="px-3.5 py-2 bg-slate-900 hover:bg-black text-white font-semibold rounded-xl transition-colors cursor-pointer"
+                            className="shrink-0 px-3.5 py-2 bg-slate-900 hover:bg-black text-white font-semibold rounded-xl transition-colors cursor-pointer"
                           >
                             Add
                           </button>
@@ -1497,12 +1556,29 @@ export default function AdminPanel({ onSignOut }) {
                         </button>
                       </div>
 
+                      <div>
+                        <label className="block text-slate-700 font-semibold mb-1">Home Page</label>
+                        <button
+                          type="button"
+                          onClick={() => setEditingProduct({ ...editingProduct, featured: !editingProduct.featured })}
+                          className={`w-full py-2 px-3 rounded-xl font-bold text-xs cursor-pointer border transition-colors flex items-center justify-center gap-2 ${
+                            editingProduct.featured
+                              ? 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100'
+                              : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
+                          }`}
+                        >
+                          <Star className={`w-3.5 h-3.5 ${editingProduct.featured ? 'fill-amber-500 text-amber-500' : 'text-slate-400'}`} />
+                          <span>{editingProduct.featured ? 'Featured on Home Page' : 'Not Featured'}</span>
+                        </button>
+                      </div>
+
                       <div className="grid grid-cols-2 gap-3">
                         <div>
                           <label className="block text-slate-700 font-semibold mb-1">Stock Quantity</label>
                           <input
                             type="number"
-                            value={editingProduct.stock || editingProduct.stockCount || 100}
+                            min="0"
+                            value={editingProduct.stock ?? editingProduct.stockCount ?? ''}
                             onChange={e => setEditingProduct({ ...editingProduct, stock: e.target.value, stockCount: e.target.value })}
                             className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-900 font-mono font-semibold focus:outline-none focus:border-slate-900"
                           />
@@ -1518,7 +1594,8 @@ export default function AdminPanel({ onSignOut }) {
                             step="0.1"
                             min="1"
                             max="5"
-                            value={editingProduct.rating || 5.0}
+                            placeholder="None"
+                            value={editingProduct.rating ?? ''}
                             onChange={e => setEditingProduct({ ...editingProduct, rating: e.target.value })}
                             className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-900 font-mono font-semibold focus:outline-none focus:border-slate-900"
                           />
@@ -1549,49 +1626,49 @@ export default function AdminPanel({ onSignOut }) {
             <div className="space-y-5 animate-in fade-in duration-150">
               
               {/* 1. Operational KPI Metric Cards (No duplicated title banner) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-                  <div className="flex items-center justify-between text-slate-500 text-xs font-semibold">
-                    <span>Retail Revenue</span>
-                    <div className="p-2 rounded-xl bg-emerald-50 text-emerald-600">
+                  <div className="flex items-start justify-between gap-2 text-slate-500 text-xs font-semibold">
+                    <span className="min-w-0">Retail Revenue</span>
+                    <div className="p-2 shrink-0 rounded-xl bg-emerald-50 text-emerald-600">
                       <DollarSign className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-2xl font-black text-slate-900 font-mono">${totalRetailSales.toFixed(2)}</p>
-                  <p className="text-[11px] text-slate-400 font-medium">{retailOrders.length} customer orders placed</p>
+                  <p className="text-lg xs:text-xl sm:text-2xl font-black break-all text-slate-900 font-mono">${totalRetailSales.toFixed(2)}</p>
+                  <p className="text-[11px] text-slate-400 font-medium leading-snug">{retailOrders.length} customer orders placed</p>
                 </div>
 
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-                  <div className="flex items-center justify-between text-slate-500 text-xs font-semibold">
-                    <span>Processing</span>
-                    <div className="p-2 rounded-xl bg-amber-50 text-amber-600">
+                  <div className="flex items-start justify-between gap-2 text-slate-500 text-xs font-semibold">
+                    <span className="min-w-0">Processing</span>
+                    <div className="p-2 shrink-0 rounded-xl bg-amber-50 text-amber-600">
                       <Clock className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-2xl font-black text-amber-600 font-mono">{retailProcessingCount}</p>
-                  <p className="text-[11px] text-slate-400 font-medium">Needs packaging & dispatch</p>
+                  <p className="text-lg xs:text-xl sm:text-2xl font-black break-all text-amber-600 font-mono">{retailProcessingCount}</p>
+                  <p className="text-[11px] text-slate-400 font-medium leading-snug">Needs packaging & dispatch</p>
                 </div>
 
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-                  <div className="flex items-center justify-between text-slate-500 text-xs font-semibold">
-                    <span>In Transit</span>
-                    <div className="p-2 rounded-xl bg-blue-50 text-blue-600">
+                  <div className="flex items-start justify-between gap-2 text-slate-500 text-xs font-semibold">
+                    <span className="min-w-0">In Transit</span>
+                    <div className="p-2 shrink-0 rounded-xl bg-blue-50 text-blue-600">
                       <Truck className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-2xl font-black text-blue-600 font-mono">{retailShippedCount}</p>
-                  <p className="text-[11px] text-slate-400 font-medium">Shipped with courier</p>
+                  <p className="text-lg xs:text-xl sm:text-2xl font-black break-all text-blue-600 font-mono">{retailShippedCount}</p>
+                  <p className="text-[11px] text-slate-400 font-medium leading-snug">Shipped with courier</p>
                 </div>
 
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-                  <div className="flex items-center justify-between text-slate-500 text-xs font-semibold">
-                    <span>Delivered</span>
-                    <div className="p-2 rounded-xl bg-emerald-50 text-emerald-600">
+                  <div className="flex items-start justify-between gap-2 text-slate-500 text-xs font-semibold">
+                    <span className="min-w-0">Delivered</span>
+                    <div className="p-2 shrink-0 rounded-xl bg-emerald-50 text-emerald-600">
                       <CheckCircle2 className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-2xl font-black text-emerald-600 font-mono">{retailDeliveredCount}</p>
-                  <p className="text-[11px] text-slate-400 font-medium">Successfully completed</p>
+                  <p className="text-lg xs:text-xl sm:text-2xl font-black break-all text-emerald-600 font-mono">{retailDeliveredCount}</p>
+                  <p className="text-[11px] text-slate-400 font-medium leading-snug">Successfully completed</p>
                 </div>
               </div>
 
@@ -1656,7 +1733,7 @@ export default function AdminPanel({ onSignOut }) {
               {/* 3. Orders Table (Clean & Non-Redundant: Single Status Dropdown Badge + Actions) */}
               <div className="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs text-slate-600">
+                  <table className="w-full min-w-[820px] text-left text-xs text-slate-600">
                     <thead className="bg-slate-50 text-slate-500 uppercase text-[10px] font-bold border-b border-slate-200">
                       <tr>
                         <th className="p-3.5">Order ID</th>
@@ -1673,21 +1750,19 @@ export default function AdminPanel({ onSignOut }) {
                           <td className="p-3.5 font-mono">
                             <span className="font-bold text-slate-900">{o.id}</span>
                             <p className="text-[10px] text-slate-400 font-sans mt-0.5">
-                              {o.date || '2026-10-17 11:20'}
+                              {o.date || '—'}
                             </p>
                           </td>
                           <td className="p-3.5">
                             <p className="font-bold text-slate-900">{o.customer}</p>
-                            <p className="text-[11px] text-slate-400 font-mono mt-0.5">{o.email || 'customer@gmail.com'}</p>
+                            <p className="text-[11px] text-slate-400 font-mono mt-0.5">{o.email || o.phone || '—'}</p>
                           </td>
                           <td className="p-3.5 text-slate-700 max-w-xs">
-                            <span className="line-clamp-2 leading-relaxed">{o.items}</span>
+                            <span className="line-clamp-2 leading-relaxed">{o.itemsSummary || (typeof o.items === 'string' ? o.items : '')}</span>
                           </td>
                           <td className="p-3.5">
                             <span className="font-bold text-slate-900 font-mono text-sm">${Number(o.amount).toFixed(2)}</span>
-                            <span className="ml-2 inline-block px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                              Paid
-                            </span>
+                            <p className="text-[10px] text-slate-500 mt-0.5">{o.deliveryMethod || ''}{o.paymentMethod ? ` • ${o.paymentMethod}` : ''}</p>
                           </td>
                           {/* UNIFIED SINGLE STATUS SELECTOR: No redundant column */}
                           <td className="p-3.5">
@@ -1706,6 +1781,7 @@ export default function AdminPanel({ onSignOut }) {
                                 <option value="Processing">Processing</option>
                                 <option value="Shipped">Shipped</option>
                                 <option value="Delivered">Delivered</option>
+                                <option value="Cancelled">Cancelled</option>
                               </select>
                               <ChevronDown className="w-3.5 h-3.5 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none opacity-60" />
                             </div>
@@ -1753,49 +1829,49 @@ export default function AdminPanel({ onSignOut }) {
             <div className="space-y-5 animate-in fade-in duration-150">
               
               {/* 1. Operational B2B KPI Metric Cards (No duplicated title banner) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-                  <div className="flex items-center justify-between text-slate-500 text-xs font-semibold">
-                    <span>Wholesale Revenue</span>
-                    <div className="p-2 rounded-xl bg-amber-50 text-amber-600">
+                  <div className="flex items-start justify-between gap-2 text-slate-500 text-xs font-semibold">
+                    <span className="min-w-0">Wholesale Revenue</span>
+                    <div className="p-2 shrink-0 rounded-xl bg-amber-50 text-amber-600">
                       <DollarSign className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-2xl font-black text-slate-900 font-mono">${totalWholesaleSales.toFixed(2)}</p>
-                  <p className="text-[11px] text-slate-400 font-medium">{wholesaleOrders.length} B2B accounts active</p>
+                  <p className="text-lg xs:text-xl sm:text-2xl font-black break-all text-slate-900 font-mono">${totalWholesaleSales.toFixed(2)}</p>
+                  <p className="text-[11px] text-slate-400 font-medium leading-snug">{wholesaleOrders.length} B2B accounts active</p>
                 </div>
 
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-                  <div className="flex items-center justify-between text-slate-500 text-xs font-semibold">
-                    <span>Total Cases Volume</span>
-                    <div className="p-2 rounded-xl bg-amber-50 text-amber-600">
+                  <div className="flex items-start justify-between gap-2 text-slate-500 text-xs font-semibold">
+                    <span className="min-w-0">Total Cases Volume</span>
+                    <div className="p-2 shrink-0 rounded-xl bg-amber-50 text-amber-600">
                       <Boxes className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-2xl font-black text-amber-600 font-mono">{totalWholesaleCasesCount} Cases</p>
-                  <p className="text-[11px] text-slate-400 font-medium">Bulk factory cartons ordered</p>
+                  <p className="text-lg xs:text-xl sm:text-2xl font-black break-all text-amber-600 font-mono">{totalWholesaleCasesCount} Cases</p>
+                  <p className="text-[11px] text-slate-400 font-medium leading-snug">Bulk factory cartons ordered</p>
                 </div>
 
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-                  <div className="flex items-center justify-between text-slate-500 text-xs font-semibold">
-                    <span>Processing Orders</span>
-                    <div className="p-2 rounded-xl bg-amber-50 text-amber-600">
+                  <div className="flex items-start justify-between gap-2 text-slate-500 text-xs font-semibold">
+                    <span className="min-w-0">Processing Orders</span>
+                    <div className="p-2 shrink-0 rounded-xl bg-amber-50 text-amber-600">
                       <Clock className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-2xl font-black text-amber-600 font-mono">{wholesaleProcessingCount}</p>
-                  <p className="text-[11px] text-slate-400 font-medium">Awaiting warehouse palletizing</p>
+                  <p className="text-lg xs:text-xl sm:text-2xl font-black break-all text-amber-600 font-mono">{wholesaleProcessingCount}</p>
+                  <p className="text-[11px] text-slate-400 font-medium leading-snug">Awaiting warehouse palletizing</p>
                 </div>
 
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-1.5">
-                  <div className="flex items-center justify-between text-slate-500 text-xs font-semibold">
-                    <span>Dispatched / Delivered</span>
-                    <div className="p-2 rounded-xl bg-blue-50 text-blue-600">
+                  <div className="flex items-start justify-between gap-2 text-slate-500 text-xs font-semibold">
+                    <span className="min-w-0">Dispatched / Delivered</span>
+                    <div className="p-2 shrink-0 rounded-xl bg-blue-50 text-blue-600">
                       <Truck className="w-4 h-4" />
                     </div>
                   </div>
-                  <p className="text-2xl font-black text-blue-600 font-mono">{wholesaleShippedCount + wholesaleDeliveredCount}</p>
-                  <p className="text-[11px] text-slate-400 font-medium">In transit & delivered</p>
+                  <p className="text-lg xs:text-xl sm:text-2xl font-black break-all text-blue-600 font-mono">{wholesaleShippedCount + wholesaleDeliveredCount}</p>
+                  <p className="text-[11px] text-slate-400 font-medium leading-snug">In transit & delivered</p>
                 </div>
               </div>
 
@@ -1860,7 +1936,7 @@ export default function AdminPanel({ onSignOut }) {
               {/* 3. Wholesale Orders Table (Clean & Non-Redundant: Single Status Dropdown Badge + Actions) */}
               <div className="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs text-slate-600">
+                  <table className="w-full min-w-[820px] text-left text-xs text-slate-600">
                     <thead className="bg-slate-50 text-slate-500 uppercase text-[10px] font-bold border-b border-slate-200">
                       <tr>
                         <th className="p-3.5">Order Ref</th>
@@ -1878,7 +1954,7 @@ export default function AdminPanel({ onSignOut }) {
                           <td className="p-3.5 font-mono">
                             <span className="font-bold text-slate-900">{w.id}</span>
                             <p className="text-[10px] text-slate-400 font-sans mt-0.5">
-                              {w.date || '2026-10-17 14:10'}
+                              {w.date || '—'}
                             </p>
                           </td>
                           <td className="p-3.5">
@@ -1893,13 +1969,11 @@ export default function AdminPanel({ onSignOut }) {
                             </span>
                           </td>
                           <td className="p-3.5 text-slate-700 max-w-xs">
-                            <span className="line-clamp-2 leading-relaxed">{w.items}</span>
+                            <span className="line-clamp-2 leading-relaxed">{w.itemsSummary || (typeof w.items === 'string' ? w.items : '')}</span>
                           </td>
                           <td className="p-3.5">
                             <span className="font-bold text-slate-900 font-mono text-sm">${Number(w.amount).toFixed(2)}</span>
-                            <span className="ml-2 inline-block px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
-                              Net 30 Terms
-                            </span>
+                            <p className="text-[10px] text-slate-500 mt-0.5">{w.deliveryMethod || ''}{w.paymentMethod ? ` • ${w.paymentMethod}` : ''}</p>
                           </td>
                           {/* UNIFIED SINGLE STATUS SELECTOR: No redundant column */}
                           <td className="p-3.5">
@@ -1918,6 +1992,7 @@ export default function AdminPanel({ onSignOut }) {
                                 <option value="Processing">Processing</option>
                                 <option value="Shipped">Shipped</option>
                                 <option value="Delivered">Delivered</option>
+                                <option value="Cancelled">Cancelled</option>
                               </select>
                               <ChevronDown className="w-3.5 h-3.5 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none opacity-60" />
                             </div>
@@ -1981,7 +2056,9 @@ export default function AdminPanel({ onSignOut }) {
                   </button>
                 </div>
                 <span className="text-xs text-slate-500 font-semibold hidden sm:inline">
-                  {customerSubTab === 'wholesale' ? 'Active Wholesalers (Auto-Enabled)' : 'B2C Shopper Profiles'}
+                  {customerSubTab === 'wholesale'
+                    ? `${wholesaleCustomers.filter(w => w.status === 'Pending').length} awaiting approval`
+                    : 'Registered shopper accounts'}
                 </span>
               </div>
 
@@ -1989,7 +2066,7 @@ export default function AdminPanel({ onSignOut }) {
               {customerSubTab === 'retail' && (
                 <div className="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
                   <div className="overflow-x-auto">
-                    <table className="w-full text-left text-xs text-slate-600">
+                    <table className="w-full min-w-[820px] text-left text-xs text-slate-600">
                       <thead className="bg-slate-50 text-slate-500 uppercase text-[10px] font-bold border-b border-slate-200">
                         <tr>
                           <th className="p-3.5">Customer Name</th>
@@ -2003,23 +2080,33 @@ export default function AdminPanel({ onSignOut }) {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100">
-                        {retailCustomers.map((c, i) => (
+                        {retailCustomers.length === 0 && (
+                          <tr><td colSpan={8} className="p-6 text-center text-slate-400">No retail customers yet.</td></tr>
+                        )}
+                        {retailCustomers.map((c, i) => {
+                          const stats = customerOrderStats.get(c.id) || { count: 0, spent: 0 };
+                          return (
                           <tr key={c.id || i} className="hover:bg-slate-50/70 transition-colors">
                             <td className="p-3.5 font-bold text-slate-900">{c.name || c.displayName}</td>
-                            <td className="p-3.5 text-slate-700">{c.email}</td>
-                            <td className="p-3.5 text-slate-500">{c.phone || '832-555-0199'}</td>
-                            <td className="p-3.5 text-slate-600">{c.city || 'Houston, TX'}</td>
+                            <td className="p-3.5 text-slate-700">{c.email || '—'}</td>
+                            <td className="p-3.5 text-slate-500 whitespace-nowrap">{c.phone || '—'}</td>
+                            <td className="p-3.5 text-slate-600">{typeof c.address === 'string' && c.address ? c.address : '—'}</td>
                             <td className="p-3.5">
-                              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                                <CheckCircle className="w-3 h-3" />
-                                <span>21+ Verified</span>
-                              </span>
+                              {c.isAgeVerified ? (
+                                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                                  <CheckCircle className="w-3 h-3" />
+                                  <span>Confirmed 21+</span>
+                                </span>
+                              ) : (
+                                <span className="text-[11px] font-semibold text-slate-400">Not confirmed</span>
+                              )}
                             </td>
-                            <td className="p-3.5 font-bold text-slate-800">{c.ordersCount || 1} Orders</td>
-                            <td className="p-3.5 font-bold text-blue-900 font-mono">${(c.totalSpent || 24.50).toFixed(2)}</td>
-                            <td className="p-3.5 text-right text-slate-400">{c.joinedDate || '2026-10-01'}</td>
+                            <td className="p-3.5 font-bold text-slate-800">{stats.count} {stats.count === 1 ? 'Order' : 'Orders'}</td>
+                            <td className="p-3.5 font-bold text-blue-900 font-mono">${stats.spent.toFixed(2)}</td>
+                            <td className="p-3.5 text-right text-slate-400 whitespace-nowrap">{c.joinedDate || (c.createdAt || '').slice(0, 10) || '—'}</td>
                           </tr>
-                        ))}
+                          );
+                        })}
                       </tbody>
                     </table>
                   </div>
@@ -2030,41 +2117,100 @@ export default function AdminPanel({ onSignOut }) {
               {customerSubTab === 'wholesale' && (
                 <div className="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
                   <div className="overflow-x-auto">
-                    <table className="w-full text-left text-xs text-slate-600">
+                    <table className="w-full min-w-[820px] text-left text-xs text-slate-600">
                       <thead className="bg-slate-50 text-slate-500 uppercase text-[10px] font-bold border-b border-slate-200">
                         <tr>
                           <th className="p-3.5">Business & Store Type</th>
                           <th className="p-3.5">Primary Buyer Contact</th>
                           <th className="p-3.5">Email & Phone</th>
                           <th className="p-3.5">Texas Resale Tax ID</th>
-                          <th className="p-3.5">Location</th>
-                          <th className="p-3.5">Order Volume</th>
+                          <th className="p-3.5">Certificate</th>
+                          <th className="p-3.5">Orders</th>
                           <th className="p-3.5 text-right">Account Status</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100">
-                        {wholesaleCustomers.map((w, i) => (
-                          <tr key={w.id || i} className="hover:bg-slate-50/70 transition-colors">
+                        {wholesaleCustomers.length === 0 && (
+                          <tr><td colSpan={7} className="p-6 text-center text-slate-400">No wholesale applications yet.</td></tr>
+                        )}
+                        {wholesaleCustomers.map((w, i) => {
+                          const stats = customerOrderStats.get(w.id) || { count: 0, spent: 0 };
+                          const busy = accountActionId === w.id;
+                          const statusStyle = {
+                            Approved: 'text-emerald-700 bg-emerald-50 border-emerald-200',
+                            Pending: 'text-amber-800 bg-amber-50 border-amber-200',
+                            Rejected: 'text-rose-700 bg-rose-50 border-rose-200',
+                            Suspended: 'text-slate-700 bg-slate-100 border-slate-200'
+                          }[w.status] || 'text-amber-800 bg-amber-50 border-amber-200';
+                          return (
+                          <tr key={w.id || i} className="hover:bg-slate-50/70 transition-colors align-top">
                             <td className="p-3.5">
-                              <p className="font-bold text-slate-900">{w.businessName || w.dba || 'Harwin Store'}</p>
-                              <p className="text-[11px] text-amber-700 font-semibold">{w.storeType || 'Convenience Store'}</p>
+                              <p className="font-bold text-slate-900">{w.businessName || w.dba || '—'}</p>
+                              <p className="text-[11px] text-amber-700 font-semibold">{w.storeType || ''}</p>
+                              {w.monthlyVolume && <p className="text-[11px] text-slate-500">{w.monthlyVolume}</p>}
                             </td>
-                            <td className="p-3.5 font-semibold text-slate-900">{w.contactName || w.name || 'Samir Patel'}</td>
+                            <td className="p-3.5 font-semibold text-slate-900">{w.contactName || w.name || '—'}</td>
                             <td className="p-3.5 text-[11px] text-slate-500">
                               <p>{w.email}</p>
                               <p>{w.phone}</p>
                             </td>
-                            <td className="p-3.5 font-mono font-bold text-slate-800">{w.taxId || 'TX-881234-1'}</td>
-                            <td className="p-3.5 text-slate-600">{w.city || 'Houston, TX'}</td>
-                            <td className="p-3.5 font-bold text-slate-700">{w.volume || '50-100 Cases/Mo'}</td>
+                            <td className="p-3.5 font-mono font-bold text-slate-800">{w.taxId || '—'}</td>
+                            <td className="p-3.5">
+                              {w.documents && w.documents.length > 0 && !w.documentsUploadFailed ? (
+                                <button
+                                  type="button"
+                                  onClick={() => handleViewCertificate(w)}
+                                  className="text-[11px] font-bold text-blue-700 hover:underline cursor-pointer"
+                                >
+                                  View file
+                                </button>
+                              ) : (
+                                <span className="text-[11px] text-slate-400">{w.documentsUploadFailed ? 'Upload failed' : 'Not provided'}</span>
+                              )}
+                            </td>
+                            <td className="p-3.5 font-bold text-slate-700 whitespace-nowrap">
+                              {stats.count} • ${stats.spent.toFixed(2)}
+                            </td>
                             <td className="p-3.5 text-right">
-                              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                                <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
-                                <span>Active (Full Access)</span>
+                              <span className={`inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${statusStyle}`}>
+                                {w.status || 'Pending'}
                               </span>
+                              <div className="mt-2 flex justify-end gap-1.5">
+                                {w.status !== 'Approved' && (
+                                  <button
+                                    type="button"
+                                    disabled={busy}
+                                    onClick={() => handleSetAccountStatus(w, 'Approved')}
+                                    className="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold cursor-pointer disabled:opacity-50"
+                                  >
+                                    Approve
+                                  </button>
+                                )}
+                                {w.status === 'Pending' && (
+                                  <button
+                                    type="button"
+                                    disabled={busy}
+                                    onClick={() => handleSetAccountStatus(w, 'Rejected')}
+                                    className="px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-[11px] font-bold cursor-pointer disabled:opacity-50"
+                                  >
+                                    Reject
+                                  </button>
+                                )}
+                                {w.status === 'Approved' && (
+                                  <button
+                                    type="button"
+                                    disabled={busy}
+                                    onClick={() => handleSetAccountStatus(w, 'Suspended')}
+                                    className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-[11px] font-bold cursor-pointer disabled:opacity-50"
+                                  >
+                                    Suspend
+                                  </button>
+                                )}
+                              </div>
                             </td>
                           </tr>
-                        ))}
+                          );
+                        })}
                       </tbody>
                     </table>
                   </div>
@@ -2080,8 +2226,8 @@ export default function AdminPanel({ onSignOut }) {
       {/* MODAL 1: CREATE NEW CATEGORY (Title & Img as requested)                   */}
       {/* ========================================================================= */}
       {isAddCategoryOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4 animate-in fade-in zoom-in-95 duration-150">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full max-h-[calc(100dvh-1.5rem)] overflow-y-auto p-5 sm:p-6 space-y-4 animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
                 <FolderTree className="w-5 h-5 text-[#d9232e]" />
@@ -2089,7 +2235,8 @@ export default function AdminPanel({ onSignOut }) {
               </h3>
               <button
                 onClick={() => setIsAddCategoryOpen(false)}
-                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 cursor-pointer"
+                aria-label="Close"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -2138,7 +2285,7 @@ export default function AdminPanel({ onSignOut }) {
                   <button
                     type="button"
                     onClick={() => categoryFileInputRef.current?.click()}
-                    className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl border border-slate-200 cursor-pointer flex items-center gap-1.5"
+                    className="shrink-0 whitespace-nowrap px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl border border-slate-200 cursor-pointer flex items-center gap-1.5"
                   >
                     <Upload className="w-3.5 h-3.5 text-[#d9232e]" />
                     <span>Upload</span>
@@ -2155,9 +2302,9 @@ export default function AdminPanel({ onSignOut }) {
                     className="w-12 h-12 rounded-lg object-cover bg-white border border-slate-100"
                     onError={(e) => { e.target.style.display = 'none'; }}
                   />
-                  <div className="text-[11px] text-slate-600">
-                    <p className="font-bold text-slate-900">{newCategory.title || 'Category Preview'}</p>
-                    <p className="text-slate-400 truncate max-w-[220px]">{newCategory.img}</p>
+                  <div className="text-[11px] text-slate-600 min-w-0">
+                    <p className="font-bold text-slate-900 truncate">{newCategory.title || 'Category Preview'}</p>
+                    <p className="text-slate-400 truncate">{newCategory.img}</p>
                   </div>
                 </div>
               )}

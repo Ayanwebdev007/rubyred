@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "catalog:build": "python scripts/build_catalog.py",
+    "catalog:seed": "node scripts/seed-firestore.mjs",
+    "catalog:seed:dry": "node scripts/seed-firestore.mjs --dry-run"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",

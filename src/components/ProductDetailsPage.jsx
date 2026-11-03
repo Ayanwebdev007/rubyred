@@ -5,73 +5,54 @@ import {
   Check, Plus, Minus, Heart, Share2, Sparkles, MessageSquare, ThumbsUp, 
   ChevronRight, Award, Flame, RefreshCw, Package, CheckCircle2, Lock, AlertCircle, ArrowRight
 } from 'lucide-react';
-import { FEATURED_PRODUCTS_DATA } from './FeaturedProductsSection';
-import { INITIAL_PRODUCTS } from '../data/products';
 import { useAuth } from '../context/AuthContext';
+import useCatalog from '../hooks/useCatalog';
 import WhatsAppIcon from './WhatsAppIcon';
+
+function normalizeProduct(raw) {
+  if (!raw) return null;
+  const price = parseFloat(raw.retailPrice ?? raw.price ?? 0) || 0;
+  const originalPrice = parseFloat(raw.originalPrice ?? 0) || 0;
+  const image = raw.img || raw.image || '/images/ruby_red_hero.jpg';
+  const gallery = Array.isArray(raw.gallery) && raw.gallery.length > 0 ? raw.gallery : [image];
+  const overviewSource = raw.overview || {
+    origin: raw.origin,
+    netWeight: raw.netWeight,
+    brand: raw.brand
+  };
+  // Only show specification rows that actually have a value
+  const overview = Object.fromEntries(
+    Object.entries(overviewSource).filter(([, val]) => val !== undefined && val !== null && String(val).trim() !== '')
+  );
+
+  return {
+    ...raw,
+    name: raw.title || raw.name,
+    price,
+    originalPrice: originalPrice > price ? originalPrice : null,
+    image,
+    gallery,
+    shortDesc: raw.description || raw.shortDesc || raw.fullDesc || '',
+    fullDesc: raw.description || raw.fullDesc || raw.shortDesc || '',
+    rating: raw.rating || null,
+    reviewsCount: raw.reviewsCount || 0,
+    flavors: Array.isArray(raw.flavors) ? raw.flavors.filter(Boolean) : [],
+    overview,
+    bullets: Array.isArray(raw.bullets) ? raw.bullets.filter(Boolean) : []
+  };
+}
 
 export default function ProductDetailsPage({ product: propProduct, onBack, onAddToCart, onSelectProduct }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const { currentUser } = useAuth();
+  const { products, loading } = useCatalog();
 
-  // Resolve active product from prop, local DB cache, or fallback datasets
-  const [dbProduct, setDbProduct] = useState(() => {
-    try {
-      const cached = localStorage.getItem('rubyred_db_products');
-      if (cached) {
-        const list = JSON.parse(cached);
-        return list.find((p) => p.id === id) || null;
-      }
-    } catch (e) {}
-    return null;
-  });
-
-  useEffect(() => {
-    try {
-      const cached = localStorage.getItem('rubyred_db_products');
-      if (cached) {
-        const list = JSON.parse(cached);
-        const match = list.find((p) => p.id === id);
-        if (match) setDbProduct(match);
-      }
-    } catch (e) {}
-  }, [id]);
-
-  const rawProduct = dbProduct || propProduct || 
-    FEATURED_PRODUCTS_DATA.find((p) => p.id === id) || 
-    INITIAL_PRODUCTS.find((p) => p.id === id) || 
-    FEATURED_PRODUCTS_DATA[0];
-
-  const product = {
-    ...rawProduct,
-    id: rawProduct.id,
-    name: rawProduct.title || rawProduct.name,
-    price: parseFloat(rawProduct.retailPrice || rawProduct.price || 4.49),
-    originalPrice: parseFloat(rawProduct.originalPrice || ((rawProduct.retailPrice || rawProduct.price || 4.49) * 1.33)),
-    image: rawProduct.img || rawProduct.image || '/images/ruby_red_hero.jpg',
-    gallery: Array.isArray(rawProduct.gallery) && rawProduct.gallery.length > 0 ? rawProduct.gallery : undefined,
-    shortDesc: rawProduct.description || rawProduct.shortDesc || rawProduct.fullDesc,
-    fullDesc: rawProduct.description || rawProduct.fullDesc || rawProduct.shortDesc,
-    rating: rawProduct.rating || 5.0,
-    reviewsCount: rawProduct.reviewsCount || 128,
-    flavors: Array.isArray(rawProduct.flavors) && rawProduct.flavors.length > 0 ? rawProduct.flavors : ['Original'],
-    overview: rawProduct.overview || {
-      origin: rawProduct.origin || "🇯🇵 Japan",
-      netWeight: rawProduct.netWeight || "115g (Large Size)",
-      brand: rawProduct.brand || "Koikeya (湖池屋)",
-      flavor: rawProduct.flavors?.[0] || "Original"
-    },
-    bullets: Array.isArray(rawProduct.bullets) && rawProduct.bullets.length > 0 ? rawProduct.bullets : [
-      "Japan's #1 best-selling snack brand",
-      "Generous bag size with crispy texture and authentic spices",
-      "Proprietary umami blend with certified freshness packaging"
-    ]
-  };
+  const product = normalizeProduct(products.find((p) => p.id === id) || propProduct);
 
   const [selectedImage, setSelectedImage] = useState(product?.image || '');
   const [quantity, setQuantity] = useState(1);
-  const [selectedFlavor, setSelectedFlavor] = useState(product?.flavors?.[0] || 'Original');
+  const [selectedFlavor, setSelectedFlavor] = useState(product?.flavors?.[0] || '');
   const [activeTab, setActiveTab] = useState('overview');
   const [isAdded, setIsAdded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -84,16 +65,25 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
     if (product) {
       setSelectedImage(product.image);
       setQuantity(1);
-      if (product.flavors && product.flavors.length > 0) {
-        setSelectedFlavor(product.flavors[0]);
-      } else {
-        setSelectedFlavor('Original');
-      }
+      setSelectedFlavor(product.flavors[0] || '');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [product.id, id]);
+  }, [product?.id, id]);
 
-  if (!product) return null;
+  if (!product) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center gap-3 px-4 text-center">
+        <p className="text-sm text-slate-500">
+          {loading ? 'Loading product…' : "We couldn't find this product. It may have been removed."}
+        </p>
+        {!loading && (
+          <Link to="/" className="text-sm font-bold text-[#d9232e] hover:underline">
+            Back to the shop
+          </Link>
+        )}
+      </div>
+    );
+  }
 
   const handleBack = () => {
     if (onBack) {
@@ -110,33 +100,20 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
   };
 
   // Image variations array
-  const imageVariations = [
-    product.image,
-    ...(product.gallery && product.gallery.length > 0
-      ? product.gallery.filter((img) => img !== product.image)
-      : product.id?.includes('koikeya')
-      ? [
-          "/images/koikeya_karamucho_hot_chili_chips.png",
-          "/images/koikeya_karamucho_hot_chili_snack.png",
-          "/images/koikeya_pure_potato_black_pepper.png"
-        ].filter((img) => img !== product.image)
-      : product.id?.includes('milka')
-      ? [
-          "/images/Milka Oreo Lavender Kitchen Still Life.png",
-          "/images/Milka Cookies and Hazelnuts Still Life.png",
-          "/images/Milka Strawberry Chocolate Still Life.png",
-          "/images/Milka White Chocolate Dream Still Life.png"
-        ].filter((img) => img !== product.image)
-      : [
-          "/images/ramune_banner.jpg",
-          "/images/ruby_red_hero.jpg",
-          "/images/ramune_poster.jpeg"
-        ]
-    )
-  ];
+  const imageVariations = [product.image, ...product.gallery.filter((img) => img !== product.image)];
 
-  const savingsAmount = product.originalPrice ? (product.originalPrice - product.price).toFixed(2) : '1.00';
-  const savingsPercent = product.originalPrice ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 25;
+  const hasDiscount = Boolean(product.originalPrice);
+  const savingsAmount = hasDiscount ? (product.originalPrice - product.price).toFixed(2) : '0.00';
+  const savingsPercent = hasDiscount ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
+
+  // Purchasing actions are visible to everyone but require a signed-in account
+  const requireLogin = (action) => (...args) => {
+    if (!currentUser) {
+      navigate('/login');
+      return;
+    }
+    action(...args);
+  };
 
   const handleAdd = () => {
     if (!currentUser) {
@@ -171,7 +148,7 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
 
   const handleWhatsAppInquiry = () => {
     const text = encodeURIComponent(
-      `Hello RUBY RED! I am interested in purchasing *${product.name}* (Variant: ${selectedFlavor}). Quantity requested: ${quantity} unit(s). Please assist with my order.`
+      `Hello RUBY RED! I am interested in purchasing *${product.name}*${selectedFlavor ? ` (Variant: ${selectedFlavor})` : ''}${product.sku ? ` [SKU ${product.sku}]` : ''}. Quantity requested: ${quantity} unit(s). Please assist with my order.`
     );
     window.open(`https://wa.me/18323663572?text=${text}`, '_blank');
   };
@@ -242,8 +219,14 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
     }
   ];
 
-  // Related Products (excluding current)
-  const relatedProducts = FEATURED_PRODUCTS_DATA.filter((p) => p.id !== product.id).slice(0, 4);
+  // Related Products: same category first, excluding the current product
+  const relatedProducts = [
+    ...products.filter((p) => p.id !== product.id && p.categoryId === product.categoryId),
+    ...products.filter((p) => p.id !== product.id && p.categoryId !== product.categoryId)
+  ]
+    .slice(0, 4)
+    .map(normalizeProduct);
+  const hasReviews = Boolean(product.rating && product.reviewsCount);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 pb-12 sm:pb-16 animate-fadeIn">
@@ -265,7 +248,13 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
             <div className="hidden sm:flex items-center gap-2 text-xs text-slate-400 font-medium">
               <Link to="/" className="hover:text-slate-600">Home</Link>
               <ChevronRight className="w-3 h-3 text-slate-300" />
-              <Link to="/" className="hover:text-slate-600">Featured Products</Link>
+              {product.categoryId ? (
+                <Link to={`/category/${product.categoryId}`} className="hover:text-slate-600">
+                  {product.categoryName || 'Products'}
+                </Link>
+              ) : (
+                <Link to="/" className="hover:text-slate-600">Products</Link>
+              )}
               <ChevronRight className="w-3 h-3 text-slate-300" />
               <span className="text-slate-900 font-semibold truncate max-w-[180px]">{product.name}</span>
             </div>
@@ -300,18 +289,18 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                   <img
                     src={img}
                     alt={`${product.name} view ${idx + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain bg-white p-1"
                   />
                 </button>
               ))}
             </div>
 
             {/* Main Stage Image Display */}
-            <div className="relative flex-1 w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/70 shadow-xs group">
+            <div className="relative flex-1 w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-slate-200/70 shadow-xs group">
               <img
                 src={selectedImage || product.image}
                 alt={product.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                className="w-full h-full object-contain p-4 sm:p-8 group-hover:scale-105 transition-transform duration-500 ease-out"
               />
 
               {/* Floating Favorite Button */}
@@ -327,11 +316,13 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
               </button>
 
               {/* Discount Tag */}
-              <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
-                <span className="bg-[#d9232e] text-white text-[10px] sm:text-xs font-bold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full shadow-md">
-                  SAVE {savingsPercent}%
-                </span>
-              </div>
+              {hasDiscount && (
+                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
+                  <span className="bg-[#d9232e] text-white text-[10px] sm:text-xs font-bold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full shadow-md">
+                    SAVE {savingsPercent}%
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -344,23 +335,41 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                 {product.name}
               </h1>
 
-              {/* Rating & Reviews Bar */}
-              <div className="flex items-center gap-2.5 sm:gap-3 pt-0.5">
-                <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg border border-amber-200/60">
-                  <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
-                  <span className="text-xs sm:text-sm font-bold text-amber-600">{product.rating}</span>
-                </div>
-                <span className="text-xs text-slate-400">•</span>
-                <span 
-                  className="text-xs font-semibold text-slate-600 underline cursor-pointer hover:text-slate-900" 
-                  onClick={() => {
-                    const el = document.getElementById('reviews-section');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  {product.reviewsCount || 128} Verified Reviews
-                </span>
+              {/* Category, Pack Size & SKU */}
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-0.5 text-[11px] sm:text-xs font-semibold text-slate-500">
+                {product.categoryName && (
+                  <Link
+                    to={`/category/${product.categoryId}`}
+                    className="px-2 py-0.5 rounded-lg bg-red-50 text-[#d9232e] border border-red-100 hover:bg-red-100"
+                  >
+                    {product.categoryName}
+                  </Link>
+                )}
+                {product.netWeight && (
+                  <span className="px-2 py-0.5 rounded-lg bg-slate-50 border border-slate-200">{product.netWeight}</span>
+                )}
+                {product.sku && <span>SKU {product.sku}</span>}
               </div>
+
+              {/* Rating & Reviews Bar */}
+              {hasReviews && (
+                <div className="flex items-center gap-2.5 sm:gap-3 pt-0.5">
+                  <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg border border-amber-200/60">
+                    <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
+                    <span className="text-xs sm:text-sm font-bold text-amber-600">{product.rating}</span>
+                  </div>
+                  <span className="text-xs text-slate-400">•</span>
+                  <span
+                    className="text-xs font-semibold text-slate-600 underline cursor-pointer hover:text-slate-900"
+                    onClick={() => {
+                      const el = document.getElementById('reviews-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    {product.reviewsCount} Reviews
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Price Display */}
@@ -380,14 +389,16 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                     <span className="text-2xl xs:text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
                       ${product.price.toFixed(2)}
                     </span>
-                    {product.originalPrice && (
-                      <span className="text-base sm:text-xl font-medium text-slate-400 line-through">
-                        ${product.originalPrice.toFixed(2)}
-                      </span>
+                    {hasDiscount && (
+                      <>
+                        <span className="text-base sm:text-xl font-medium text-slate-400 line-through">
+                          ${product.originalPrice.toFixed(2)}
+                        </span>
+                        <span className="text-[11px] xs:text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
+                          Save ${savingsAmount} ({savingsPercent}%)
+                        </span>
+                      </>
                     )}
-                    <span className="text-[11px] xs:text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
-                      Save ${savingsAmount} ({savingsPercent}%)
-                    </span>
                   </div>
                 ) : (
                   <div className="flex flex-wrap items-center gap-2 sm:gap-3">
@@ -399,18 +410,19 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                       </span>
                     </div>
 
-                    {product.originalPrice && (
-                      <div className="flex items-baseline text-base sm:text-xl font-medium text-slate-400 line-through">
-                        <span>$</span>
-                        <span className="filter blur-[6px] select-none opacity-60 ml-0.5">
-                          {product.originalPrice.toFixed(2)}
+                    {hasDiscount && (
+                      <>
+                        <div className="flex items-baseline text-base sm:text-xl font-medium text-slate-400 line-through">
+                          <span>$</span>
+                          <span className="filter blur-[6px] select-none opacity-60 ml-0.5">
+                            {product.originalPrice.toFixed(2)}
+                          </span>
+                        </div>
+                        <span className="text-[11px] xs:text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
+                          Save $<span className="filter blur-[5px] select-none">{savingsAmount}</span> ({savingsPercent}%)
                         </span>
-                      </div>
+                      </>
                     )}
-
-                    <span className="text-[11px] xs:text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
-                      Save $<span className="filter blur-[5px] select-none">{savingsAmount}</span> ({savingsPercent}%)
-                    </span>
                   </div>
                 )}
               </div>
@@ -439,16 +451,13 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
             </p>
 
             {/* Variant / Flavor Selection */}
+            {product.flavors.length > 0 && (
             <div className="space-y-2">
               <label className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">
                 Select Flavor / Variety
               </label>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                {(product.flavors || (
-                  product.id?.includes('koikeya')
-                    ? ['Original Hot Chili', 'Mild Spicy', 'Extra Spicy']
-                    : ["Original", "Ripe Peach", "Melon", "Strawberry"]
-                )).map((flavor) => (
+                {product.flavors.map((flavor) => (
                   <button
                     key={flavor}
                     onClick={() => setSelectedFlavor(flavor)}
@@ -463,6 +472,7 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                 ))}
               </div>
             </div>
+            )}
 
             {/* Quantity Selector & Action Buttons */}
             <div className="space-y-3 sm:space-y-4 pt-1 sm:pt-2">
@@ -474,14 +484,14 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                 {/* Plus / Minus Counter */}
                 <div className="flex items-center justify-between border border-slate-300 rounded-xl sm:rounded-2xl bg-white px-3 py-2 sm:py-2.5 w-full sm:w-32 shadow-xs flex-shrink-0">
                   <button
-                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                    onClick={requireLogin(() => setQuantity((q) => Math.max(1, q - 1)))}
                     className="w-7 h-7 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-600 transition-colors cursor-pointer"
                   >
                     <Minus className="w-3.5 h-3.5" />
                   </button>
                   <span className="font-bold text-sm text-slate-900 px-1">{quantity}</span>
                   <button
-                    onClick={() => setQuantity((q) => q + 1)}
+                    onClick={requireLogin(() => setQuantity((q) => q + 1))}
                     className="w-7 h-7 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-600 transition-colors cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />
@@ -524,7 +534,7 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
 
                   {/* Bulk Order Button */}
                   <button
-                    onClick={() => setShowBulkSection(!showBulkSection)}
+                    onClick={requireLogin(() => setShowBulkSection(!showBulkSection))}
                     className={`py-2.5 sm:py-3 px-1.5 xs:px-2 sm:px-3 rounded-xl sm:rounded-2xl font-bold text-[11px] xs:text-xs transition-all flex items-center justify-center gap-1 border cursor-pointer whitespace-nowrap active:scale-95 ${
                       showBulkSection
                         ? 'bg-slate-800 text-white border-slate-800 shadow-sm'
@@ -539,7 +549,7 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
               </div>
 
               {/* Compact Fixed Quantity Bulk Order Section */}
-              {showBulkSection && (
+              {showBulkSection && currentUser && (
                 <div className="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2.5 animate-fadeIn shadow-2xs">
                   {/* Bulk Buttons */}
                   <div className="grid grid-cols-3 gap-2">
@@ -553,10 +563,10 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                       return (
                         <button
                           key={tier.qty}
-                          onClick={() => {
+                          onClick={requireLogin(() => {
                             setSelectedBulkTier(tier.qty);
                             setQuantity(tier.qty);
-                          }}
+                          })}
                           className={`py-2 px-1.5 sm:px-2.5 rounded-xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center ${
                             isSelected
                               ? 'bg-[#d9232e] border-[#d9232e] text-white shadow-xs font-bold'
@@ -576,7 +586,7 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
 
                   {/* WhatsApp Inquiry Action */}
                   <button
-                    onClick={handleWhatsAppInquiry}
+                    onClick={requireLogin(handleWhatsAppInquiry)}
                     className="w-full py-2.5 px-3 rounded-xl font-bold text-xs bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white transition-all flex items-center justify-center gap-2 shadow-2xs cursor-pointer"
                   >
                     <WhatsAppIcon className="w-4 h-4 fill-white shrink-0" />
@@ -618,11 +628,11 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
               <span>Overview & Details</span>
             </h3>
             <p className="text-slate-700 text-xs sm:text-sm leading-relaxed">
-              {product.fullDesc || product.description || "Imported directly from Japan, this product embodies authentic craftsmanship and traditional recipe techniques. Made with high-quality ingredients and packaged with care for peak freshness."}
+              {product.fullDesc || "Imported specialty product from the RUBY RED collection, packaged with care for peak freshness."}
             </p>
 
             {/* Structured Specifications / Overview Attributes */}
-            {product.overview && (
+            {Object.keys(product.overview).length > 0 && (
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 py-1">
                 {Object.entries(product.overview).map(([key, val]) => (
                   <div key={key} className="bg-slate-50 p-2.5 sm:p-3 rounded-xl border border-slate-100">
@@ -637,27 +647,22 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
               </div>
             )}
 
-            {product.bullets && product.bullets.length > 0 ? (
+            {product.bullets.length > 0 && (
               <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm text-slate-600 pt-1">
                 {product.bullets.map((bullet, idx) => (
                   <li key={idx}>{bullet}</li>
                 ))}
               </ul>
-            ) : (
-              <ul className="list-disc pl-5 space-y-1 text-xs sm:text-sm text-slate-600">
-                <li>Authentic regional import sourced directly from authorized suppliers</li>
-                <li>Sealed packaging ensuring crisp flavor and optimal shelf life</li>
-                <li>Perfect for gifting, snack lovers, or party celebrations</li>
-              </ul>
             )}
           </div>
 
-          {/* Section 2: Customer Reviews */}
+          {/* Section 2: Customer Reviews (only for products that have review data) */}
+          {hasReviews && (
           <div id="reviews-section" className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200/80 shadow-xs sm:shadow-sm space-y-4 sm:space-y-6">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <h3 className="text-base sm:text-xl font-bold text-slate-900 flex items-center gap-1.5 sm:gap-2">
                 <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 text-[#d9232e]" />
-                <span>Customer Reviews ({product.reviewsCount || 128})</span>
+                <span>Customer Reviews ({product.reviewsCount})</span>
               </h3>
               <button
                 onClick={() => alert("Review form submission feature enabled!")}
@@ -733,6 +738,7 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
               </div>
             </div>
           </div>
+          )}
 
         </div>
 
@@ -752,18 +758,19 @@ export default function ProductDetailsPage({ product: propProduct, onBack, onAdd
                 className="group bg-white rounded-2xl sm:rounded-3xl p-2.5 xs:p-3 sm:p-4 border border-slate-200/80 shadow-xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between cursor-pointer active:scale-[0.98]"
               >
                 <div>
-                  <div className="relative w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-50 mb-2 sm:mb-3 border border-slate-100">
+                  <div className="relative w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-white mb-2 sm:mb-3 border border-slate-100">
                     <img
                       src={relProduct.image}
                       alt={relProduct.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      className="w-full h-full object-contain p-2 sm:p-3 group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <h3 className="font-semibold text-slate-900 text-xs xs:text-sm group-hover:text-[#d9232e] transition-colors line-clamp-1 leading-snug">
                     {relProduct.name}
                   </h3>
                   <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5 line-clamp-1">
-                    {relProduct.shortDesc}
+                    {[relProduct.categoryName, relProduct.netWeight].filter(Boolean).join(' • ')}
                   </p>
                 </div>
 

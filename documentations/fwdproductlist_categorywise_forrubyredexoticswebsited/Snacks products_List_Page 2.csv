@@ -1,0 +1,3 @@
+ProductId,ProductName,Description,SalePrice,SuggestedRetailPrice,CategoryName,Barcode,Unit,UnitPerCase,IsTaxable,PurchaseCost,QuantityInHand,InitialCost,InitialStock,IsActive
+301022,"WHP Toren Nusso Hazelnuts & CHOCO - 24 Ct. 8697439300836 ","WHP Toren Nusso Hazelnuts & CHOCO - 24 Ct. 8697439300836 ",18.00000,1.39,Snacks,8697439300829,,24,False,11.52000,-1.00000,0,0,True
+155498,Winnuts Papas Caseros 6 Oz.,Winnuts Papas Caseros 6 Oz.,2.39000,3.99,Snacks,850883002611,ea.,1,False,1.79000,-24.00000,0,0,True

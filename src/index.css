@@ -1,5 +1,48 @@
 @import "tailwindcss";
 
+/* Extra-small breakpoint used across components as `xs:` (large phones, >= 400px) */
+@theme {
+  --breakpoint-xs: 25rem;
+}
+
+/* ---------- Mobile readability safety net ---------- */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-wrap: break-word;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+/* Let form controls shrink inside flex rows instead of pushing siblings off-screen */
+input,
+select,
+textarea {
+  min-width: 0;
+}
+
+@media (max-width: 639.98px) {
+  /* Never render body copy below 11px on phones */
+  .text-\[9px\],
+  .text-\[10px\] {
+    font-size: 11px;
+  }
+
+  /* 16px inputs stop iOS Safari from auto-zooming on focus */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
 @layer base {
   :root {
     --font-heading: 'Outfit', sans-serif;

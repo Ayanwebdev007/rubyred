@@ -1,7 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Search, User, ShoppingBag, Package, Menu, X, LogOut, Building2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import useMyOrders from '../hooks/useMyOrders';
+
+const NAV_LINKS = [
+  { label: 'Home', path: '/' },
+  { label: 'Shop', path: '/shop' },
+  { label: 'Categories', path: '/categories' },
+  { label: 'About Us', path: '/about' },
+  { label: 'Contact', path: '/contact' }
+];
 
 export default function Navbar({ 
   cartCount = 0, 
@@ -12,7 +21,10 @@ export default function Navbar({
   onAboutClick
 }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const { currentUser, logout } = useAuth();
+  const { orders: myOrders } = useMyOrders();
+  const activeOrderCount = myOrders.filter(o => o.status === 'Processing' || o.status === 'Shipped').length;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -30,6 +42,16 @@ export default function Navbar({
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  const isActive = (path) =>
+    path === '/' ? location.pathname === '/' : location.pathname.startsWith(path) ||
+      (path === '/categories' && location.pathname.startsWith('/category/'));
+
+  const goTo = (path) => {
+    setIsMobileMenuOpen(false);
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleNavClick = (sectionId) => {
     setIsMobileMenuOpen(false);
@@ -54,46 +76,39 @@ export default function Navbar({
 
   return (
     <header className="bg-white/95 backdrop-blur-md sticky top-0 z-40 shadow-xs transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 h-16 xs:h-20 flex items-center justify-between gap-2">
         
         {/* Left: Official RUBY RED Logo */}
-        <div className="flex items-center gap-3 flex-shrink-0 cursor-pointer" onClick={() => handleNavClick('home')}>
+        <div className="flex items-center gap-3 min-w-0 shrink cursor-pointer" onClick={() => handleNavClick('home')}>
           <div className="flex items-center gap-2 group">
             <img 
               src="/images/logo.png" 
               alt="Ruby Red Sales & Services - Global Exotic Snacks & Beverages" 
-              className="h-14 sm:h-16 w-auto object-contain transition-transform group-hover:scale-102"
+              className="h-11 xs:h-14 sm:h-16 w-auto max-w-full object-contain transition-transform group-hover:scale-102"
             />
           </div>
         </div>
 
         {/* Right-aligned Navigation & Action Group */}
-        <div className="flex items-center gap-4 lg:gap-6 ml-auto">
+        <div className="flex items-center gap-4 lg:gap-6 ml-auto shrink-0">
           
           {/* Navigation Links - Static Non-Tappable Section Titles */}
           <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700 select-none">
-            <button 
-              onClick={() => handleNavClick('home')}
-              className="text-red-600 font-bold transition-colors py-1 cursor-pointer hover:text-red-700"
-            >
-              Home
-            </button>
-            <span className="text-slate-700 py-1 cursor-default select-none pointer-events-none">
-              Shop
-            </span>
-            <span className="text-slate-700 py-1 cursor-default select-none pointer-events-none">
-              Categories
-            </span>
-            <span className="text-slate-700 py-1 cursor-default select-none pointer-events-none">
-              About Us
-            </span>
-            <span className="text-slate-700 py-1 cursor-default select-none pointer-events-none">
-              Contact
-            </span>
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.path}
+                onClick={() => goTo(link.path)}
+                className={`py-1 cursor-pointer transition-colors ${
+                  isActive(link.path) ? 'text-red-600 font-bold' : 'text-slate-700 hover:text-red-600'
+                }`}
+              >
+                {link.label}
+              </button>
+            ))}
           </nav>
 
           {/* Right Action Controls: Expanded Search Bar, Solid Red Login & Cart */}
-          <div className="flex items-center gap-2.5 flex-shrink-0">
+          <div className="flex items-center gap-1.5 xs:gap-2.5 flex-shrink-0">
             
             {/* Search Bar Input */}
             <div className="hidden sm:flex items-center bg-slate-50/90 rounded-full px-4 py-2 text-xs border border-red-500/70 hover:border-red-600 w-56 sm:w-64 md:w-80 focus-within:bg-white focus-within:border-red-600 focus-within:ring-2 focus-within:ring-red-500/20 transition-all shadow-2xs">
@@ -102,7 +117,8 @@ export default function Navbar({
                 type="text"
                 placeholder="Search products..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') goTo('/shop'); }}
+                onChange={(e) => { setSearchQuery(e.target.value); if (!location.pathname.startsWith('/shop')) navigate('/shop'); }}
                 className="bg-transparent outline-none w-full text-slate-800 placeholder-slate-400 font-medium"
               />
               {searchQuery && (
@@ -136,7 +152,7 @@ export default function Navbar({
 
                 {/* Compact Dropdown directly beneath the avatar button */}
                 {isDropdownOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-200/80 py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+                  <div className="absolute right-0 top-full mt-2 w-56 max-w-[calc(100vw-1.5rem)] bg-white rounded-2xl shadow-xl border border-slate-200/80 py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
                     <div className="px-4 py-2.5 border-b border-slate-100">
                       <div className="flex items-center gap-2.5">
                         <div className="w-8 h-8 rounded-full bg-[#d9232e] text-white flex items-center justify-center font-black text-xs shrink-0">
@@ -152,7 +168,7 @@ export default function Navbar({
                         </div>
                       </div>
                       <div className="mt-2">
-                        <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                        <span className={`inline-block px-2 py-0.5 rounded-full text-[11px] font-bold ${
                           currentUser.role === 'b2b' ? 'bg-amber-100 text-amber-800' : 'bg-red-50 text-[#d9232e]'
                         }`}>
                           {currentUser.role === 'b2b' ? 'Wholesale Partner' : 'Retail Customer'}
@@ -166,7 +182,7 @@ export default function Navbar({
                           setIsDropdownOpen(false);
                           navigate('/orders');
                         }}
-                        className="w-full px-3 py-2 text-left text-slate-700 hover:bg-slate-50 rounded-xl flex items-center gap-2 cursor-pointer transition-colors"
+                        className="w-full px-3 py-2.5 sm:py-2 text-left text-slate-700 hover:bg-slate-50 rounded-xl flex items-center gap-2 cursor-pointer transition-colors"
                       >
                         <Package className="w-3.5 h-3.5 text-slate-400" />
                         <span>My Orders & Tracking</span>
@@ -178,7 +194,7 @@ export default function Navbar({
                           if (onOpenCart) onOpenCart();
                           navigate('/cart');
                         }}
-                        className="w-full px-3 py-2 text-left text-slate-700 hover:bg-slate-50 rounded-xl flex items-center gap-2 cursor-pointer transition-colors"
+                        className="w-full px-3 py-2.5 sm:py-2 text-left text-slate-700 hover:bg-slate-50 rounded-xl flex items-center gap-2 cursor-pointer transition-colors"
                       >
                         <ShoppingBag className="w-3.5 h-3.5 text-slate-400" />
                         <span>Shopping Cart ({cartCount})</span>
@@ -252,9 +268,12 @@ export default function Navbar({
               id="orders-nav-btn"
             >
               <Package className="w-4 h-4 text-white group-hover:scale-105 transition-transform" />
-              {currentUser && (
-                <span className="absolute -top-1 -right-1 bg-amber-400 text-slate-950 text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white shadow-2xs">
-                  3
+              {currentUser && activeOrderCount > 0 && (
+                <span
+                  className="absolute -top-1 -right-1 bg-amber-400 text-slate-950 text-[10px] font-black min-w-4.5 h-4.5 px-1 rounded-full flex items-center justify-center border-2 border-white shadow-2xs"
+                  aria-label={`${activeOrderCount} active orders`}
+                >
+                  {activeOrderCount}
                 </span>
               )}
             </button>
@@ -262,7 +281,9 @@ export default function Navbar({
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100"
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
+              className="lg:hidden p-1.5 xs:p-2 rounded-xl text-slate-700 hover:bg-slate-100"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -272,24 +293,29 @@ export default function Navbar({
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white/95 backdrop-blur-md border-b border-slate-100 px-4 py-3 space-y-2 shadow-md">
-          <div className="flex items-center bg-slate-50 border border-red-500/70 rounded-full px-3.5 py-2 text-xs mb-3">
-            <Search className="w-4 h-4 text-red-500 mr-2" />
+        <div className="lg:hidden bg-white border-b border-slate-100 px-4 py-3 space-y-2 shadow-md max-h-[calc(100dvh-4rem)] overflow-y-auto">
+          <div className="flex items-center bg-slate-50 border border-red-500/70 rounded-full px-3.5 py-2 text-sm mb-3">
+            <Search className="w-4 h-4 text-red-500 mr-2 shrink-0" />
             <input
               type="text"
               placeholder="Search products..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-transparent outline-none w-full text-slate-800"
+              onKeyDown={(e) => { if (e.key === 'Enter') goTo('/shop'); }}
+              onChange={(e) => { setSearchQuery(e.target.value); if (!location.pathname.startsWith('/shop')) navigate('/shop'); }}
+              className="bg-transparent outline-none w-full min-w-0 text-slate-800 placeholder-slate-400"
             />
           </div>
 
-          <nav className="flex flex-col space-y-1.5 text-sm font-semibold text-slate-700 select-none">
-            <button onClick={() => handleNavClick('home')} className="text-left text-red-600 font-bold px-2 py-1 cursor-pointer">Home</button>
-            <span className="text-left px-2 py-1 text-slate-700 font-semibold cursor-default pointer-events-none">Shop</span>
-            <span className="text-left px-2 py-1 text-slate-700 font-semibold cursor-default pointer-events-none">Categories</span>
-            <span className="text-left px-2 py-1 text-slate-700 font-semibold cursor-default pointer-events-none">About Us</span>
-            <span className="text-left px-2 py-1 text-slate-700 font-semibold cursor-default pointer-events-none">Contact</span>
+          <nav className="flex flex-col space-y-1 text-base font-semibold text-slate-700 select-none">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.path}
+                onClick={() => goTo(link.path)}
+                className={`text-left px-3 py-2.5 rounded-xl cursor-pointer ${isActive(link.path) ? 'text-red-600 font-bold bg-red-50' : 'text-slate-700'}`}
+              >
+                {link.label}
+              </button>
+            ))}
           </nav>
 
           <div className="pt-2 border-t border-slate-100 space-y-2">
@@ -299,20 +325,20 @@ export default function Navbar({
                   setIsMobileMenuOpen(false);
                   navigate('/login');
                 }}
-                className="w-full py-2.5 px-4 rounded-full bg-[#d9232e] text-white font-bold text-xs flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 px-4 rounded-full bg-[#d9232e] text-white font-bold text-sm flex items-center justify-center gap-2 cursor-pointer"
               >
                 <User className="w-4 h-4 text-white" />
                 <span>Login</span>
               </button>
             ) : (
-              <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200/80 flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-[#d9232e] text-white flex items-center justify-center font-black text-xs">
+              <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200/80 flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="w-8 h-8 shrink-0 rounded-full bg-[#d9232e] text-white flex items-center justify-center font-black text-xs">
                     {userInitial}
                   </div>
-                  <div>
-                    <p className="font-bold text-slate-900 text-xs">{currentUser.name || 'Member'}</p>
-                    <p className="text-[10px] text-slate-500">{currentUser.email || currentUser.phone}</p>
+                  <div className="min-w-0">
+                    <p className="font-bold text-slate-900 text-sm truncate">{currentUser.name || 'Member'}</p>
+                    <p className="text-xs text-slate-500 truncate">{currentUser.email || currentUser.phone}</p>
                   </div>
                 </div>
                 <button
@@ -321,7 +347,7 @@ export default function Navbar({
                     await logout();
                     navigate('/');
                   }}
-                  className="px-2.5 py-1 text-xs font-bold text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
+                  className="shrink-0 px-3 py-2 text-xs font-bold text-red-600 hover:bg-red-50 rounded-lg cursor-pointer"
                 >
                   Sign Out
                 </button>
@@ -338,7 +364,7 @@ export default function Navbar({
                     navigate('/cart');
                   }
                 }}
-                className="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer"
+                className="py-3 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-bold flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <ShoppingBag className="w-3.5 h-3.5 text-[#d9232e]" />
                 <span>Cart ({currentUser ? cartCount : 0})</span>
@@ -353,10 +379,10 @@ export default function Navbar({
                     navigate('/orders');
                   }
                 }}
-                className="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer"
+                className="py-3 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-bold flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <Package className="w-3.5 h-3.5 text-[#d9232e]" />
-                <span>Orders</span>
+                <span>Orders{currentUser && activeOrderCount > 0 ? ` (${activeOrderCount})` : ''}</span>
               </button>
             </div>
           </div>

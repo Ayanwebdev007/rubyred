@@ -65,11 +65,11 @@ export default function SocialMediaPage() {
   ];
 
   return (
-    <div className="bg-slate-50 min-h-screen py-10 sm:py-14">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <div className="bg-slate-50 min-h-screen py-6 sm:py-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
         
         {/* Top Navigation Bar */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <button
             onClick={() => navigate('/')}
             className="inline-flex items-center gap-2 text-sm font-bold text-slate-700 hover:text-[#d9232e] transition-colors cursor-pointer bg-white px-4 py-2 rounded-full border border-slate-200 shadow-2xs hover:shadow-xs"
@@ -100,7 +100,7 @@ export default function SocialMediaPage() {
             <img
               src="/images/instagram_mobile.png"
               alt="Ruby Red Official Instagram"
-              className="w-72 sm:w-80 lg:w-96 max-w-sm sm:max-w-md h-auto block object-contain filter drop-shadow-xl hover:scale-103 transition-transform duration-300"
+              className="w-60 xs:w-72 sm:w-80 lg:w-96 max-w-sm sm:max-w-md h-auto block object-contain filter drop-shadow-xl hover:scale-103 transition-transform duration-300"
             />
           </div>
 
@@ -110,15 +110,15 @@ export default function SocialMediaPage() {
               return (
                 <div
                   key={idx}
-                  className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-md flex items-center justify-between gap-4"
+                  className="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200/80 shadow-md flex flex-col xs:flex-row xs:items-center justify-between gap-4"
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                     <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${chan.gradient} text-white flex items-center justify-center shrink-0 shadow-md`}>
                       <IconComponent className="w-7 h-7" />
                     </div>
 
-                    <div>
-                      <h3 className="font-bold text-slate-900 text-xl">{chan.name}</h3>
+                    <div className="min-w-0">
+                      <h3 className="font-bold text-slate-900 text-lg sm:text-xl">{chan.name}</h3>
                       <p className="font-extrabold text-[#d9232e] text-sm">{chan.handle}</p>
                       <p className="text-xs text-slate-500">{chan.desc}</p>
                     </div>
@@ -128,7 +128,7 @@ export default function SocialMediaPage() {
                     href={chan.url}
                     target="_blank"
                     rel="noreferrer"
-                    className={`px-5 py-2.5 ${chan.btnBg} text-white font-bold text-xs sm:text-sm rounded-full shadow-sm hover:shadow-md transition-all flex items-center gap-1.5 shrink-0`}
+                    className={`w-full xs:w-auto px-5 py-2.5 ${chan.btnBg} text-white font-bold text-sm rounded-full shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-1.5 shrink-0`}
                   >
                     <span>Follow</span>
                     <ExternalLink className="w-3.5 h-3.5" />

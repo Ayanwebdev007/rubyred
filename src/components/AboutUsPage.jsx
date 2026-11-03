@@ -1,226 +1,228 @@
-import React from 'react';
-import { ArrowLeft, ShieldCheck, Sparkles, Building2, CheckCircle, Package, Globe, PhoneCall, MapPin, ExternalLink } from 'lucide-react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MapPin, Phone, Clock, Building2, ShieldCheck, Truck, Globe, Store, ArrowRight } from 'lucide-react';
+import useCatalog from '../hooks/useCatalog';
+import { STORE_INFO } from '../data/products';
+
+const RED = '#d9232e';
+
+function SectionHeading({ eyebrow, title, light = false }) {
+  return (
+    <div className="space-y-2">
+      <span className={`inline-block text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.2em] ${light ? 'text-amber-300' : 'text-[#d9232e]'}`}>
+        {eyebrow}
+      </span>
+      <h2 className={`text-2xl sm:text-4xl font-semibold tracking-tight ${light ? 'text-white' : 'text-slate-900'}`}>
+        {title}
+      </h2>
+    </div>
+  );
+}
 
 export default function AboutUsPage() {
   const navigate = useNavigate();
+  const { categories, products } = useCatalog();
+  const countries = new Set(products.map((p) => p.origin).filter((o) => o && !o.includes('Imported')));
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
+  const stats = [
+    { value: `${products.length}+`, label: 'Products' },
+    { value: categories.length, label: 'Categories' },
+    { value: `${countries.size}+`, label: 'Countries Sourced' },
+    { value: 'B2C + B2B', label: 'Retail & Wholesale' }
+  ];
+
+  const pillars = [
+    { img: '/images/warehouse_distribution_hub.jpg', icon: Globe, title: 'Global Sourcing', text: 'Direct imports from Asia, Europe and Latin America.' },
+    { img: '/images/b2b_wholesale.jpg', icon: Store, title: 'Wholesale Supply', text: 'Case-pack pricing for stores, gas stations and markets.' },
+    { img: '/images/b2b_wholesale.png', icon: Truck, title: 'Delivery Across the USA', text: 'Packed in Houston, shipped nationwide.' }
+  ];
+
+  const values = [
+    { icon: ShieldCheck, title: '100% Authentic' },
+    { icon: Building2, title: 'Houston Warehouse' },
+    { icon: Truck, title: 'Fast Dispatch' },
+    { icon: Phone, title: 'Direct Support' }
+  ];
 
   return (
-    <div className="bg-slate-50 min-h-screen py-10 sm:py-14">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
-        {/* Navigation Top Bar */}
-        <div className="flex items-center justify-between">
-          <button
-            onClick={() => navigate('/')}
-            className="inline-flex items-center gap-2 text-sm font-bold text-slate-700 hover:text-[#d9232e] transition-colors cursor-pointer bg-white px-4 py-2 rounded-full border border-slate-200 shadow-2xs hover:shadow-xs"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Store</span>
-          </button>
+    <div className="bg-white">
 
-          <span className="text-xs font-bold px-3 py-1 rounded-full bg-red-100 text-[#d9232e] border border-red-200">
-            Official Company Profile
-          </span>
+      {/* 1. Hero */}
+      <section className="relative min-h-[420px] sm:min-h-[520px] flex items-end overflow-hidden">
+        <img src="/images/vibrant_snack_warehouse_aisle.png" alt="Ruby Red warehouse" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#3b0a0d] via-[#7f1d1d]/70 to-black/20" />
+        <div className="relative max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-16 space-y-4">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.05] max-w-3xl">
+            Taste the World,<br />One Snack at a Time.
+          </h1>
+          <p className="text-lg sm:text-2xl font-semibold text-amber-300 italic">We're truly Exotic!</p>
+        </div>
+      </section>
+
+      {/* 2. Stats band */}
+      <section style={{ backgroundColor: RED }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4">
+          {stats.map((s) => (
+            <div key={s.label} className="py-6 sm:py-8 px-1 text-center border-white/20 odd:border-r lg:border-r lg:last:border-r-0 [&:nth-child(n+3)]:border-t lg:[&:nth-child(n+3)]:border-t-0">
+              <p className="text-2xl sm:text-4xl font-black text-white">{s.value}</p>
+              <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest text-white/90 mt-1">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. Story */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="relative">
+          <img src="/images/b2b_wholesale.jpg" alt="Ruby Red store display" className="relative z-10 w-full aspect-[4/3] object-cover rounded-3xl shadow-xl" />
+          <img
+            src="/images/ruby_red_banner.jpeg"
+            alt="Ruby Red brand"
+            className="hidden sm:block absolute z-20 -bottom-8 -right-6 w-1/2 aspect-[3/2] object-cover rounded-2xl border-4 border-white shadow-2xl"
+          />
+          <div className="absolute -top-4 -left-4 w-24 h-24 rounded-3xl" style={{ backgroundColor: RED }} />
         </div>
 
-        {/* Hero Banner Section */}
-        <div className="relative rounded-3xl overflow-hidden bg-slate-900 text-white p-8 sm:p-12 lg:p-16 shadow-2xl border border-slate-800">
-          <div className="absolute inset-0 opacity-20 bg-[radial-[#d9232e]_1px,transparent_1px] [background-size:16px_16px]" />
-          <div className="relative z-10 max-w-3xl space-y-6">
-            <span className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3.5 py-1 rounded-full border border-amber-400/20">
-              <Globe className="w-3.5 h-3.5" />
-              Global Exotic Snacks & Beverages
-            </span>
-            <h1 className="text-3xl sm:text-5xl font-medium text-white tracking-tight leading-tight">
-              About Ruby Red Sales & Services
-            </h1>
-            <p className="text-base sm:text-xl text-slate-300 font-normal leading-relaxed">
-              Ruby Red Sales & Services provides quality products and convenient purchasing solutions for both retail and business customers across North America.
-            </p>
-          </div>
-        </div>
-
-        {/* Detailed Story & Mission Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
-          <div className="lg:col-span-7 bg-white rounded-3xl p-8 border border-slate-200/80 shadow-md space-y-6 flex flex-col justify-between">
-            <div className="space-y-4">
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
-                Our Story & Commitment
-              </h2>
-              <p className="text-slate-600 text-base leading-relaxed">
-                At Ruby Red Sales & Services, we specialize in curating and distributing authentic international snacks, European chocolates, artisan Japanese sodas like Ramune, and gourmet savory treats. 
-              </p>
-              <p className="text-slate-600 text-base leading-relaxed">
-                Whether you are an individual customer searching for rare hard-to-find treats or a business owner looking for dependable bulk inventory, Ruby Red delivers freshness, competitive pricing, and fast dispatch.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100">
-              <div className="space-y-1">
-                <span className="text-2xl sm:text-3xl font-black text-[#d9232e]">100%</span>
-                <p className="text-xs text-slate-500 font-medium">Guaranteed Freshness</p>
-              </div>
-              <div className="space-y-1">
-                <span className="text-2xl sm:text-3xl font-black text-[#d9232e]">500+</span>
-                <p className="text-xs text-slate-500 font-medium">Global Products Sourced</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-5 relative rounded-3xl overflow-hidden shadow-md border-4 border-white min-h-[320px]">
-            <img
-              src="/images/b2b_wholesale.jpg"
-              alt="Ruby Red Warehouse Showcase"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-
-        </div>
-
-        {/* Meet Our Beloved Founder Section */}
-        <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-red-950 text-white rounded-3xl p-8 sm:p-12 border border-slate-700/80 shadow-xl overflow-hidden relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-            
-            {/* Founder Portrait (5 Cols) */}
-            <div className="lg:col-span-5 flex justify-center items-center pb-6 lg:pb-0">
-              <div className="relative rounded-3xl border-4 border-amber-400/50 bg-white w-full max-w-sm">
-                
-                {/* Pure Clean Image - No Overlay */}
-                <div className="rounded-2xl overflow-hidden">
-                  <img
-                    src="/images/founder.png"
-                    alt="Our Beloved Founder - Ruby Red Sales & Services"
-                    className="w-full h-auto block"
-                  />
-                </div>
-
-                {/* Overlapping Premium Golden Card at Bottom Left Corner */}
-                <div className="absolute -bottom-5 -left-3 sm:-left-5 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-slate-950 px-5 py-3 rounded-2xl border-2 border-white z-20 flex flex-col justify-center space-y-0.5 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
-                  <span className="text-base font-black text-slate-950 tracking-tight leading-none">
-                    Salim NM
-                  </span>
-                  <p className="text-xs font-bold text-slate-900/90 tracking-wide">
-                    Founder, Ruby Red Sales & Services
-                  </p>
-                </div>
-
-              </div>
-            </div>
-
-            {/* Founder Message & Vision (7 Cols) */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-amber-300 bg-amber-400/10 px-3.5 py-1.5 rounded-full border border-amber-400/30">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Leadership & Vision</span>
-              </div>
-
-              <h2 className="text-2xl sm:text-4xl font-medium text-white tracking-tight">
-                A Message from Our Beloved Founder
-              </h2>
-
-              <blockquote className="text-base sm:text-lg text-slate-200 italic leading-relaxed border-l-4 border-[#d9232e] pl-4">
-                "At Ruby Red Sales & Services, our commitment has always been simple: to bring authentic, high-quality global treats straight to our customers with care, speed, and dedication. We take pride in building long-lasting trust with both retail snack lovers and business partners across North America."
-              </blockquote>
-
-              <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-300">
-                <div className="flex items-center gap-2 bg-white/10 px-3.5 py-2 rounded-xl">
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span>Customer First Commitment</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 px-3.5 py-2 rounded-xl">
-                  <Globe className="w-4 h-4 text-sky-400" />
-                  <span>Global Confectionery Network</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* 4 Core Pillars Grid */}
-        <div className="space-y-6">
-          <h2 className="text-2xl sm:text-3xl font-medium text-slate-900 tracking-tight">
-            Why Choose Ruby Red Sales & Services
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow space-y-3">
-              <div className="w-11 h-11 rounded-xl bg-red-100 text-[#d9232e] flex items-center justify-center">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-slate-900 text-lg">Quality Guaranteed</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Reliable products selected to meet the highest customer standards with batch verification.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow space-y-3">
-              <div className="w-11 h-11 rounded-xl bg-red-100 text-[#d9232e] flex items-center justify-center">
-                <MapPin className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-slate-900 text-lg">Easy Ordering</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Browse, add to cart, and place your order with complete ease and instant confirmation.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow space-y-3">
-              <div className="w-11 h-11 rounded-xl bg-red-100 text-[#d9232e] flex items-center justify-center">
-                <Building2 className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-slate-900 text-lg">Retail & Wholesale</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Tailored solutions for individual retail buyers and commercial B2B business customers.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow space-y-3">
-              <div className="w-11 h-11 rounded-xl bg-red-100 text-[#d9232e] flex items-center justify-center">
-                <CheckCircle className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-slate-900 text-lg">Direct Support</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Quick assistance through WhatsApp, live messaging, and direct telephone communication.
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Location & Commercial Info Card */}
-        <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-3 max-w-xl">
-            <div className="flex items-center gap-2 text-[#d9232e] font-bold text-sm">
-              <MapPin className="w-4 h-4" />
-              <span>Headquarters Location</span>
-            </div>
-            <h3 className="text-2xl font-bold text-slate-900">Ruby Red Sales & Services</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              9909-A Harwin Dr., Houston, TX 77036, United States
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+        <div className="space-y-5">
+          <SectionHeading eyebrow="Our Story" title="Houston's home for exotic snacks & beverages" />
+          <p className="text-slate-600 leading-relaxed">
+            Ruby Red Sales & Services imports and distributes international snacks, candy, chocolates and drinks from our
+            warehouse at {STORE_INFO.address.split(',')[0]} in Houston, Texas.
+          </p>
+          <p className="text-slate-600 leading-relaxed">
+            We serve snack lovers shopping for something new, and the convenience stores, gas stations and supermarkets
+            that stock our products by the case.
+          </p>
+          <div className="flex flex-wrap gap-3 pt-2">
+            <button
+              onClick={() => navigate('/shop')}
+              className="px-6 py-3 rounded-full text-white font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center gap-2"
+              style={{ backgroundColor: RED }}
+            >
+              Shop Products <ArrowRight className="w-4 h-4" />
+            </button>
             <button
               onClick={() => navigate('/wholesale')}
-              className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#d9232e] hover:bg-[#b91c1c] text-white font-bold text-sm shadow-md transition-all cursor-pointer flex items-center justify-center gap-2"
+              className="px-6 py-3 rounded-full font-bold text-sm border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white transition-colors cursor-pointer"
             >
-              <Building2 className="w-4 h-4" />
-              <span>Explore B2B Wholesale</span>
-            </button>
-            <button
-              onClick={() => navigate('/')}
-              className="w-full sm:w-auto px-6 py-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm transition-colors cursor-pointer"
-            >
-              Return to Store
+              Become a Wholesale Partner
             </button>
           </div>
         </div>
+      </section>
 
-      </div>
+      {/* 4. What we do */}
+      <section className="bg-slate-50 py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
+          <SectionHeading eyebrow="What We Do" title="From global brands to your shelf" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+            {pillars.map(({ img, icon: Icon, title, text }) => (
+              <div key={title} className="group relative h-80 sm:h-96 rounded-3xl overflow-hidden shadow-lg">
+                <img src={img} alt={title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#3b0a0d] via-[#3b0a0d]/40 to-transparent" />
+                <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 space-y-2">
+                  <span className="w-10 h-10 rounded-xl flex items-center justify-center text-white" style={{ backgroundColor: RED }}>
+                    <Icon className="w-5 h-5" />
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">{title}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Founder */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#2a0709] via-[#5c0f14] to-[#9b1c22]">
+        <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-white/5" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative w-full max-w-sm">
+              <img src="/images/founder.png" alt="Salim NM, Founder" className="w-full rounded-3xl border-4 border-amber-400/70 shadow-2xl" />
+              <div className="absolute -bottom-5 left-4 sm:-left-5 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-slate-950 px-5 py-3 rounded-2xl border-2 border-white shadow-xl">
+                <p className="font-black leading-none">Salim NM</p>
+                <p className="text-xs font-bold mt-1">Founder</p>
+              </div>
+            </div>
+          </div>
+          <div className="lg:col-span-7 space-y-6">
+            <SectionHeading eyebrow="Leadership" title="A message from our founder" light />
+            <blockquote className="text-lg sm:text-2xl text-white/90 leading-relaxed font-light border-l-4 border-amber-400 pl-5">
+              “Our commitment has always been simple: bring authentic, high-quality global treats to our customers with
+              care, speed and dedication, and build lasting trust with every retail and business partner.”
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Values */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
+          <SectionHeading eyebrow="Why Ruby Red" title="Built on trust, freshness and service" />
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            {values.map(({ icon: Icon, title }) => (
+              <div key={title} className="flex items-center gap-2.5 xs:gap-3 p-3 xs:p-4 rounded-2xl min-w-0 border border-slate-200 hover:border-[#d9232e]/40 hover:shadow-md transition-all">
+                <span className="w-9 h-9 xs:w-11 xs:h-11 shrink-0 rounded-xl bg-red-50 flex items-center justify-center" style={{ color: RED }}>
+                  <Icon className="w-5 h-5" />
+                </span>
+                <span className="font-bold text-sm sm:text-base text-slate-900 min-w-0">{title}</span>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {categories.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => navigate(`/category/${c.id}`)}
+                className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-red-50 text-[#d9232e] border border-red-100 hover:bg-[#d9232e] hover:text-white transition-colors cursor-pointer"
+              >
+                {c.title || c.name}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="relative order-1 lg:order-2">
+          <div className="absolute -bottom-4 -right-4 w-28 h-28 rounded-3xl bg-amber-400" />
+          <img src="/images/why_us_person.png" alt="Ruby Red team" className="relative w-full max-h-[520px] object-cover object-top rounded-3xl shadow-xl" />
+        </div>
+      </section>
+
+      {/* 7. Visit us */}
+      <section className="relative overflow-hidden">
+        <img src="/images/warehouse_distribution_hub.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-[#3b0a0d]/85" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="space-y-5">
+            <SectionHeading eyebrow="Visit Us" title="Come see the warehouse" light />
+            <div className="space-y-3 text-white/90 text-sm sm:text-base">
+              <p className="flex items-start gap-3"><MapPin className="w-5 h-5 text-amber-300 shrink-0 mt-0.5" />{STORE_INFO.address}</p>
+              <p className="flex items-start gap-3"><Phone className="w-5 h-5 text-amber-300 shrink-0 mt-0.5" />{STORE_INFO.phone}</p>
+              <p className="flex items-start gap-3"><Clock className="w-5 h-5 text-amber-300 shrink-0 mt-0.5" />{STORE_INFO.hours}</p>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row lg:justify-end gap-3">
+            <button
+              onClick={() => navigate('/contact')}
+              className="px-7 py-3.5 rounded-full text-white font-bold text-sm shadow-lg cursor-pointer flex items-center justify-center gap-2 hover:brightness-110 transition"
+              style={{ backgroundColor: RED }}
+            >
+              Contact Us <ArrowRight className="w-4 h-4" />
+            </button>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(STORE_INFO.address)}`}
+              target="_blank"
+              rel="noreferrer"
+              className="px-7 py-3.5 rounded-full font-bold text-sm bg-white text-slate-900 hover:bg-amber-300 transition-colors text-center"
+            >
+              Get Directions
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

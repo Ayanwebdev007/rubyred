@@ -1,292 +1,136 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { 
-  registerRetailUser, 
-  loginUserWithFirebase, 
-  submitB2BWholesaleApplication, 
-  subscribeToB2BApplications, 
-  updateB2BApplicationStatus, 
-  logOutFirebase 
-} from '../services/firebaseService';
-import { isFirebaseConfigured } from '../config/firebase';
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import {
+  fetchAccount,
+  registerAccount,
+  registerWholesaleAccount,
+  signIn,
+  updateProfile
+} from '../services/authService';
 
 const AuthContext = createContext();
+const SESSION_KEY = 'rubyred_user';
 
-const INITIAL_APPLICANTS = [];
-
-// Preset Demo Personas purged - real accounts only
+// Kept for older components that still import it.
 export const DEMO_PERSONAS = [];
 
-// Helper to filter out legacy dummy accounts
-const isDummyAccount = (u) => {
-  if (!u) return false;
-  const dummyIds = ['usr-b2c-01', 'b2b-app-1', 'b2b-app-2', 'admin-01'];
-  const dummyEmails = ['jessica.taylor@gmail.com', 'david@houstonmunchies.com', 'samir@harwingas.com', 'salim@rubyredhouston.com'];
-  return dummyIds.includes(u.id) || dummyIds.includes(u.uid) || dummyEmails.includes(u.email?.toLowerCase());
-};
+// Older builds kept every account (with plain-text passwords) in localStorage.
+try {
+  localStorage.removeItem('rubyred_registered_accounts');
+  localStorage.removeItem('rubyred_b2b_applicants');
+} catch {
+  /* storage unavailable */
+}
+
+function readSession() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
+    return saved && saved.id ? saved : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeSession(account) {
+  try {
+    if (account) localStorage.setItem(SESSION_KEY, JSON.stringify(account));
+    else localStorage.removeItem(SESSION_KEY);
+  } catch {
+    /* storage unavailable */
+  }
+}
 
 export function AuthProvider({ children }) {
-  // Purge any legacy dummy data from localStorage once
-  useEffect(() => {
-    try {
-      const regAccounts = JSON.parse(localStorage.getItem('rubyred_registered_accounts') || '[]');
-      const filteredReg = regAccounts.filter(u => !isDummyAccount(u));
-      localStorage.setItem('rubyred_registered_accounts', JSON.stringify(filteredReg));
+  const [currentUser, setCurrentUserState] = useState(readSession);
 
-      const b2bApps = JSON.parse(localStorage.getItem('rubyred_b2b_applicants') || '[]');
-      const filteredB2b = b2bApps.filter(u => !isDummyAccount(u));
-      localStorage.setItem('rubyred_b2b_applicants', JSON.stringify(filteredB2b));
-    } catch (e) {
-      console.warn('Cleanup error:', e);
-    }
+  const setCurrentUser = useCallback((valueOrUpdater) => {
+    setCurrentUserState((prev) => {
+      const next = typeof valueOrUpdater === 'function' ? valueOrUpdater(prev) : valueOrUpdater;
+      writeSession(next);
+      return next;
+    });
   }, []);
 
-  // Current logged in user (defaults to Guest)
-  const [currentUser, setCurrentUser] = useState(() => {
+  /** Re-reads the account so status changes (e.g. wholesale approval) take effect. */
+  const refreshAccount = useCallback(async () => {
+    const session = readSession();
+    if (!session) return null;
     try {
-      const saved = localStorage.getItem('rubyred_user');
-      if (!saved) return null;
-      const parsed = JSON.parse(saved);
-      if (isDummyAccount(parsed)) {
-        localStorage.removeItem('rubyred_user');
+      const latest = await fetchAccount(session.id);
+      if (!latest || latest.status === 'Rejected' || latest.status === 'Suspended') {
+        setCurrentUser(null);
         return null;
       }
-      return parsed;
-    } catch {
-      return null;
+      setCurrentUser(latest);
+      return latest;
+    } catch (err) {
+      // Offline / quota: keep the cached session.
+      console.warn('[Auth] Could not refresh account:', err?.message || err);
+      return session;
     }
-  });
+  }, [setCurrentUser]);
 
-  // Wholesaler applicants for admin approval workflow
-  const [b2bApplicants, setB2bApplicants] = useState(() => {
-    try {
-      const saved = localStorage.getItem('rubyred_b2b_applicants');
-      if (!saved) return [];
-      const parsed = JSON.parse(saved);
-      return Array.isArray(parsed) ? parsed.filter(u => !isDummyAccount(u)) : [];
-    } catch {
-      return [];
-    }
-  });
-
-  // Modal control
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [authModalInitialTab, setAuthModalInitialTab] = useState('chooser'); // 'chooser', 'retail', 'b2b', 'login'
-
-  // Real-time Firestore subscription for B2B wholesale applications
   useEffect(() => {
-    const unsubscribe = subscribeToB2BApplications((liveApplicants) => {
-      if (liveApplicants && liveApplicants.length > 0) {
-        setB2bApplicants(prev => {
-          const map = new Map();
-          // Keep existing/initial items
-          prev.forEach(item => map.set(item.id, item));
-          // Overlay live Firestore items
-          liveApplicants.forEach(item => map.set(item.id, { ...map.get(item.id), ...item }));
-          return Array.from(map.values());
-        });
-      }
-    });
+    refreshAccount();
+  }, [refreshAccount]);
 
-    return () => {
-      if (typeof unsubscribe === 'function') unsubscribe();
+  // Keep tabs in sync (sign in/out in one tab applies to the others)
+  useEffect(() => {
+    const onStorage = (e) => {
+      if (e.key === SESSION_KEY) setCurrentUserState(readSession());
     };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
   }, []);
 
-  // Sync to localStorage
-  useEffect(() => {
-    try {
-      if (currentUser) {
-        localStorage.setItem('rubyred_user', JSON.stringify(currentUser));
-      } else {
-        localStorage.removeItem('rubyred_user');
-      }
-    } catch (e) {
-      console.error('Storage sync error:', e);
-    }
-  }, [currentUser]);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem('rubyred_b2b_applicants', JSON.stringify(b2bApplicants));
-    } catch (e) {
-      console.error('Storage sync error:', e);
-    }
-  }, [b2bApplicants]);
-
-  const openAuthModal = (tab = 'chooser') => {
-    setAuthModalInitialTab(tab);
-    setIsAuthModalOpen(true);
-  };
-
-  const closeAuthModal = () => {
-    setIsAuthModalOpen(false);
-  };
-
-  // Switch quick demo persona
-  const switchDemoPersona = (personaId) => {
-    const found = DEMO_PERSONAS.find(p => p.id === personaId);
-    if (found) {
-      setCurrentUser(found.user);
-    }
-  };
-
-  // Retail Registration with Real Persistence & Validation
   const registerRetail = async ({ name, email, phone, password, isAgeVerified }) => {
-    if (!email) throw new Error('Email address is required');
-    if (!password) throw new Error('Password is required');
-    
-    const user = await registerRetailUser(email, password, name, phone);
-
-    const newUser = {
-      id: user.uid || user.id,
-      uid: user.uid || user.id,
+    const account = await registerAccount({
       role: 'retail',
-      name: name || user.displayName || user.name || 'Ruby Red Shopper',
-      email: email.toLowerCase().trim(),
-      phone: phone || '',
-      isAgeVerified: Boolean(isAgeVerified),
-      address: { street: '', city: 'Houston', state: 'TX', zip: '' },
-      createdAt: user.createdAt || new Date().toISOString()
-    };
-    setCurrentUser(newUser);
-    return newUser;
+      name,
+      email,
+      phone,
+      password,
+      isAgeVerified: Boolean(isAgeVerified)
+    });
+    setCurrentUser(account);
+    return account;
   };
 
-  // B2B Wholesale Application Registration with Real Persistence & Validation
-  const registerB2B = async (applicationData, file = null) => {
-    if (!applicationData.businessName) throw new Error('Business Name is required');
-    if (!applicationData.email) throw new Error('Business Email is required');
-    if (!applicationData.password) throw new Error('Password is required for wholesale account');
-    if (!applicationData.taxId) throw new Error('Resale Tax ID is required');
-
-    const savedApp = await submitB2BWholesaleApplication(applicationData, file);
-
-    // Add to applicants list
-    setB2bApplicants(prev => [savedApp, ...prev.filter(a => a.id !== savedApp.id)]);
-
-    // Set logged-in state to registered B2B user
-    const newUser = {
-      id: savedApp.id,
-      uid: savedApp.uid || savedApp.id,
-      role: 'b2b',
-      status: savedApp.status || 'Active',
-      name: savedApp.contactName || savedApp.businessName,
-      businessName: savedApp.businessName,
-      storeType: savedApp.storeType,
-      email: savedApp.email,
-      phone: savedApp.phone,
-      taxId: savedApp.taxId,
-      monthlyVolume: savedApp.monthlyVolume,
-      documentsCount: savedApp.documents ? savedApp.documents.length : 0
-    };
-
-    setCurrentUser(newUser);
-    return savedApp;
+  /** Wholesale application → Pending account (signed in so they can track status). */
+  const registerB2B = async (application, certificateFile = null) => {
+    const account = await registerWholesaleAccount({ ...application, certificateFile });
+    setCurrentUser(account);
+    return account;
   };
 
-  // Login with Real Credential Verification
   const loginUser = async (emailOrPhone, password, roleHint = 'retail') => {
-    if (!emailOrPhone || !emailOrPhone.trim()) {
-      throw new Error('Please enter your email or phone number');
-    }
-    if (!password) {
-      throw new Error('Please enter your password');
-    }
-
-    const cleanInput = emailOrPhone.toLowerCase().trim();
-
-    // Authenticate with Firebase & persistent accounts store
-    const user = await loginUserWithFirebase(cleanInput, password, roleHint);
-    
-    const authenticatedUser = {
-      id: user.uid || user.id,
-      uid: user.uid || user.id,
-      role: user.role || roleHint,
-      status: user.status || 'Active',
-      name: user.displayName || user.name || (user.email ? user.email.split('@')[0] : 'Member'),
-      businessName: user.businessName || '',
-      email: user.email || cleanInput,
-      phone: user.phone || '',
-      taxId: user.taxId || '',
-      isAgeVerified: user.isAgeVerified !== false,
-      address: user.address || { street: '', city: 'Houston', state: 'TX', zip: '' }
-    };
-
-    setCurrentUser(authenticatedUser);
-    return authenticatedUser;
+    const account = await signIn(emailOrPhone, password, roleHint);
+    setCurrentUser(account);
+    return account;
   };
 
-  // Admin approves B2B application
-  const approveB2BApplicant = async (applicantId) => {
-    setB2bApplicants(prev =>
-      prev.map(a => a.id === applicantId ? { ...a, status: 'Approved' } : a)
-    );
-
-    // If currently logged-in user is this applicant, instantly elevate to Approved!
-    setCurrentUser(prev => {
-      if (prev && prev.id === applicantId) {
-        return {
-          ...prev,
-          status: 'Approved',
-          creditLimit: 5000,
-          tier: 'Tier 1 (10% Off Case Packs)'
-        };
-      }
-      return prev;
-    });
-
-    try {
-      await updateB2BApplicationStatus(applicantId, 'Approved');
-    } catch (e) {
-      console.warn('Firestore update error:', e);
-    }
-  };
-
-  // Admin rejects B2B application
-  const rejectB2BApplicant = async (applicantId) => {
-    setB2bApplicants(prev =>
-      prev.map(a => a.id === applicantId ? { ...a, status: 'Rejected' } : a)
-    );
-
-    setCurrentUser(prev => {
-      if (prev && prev.id === applicantId) {
-        return { ...prev, status: 'Rejected' };
-      }
-      return prev;
-    });
-
-    try {
-      await updateB2BApplicationStatus(applicantId, 'Rejected');
-    } catch (e) {
-      console.warn('Firestore update error:', e);
-    }
+  const saveProfile = async (changes) => {
+    if (!currentUser) return;
+    await updateProfile(currentUser.id, changes);
+    setCurrentUser((prev) => ({ ...prev, ...changes }));
   };
 
   const logout = async () => {
-    try {
-      await logOutFirebase();
-    } catch (e) {
-      console.warn('Firebase logout note:', e);
-    }
     setCurrentUser(null);
   };
+
+  const isApprovedWholesale = currentUser?.role === 'b2b' && currentUser?.status === 'Approved';
 
   return (
     <AuthContext.Provider
       value={{
         currentUser,
         setCurrentUser,
-        b2bApplicants,
-        isAuthModalOpen,
-        authModalInitialTab,
-        openAuthModal,
-        closeAuthModal,
-        switchDemoPersona,
+        isApprovedWholesale,
         registerRetail,
         registerB2B,
         loginUser,
-        approveB2BApplicant,
-        rejectB2BApplicant,
+        refreshAccount,
+        saveProfile,
         logout
       }}
     >
