@@ -50,9 +50,6 @@ export default function CategoriesSection({ onSelectCategory, activeCategoryId }
             <h2 className="text-xl sm:text-3xl lg:text-4xl font-semibold text-[#d9232e] tracking-tight">
               Shop by Category
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-0.5 hidden xs:block">
-              Explore authentic imported treats by craving
-            </p>
           </div>
 
           <button

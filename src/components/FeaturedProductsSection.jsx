@@ -27,9 +27,7 @@ export default function FeaturedProductsSection({ categoryId, onSelectProduct })
   };
 
   const title = categoryId ? (category?.title || category?.name || 'Category') : 'Featured Products';
-  const subtitle = categoryId
-    ? category?.description || ''
-    : 'Handpicked bestsellers from every aisle';
+  const subtitle = categoryId ? category?.description || '' : '';
 
   return (
     <section id="featured-products" className="py-6 sm:py-10 lg:py-14 bg-white border-b border-slate-100">
