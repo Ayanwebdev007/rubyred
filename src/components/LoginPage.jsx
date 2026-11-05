@@ -821,7 +821,7 @@ export default function LoginPage() {
           }`}
         >
           <img 
-            src="/images/vibrant_snack_warehouse_aisle.png" 
+            src="/images/ruby_red_warehouse.jpg" 
             alt="Ruby Red Snack Warehouse" 
             className="w-full h-full object-cover object-center"
           />

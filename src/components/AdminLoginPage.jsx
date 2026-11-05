@@ -187,7 +187,7 @@ export default function AdminLoginPage() {
       {/* Right Column: Full-Height Edge-to-Edge Image (50% Split) */}
       <div className="hidden lg:block relative w-full h-full min-h-screen bg-slate-900 overflow-hidden">
         <img 
-          src="/images/vibrant_snack_warehouse_aisle.png" 
+          src="/images/ruby_red_warehouse.jpg" 
           alt="Ruby Red Snack Warehouse Aisle" 
           className="absolute inset-0 w-full h-full object-cover object-center"
         />

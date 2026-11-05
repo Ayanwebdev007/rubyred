@@ -79,12 +79,12 @@ export default function Navbar({
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 h-16 xs:h-20 flex items-center justify-between gap-2">
         
         {/* Left: Official RUBY RED Logo */}
-        <div className="flex items-center gap-3 min-w-0 shrink cursor-pointer" onClick={() => handleNavClick('home')}>
+        <div className="flex items-center gap-3 shrink-0 cursor-pointer" onClick={() => handleNavClick('home')}>
           <div className="flex items-center gap-2 group">
             <img 
               src="/images/logo.png" 
               alt="Ruby Red Sales & Services - Global Exotic Snacks & Beverages" 
-              className="h-11 xs:h-14 sm:h-16 w-auto max-w-full object-contain transition-transform group-hover:scale-102"
+              className="h-14 xs:h-[72px] sm:h-[76px] w-auto object-contain transition-transform group-hover:scale-102"
             />
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function Navbar({
           <div className="flex items-center gap-1.5 xs:gap-2.5 flex-shrink-0">
             
             {/* Search Bar Input */}
-            <div className="hidden sm:flex items-center bg-slate-50/90 rounded-full px-4 py-2 text-xs border border-red-500/70 hover:border-red-600 w-56 sm:w-64 md:w-80 focus-within:bg-white focus-within:border-red-600 focus-within:ring-2 focus-within:ring-red-500/20 transition-all shadow-2xs">
+            <div className="hidden sm:flex items-center bg-slate-50/90 rounded-full px-4 py-2 text-xs border border-red-500/70 hover:border-red-600 sm:w-40 md:w-64 lg:w-40 xl:w-80 focus-within:bg-white focus-within:border-red-600 focus-within:ring-2 focus-within:ring-red-500/20 transition-all shadow-2xs">
               <Search className="w-4 h-4 text-red-500 mr-2 flex-shrink-0" />
               <input
                 type="text"

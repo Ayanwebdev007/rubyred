@@ -53,7 +53,7 @@ export default function AboutUsPage() {
 
       {/* 1. Hero */}
       <section className="relative min-h-[420px] sm:min-h-[520px] flex items-end overflow-hidden">
-        <img src="/images/vibrant_snack_warehouse_aisle.png" alt="Ruby Red warehouse" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="/images/ruby_red_warehouse.jpg" alt="Ruby Red warehouse" className="absolute inset-0 w-full h-full object-cover object-[center_22%]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#3b0a0d] via-[#7f1d1d]/70 to-black/20" />
         <div className="relative max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-16 space-y-4">
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.05] max-w-3xl">

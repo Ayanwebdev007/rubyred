@@ -31,6 +31,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOURCE_DIR = os.path.join(ROOT, "product folder")
 PUBLIC_DIR = os.path.join(ROOT, "public", "products")
 CATALOG_PATH = os.path.join(ROOT, "src", "data", "catalog.json")
+# Hand-picked photos that replace a product's downloaded ones:
+# <this folder>/<supplier ProductId>/image_1.jpg (see SOURCES.json for origins)
+REPLACEMENT_DIR = os.path.join(SOURCE_DIR, "_replacement_images")
 
 MAX_IMAGE_SIDE = 700
 JPEG_QUALITY = 76
@@ -324,6 +327,9 @@ def read_rows(category: dict) -> list[dict]:
 
 
 def source_images(category: dict, row: dict) -> list[str]:
+    replacements = sorted(glob.glob(os.path.join(REPLACEMENT_DIR, row["ProductId"].strip(), "image_*.jpg")))
+    if replacements:
+        return replacements[:MAX_IMAGES_PER_PRODUCT]
     folder = os.path.join(SOURCE_DIR, category["folder"],
                           folder_name_for(row["ProductName"].strip(), row["ProductId"]))
     files = sorted(glob.glob(os.path.join(folder, "image_*.jpg")))
@@ -469,6 +475,15 @@ STORE_CATEGORIES = [
      "description": "European and Asian cookies, biscuits and wafers", "storage": DRY_STORAGE},
 ]
 DRINK_SOURCES = {"carbonated-drinks", "exotic-soda", "exotic-energy-drinks"}
+# Category images: a top-selling product with a clean photo (supplier ProductId)
+CATEGORY_COVERS = {
+    "exotic-beverages": "272750",   # Japanese Fanta White Peach 300 Ml
+    "chips-snacks": "223763",       # Lay's Spicy Crayfish 70 GM
+    "chocolates": "298414",         # Japanese KitKat Strawberry 10 Pcs
+    "candies-gums": "187217",       # Chomis Gomis Gushers
+    "mochi-soft-cakes": "272078",   # Balconi Hazelnut Cream Roll 250 GM
+    "cookies-biscuits": "231412",   # Oreo Birthday Cake
+}
 
 # Checked in order; first match wins
 CLASSIFY_RULES = [
@@ -499,7 +514,10 @@ CATEGORY_OVERRIDES = {
     "234006": "cookies-biscuits",
     "272130": "chocolates",
     "228614": "cookies-biscuits",
-    "245122": "chips-snacks",
+    "245122": "cookies-biscuits",  # NABISCO Korean Ritz Sandwich Cracker CHOCO
+    "223776": "cookies-biscuits",  # Ritz Cheese Sandwich Crackers
+    "234007": "cookies-biscuits",  # Ritz Cracker LEMON
+    "242304": "cookies-biscuits",  # Ritz Lemon Small 2 Rolls
     "242232": "cookies-biscuits",
     "234008": "cookies-biscuits",
     "305632": "mochi-soft-cakes",
@@ -529,6 +547,26 @@ def classify(name: str, source_id: str, product_id: str = "") -> str:
         if re.search(pattern, lowered):
             return target
     return "candies-gums" if source_id == "candy" else "chips-snacks"
+
+
+# Words to skip when finding the brand a product is listed under on the shop
+# pages: origins and parent companies ("Exotic Japanese Kitkat", "Nestle Aero").
+FLOW_SKIP_WORDS = NON_BRAND_PREFIXES | COUNTRY_WORDS | {
+    "imported", "austrian", "russian", "spanish", "swedish", "polish",
+    "nestle", "nabisco", "glico", "fritolay", "haitai", "choc", "chocolate",
+}
+FLOW_BRAND_ALIASES = {"fants": "fanta", "coca": "coke"}
+
+
+def flow_key(title: str) -> tuple[str, str]:
+    """Sort key that lists every product of a brand together: (brand, rest of the name)."""
+    words = re.sub(r"['’�]s", "", title.lower()).split()
+    while words and (words[0].strip(".,-") in FLOW_SKIP_WORDS or words[0].isdigit()):
+        words.pop(0)
+    if not words:
+        return (title.lower(), "")
+    brand = words[0].strip(".,-")
+    return (FLOW_BRAND_ALIASES.get(brand, brand), " ".join(words[1:]))
 
 
 def main() -> None:
@@ -567,7 +605,13 @@ def main() -> None:
     for order, target in enumerate(STORE_CATEGORIES):
         cat_products = [build_product(target, row, imgs, i) for i, (row, imgs) in enumerate(by_target[target["id"]])]
         products.extend(cat_products)
-        cover = cat_products[0]["img"] if cat_products else "/images/cat_snacks.jpg"
+        # "featured" comes from the selection order above; only the listing order
+        # is by brand
+        cover = next((p["img"] for p in cat_products if p["sku"] == CATEGORY_COVERS.get(target["id"])), None)
+        cover = cover or (cat_products[0]["img"] if cat_products else "/images/cat_snacks.jpg")
+        cat_products.sort(key=lambda p: flow_key(p["title"]))
+        for sort_order, product in enumerate(cat_products):
+            product["sortOrder"] = sort_order
         categories.append({
             "id": target["id"],
             "title": target["title"],
@@ -582,7 +626,7 @@ def main() -> None:
 
     os.makedirs(os.path.dirname(CATALOG_PATH), exist_ok=True)
     with open(CATALOG_PATH, "w", encoding="utf-8") as fh:
-        json.dump({"version": f"store6-{args.per_category}-v1",
+        json.dump({"version": f"store6-{args.per_category}-v3",
                    "categories": categories, "products": products},
                   fh, ensure_ascii=False, indent=2)
 
