@@ -615,7 +615,6 @@ def main() -> None:
     categories, products = [], []
     for order, target in enumerate(STORE_CATEGORIES):
         cat_products = [build_product(target, row, imgs, i) for i, (row, imgs) in enumerate(by_target[target["id"]])]
-        products.extend(cat_products)
         # "featured" comes from the selection order above; only the listing order
         # is by brand
         cover = next((p["img"] for p in cat_products if p["sku"] == CATEGORY_COVERS.get(target["id"])), None)
@@ -623,6 +622,7 @@ def main() -> None:
         cat_products.sort(key=lambda p: flow_key(p["title"]))
         for sort_order, product in enumerate(cat_products):
             product["sortOrder"] = sort_order
+        products.extend(cat_products)
         categories.append({
             "id": target["id"],
             "title": target["title"],
