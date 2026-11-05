@@ -8,6 +8,9 @@ import {
 
 let lastCatalog = null;
 
+// Hidden products stay in the admin panel, which loads them separately
+const visibleProducts = (products) => products.filter((p) => !p.hidden);
+
 /**
  * Categories and products for the storefront.
  * Renders immediately from the bundled catalog, then switches to the Firestore
@@ -16,15 +19,16 @@ let lastCatalog = null;
 export default function useCatalog() {
   const [catalog, setCatalog] = useState(() => ({
     categories: lastCatalog?.categories || INITIAL_REAL_CATEGORIES,
-    products: lastCatalog?.products || INITIAL_REAL_PRODUCTS,
+    products: lastCatalog?.products || visibleProducts(INITIAL_REAL_PRODUCTS),
     loading: !lastCatalog
   }));
 
   useEffect(() => {
     let active = true;
     const apply = (data) => {
-      lastCatalog = data;
-      if (active) setCatalog({ ...data, loading: false });
+      const visible = { ...data, products: visibleProducts(data.products) };
+      lastCatalog = visible;
+      if (active) setCatalog({ ...visible, loading: false });
     };
     getCatalog().then(apply);
     const unsubscribe = subscribeToCatalog(apply);

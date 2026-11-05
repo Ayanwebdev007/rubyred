@@ -433,6 +433,7 @@ def build_product(category: dict, row: dict, images: list[str], position: int) -
         "stock": 100,
         "stockCount": 100,
         "inStock": True,
+        "hidden": pid in HIDDEN_PRODUCTS,
         "taxable": row.get("IsTaxable", "False").strip() == "True",
         "featured": position < 3,
         "sortOrder": position,
@@ -475,6 +476,16 @@ STORE_CATEGORIES = [
      "description": "European and Asian cookies, biscuits and wafers", "storage": DRY_STORAGE},
 ]
 DRINK_SOURCES = {"carbonated-drinks", "exotic-soda", "exotic-energy-drinks"}
+# Products the client doesn't currently sell (supplier ProductId). They stay in the
+# catalog and the admin panel, but the storefront doesn't show them.
+HIDDEN_PRODUCTS = {
+    "263947",   # HELLO Kitty Ramune Strawberry 200 Ml
+    "228244",   # Carolina Kettle Coastal Crab Boil 2 Oz
+    "303876",   # BABAEVSKIY Dark Choc with Crispy Orange & Cherry 85 GR
+    "228378",   # ARCTIC Freeze Dried - Hot Reds 2.5 Oz
+    "303828",   # CHAO YOU WEI Mochi Mango Flavor 126 GM
+    "272076",   # Milka OREO Chocolate
+}
 # Category images: a top-selling product with a clean photo (supplier ProductId)
 CATEGORY_COVERS = {
     "exotic-beverages": "272750",   # Japanese Fanta White Peach 300 Ml
@@ -619,14 +630,14 @@ def main() -> None:
             "img": cover,
             "image": cover,
             "description": target["description"],
-            "itemCount": len(cat_products),
+            "itemCount": sum(not p["hidden"] for p in cat_products),
             "sortOrder": order,
         })
         print(f"{target['title']:<24} {len(cat_products):>3} products")
 
     os.makedirs(os.path.dirname(CATALOG_PATH), exist_ok=True)
     with open(CATALOG_PATH, "w", encoding="utf-8") as fh:
-        json.dump({"version": f"store6-{args.per_category}-v3",
+        json.dump({"version": f"store6-{args.per_category}-v4",
                    "categories": categories, "products": products},
                   fh, ensure_ascii=False, indent=2)
 
